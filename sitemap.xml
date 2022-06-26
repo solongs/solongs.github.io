@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite-url/cn/NimGame/</loc>
-    
-    <lastmod>2022-06-26</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite-url/categories/index.html</loc>
     
     <lastmod>2022-06-26</lastmod>
@@ -26,6 +19,13 @@
     <loc>http://yoursite-url/tags/index.html</loc>
     
     <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/cn/NimGame/</loc>
+    
+    <lastmod>2020-08-01</lastmod>
     
   </url>
   
@@ -61,6 +61,13 @@
   
   <url>
     <loc>http://yoursite-url/tags/math/</loc>
+    <lastmod>2022-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/processing/</loc>
     <lastmod>2022-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
