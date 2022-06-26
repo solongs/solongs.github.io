@@ -253,17 +253,6 @@
           
           
           <li>
-            <a href="/tags/">
-              
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/archive/">
               
               归档
@@ -278,6 +267,17 @@
             <a href="/categories/">
               
               分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
               
               
             </a>
@@ -451,8 +451,10 @@
       动手实现一个超立方体投影
     </h3>
     <div class="post-content-preview">
-      超立方体&#8195;&#8195;百度百科对超立方体的描述：超立方体是数学中立方体的四维类似物，所谓的点动成线，线动成面，面动成体。在四维空间(非三维-时间概念)中，立方体的移动形成四维的超立方体，由无数个立方体所组成的，具有四维的观念。
-&#8195;&#8195;在几何学中，超立方体是立方体的四维类比，有8个立方体胞。四维超正方体之于立方体，就如立方体之于正方形。它是四维欧式空间中6个......
+      超立方体
+  百度百科对超立方体的描述：超立方体是数学中立方体的四维类似物，所谓的点动成线，线动成面，面动成体。在四维空间(非三维-时间概念)中，立方体的移动形成四维的超立方体，由无数个立方体所组成的，具有四维的观念。
+  在几何学中，超立方体是立方体的四维类比，有8个立方体胞。四维超正方体之于立方体，就如立方体之于正方形。它是四维欧式空间中6个四维凸正多胞体之一。
+  那么它的概念图呢，就......
     </div>
   </a>
   
@@ -1113,5 +1115,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
