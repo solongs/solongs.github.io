@@ -58,7 +58,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="description" content="It&#39;s an IT blog..."/>
-  <meta name="keyword" content="v-vincen,v-vincen,livemylife,IT  blog,Blog"/>
+  <meta name="keyword" content="IT  blog,Blog"/>
   <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
 
   <!-- Place this tag in your head or just before your close body tag. -->
@@ -117,11 +117,6 @@
 
     
 
-    
-      <!-- gitalk start -->
-      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
-      <link rel="stylesheet" href="/css/gitalk.css"/>
-      <!-- gitalk end -->
     
   
 
@@ -230,7 +225,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Your Title</a>
+      <a class="navbar-brand" href="/">Just Be Yourself</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -239,7 +234,7 @@
       <div class="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="/">HOME</a>
+            <a href="/">首页</a>
           </li>
 
           
@@ -249,7 +244,7 @@
           <li>
             <a href="/about/">
               
-              ABOUT
+              关于
               
               
             </a>
@@ -260,7 +255,7 @@
           <li>
             <a href="/tags/">
               
-              TAGS
+              标签
               
               
             </a>
@@ -271,7 +266,7 @@
           <li>
             <a href="/archive/">
               
-              ARCHIVES
+              归档
               
               
             </a>
@@ -282,7 +277,7 @@
           <li>
             <a href="/categories/">
               
-              CATEGORIES
+              分类
               
               
             </a>
@@ -293,7 +288,7 @@
           
           <li>
             <a class="popup-trigger">
-              <span class="search-icon"></span>SEARCH</a>
+              <span class="search-icon"></span>搜索</a>
           </li>
           
 
@@ -305,17 +300,17 @@
 <li>
   <a id="lang-select-label"><i class="fa fa-globe"></i>
     <span>
-      English
+      简体中文
     </span>
     <select id="lang-select" data-canonical="categories/index.html">
       
       
-      <option value="en"  selected >
-        English
+      <option value="cn"  selected >
+        简体中文
       </option>
       
-      <option value="cn" >
-        简体中文
+      <option value="en" >
+        English
       </option>
       
     </select>
@@ -391,10 +386,6 @@
     }
 
     
-      #signature {/*signature*/
-        background-image: url('/img/signature/vincent-white.png');
-      }
-    
   </style>
 
 
@@ -463,15 +454,15 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="2">Hexo-Theme-LiveMyLife</a>
+        <a href="#math" title="math" rel="1">math</a>
         
       </div>
 
       <!-- 标签列表 -->
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="Hexo-Theme-LiveMyLife">
-          <span class="tag-text">Hexo-Theme-LiveMyLife</span>
+        <span class="fa fa-tag listing-seperator" id="math">
+          <span class="tag-text">math</span>
         </span>
         
         <!-- <li class="listing-item">
@@ -479,36 +470,16 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/cn/Hexo-Theme-LiveMyLife/">
+          <a href="/cn/hyperCuber/">
             <h2 class="post-title">
-              Hexo-Theme-LiveMyLife
+              超立方体及其可视化（processing）
               
               -- cn
               
             </h2>
             
             <h3 class="post-subtitle">
-              A succinct hexo theme...
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/en/Hexo-Theme-LiveMyLife/">
-            <h2 class="post-title">
-              Hexo-Theme-LiveMyLife
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              A succinct hexo theme...
+              动手实现一个超立方体投影
             </h3>
             
           </a>
@@ -609,9 +580,6 @@
   
 
   
-    <!-- Mouseclick -->
-    <script type="text/javascript" src="/js/mouseclick.js" content='The first step is as good as half over...,Laugh and grow fat...,Man proposes God disposes...,When all else is lost the future still remains...,Wasting time is robbing oneself...,Sharp tools make good work...,Cease to struggle and you cease to live...,A friend in need is a friend indeed...,Faith can move mountains...' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
-  
 
   
     <!-- ribbon -->
@@ -686,7 +654,7 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
             <span class="search-icon">
               <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
             </span>
-            <input autocomplete="off" placeholder="SEARCH..." type="text" id="local-search-input">
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
           </div>
         </div>
         <div id="local-search-result"></div>

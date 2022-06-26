@@ -58,7 +58,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="description" content="It&#39;s an IT blog..."/>
-  <meta name="keyword" content="v-vincen,v-vincen,livemylife,IT  blog,Blog"/>
+  <meta name="keyword" content="IT  blog,Blog"/>
   <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
 
   <!-- Place this tag in your head or just before your close body tag. -->
@@ -118,11 +118,6 @@
     
 
     
-      <!-- gitalk start -->
-      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
-      <link rel="stylesheet" href="/css/gitalk.css"/>
-      <!-- gitalk end -->
-    
   
 
   <!-- Custom Fonts -->
@@ -139,10 +134,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/categories/Hexo-Theme-LiveMyLife/">
+  <link rel="canonical" href="http://yoursite-url/cn/hyperCuber/">
   <title>
     
-      either thin | or die
+      超立方体及其可视化（processing） - either thin | or die
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -230,7 +225,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Your Title</a>
+      <a class="navbar-brand" href="/">Just Be Yourself</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -239,7 +234,7 @@
       <div class="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="/">HOME</a>
+            <a href="/">首页</a>
           </li>
 
           
@@ -249,7 +244,7 @@
           <li>
             <a href="/about/">
               
-              ABOUT
+              关于
               
               
             </a>
@@ -260,7 +255,7 @@
           <li>
             <a href="/tags/">
               
-              TAGS
+              标签
               
               
             </a>
@@ -271,7 +266,7 @@
           <li>
             <a href="/archive/">
               
-              ARCHIVES
+              归档
               
               
             </a>
@@ -282,7 +277,7 @@
           <li>
             <a href="/categories/">
               
-              CATEGORIES
+              分类
               
               
             </a>
@@ -293,36 +288,14 @@
           
           <li>
             <a class="popup-trigger">
-              <span class="search-icon"></span>SEARCH</a>
+              <span class="search-icon"></span>搜索</a>
           </li>
           
 
           <!-- LangSelect -->
           
           
-          <!-- LangSelect start -->
-          <!-- LangSelect -->
-<li>
-  <a id="lang-select-label"><i class="fa fa-globe"></i>
-    <span>
-      English
-    </span>
-    <select id="lang-select" data-canonical="categories/Hexo-Theme-LiveMyLife/index.html">
-      
-      
-      <option value="en"  selected >
-        English
-      </option>
-      
-      <option value="cn" >
-        简体中文
-      </option>
-      
-    </select>
-  </a>
-</li>
-
-          <!-- LangSelect end -->
+          
           
           
         </ul>
@@ -374,26 +347,22 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
-    
-      #signature {/*signature*/
-        background-image: url('/img/signature/vincent-white.png');
-      }
     
   </style>
 
@@ -408,10 +377,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Your Title</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">This is hexo theme</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#math" title="math">math</a>
+              
+            </div>
+            <h1>超立方体及其可视化（processing）</h1>
+            <h2 class="subheading">动手实现一个超立方体投影</h2>
+            <span class="meta">
+              Posted by Ma Dala on
+              2020-07-18
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">5</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.3k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -452,232 +453,237 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <li>
-            04-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/en/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
-              <span>
-                Hexo-Theme-LiveMyLife
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
-              <span>
-                Hexo-Theme-LiveMyLife
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
+        <h1 id="超立方体"><a href="#超立方体" class="headerlink" title="超立方体"></a>超立方体</h1><p>&#8195;&#8195;<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B6%85%E7%AB%8B%E6%96%B9%E4%BD%93/8115218">百度百科</a>对超立方体的描述：超立方体是数学中立方体的四维类似物，所谓的点动成线，线动成面，面动成体。在四维空间(非三维-时间概念)中，立方体的移动形成四维的超立方体，由无数个立方体所组成的，具有四维的观念。</p>
+<p>&#8195;&#8195;在几何学中，超立方体是立方体的四维类比，有8个立方体胞。四维超正方体之于立方体，就如立方体之于正方形。它是四维欧式空间中6个四维凸正多胞体之一。</p>
+<p>&#8195;&#8195;那么它的概念图呢，就长成下面这样。</p>
+<div align=center>
+<img src="20200717235200719.png"/>
 </div>
 
 
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">VISITORS</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
+<p>&#8195;&#8195;下面解释一下这个概念图是怎么来的。拿我们三维空间举例子，我们就生活在三维空间，我们眼中看到的景象全部都是物体在我们视网膜上的投影，也就是说我们眼中的其实是三维空间的物体到二维平面上的投影。借助这个思路，虽然我们没办法想象超立方体是什么样的，但是我们可以借助投影，将四维下的超立方体投影到三维空间下，我们不就能看见了么。所以上面这个概念图，它就是超立方体在三维空间下的投影。</p>
+<h1 id="Processing实现可视化"><a href="#Processing实现可视化" class="headerlink" title="Processing实现可视化"></a>Processing实现可视化</h1><p>&#8195;&#8195;知道了它是投影来的，我们就可以用一些工具，来模拟一下这个投影，这里我用的是Processing，利用旋转矩阵旋转超立方体，运行出来就是下面这个样子。</p>
+<div align=center>
+<img src="20200718001537608.gif"/>
 </div>
 
-
-        <hr>
-    
-        <!-- Featured Tags -->
-
-<section>
-  <h5><a href="/tags/">FEATURED TAGS</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="2">Hexo-Theme-LiveMyLife</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/fatpeople.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>Fat people have no future, either thin or die...</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/solongs">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">RECENT POSTS</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../cn/Hexo-Theme-LiveMyLife/">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
-    <a href="../../en/Hexo-Theme-LiveMyLife/">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5><a href="/">FRIENDS</a></h5>
-<ul class="list-inline">
-  
-  <li><a href="https://v-vincen.life/" target="_blank">V_Vincen</a></li>
-  
-  <li><a href="http://beantech.org" target="_blank">Bean Tech</a></li>
-  
-  <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
-  
-  <li><a href="https://hexo.io/" target="_blank">Hexo</a></li>
-  
+<p>下面是代码，有兴趣的朋友可以自己下载一个Processing，运行一下玩一玩。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">theta = <span class="number">0</span></span><br><span class="line">points = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setup</span>():</span></span><br><span class="line">    size(<span class="number">1000</span>, <span class="number">800</span>, P3D)</span><br><span class="line">    <span class="keyword">global</span> points</span><br><span class="line">    <span class="comment"># 四维空间下超立方体16个顶点的坐标</span></span><br><span class="line">    points =[[-<span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [-<span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [-<span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [-<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>],</span><br><span class="line">             [-<span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>],</span><br><span class="line">             [-<span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>, -<span class="number">100</span>],</span><br><span class="line">             [-<span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>],</span><br><span class="line">             [<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>],</span><br><span class="line">             [-<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, -<span class="number">100</span>]]</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw</span>():</span></span><br><span class="line">    <span class="keyword">global</span> theta, points</span><br><span class="line">    background(<span class="number">0</span>)</span><br><span class="line">    translate(width/<span class="number">2</span>, height/<span class="number">2</span>)</span><br><span class="line">    rotateY(-PI/<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    projected3d = []</span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> points:</span><br><span class="line">        stroke(<span class="number">255</span>)</span><br><span class="line">        strokeWeight(<span class="number">16</span>)</span><br><span class="line">        noFill()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 一堆旋转矩阵</span></span><br><span class="line">        rotationXY = [[cos(theta), -sin(theta), <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [sin(theta), cos(theta), <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line">        rotationXZ = [[cos(theta), <span class="number">0</span>, -sin(theta), <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [sin(theta), <span class="number">0</span>, cos(theta), <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line">        rotationXW = [[cos(theta), <span class="number">0</span>, <span class="number">0</span>, -sin(theta)],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                      [sin(theta), <span class="number">0</span>, <span class="number">0</span>, cos(theta)]]</span><br><span class="line">        rotationZW = [[<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, cos(theta), -sin(theta)],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, sin(theta), cos(theta)]]</span><br><span class="line">        rotationYW = [[<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, cos(theta), -sin(theta), <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, sin(theta), <span class="number">0</span>, cos(theta)]]</span><br><span class="line">        rotationYZ = [[<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, cos(theta), -sin(theta), <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, sin(theta), cos(theta), <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line">        </span><br><span class="line">        v = matmul(rotationXY, v)</span><br><span class="line">        v = matmul(rotationZW, v)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 投影</span></span><br><span class="line">        w = <span class="number">100</span> / (<span class="number">200</span> - v[<span class="number">3</span>])</span><br><span class="line">        projection = [[w, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],  </span><br><span class="line">                      [<span class="number">0</span>, w, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                      [<span class="number">0</span>, <span class="number">0</span>, w, <span class="number">0</span>]]</span><br><span class="line">        </span><br><span class="line">        v = matmul(projection, v)</span><br><span class="line">        projected3d.append(v)</span><br><span class="line">        point(v[<span class="number">0</span>], v[<span class="number">1</span>], v[<span class="number">2</span>])</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        connect(<span class="number">0</span>, i, (i+<span class="number">1</span>) % <span class="number">4</span>, projected3d)</span><br><span class="line">        connect(<span class="number">0</span>, i+<span class="number">4</span>, ((i+<span class="number">1</span>) % <span class="number">4</span>)+<span class="number">4</span>, projected3d)</span><br><span class="line">        connect(<span class="number">0</span>, i, i+<span class="number">4</span>, projected3d)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        connect(<span class="number">8</span>, i, (i+<span class="number">1</span>) % <span class="number">4</span>, projected3d)</span><br><span class="line">        connect(<span class="number">8</span>, i+<span class="number">4</span>, ((i+<span class="number">1</span>) % <span class="number">4</span>)+<span class="number">4</span>, projected3d)</span><br><span class="line">        connect(<span class="number">8</span>, i, i+<span class="number">4</span>, projected3d)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">        connect(<span class="number">0</span>, i, i+<span class="number">8</span>, projected3d)</span><br><span class="line"></span><br><span class="line">    theta += <span class="number">0.03</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 连接点</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>(<span class="params">offset, i, j, points</span>):</span></span><br><span class="line">    i, j = i + offset, j + offset</span><br><span class="line">    stroke(<span class="number">255</span>)</span><br><span class="line">    strokeWeight(<span class="number">1</span>)</span><br><span class="line">    line(points[i][<span class="number">0</span>], points[i][<span class="number">1</span>], points[i][<span class="number">2</span>],</span><br><span class="line">         points[j][<span class="number">0</span>], points[j][<span class="number">1</span>], points[j][<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 矩阵乘法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">matmul</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    rowsA, colsA = <span class="built_in">len</span>(a), <span class="built_in">len</span>(a[<span class="number">0</span>])</span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(rowsA):</span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(colsA):</span><br><span class="line">            n += a[i][j]*b[j]</span><br><span class="line">        res.append(n)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h1 id="拓展知识（图论）"><a href="#拓展知识（图论）" class="headerlink" title="拓展知识（图论）"></a>拓展知识（图论）</h1><p>&#8195;&#8195;定义：<strong>$k-$维立方体或超方体$Q_k$是一个简单图，其顶点是分量取自${0,1}$的所有$k-$元组，边是恰在一个位置上取不同值的$k$元组对。$Q_k$的一个$j-$维子立方体是同构与$Q_j$的$Q_k$的子图。</strong> </p>
+<p>&#8195;&#8195;我们知道的正方体就是$Q_3$，上面讲的超立方体就是$Q_4$</p>
+<p>&#8195;&#8195;超方体是一种很自然的计算机结构。如果处理器对应于$Q_k$中的邻接节点，则它们之间可以直接通信。用来命名顶点的$k$元组可以视作处理器的地址</p>
+<p>&#8195;&#8195;超方体的结构：$Q_k$中顶点的奇偶性是由该顶点的名字中包含的1的个数的奇偶性而决定的。$Q_k$中每条边有一个偶端点和一个奇端点。因此，偶顶点构成一个独立集，奇顶点也构成一个独立集，进而$Q_k$是一个二部图。</p>
+<p>&#8195;&#8195;$k$元组的每个分量可以取两个值，所以$n(Q_k)=2^k$。对于一个顶点，确定其名字中的一个位置并将该位置的值修改成另一个值，就可以得到它的一个相邻顶点。于是，$Q_k$是$k-$正则的。由于含有$n$个顶点的$k-$正则图有$nk/2$条边，所以<script type="math/tex">e(Q_k)=k2^{k-1}</script></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B6%85%E7%AB%8B%E6%96%B9%E4%BD%93/8115218">百度百科超立方体</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uW411D7vS">代码实现参考的bilibili上的一个视频</a></li>
+<li>《图论导引》P26，定义1.3.7</li>
 </ul>
 
 
         <hr>
-    
-        <!-- Archives -->
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+        </ul>
 
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li></ul>
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
 </div>
+<!-- tip end -->
 
+        <!-- tip end -->
+        
 
-        <hr>
-    
-        <!-- Categories -->
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
 
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=超立方体及其可视化（processing）&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/hyperCuber/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
   </ul>
 </div>
 
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
+        <!-- Sharing End -->
+        
         <hr>
-    
-</div>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
 
 
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%B6%85%E7%AB%8B%E6%96%B9%E4%BD%93"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">超立方体</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Processing%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Processing实现可视化</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%8B%93%E5%B1%95%E7%9F%A5%E8%AF%86%EF%BC%88%E5%9B%BE%E8%AE%BA%EF%BC%89"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">拓展知识（图论）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#math" title="math">math</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://v-vincen.life/" target="_blank">V_Vincen</a>
+          </li>
+          
+          <li>
+            <a href="http://beantech.org" target="_blank">Bean Tech</a>
+          </li>
+          
+          <li>
+            <a href="http://huangxuan.me" target="_blank">Hux Blog</a>
+          </li>
+          
+          <li>
+            <a href="https://hexo.io/" target="_blank">Hexo</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
@@ -765,9 +771,6 @@
   
 
   
-    <!-- Mouseclick -->
-    <script type="text/javascript" src="/js/mouseclick.js" content='The first step is as good as half over...,Laugh and grow fat...,Man proposes God disposes...,When all else is lost the future still remains...,Wasting time is robbing oneself...,Sharp tools make good work...,Cease to struggle and you cease to live...,A friend in need is a friend indeed...,Faith can move mountains...' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
-  
 
   
     <!-- ribbon -->
@@ -842,7 +845,7 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
             <span class="search-icon">
               <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
             </span>
-            <input autocomplete="off" placeholder="SEARCH..." type="text" id="local-search-input">
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
           </div>
         </div>
         <div id="local-search-result"></div>

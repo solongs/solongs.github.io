@@ -23,16 +23,16 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/cn/Hexo-Theme-LiveMyLife/</loc>
+    <loc>http://yoursite-url/cn/hyperCuber/</loc>
     
-    <lastmod>2020-04-16</lastmod>
+    <lastmod>2020-07-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/en/Hexo-Theme-LiveMyLife/</loc>
+    <loc>http://yoursite-url/about/index.html</loc>
     
-    <lastmod>2020-04-16</lastmod>
+    <lastmod>2020-07-17</lastmod>
     
   </url>
   
@@ -43,25 +43,18 @@
     
   </url>
   
-  <url>
-    <loc>http://yoursite-url/about/index.html</loc>
-    
-    <lastmod>2016-04-20</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>http://yoursite-url/</loc>
-    <lastmod>2022-06-24</lastmod>
+    <lastmod>2022-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://yoursite-url/tags/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2022-06-24</lastmod>
+    <loc>http://yoursite-url/tags/math/</loc>
+    <lastmod>2022-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -69,8 +62,8 @@
 
   
   <url>
-    <loc>http://yoursite-url/categories/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2022-06-24</lastmod>
+    <loc>http://yoursite-url/categories/math/</loc>
+    <lastmod>2022-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
