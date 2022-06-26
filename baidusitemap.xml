@@ -4,4 +4,8 @@
     <loc>http://yoursite-url/cn/hyperCuber/</loc>
     <lastmod>2020-07-17</lastmod>
   </url>
+  <url>
+    <loc>http://yoursite-url/en/hyperCuber/</loc>
+    <lastmod>2020-07-17</lastmod>
+  </url>
 </urlset> 
