@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxx-xx"></script>
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-xxxxxx-xx');
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="keyword" content="IT  blog,Blog"/>
+  <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/cn/cacheRefuse/">
+  <title>
+    
+      读论文《Cached and Confused:Web Cache Deception in the wild》 - either thin | or die
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'your-community/your-room'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Just Be Yourself</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+      
+    }
+
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#web安全" title="web安全">web安全</a>
+              
+            </div>
+            <h1>读论文《Cached and Confused:Web Cache Deception in the wild》</h1>
+            <h2 class="subheading">USENIX, 2020</h2>
+            <span class="meta">
+              Posted by Ma Dala on
+              2022-04-19
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">12</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">3.4k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <p>  这篇论文讲述了web缓存欺骗攻击在真实的网站中的存在情况，并设计了一套测量该类攻击的方法，测量该攻击在Alexa Top网站中的存在情况。</p>
+<h1>背景</h1>
+<p>  在讲解检测方法之前，我们先来熟悉一下什么是web缓存欺骗攻击。</p>
+<h2 id="web缓存">web缓存</h2>
+<p>  我们都知道，在web服务器和终端用户之间频繁地交互数据是一件开销很大的事情。在客户机和服务器之间进行长距离的多次往返时，如果遇到网络中常见的技术问题或路由问题时，可能导致网站延迟的增加，进而导致web应用程序被判定为无响应。另外，经常访问的资源会浪费web服务器的计算周期和网络带宽。</p>
+<p>  缓存成为了这种问题的解决方案。缓存技术很常见，我们的计算机里也同样用到了缓存技术，减少CPU访问主存的次数，提高计算效率。</p>
+<p>  web缓存也是类似的道理，一些客户端应用程序例如web浏览器会为单个用户实现自己的私有缓存。或者web缓存作为通信路径上的中间人代理，实现一个共享缓存，存储和服务多个用户频繁访问的对象。如果缓存命中，则不必去原始服务器请求对象，这大大提高了数据传输效率。</p>
+<p>  特别的，web缓存是CDN的一个关键组成部分。CDN在全球部署<font color='red'><strong>共享缓存代理（也称边缘服务器）</strong></font>，形成大规模分布式网络，当用户发起请求时，CDN会选择距离用户最近的缓存去提供内容，而不必由源站去响应。</p>
+<p>  web缓存的目标通常是<strong>静态资源</strong>，包括<strong>静态HTML页面、脚本、样式表、图片及其他媒体文件、软件下载</strong>等。大多数缓存的<font color='red'><strong>共享特性</strong></font>使得那些动态的、个性化的、包含用户隐私的信息不会被缓存。</p>
+<h2 id="路径混淆">路径混淆</h2>
+<p>  URL通过将web资源直接映射到web服务器的文件系统结构来引用这些资源，例如</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example.<span class="keyword">com</span>/home/<span class="built_in">index</span>.html?lang=<span class="keyword">en</span></span><br></pre></td></tr></table></figure>
+<p>该URL对应web服务器文档根目录下的index.html，lang=en代表语言参数。</p>
+<p>  web应用程序的规模和复杂性都在增加，web服务器引入了<font color='red'><strong>URL重写技术</strong></font>，实现高级路由结构、提升资源的可用性和可访问性。该技术导致了web服务器解析、处理和解释URL的方式并不能清晰地反应在URL字符串的外部可见表示中（通俗地讲就是你并不知道服务器是对这个URL做怎样处理的）。因此，web缓存是无法得知资源文件系统路径和URL之间的这个额外抽象层的，它们会以自己的方式去处理URL，这就是路径混淆。</p>
+<p>  REST-ful URL的广泛使用有助于说明由URL的不同解释产生的问题。REST-ful URL方案使用的结构与web服务器内部资源组织的抽象不同，它提供了一个可读性更强的面向api的表示。例如web服务器可能会选择URL</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">example</span>.com/index/v<span class="number">1</span>/v<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>去表示</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">example</span>.com/index.php?p<span class="number">1</span>=v<span class="number">1</span>&amp;p<span class="number">2</span>=v<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>现在，我们来考虑这样一个场景，还是这台web服务器，用户使用下述URL去请求</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example.<span class="keyword">com</span>/<span class="built_in">index</span>/img/pic.jpg</span><br></pre></td></tr></table></figure>
+<p>在服务端与客户端的所有中间实体，如浏览器、web缓存、代理、防火墙等，都会误解这个请求，以为服务端会返回一个图片。web缓存还有可能将其视为需缓存资源。但是，在实际情况下，web服务器会将这条URL解释为</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">example</span>.com/index.php?p<span class="number">1</span>=img&amp;p<span class="number">2</span>=pic.jpg</span><br></pre></td></tr></table></figure>
+<p>然后返回index.php，响应码为200，尽管pic.jpg在服务端不存在，但还是返回了成功的状态码。</p>
+<h2 id="web缓存欺骗">web缓存欺骗</h2>
+<p>  现在到了我们的正题，也就是web缓存欺骗，用WCD来代表这一现象。攻击者可以利用它来破坏web应用程序的机密属性，最终可能导致用户的数据泄露等安全问题。其实早在2017年，Gil等人就提出了WCD，并成功攻击了PayPal上的在线支付者。</p>
+<p>  WCD攻击就是利用的路径混淆，攻击者会构造具备下述两种属性的URL：</p>
+<ol>
+<li>URL必须被web服务器解释为对带有私有信息的不可缓存页面的请求，并且应该会触发成功的响应</li>
+<li>这条URL必须被中间的web缓存解释为一个匹配有效缓存规则的静态对象的请求。</li>
+</ol>
+<p>  接下来，攻击者会使用社会工程学攻击引诱受害者访问这条URL，这将导致不正确地缓存受害者的私人信息。然后攻击者将重复这条请求，获得缓存内容的访问权，下图展示了WCD攻击的过程。</p>
+<div align=center>
+<img src="f01620404c064949b47378f53353303b.png"/>
+</div>
+<p>这个过程可以描述为：</p>
+<ol>
+<li>第一步：攻击者引诱受害者访问URL，请求account.php/nonexistent.jpg，这个图片实际在web服务器上不存在；</li>
+<li>第二步：请求到达web服务器并被处理。服务器利用重写规则丢弃被请求对象中不存在的部分，返回一个成功响应account.php，这里面包含了受害者账户的私有详细信息。web缓存不知道发生在服务器上的URL重写，它把这条资源视为图片资源，存储了下来；</li>
+<li>第三步：攻击者访问相同的URL，导致缓存命中，获取了受害者的缓存账户信息</li>
+</ol>
+<h1>WCD攻击测量方法</h1>
+<p>  知道了WCD攻击的原理，接下来就是如何去测量这种攻击。作者将测量方法分为3个阶段：</p>
+<ol>
+<li>测量设置</li>
+<li>攻击面检测</li>
+<li>WCD检测</li>
+</ol>
+<p>这3步如下图所示。这里面，使用Chrome和Python的request库，以及selenium自动化工具完成。</p>
+<div align=center>
+<img src="aa9863acbcfa4774a6bc70b869ebcf4a.png"/>
+</div>
+<h2 id="第一阶段：测量设置">第一阶段：测量设置</h2>
+<p>  WCD攻击只有在脆弱站点管理私有最终用户信息并允许对这些数据执行敏感操作时才有意义。因此提供身份验证机制的站点是该攻击的主要目标，也是这篇文章的主要测量目标。第一阶段就是识别这些站点，并在这些站点上创建账户。</p>
+<h3 id="域名发现">域名发现</h3>
+<p>  首先去访问Alexa top域名，同时，利用一些开源智能工具进行子域发现来增加网站覆盖率，添加到种子池里面。</p>
+<h3 id="账号创建">账号创建</h3>
+<p>  在每个站点上创建两个测试账户：一个用于受害者，另一个用于攻击者。利用唯一的虚拟值填充每个账户。然后手动检查每个受害者账户，发现应被视为私人信息的数据字段（例如姓名、电子邮件、地址、支付账户等）或用户创建的内容（例如评论、帖子等）</p>
+<p>  对于这些字段，利用预定义的标记去填充，如果在后续的缓存响应中发现了这些标记，就代表成功检测到了WCD攻击。另一方面，攻击者的账户不需要数据输入。</p>
+<h3 id="Cookie收集">Cookie收集</h3>
+<p>  如果成功登录到站点，爬虫程序会为受害者和攻击者的账户收集两套cookie，用于实验期间保持身份验证。此外，爬虫使用正则表达式和黑名单以避免访问页面上的注销链接。</p>
+<h2 id="第二阶段：攻击面检测">第二阶段：攻击面检测</h2>
+<p>  这个阶段的主要目标是从种子池中的域名映射到一组页面（完整的url）中，意思就是说看这个域名下包含了哪些网站页面。这些页面会被用于测试是否存在WCD漏洞。</p>
+<p>  许多的现代网站具有相似的结构，暴露出类似的攻击。在理想情况下，这些相似的页面应该被组合在一起，并只选择一个作为代表来检测WCD。这样做的目的是去冗余，减少分析量。</p>
+<p>  具体分组方式是通过查询字符串参数名称或路径参数完成的，将这种方式分组的url转换为抽象表示，如下表所示。每一组只选择一个URL做代表进行分析。</p>
+<div align=center>
+<img src="5da19e9ae64546f7ba47852a33e68cf1.png"/>
+</div>
+<h2 id="第三阶段：WCD检测">第三阶段：WCD检测</h2>
+<p>  在这一阶段，对上一阶段中的每个URL发起WCD攻击，分析响应来确定是否达成了WCD攻击。</p>
+<p>  WCD攻击和上述攻击场景图逻辑相同，这里对于每个URL，进行如下攻击步骤：</p>
+<ol>
+<li>设计一个攻击URL，引用一个不存在的静态资源，这里选取的是在源站URL后面添加“/&lt;random&gt;.css”</li>
+<li>从受害者账户向这个攻击URL发起请求，记录响应</li>
+<li>从攻击者账户发出相同的请求，保存响应以供比较</li>
+<li>最后，作为一个未经身份验证的用户，忽略保存在cookie jar中的攻击者身份标识符来重复攻击。以确定没有身份验证的攻击者是否也可以利用WCD漏洞</li>
+</ol>
+<p>  如果攻击者账户请求的URL中存在受害者标记，则攻击者一定收到了受害者错误缓存的内容，因此目标URL包含可利用的WCD漏洞。</p>
+<p>  然后，扫描攻击者的响应，发现被频繁用作web应用安全机制的一部分秘密令牌，以及任何其他应用验证令牌。例如CSRF token、session identifier、API credential等</p>
+<h1>WCD测量分析</h1>
+<h2 id="WCD漏洞在流行网站中的存在情况">WCD漏洞在流行网站中的存在情况</h2>
+<p>  在这次测量中，选取了Alexa Top 5K的站点，使用OAuth认证过滤出来295个最终网站，在这些网站中发现了16个网站包含WCD漏洞</p>
+<div align=center>
+<img src="75fe1de5c72d40c29aacea21790fa8af.png"/>
+</div>
+<p>  下图表示了Alexa Top 5K的站点分布情况，WCD漏洞情况和爬取站点的数量成正比。也就是说，WCD漏洞的发生率与网站的流行程度并不是很相关</p>
+<div align=center>
+<img src="7f7bcfe15efc4e3ca5a2c19ee23b0bc5.png"/>
+</div>
+<h2 id="WCD漏洞是否会暴露以及会暴露何种PII">WCD漏洞是否会暴露以及会暴露何种PII</h2>
+<p>  14/16个站点暴露出PII（personally identifiable information，个人验证信息），包含姓名、用户名、电子邮件、电话号码等。还有一些包含财务和健康信息，例如账户余额、购物历史、体重等。这些信息是作为高效鱼叉式钓鱼攻击的基础。</p>
+<h2 id="WCD漏洞是否可以击败针对web应用程序攻击的防御">WCD漏洞是否可以击败针对web应用程序攻击的防御</h2>
+<p>  6/16个站点泄露了有效的CSRF令牌，这可能允许攻击者在部署了CSRF防御的情况下进行CSRF攻击</p>
+<p>  6/16个站点泄露了内联Javascript中的会话标识符或用户特定的API令牌。</p>
+<h2 id="WCD漏洞是否会被未认证用户利用">WCD漏洞是否会被未认证用户利用</h2>
+<p>  在第三阶段的最后一步提到，用为认证的用户去访问。查看未认证用户是否可以利用WCD漏洞。经过验证发现，所有漏洞都可以被未认证用户利用。这就意味着，WCD作为一类漏洞，往往不需要攻击者进行身份验证，降低了攻击门槛。</p>
+<h1>路径混淆变种</h1>
+<p>  除了检测WCD漏洞外，这篇论文还对路径混淆进行了变种，利用各种字符构造URL进行攻击，如下</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">1</span>.换行符\n，编码%<span class="number">0</span>A</span><br><span class="line"><span class="attribute">2</span>.分号;，编码%<span class="number">03</span>B</span><br><span class="line"><span class="attribute">3</span>.井号#，编码%<span class="number">023</span></span><br><span class="line"><span class="attribute">4</span>.问号?，编码%<span class="number">03</span>F</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="c787ad79a0974650b89ff24ea5977a68.png"/>
+</div>
+<p>源站服务器倾向于忽略这些字符后面的内容，缓存服务器则可能仍然以文件拓展名做缓存决策。</p>
+<p>  经实验，有如下结论：</p>
+<ul>
+<li>累计发现25个受WCD攻击影响的站点</li>
+<li>原始路劲混淆方法发现14个受WCD攻击影响的站点</li>
+<li>路劲混淆变型方法发现23个受WCD攻击影响的站点</li>
+<li>本文提出的路径混淆变型增加了攻击成功率</li>
+<li>一些变型方法增加了 web 服务器返回 200 OK 响应码的概率，因而增加了 返回敏感信息的可能性</li>
+</ul>
+<div align=center>
+<img src="5f1a16a521af4c039c4f2d0c6c67d04f.png"/>
+</div>
+<div align=center>
+<img src="fc7fbf0d9c5e4eaeaeff6e16f1c53b87.png"/>
+</div>
+<h1>Empirical Experiments</h1>
+<p>  最后，这篇论文做了一个实际场景下的实验，演示不同缓存设置对WCD的影响</p>
+<ul>
+<li>缓存地点因素：受害者选取在美国波士顿，攻击者在意大利特伦托，19个站点攻击成功，6个</li>
+<li>缓存时间因素：对19个站点分别在1小时、6小时、24小时候试试攻击，分别有16、10、9个站点被成功攻击</li>
+</ul>
+<p>地理位置和实施攻击的时间都会显著影响攻击的成功率。</p>
+<p>  另外，几乎所有CDN厂商都提供“忽略Cache Control”头部字段的选项，并且普遍依赖文件扩展名做缓存决策。</p>
+<div align=center>
+<img src="68aaa50de6b648c3a8c9826b020c261d.png"/>
+</div>
+<h1>总结</h1>
+<p>  总结下来，这篇论文可得出几个基本结论：</p>
+<ol>
+<li>正确配置 Web 缓存并非易事，基于文件扩展名做缓存决策容易出现安全问题，出CDN 并非即插即用解决方案，需要考虑系统性安全问题</li>
+<li>WCD 是一个“系统安全”问题，安全组件和安全组件组成的系统也可能是不安全的，必须考虑不同技术之间的复杂交互</li>
+<li>路径混淆变种是防不胜防的，因此难以完全确定某个站点是否受该攻击的影响，本文的结果只是一个下限</li>
+</ol>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/cn/drain/" data-toggle="tooltip" data-placement="top" title="Drain算法：日志解析">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=读论文《Cached and Confused:Web Cache Deception in the wild》&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/cacheRefuse/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web%E7%BC%93%E5%AD%98"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">web缓存</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B7%AF%E5%BE%84%E6%B7%B7%E6%B7%86"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">路径混淆</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web%E7%BC%93%E5%AD%98%E6%AC%BA%E9%AA%97"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">web缓存欺骗</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">WCD攻击测量方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%B5%8B%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">第一阶段：测量设置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E5%8F%91%E7%8E%B0"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">域名发现</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B4%A6%E5%8F%B7%E5%88%9B%E5%BB%BA"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">账号创建</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Cookie%E6%94%B6%E9%9B%86"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">Cookie收集</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%94%BB%E5%87%BB%E9%9D%A2%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">第二阶段：攻击面检测</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9AWCD%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">第三阶段：WCD检测</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">WCD测量分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E5%9C%A8%E6%B5%81%E8%A1%8C%E7%BD%91%E7%AB%99%E4%B8%AD%E7%9A%84%E5%AD%98%E5%9C%A8%E6%83%85%E5%86%B5"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">WCD漏洞在流行网站中的存在情况</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E4%BC%9A%E6%9A%B4%E9%9C%B2%E4%BB%A5%E5%8F%8A%E4%BC%9A%E6%9A%B4%E9%9C%B2%E4%BD%95%E7%A7%8DPII"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">WCD漏洞是否会暴露以及会暴露何种PII</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%87%BB%E8%B4%A5%E9%92%88%E5%AF%B9web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%E7%9A%84%E9%98%B2%E5%BE%A1"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">WCD漏洞是否可以击败针对web应用程序攻击的防御</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E4%BC%9A%E8%A2%AB%E6%9C%AA%E8%AE%A4%E8%AF%81%E7%94%A8%E6%88%B7%E5%88%A9%E7%94%A8"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">WCD漏洞是否会被未认证用户利用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">路径混淆变种</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Empirical Experiments</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#web安全" title="web安全">web安全</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://v-vincen.life/" target="_blank">V_Vincen</a>
+          </li>
+          
+          <li>
+            <a href="http://beantech.org" target="_blank">Bean Tech</a>
+          </li>
+          
+          <li>
+            <a href="http://huangxuan.me" target="_blank">Hux Blog</a>
+          </li>
+          
+          <li>
+            <a href="https://hexo.io/" target="_blank">Hexo</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/solongs">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Ma Dala
+          2022
+          <br>
+          Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	</body>
+</html>

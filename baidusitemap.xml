@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/cn/cacheRefuse/</loc>
+    <lastmod>2022-04-19</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/drain/</loc>
+    <lastmod>2021-11-08</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/socialMedia/</loc>
+    <lastmod>2021-04-14</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/ChainofImp/</loc>
+    <lastmod>2021-03-09</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/DomainEncry/</loc>
+    <lastmod>2021-03-08</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/measureImpact/</loc>
+    <lastmod>2021-03-05</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/securityCha/</loc>
+    <lastmod>2021-02-22</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/measureGlobal/</loc>
+    <lastmod>2021-02-06</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/analyzeThird/</loc>
+    <lastmod>2021-02-03</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/supportEarly/</loc>
+    <lastmod>2021-01-31</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/cn/NimGame/</loc>
     <lastmod>2020-08-01</lastmod>
   </url>

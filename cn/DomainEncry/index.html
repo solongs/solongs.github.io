@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxx-xx"></script>
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-xxxxxx-xx');
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="keyword" content="IT  blog,Blog"/>
+  <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/cn/DomainEncry/">
+  <title>
+    
+      读论文《Domain Name Encryption Is Not Enough Privacy Leakage via IP-based Website Fingerprinting》 - either thin | or die
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'your-community/your-room'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Just Be Yourself</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+      
+    }
+
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#Encrypt DNS" title="Encrypt DNS">Encrypt DNS</a>
+              
+              <a class="tag" href="/tags/#website fingerprint" title="website fingerprint">website fingerprint</a>
+              
+            </div>
+            <h1>读论文《Domain Name Encryption Is Not Enough Privacy Leakage via IP-based Website Fingerprinting》</h1>
+            <h2 class="subheading">Proceedings on Privacy Enhancing Technologies, 2021</h2>
+            <span class="meta">
+              Posted by Ma Dala on
+              2021-03-08
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">16</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">4.5k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h1>背景&amp;目的</h1>
+<p>  域名加密技术，例如DoT、DoH、ESNI等技术，可以提高安全和隐私，但是在保护用户隐私上，仍然存在问题，那就是用户访问的网站可以在网络层的观察者那里通过ip-域名映射表得到。不过CDN、DNS负载均衡、同一台服务器上托管多个不同网站这些技术都使得ip-域名映射表变得不稳定。</p>
+<p>  本文说明，这种不稳定性并不能成为可靠浏览跟踪的阻碍（假设部署的是通用DoT/DoH、ESNI）。本文提出了一个<font color='red'><strong>基于IP的网站指纹技术</strong></font>，这种技术可以帮助网络层的观察者高准确率地识别出用户访问的网站。并讨论总结了一些网站所有者和托管提供商可用的策略，用来对抗这种基于IP的网站指纹技术，最大限度地提高域名加密技术提供的隐私利益。</p>
+<h1>域名加密（Domain Name Encryption）</h1>
+<p>  在当下的web浏览环境下，有两种渠道可以获取到域名信息：</p>
+<ul>
+<li>明文DNS请求和响应</li>
+<li>TLS握手过程中的SNI</li>
+</ul>
+<p>明文DNS不仅仅暴露用户隐私，还允许网络层的实体干扰用户连接。DoT、DoH、ESNI就是保护域名信息的几种解决方案。</p>
+<p>  DoH和DoT将DNS请求和响应加密，几家服务提供商已经开始提供公开DoT/DoH解析器，包括Google和Cloudflare。在客户端，几家流行的浏览器也开始支持DoH/DoT。不过这些供应商将所有DNS解析集中到一个受信任的解析器的设计选择还引起了另外的一些隐私问题。</p>
+<p>  TLS握手中的SNI字段表示客户端想要访问的网站的域名，为了获得其域名的整数。TLS1.2之前，SNI字段都是明文传输的，也存在安全和隐私风险。TLS1.3提供了加密SNI字段的选项。但是为了是ESNI工作，从服务器公钥派生的对称加密密钥必须通过ESNIKeys DNS查找提前获得。所以，如果ESNI不适用DoT/DoH，那它就无法带来任何隐私收益。</p>
+<h1>网站指纹（Website Fingerprinting）</h1>
+<p>  网站指纹是一种利用加密流量分析技术，根据浏览网站时观察到的流量模式，为一组网站构建指纹的攻击方式。指纹将被用来确定受监控的用户是否访问过任何受监控的网站。</p>
+<p>  前人关于网站指纹的工作主要关注于识别网站，这些网站是通过匿名化或混淆渠道浏览的，它们的真实目的IP被隐藏起来，例如使用Tor、VPN或代理服务器。</p>
+<p>  针对标准加密网络流量的网站指纹攻击尚未得到全面调查，大概是因为在明文时代，只通过DNS和SNI 中的域名信息就能大致推断出访问的应用或web服务。</p>
+<h1>威胁模型</h1>
+<p>  考虑一个真实场景，一个攻击者（例如一个ISP）被动地监视用户流量，并试图确定一个特定的网站是否被给定的用户访问，仅仅基于从IP地址获得的信息。</p>
+<p>  假设攻击者执行以下步骤来创建网站指纹：</p>
+<ul>
+<li>攻击者访问一组网站，并记录所有与其联系获得资源的域名。每个网站的基于域名的指纹可以通过这组相联系的域名构建</li>
+<li>这些域名被定期解析到它们的主机IP地址，这些地址用于构建基于IP的指纹。根据域名和它主机IP(es)地址之间的关系，连接到唯一的IP地址可以很容易地显示哪个网站正在被访问。</li>
+<li>攻击者将被监控用户的网络踪迹中发现的IP地址序列与前一步构建的基于IP的指纹相匹配，以推断哪个网站被访问。</li>
+</ul>
+<p>攻击的有效性取决于指纹的<strong>唯一性</strong>和<strong>稳定性</strong></p>
+<h1>指纹构造</h1>
+<h2 id="基于IP的指纹">基于IP的指纹</h2>
+<p>  假设理想的环境就是域名信息无法从网络流量中提取出来，攻击者唯一可以看到的元数据就是远程连接服务器的IP地址。在这种情况下，攻击者只能通过观察到的IP地址来识别目标网站。</p>
+<p>  当浏览网站时，浏览器首先会与web服务器连接获取到HTML文档，然后解析HTML文档获取其中引用的其他web资源。基于这个逻辑，攻击者首先构造基于域名的指纹。</p>
+<p>  对于一个给定的网站，它的基于域名的指纹由两部分组成：</p>
+<ul>
+<li><strong>主域名（primary domain）</strong>，用$d_p$来表示。它是浏览器地址栏里面URL中的域名，对应的是首次连接获取初始HTML文档的服务器</li>
+<li><strong>从域名（secondary domain）</strong>，用$d_s$来标示。它可能与主域名不一样，它是HTML文档里面引用的托管其他web资源的域名。</li>
+</ul>
+<p>指纹可以表示为：<br>
+$$<br>
+d_p + {d_{s_1}, d_{s_2}, \cdots, d_{s_n}}<br>
+$$</p>
+<p>  攻击者可以从上述基于域名的指纹获取他们对应的基于IP的指纹，通过重复解析域名到IP地址。假设一个域名可能被解析为多个IP地址，那么基于域名的指纹中的每个域名将被转换为一组至少包含一个IP地址的IP地址。</p>
+<p>  基于IP地址的指纹也由两部分组成：</p>
+<ul>
+<li>主域名的IP地址</li>
+<li>解析从域名得到的一组IP地址</li>
+</ul>
+<p>指纹可以表示为：</p>
+<p>$$<br>
+{d_pip_1, d_pip_2, \cdots, d_pip_n} + { {d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n},\<br>
+{d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n}, \cdots, {d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n} }<br>
+$$</p>
+<p>为了简化指纹的构造和匹配，考虑所有次域名的IP地址的并集来减少上述指纹。简化表示为：</p>
+<p>$$<br>
+{d_pip_1, d_pip_2, \cdots, d_pip_n} + { d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n,\<br>
+d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n, \cdots, d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n  }<br>
+$$</p>
+<h2 id="通过Connection-Bucketing加强基于IP的指纹">通过Connection Bucketing加强基于IP的指纹</h2>
+<p>  当页面被访问时，为了获取web资源还会发起多个请求，一旦获取了资源，这些资源可能也会触发额外的对子资源的请求（例如js代码）。这些请求的绝对顺序可能会改变，由于一些不确定因素例如网络供应商的性能和底层操作系统。所以在构建基于域名的指纹时不考虑这种顺序。不过当将所有这些请求当做一个整体来 看时，仍然存在一种高级别的排序关系，当考虑<strong>关键渲染路径</strong>时，可以可靠地捕获这种关系。具体来说就是，有一些渲染阻塞和关键对象总是要在其他对象之前加载。</p>
+<p>  从获取初始HTML文档到屏幕上呈现出网站中间的时间链称为<font color='red'><strong>关键渲染路径（critical rendering path）</strong></font>。</p>
+<ol>
+<li>首先浏览器从主域名那获取到初始HTML文档（例如index.html）</li>
+<li>然后HTML文档被解析为DOM树</li>
+<li>然后浏览器从远程目的地获取几个web资源（HTML、JS、CSS、图像、第三方资源）来呈现网页。</li>
+</ol>
+<p>考虑关键渲染路径，可以使用<strong>3个重要的事件</strong>来将连接聚集到3个“bucket”中：</p>
+<ul>
+<li><strong>domLoading</strong>：在浏览器接到初始HTML文档并开始解析它以构造DOM树时候触发。触发事件后，立即启动多个用于获取DOM树引用的关键资源的并行连接。</li>
+<li><strong>domContentLoaded</strong>：DOM和CSSOM准备好时触发，通知浏览器创建渲染树。该事件通常在不等待样式表、图像、subframe的加载时触发。触发事件后，会观察到一组用于获取非阻塞样式表、JS文件、图像、subframe等的连接。</li>
+<li><strong>domComplete</strong>：当网站和子资源被加载完时触发。触发事件后，非必要对象仍然可以在后台下载，而关键渲染路径不受影响。例如外部js文件被认为是渲染阻塞的，建议将其移动到网页的末尾，因此在触发此事件后，通常可以观察到一小群连接。</li>
+</ul>
+<p>  基于这些关键渲染路径，本文增强了指纹的结构，以构成主域名和3个事件对应的3组域名，加强的基于域名的指纹可以表示为：</p>
+<p>$$<br>
+d_p + {d_{s_1}, d_{s_2}, \cdots}+ {d_{s_2}, d_{s_3}, \cdots}+ { \cdots, d_{s_{n-1}}, d_{s_n}}<br>
+$$<br>
+  如果在不同时间从一个域名获取多个对象，那么该域名可以出现在多个桶中。因此增强的基于IP的指纹遵循同样的结构，由4组IP地址组成，即主域名的IP地址集合+3个桶对应的3组IP地址集合。</p>
+<h1>实验</h1>
+<h2 id="测试域名的选择">测试域名的选择</h2>
+<p>  选取Tranco的top网站排名列表，该列表与Chrome用户体验报告中的web流量有很好的重叠。</p>
+<p>  通常情况下大家都会选择Alexa、Majestic、Umbrella、Quantcast这四个top网站列表之一来做研究，但是有的人研究说这些列表可能会对实验结果带来负面影响。Tranco列表已经汇总了这4个列表，从而形成超过700万个域名的列表。</p>
+<p>  本文选取该列表的top 100K进行研究。同时对敏感网站的访问也是一个重要问题，如果在很专制的地区，浏览特定内容会违反当地法规。因此本文又手动选择Alexa上的敏感类别网站。</p>
+<p>  最后，数据集包含220743个域名，包括来自Tranco的100K以及Alexa敏感类别中的126597个域名</p>
+<h2 id="测量时间和地点">测量时间和地点</h2>
+<p>  前人的许多工作忽略了时间，从而忽略了指纹的时间特征。domain-IP映射的变化是个主要问题，以前构造的指纹在特定时间段后可能无效。</p>
+<p>  本文在60天内对220K个网站进行重复爬取，对每个网站都提取所有域名来构造指纹。在网络层，捕获IP地址序列，用来评估指纹准确性。</p>
+<p>  由于DNS负载均衡，许多域名可能会映射到不同的IP地址上，因此一旦提取出每个网站的一组域名，就一直对其进行解析，直到下次抓取。</p>
+<p>  测量地点位于美国东海岸的一组机器</p>
+<p>  60天内总共收集了24批数据。</p>
+<h1>实验结果</h1>
+<h2 id="指纹准确率">指纹准确率</h2>
+<h3 id="指纹信息熵">指纹信息熵</h3>
+<p>  基于IP的指纹来自于每个网站中提取的域名，因此这些域名的唯一性是影响IP指纹的重要因素。这很直观，如果一个域名每个网站都用，那么这个域名就做不了指纹，反之如果一个域名越独特，就越容易区分，信息熵就越大。</p>
+<p>令$P(d)$是在目标网站中访问一个网站时联系某一个特定域名的概率，那么信息熵可以计算如下：<br>
+$$<br>
+Information entropy = -log_2P(d)<br>
+$$</p>
+<p>对于IP来说有两种可能：</p>
+<ul>
+<li>IP地址只与一个域名关联，则容易根据域名的信息熵推导出来</li>
+<li>IP地址可以托管多个域名，则IP地址的信息熵是对其托管的所有域名信息熵的平均值来计算</li>
+</ul>
+<p>下图展示了从每个域名/IP得到的信息熵的累积分布函数。几乎90%的域名对于网站来说是独有的，从而产生很高的信息熵。</p>
+<div align=center>
+<img src="20210308134025897.png"/>
+</div>
+<h3 id="主域名到IP的匹配">主域名到IP的匹配</h3>
+<p>  很多情况下网站的域名和IP地址都存在一对一的关系，本文调查发现52%的网站只需要通过他们的IP地址就可以推断出主域名，而剩余48%的网站服务器上都至少还托管了其他网站。也就是说52%的网站都可以在与主域名的第一次连接时通过IP进行识别。</p>
+<p>  下表展示了使用不同方法识别的成功率，第3列是仅仅通过主域名进行判断。</p>
+<div align=center>
+<img src="20210308135318944.png"/>
+</div>
+<h3 id="基本指纹（Basic-Fingerprinting）">基本指纹（Basic Fingerprinting）</h3>
+<p>  基本指纹如上所述包含主域名IP和从域名 IP两部分，给定一个IP序列$[ip_0, ip_1, ip_2, \cdots, ip_n]$，首先从所有基于IP的指纹的主部分扫描$ip_0$，如果匹配到，则这条指纹加入候选中。然后对比${ip_1, ip_2, \cdots, ip_n}$和候选集中的从域名部分。对于每个匹配的IP地址，将该IP地址提供的熵加到该特定候选指纹获得的熵总量中。最后选择最高熵值的指纹来预测网站。</p>
+<p>  上表第4列是通过基本的IP指纹进行匹配的准确率。</p>
+<h3 id="通过Connectiong-Bucketing加强过的指纹">通过Connectiong Bucketing加强过的指纹</h3>
+<p>  给定一个IP地址序列$[ip_0, ip_1, ip_2, \cdots, ip_n]$，首先将$ip_0$和所有指纹进行匹配，获得候选集。对于$[ip_1, ip_2, \cdots, ip_n]$，需要将其划分到3个桶里，基于在网络层每个连接的发起时间，使用k-means来将这些IP聚成3类，然后对于每个候选指纹，将指纹中的每个IP地址桶与聚类好的3个IP地址桶取交集。对于每个IP地址，把它的熵与候选指纹的总熵加载一起，最后选取熵最大的那个来预测网站。</p>
+<p>  上表最后一列是通过这种方法进行匹配的准确率。</p>
+<p>  对于剩余的9%的网站，20%的网站只有两个候选指纹，50%有10个 候选指纹。如下图所示</p>
+<div align=center>
+<img src="2021030814132442.png"/>
+</div>
+<p>  通过手动检查这些指纹，发现许多情况下匹配到的候选域名通常指向同一个网站。这些大多数被那些相同名称在不同TLD下注册的组织拥有，<a target="_blank" rel="noopener" href="http://xn--bayer-4d3hh90d.xn--debayer-if7n.com">例如bayer.de或bayer.com</a>，或者域名的变种，<a target="_blank" rel="noopener" href="http://xn--christianrock-9i5us37i.xn--netchristianhardrock-y328a.net">例如christianrock.net和christianhardrock.net</a>。</p>
+<p>  这意味着，91%的准确率可视为准确度下限。字符串相似度可以用来对相似的域名进行聚类，而图像相似度可以用来对具有相似的起始页截图进行分组。</p>
+<h3 id="Co-location和流行度对攻击准确率的影响">Co-location和流行度对攻击准确率的影响</h3>
+<p>  下图显示了指纹攻击成功的流行网站和敏感网站的散点图。和预期一样，没有和其他网站一起托管的网站使用指纹攻击是很敏感的。尽管co-location程度高，那使用加强过的指纹一样可以很好地识别。</p>
+<div align=center>
+<img src="20210308142450216.png"/>
+</div>
+<p>  下图展示了成功指纹识别的网站的流行度的累积分布函数。可以看到识别成功的网站数量略微倾向于更受欢迎的网站。</p>
+<div align=center>
+<img src="20210308142641965.png"/>
+</div>
+<h2 id="指纹稳定性">指纹稳定性</h2>
+<p>  网站指纹失效的原因主要由两个：</p>
+<ul>
+<li>网站可能会改变现存元素，移除或新增</li>
+<li>域名和IP地址的映射会改变</li>
+</ul>
+<p>由于基于ip的指纹是根据浏览目标网站与其引用的域名组成，因此首先评估后者的稳定程度。本文使用一种不同的方法对域名随时间变化进行度量。</p>
+<p>  令$D_{t_0}$和$D_{t_1}$表示在$t_0, t_1$时刻浏览网站时发现的与其相关联的域名。网站的不同程度可以计算为：<br>
+$$<br>
+Difference\ degree = \cfrac{(D_{t_0}\cup D_{t_1}) - (D_{t_0}\cap D_{t_1})}{D_{t_0}\cup D_{t_1}}<br>
+$$</p>
+<p>值为0时则代表没变化，即稳定。而1代表不稳定，意味着所有域名都发生了改变。</p>
+<p>  下图展示了这些网站的稳定性。2个月期间，30%的网站引用了额外的域名下载资源。5天内，80%的网站仍然完全稳定，而2个月后这个值就下降到了50%。而2个月后，几乎80%的网站也还比较稳定，大概小于0.3，意味着70%的域名还在被用于下载web资源。</p>
+<div align=center>
+<img src="20210308143706692.png"/>
+</div>
+<p>对于IP地址来说，使用同样的方法来量化IP指纹的稳定性，如下图所示，其实效更快</p>
+<div align=center>
+<img src="20210308144039264.png"/>
+</div>
+<p>为了看一看这些老的指纹在新时间的识别准确率，用加强过的指纹来验证2个月后的准确率。5到10天内，准确率大概在80%，2个月后下降到了70%。如下图所示。</p>
+<div align=center>
+<img src="20210308144305443.png"/>
+</div>
+<h2 id="指纹健壮性">指纹健壮性</h2>
+<h3 id="HTTP缓存对指纹准确率的影响">HTTP缓存对指纹准确率的影响</h3>
+<p>  通过对测试网站爬取过程中观察到的21.3万个响应头进行分析，发现86.1%是可缓存的。通过响应头计算缓存更新时间，下图为这些对象的更新时间分布。</p>
+<div align=center>
+<img src="20210308145003396.png"/>
+</div>
+<p>通过移除缓存资源的IP地址来验证指纹准确率。准确率仍旧很高。</p>
+<div align=center>
+<img src="20210308145349343.png"/>
+</div>
+<h3 id="AdBlocking下的网站指纹">AdBlocking下的网站指纹</h3>
+<p>  使用Brave浏览器来研究广告拦截对指纹识别的影响。使用Brave浏览器浏览时观察到的IP地址序列与机遇IP的指纹进行匹配，使用了增强指纹后，正确率从91%下降到了76%。</p>
+<h1>对策</h1>
+<p>  对网站所有者来说，屏蔽广告、跟踪等对象会阻碍指纹识别的准确率，想要隐私最大化的网站可以最小化第三方资源的引用。</p>
+<p>  隐私保护意识强的用户可以用广告、跟踪拦截器来保护浏览活动。</p>
+<p>  对于托管提供商来说可以增加co-location的程度和域名-IP映射的动态性。</p>
+<h1>结论</h1>
+<p>  域名加密很重要，但是还是不足以完全保护用户的隐私。多管闲事的网络层攻击者还是会根据IP信息推测用户看到的网站。本文的IP指纹能够达到91%的网站识别准确率。网站所有者和托管服务商在隐私保护上仍需努力。</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/ChainofImp/" data-toggle="tooltip" data-placement="top" title="读论文《The Chain of Implicit Trust:An Analysis of the Web Third-party Resources Loading》">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/measureImpact/" data-toggle="tooltip" data-placement="top" title="读论文《Measuring the Impact of a Successful DDoS Attack on the Customer Behaviour of Managed DNS Service Providers》">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=读论文《Domain Name Encryption Is Not Enough Privacy Leakage via IP-based Website Fingerprinting》&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/DomainEncry/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">域名加密（Domain Name Encryption）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">网站指纹（Website Fingerprinting）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">威胁模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">指纹构造</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9F%BA%E4%BA%8EIP%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">基于IP的指纹</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87Connection-Bucketing%E5%8A%A0%E5%BC%BA%E5%9F%BA%E4%BA%8EIP%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">通过Connection Bucketing加强基于IP的指纹</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">实验</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95%E5%9F%9F%E5%90%8D%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">测试域名的选择</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E6%97%B6%E9%97%B4%E5%92%8C%E5%9C%B0%E7%82%B9"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">测量时间和地点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">实验结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E5%87%86%E7%A1%AE%E7%8E%87"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">指纹准确率</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="toc-nav-number">7.1.1.</span> <span class="toc-nav-text">指纹信息熵</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E5%9F%9F%E5%90%8D%E5%88%B0IP%E7%9A%84%E5%8C%B9%E9%85%8D"><span class="toc-nav-number">7.1.2.</span> <span class="toc-nav-text">主域名到IP的匹配</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E7%BA%B9%EF%BC%88Basic-Fingerprinting%EF%BC%89"><span class="toc-nav-number">7.1.3.</span> <span class="toc-nav-text">基本指纹（Basic Fingerprinting）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87Connectiong-Bucketing%E5%8A%A0%E5%BC%BA%E8%BF%87%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">7.1.4.</span> <span class="toc-nav-text">通过Connectiong Bucketing加强过的指纹</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Co-location%E5%92%8C%E6%B5%81%E8%A1%8C%E5%BA%A6%E5%AF%B9%E6%94%BB%E5%87%BB%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">7.1.5.</span> <span class="toc-nav-text">Co-location和流行度对攻击准确率的影响</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">指纹稳定性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E5%81%A5%E5%A3%AE%E6%80%A7"><span class="toc-nav-number">7.3.</span> <span class="toc-nav-text">指纹健壮性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP%E7%BC%93%E5%AD%98%E5%AF%B9%E6%8C%87%E7%BA%B9%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">7.3.1.</span> <span class="toc-nav-text">HTTP缓存对指纹准确率的影响</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#AdBlocking%E4%B8%8B%E7%9A%84%E7%BD%91%E7%AB%99%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">7.3.2.</span> <span class="toc-nav-text">AdBlocking下的网站指纹</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">对策</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">结论</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#Encrypt DNS" title="Encrypt DNS">Encrypt DNS</a>
+            
+            <a class="tag" href="/tags/#website fingerprint" title="website fingerprint">website fingerprint</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://v-vincen.life/" target="_blank">V_Vincen</a>
+          </li>
+          
+          <li>
+            <a href="http://beantech.org" target="_blank">Bean Tech</a>
+          </li>
+          
+          <li>
+            <a href="http://huangxuan.me" target="_blank">Hux Blog</a>
+          </li>
+          
+          <li>
+            <a href="https://hexo.io/" target="_blank">Hexo</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/solongs">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Ma Dala
+          2022
+          <br>
+          Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	</body>
+</html>
