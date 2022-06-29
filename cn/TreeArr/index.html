@@ -134,10 +134,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/tags/math/">
+  <link rel="canonical" href="http://yoursite-url/cn/TreeArr/">
   <title>
     
-      either thin | or die
+      树状数组 - either thin | or die
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -343,19 +343,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -373,10 +373,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Just Be Yourself</h1>
-            <!--<hr class="small">-->
-            <span class="subheading"></span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#algorithm" title="algorithm">algorithm</a>
+              
+            </div>
+            <h1>树状数组</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Ma Dala on
+              2021-06-17
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">3</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">816</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -417,437 +449,282 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h1>lowbit运算</h1>
+<p>  $lowbit$运算：$lowbit(x) = x&amp;(-x)$，<strong>它的作用是取$x$的二进制最右边的1和它右边所有0</strong>。</p>
+<p>  整数在计算机中采用补码存储，$x$变为$-x$的过程就是按位取反后末位加1。二者与操作后就得到了$x$最右边的1和它右边所有0。$lowbit(x)$也可以理解为<strong>能整除$x$的最大2的幂次</strong>。</p>
+<div align=center>
+<img src="20210617101450964.png"/>
+</div>
+<h1>问题</h1>
+<p>  给定一个包含$N$个元素的数组$A$，求它的区间$[i, j]$元素之和。最自然的想法是建一个前缀和的数组，然后做减法就可以求出任意区间和，时间复杂度$O(1)$，空间复杂度$O(n)$。</p>
+<p>  但是，如果对数组$A$进行更新，那我们就不得不再更新前缀和，就很麻烦。</p>
+<p>  树状数组可以很好地解决这个问题，它可以使得查询和更新的时间复杂度都变成$O(logn)$。</p>
+<h1>树状数组（Binary Indexed Tree, BIT）</h1>
+<p>  树状数组与前缀和数组类似，是一个用来记录和的数组，不过它存的是<font color='red'><strong>在$i$号位之前（包含$i$号位）的$lowbit(i)$个整数之和</strong></font>。另外，<font color='red'><strong>树状数组的下标必须从1开始</strong></font>。如下图$C$数组，$C[i]$的覆盖范围是$lowbit(i)$。</p>
+<div align=center>
+<img src="20210617103406517.png"/>
+</div>
+<p>再结合下图就很容易理解了</p>
+<div align=center>
+<img src="20210617103515169.png"/>
+</div>
+<h2 id="单点更新与区间查询">单点更新与区间查询</h2>
+<p>  为了解决刚才提出的问题，需要设计以下两个函数：</p>
+<ol>
+<li>$getSum(n)$：返回前$n$个数的和$A[1] + \cdots +A[n]$</li>
+<li>$update(n, v)$：实现将第$n$个数加上一个数$v$的功能，即$A[n] += v$</li>
+</ol>
+<p>  先解决第一个函数，看几个例子：<br>
+$$<br>
+A[1] + \cdots + A[14]  = C[8] + C[12] + C[14]\<br>
+A[1] + \cdots + A[11]  = C[8] + C[10] + C[11]\<br>
+$$<br>
+类似地，数组$A$的前$n$项和都可以由树状数组中的一些项的求和来表达，我们可以通过$lowbit$操作来找出这些项：</p>
+<p>$$<br>
+\begin{aligned}<br>
+getSum(n) &amp;= A[1] + \cdots + A[n] \<br>
+&amp;= A[1] + \cdots + A[n - lowbit(n)] + A[n - lowbit(n) + 1] + \cdots + A[n]\<br>
+&amp;= getSum(n - lowbit(n)) + C(n)<br>
+\end{aligned}<br>
+$$<br>
+这样就可以写出$getSum(n)$了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//getSum返回前n个整数之和</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt; <span class="number">0</span>; i -= <span class="built_in">lowbit</span>(x))&#123;</span><br><span class="line">		sum += C[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们就可以通过$getSum(j) - getSum(i-1)$求区间$[i, j]$的和。这个过程就像不断向左上爬，如下图</p>
+<div align=center>
+<img src="20210617110227207.png"/>
+</div>
+<p>  然后看第二个函数，更新$A$中的一个值后如何对树状数组进行更新。还是先看例子，如果更新$A[6]$，我们要去找$C$中哪些项包含了$A[6]$，我们看上图，可以看到包含$A[6]$的有$C[6],C[8],C[16]$，放在上图中，就是寻找包含$A[6]$的那些矩形。<br>
+  实际上这就是刚刚求和的逆操作，每次加上一个$lowbit$就可以得到下一个位置：</p>
+<p>$$<br>
+\begin{aligned}<br>
+&amp; C[6]: 110\<br>
+&amp; C[8]: 1000 = 6 + lowbit(6) = 110 + 10\<br>
+&amp; C[16]: 10000  = 8 + lowbit(8) = 1000 + 1000<br>
+\end{aligned}<br>
+$$</p>
+<p>这样就可以写出$update(n, v)$了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &lt;= n; i += <span class="built_in">lowbit</span>(i))&#123;</span><br><span class="line">		C[i] += v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个过程就像不断向右上爬，如下图</p>
+<div align=center>
+<img src="20210617112038921.png"/>
+</div>
+<h1>参考资料</h1>
+<ul>
+<li>《算法笔记》第13章</li>
+</ul>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/drain/" data-toggle="tooltip" data-placement="top" title="Drain算法：日志解析">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/socialMedia/" data-toggle="tooltip" data-placement="top" title="读论文《Social Media and Fake News in the 2016 Election》">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=树状数组&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/TreeArr/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">lowbit运算</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">问题</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">树状数组（Binary Indexed Tree, BIT）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8D%95%E7%82%B9%E6%9B%B4%E6%96%B0%E4%B8%8E%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">单点更新与区间查询</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+        
+        </div>
+      </aside>
     
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
+
+
+      <!-- Sidebar Container -->
+      <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2022">
-          <span class="tag-text">2022</span>
-        </span>
-        <ul>
-          
-          <li>
-            04-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/cacheRefuse/" style="color: #0085a1">
-              <span>
-                读论文《Cached and Confused:Web Cache Deception in the wild》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <li>
-            11-08
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/drain/" style="color: #0085a1">
-              <span>
-                Drain算法：日志解析
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/TreeArr/" style="color: #0085a1">
-              <span>
-                树状数组
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/socialMedia/" style="color: #0085a1">
-              <span>
-                读论文《Social Media and Fake News in the 2016 Election》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ChainofImp/" style="color: #0085a1">
-              <span>
-                读论文《The Chain of Implicit Trust:An Analysis of the Web Third-party Resources Loading》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-08
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/DomainEncry/" style="color: #0085a1">
-              <span>
-                读论文《Domain Name Encryption Is Not Enough Privacy Leakage via IP-based Website Fingerprinting》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/measureImpact/" style="color: #0085a1">
-              <span>
-                读论文《Measuring the Impact of a Successful DDoS Attack on the Customer Behaviour of Managed DNS Service Providers》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            02-22
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/securityCha/" style="color: #0085a1">
-              <span>
-                读论文《Security Challenges in an Increasingly Tangled Web》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            02-06
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/measureGlobal/" style="color: #0085a1">
-              <span>
-                读论文《Measuring the Global Recursive DNS Infrastructure:A View From the Edge 》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            02-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/analyzeThird/" style="color: #0085a1">
-              <span>
-                读论文《Analyzing Third Party Service Dependencies in Modern Web Services:Have We Learned from the Mirai-Dyn Incident?》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            01-31
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/supportEarly/" style="color: #0085a1">
-              <span>
-                读论文《Supporting Early and Scalable Discovery of Disinformation Websites》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <li>
-            08-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/NimGame/" style="color: #0085a1">
-              <span>
-                Nim游戏
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-18
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/hyperCuber/" style="color: #0085a1">
-              <span>
-                超立方体及其可视化（processing）
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#algorithm" title="algorithm">algorithm</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#third-party dependency" title="third-party dependency" rel="4">third-party dependency</a>
-    
-    
-    
-    <a href="/tags/#web resource" title="web resource" rel="2">web resource</a>
-    
-    
-    
-    <a href="/tags/#Encrypt DNS" title="Encrypt DNS" rel="1">Encrypt DNS</a>
-    
-    
-    
-    <a href="/tags/#website fingerprint" title="website fingerprint" rel="1">website fingerprint</a>
-    
-    
-    
-    <a href="/tags/#math" title="math" rel="2">math</a>
-    
-    
-    
-    <a href="/tags/#CDN" title="CDN" rel="1">CDN</a>
-    
-    
-    
-    <a href="/tags/#DNS" title="DNS" rel="3">DNS</a>
-    
-    
-    
-    <a href="/tags/#CA" title="CA" rel="1">CA</a>
-    
-    
-    
-    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
-    
-    
-    
-    <a href="/tags/#algorithm" title="algorithm" rel="2">algorithm</a>
-    
-    
-    
-    <a href="/tags/#processing" title="processing" rel="1">processing</a>
-    
-    
-    
-    <a href="/tags/#DDoS" title="DDoS" rel="1">DDoS</a>
-    
-    
-    
-    <a href="/tags/#fake news" title="fake news" rel="2">fake news</a>
-    
-    
-    
-    <a href="/tags/#disinformation" title="disinformation" rel="1">disinformation</a>
-    
-    
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://v-vincen.life/" target="_blank">V_Vincen</a>
+          </li>
+          
+          <li>
+            <a href="http://beantech.org" target="_blank">Bean Tech</a>
+          </li>
+          
+          <li>
+            <a href="http://huangxuan.me" target="_blank">Hux Blog</a>
+          </li>
+          
+          <li>
+            <a href="https://hexo.io/" target="_blank">Hexo</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</section>
+</article>
 
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
 
-    
-    <img id="avatar_pic" src="/img/avatar/grootKD.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
 
-    
-    <p>开摆</p>
-    
+<!-- anchorjs end -->
 
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/solongs">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../cn/cacheRefuse/">
-      <li>读论文《Cached and Confused:Web Cache Deception in the wild》</li>
-    </a>
-    
-    <a href="../../cn/drain/">
-      <li>Drain算法：日志解析</li>
-    </a>
-    
-    <a href="../../cn/TreeArr/">
-      <li>树状数组</li>
-    </a>
-    
-    <a href="../../cn/socialMedia/">
-      <li>读论文《Social Media and Fake News in the 2016 Election》</li>
-    </a>
-    
-    <a href="../../cn/ChainofImp/">
-      <li>读论文《The Chain of Implicit Trust:An Analysis of the Web Third-party Resources Loading》</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/04/">April 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">November 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#论文阅读">
-      <li>论文阅读</li>
-    </a>
-    
-    <a href="/categories/#math">
-      <li>math</li>
-    </a>
-    
-    <a href="/categories/#算法和数据结构">
-      <li>算法和数据结构</li>
-    </a>
-    
-    <a href="/categories/#算法和数据结构">
-      <li>算法和数据结构</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
-  </div>
-</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->

@@ -242,9 +242,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -395,7 +395,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.5k</span> In Total
+              Words <span class="post-count">1.4k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -457,54 +457,71 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>&#8195;&#8195;根据<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Nim%E6%B8%B8%E6%88%8F/6737105?fr=aladdin">百度百科</a>：Nim游戏是博弈论中最经典的模型（之一），它又有着十分简单的规则和无比优美的结论 Nim游戏是组合游戏(Combinatorial Games)的一种，准确来说，属于“Impartial Combinatorial Games”（以下简称ICG）。</p>
-<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&#8195;&#8195;Nim游戏是一种两个人玩的游戏，玩家面前是一堆石头，假设有$k\ge 1$堆石头，每堆分别有$n_1,n_2,\cdots,n_k$块石头。<strong>这一游戏的目标就是取得最后一块石头</strong>，游戏规则如下：</p>
+        <h1>背景</h1>
+<p>  根据<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Nim%E6%B8%B8%E6%88%8F/6737105?fr=aladdin">百度百科</a>：Nim游戏是博弈论中最经典的模型（之一），它又有着十分简单的规则和无比优美的结论 Nim游戏是组合游戏(Combinatorial Games)的一种，准确来说，属于“Impartial Combinatorial Games”（以下简称ICG）。</p>
+<h1>问题描述</h1>
+<p>  Nim游戏是一种两个人玩的游戏，玩家面前是一堆石头，假设有$k\ge 1$堆石头，每堆分别有$n_1,n_2,\cdots,n_k$块石头。<strong>这一游戏的目标就是取得最后一块石头</strong>，游戏规则如下：</p>
 <ol>
 <li>玩家轮番出场，<font color='red'><strong>第一个取子的玩家记为$A$，第二个取子的玩家记为$B$</strong></font></li>
 <li>当轮到一个玩家取子时，他们都要从选择的石头堆中至少取走一块石头（这位玩家也可以把所选石头堆的石头全部取走，于是便少了一堆）</li>
 </ol>
-<p>&#8195;&#8195;我们的问题有两个：</p>
+<p>  我们的问题有两个：</p>
 <ol>
 <li>确定第一个玩家胜利还是第二个玩家胜利</li>
 <li>为了获胜，这位玩家应该如何取子，即获胜策略</li>
 </ol>
-<h1 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h1><p>&#8195;&#8195;这是一般情况下要遵守的重要原则，即先考虑小的或特殊的情况，然后再尝试着拓展这一思路去解决更一般的问题。</p>
-<p>&#8195;&#8195;首先考虑$k=1$的情况。显然，先出手的玩家$A$取走这一整堆就可以获胜。</p>
-<p>&#8195;&#8195;其次考虑$k=2$的情况，此时分别有$n_1,n_2$块石头。这个时候玩家$A$是否可以获胜不取决与具体的$n_1,n_2$值，而是取决于他们是否相等。假设$n_1 \neq n_2$，那么玩家$A$可以从较大堆中取走适量的石头，从而给玩家$B$剩下两堆相等的石头堆，接下来无论$B$取走多少块石头，$A$只要从另一堆取相同数量的石头就好了。这个策略就保证了玩家$A$可以获胜。但是如果$n_1 = n_2$，那就变成了$B$模仿$A$的取子方式而获胜。因此$k=2$时的Nim游戏问题就被解决了。下面是$2$堆石头的例子，其中$n_1= 8,n_2=5$：</p>
-<script type="math/tex; mode=display">
-8,5 \stackrel{A}{\rightarrow} 5,5 \stackrel{B}{\rightarrow} 5,2 \stackrel{A}{\rightarrow} 2,2 \stackrel{B}{\rightarrow} 0,2 \stackrel{A}{\rightarrow} 0,0</script><h1 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h1><p>&#8195;&#8195;上述$2$堆特殊情况的Nim游戏思路是：<font color='red'><strong>用某种方式取子使得剩余两堆的大小相同</strong></font>。这一想法可以推广到任意$k$堆的情况。推广的关键是<font color='red'><strong>二进制整数</strong></font>的概念。我们可以将每一个正整数都转换为二进制，例如：</p>
-<script type="math/tex; mode=display">
-57=2^5+2^4+2^3+1^0\rightarrow111001</script><p>对于一堆石头，我们可以认为它是由$2$的幂的<font color='red'><strong>子堆</strong></font>组成的。因此$57$块的石头堆可以视为由$2^5,2^4,2^3,1^0$大小的子堆组成。</p>
-<p>&#8195;&#8195;对于$2$堆Nim游戏，各种大小的子堆总数只能是$0,1,2$。具有特定大小的子堆正好有一个当且仅当这两堆的大小不同，也就是说，各种大小的子堆总数是偶数当且仅当这两堆大小相同。</p>
-<p>&#8195;&#8195;现在来考虑大小为$n_1,n_2,\cdots,n_k$的一般的Nim游戏。我们把每一个数字$n_i$表示成二进制：</p>
-<script type="math/tex; mode=display">
-n_1 = a_s\cdots a_1a_0\\
-n_2 = b_s\cdots b_1b_0\\
-\vdots \\
-n_k = e_s\cdots e_1e_0</script><p>我们可以通过在每个二进制数前面补$0$来将所有二进制的位数变得一致。我们称一个游戏是<font color='red'><strong>平衡的</strong></font>，指的是各种大小的子堆数是偶数。因此一个Nim游戏是平衡的当且仅当：</p>
-<script type="math/tex; mode=display">
-a_s+b_s+\cdots e_s 为偶\\
-\vdots \\
-a_1+b_1+\cdots e_1 为偶\\
-\vdots \\
-a_0+b_0+\cdots e_0 为偶</script><p>若一个Nim游戏是不平衡的，则称它为<font color='red'><strong>非平衡的</strong></font>。我们说第$i$位是平衡的，指的是和$a_i+b_i+\cdots + e_i$是偶数，否则就是非平衡的。因此，如果一个游戏是平衡的，则它在各个位上都是平衡的，而对于非平衡游戏来说，至少存在一个非平衡位。</p>
-<p>&#8195;&#8195;于是我们有一个结论：<font color='red'><strong>玩家$A$能够在非平衡Nim游戏中获胜，而玩家$B$能够在平衡Nim游戏中获胜</strong></font>。</p>
-<p>&#8195;&#8195;假设这个Nim游戏是非平衡的。设最大不平衡位是第$j$位。于是，玩家$A$以某种方式取走硬币给玩家$B$留下一个平衡游戏，他的做法是：<font color='red'><strong>选出一个第$j$位上是$1$的堆，并从中取走一定数目的硬币使得剩下的游戏是平衡的</strong></font>。无论玩家$B$怎么取，他都会给$A$留下一个不平衡游戏，玩家$A$再上述做法将这个游戏变平衡。这样便保证了玩家$A$获胜，反之如果游戏一开始就是平衡的，则$B$获胜。</p>
-<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>&#8195;&#8195;给定一个$k=4$的Nim游戏，其中堆的大小为$7,9,12,15$ ，我们将其表示为二进制：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-7\rightarrow 0111\\
-9\rightarrow1001\\
-12\rightarrow1100\\
-15\rightarrow 1111
-\end{aligned}</script><p>这个游戏的第$3,2,0$位是不平衡的。这时玩家$A$可以有$3$中方式取走石头：</p>
+<h1>特殊情况</h1>
+<p>  这是一般情况下要遵守的重要原则，即先考虑小的或特殊的情况，然后再尝试着拓展这一思路去解决更一般的问题。</p>
+<p>  首先考虑$k=1$的情况。显然，先出手的玩家$A$取走这一整堆就可以获胜。</p>
+<p>  其次考虑$k=2$的情况，此时分别有$n_1,n_2$块石头。这个时候玩家$A$是否可以获胜不取决与具体的$n_1,n_2$值，而是取决于他们是否相等。假设$n_1 \neq n_2$，那么玩家$A$可以从较大堆中取走适量的石头，从而给玩家$B$剩下两堆相等的石头堆，接下来无论$B$取走多少块石头，$A$只要从另一堆取相同数量的石头就好了。这个策略就保证了玩家$A$可以获胜。但是如果$n_1 = n_2$，那就变成了$B$模仿$A$的取子方式而获胜。因此$k=2$时的Nim游戏问题就被解决了。下面是$2$堆石头的例子，其中$n_1= 8,n_2=5$：<br>
+$$<br>
+8,5 \stackrel{A}{\rightarrow} 5,5 \stackrel{B}{\rightarrow} 5,2 \stackrel{A}{\rightarrow} 2,2 \stackrel{B}{\rightarrow} 0,2 \stackrel{A}{\rightarrow} 0,0<br>
+$$</p>
+<h1>一般情况</h1>
+<p>  上述$2$堆特殊情况的Nim游戏思路是：<font color='red'><strong>用某种方式取子使得剩余两堆的大小相同</strong></font>。这一想法可以推广到任意$k$堆的情况。推广的关键是<font color='red'><strong>二进制整数</strong></font>的概念。我们可以将每一个正整数都转换为二进制，例如：<br>
+$$<br>
+57=2^5+2^4+2^3+1^0\rightarrow111001<br>
+$$<br>
+对于一堆石头，我们可以认为它是由$2$的幂的<font color='red'><strong>子堆</strong></font>组成的。因此$57$块的石头堆可以视为由$2^5,2^4,2^3,1^0$大小的子堆组成。</p>
+<p>  对于$2$堆Nim游戏，各种大小的子堆总数只能是$0,1,2$。具有特定大小的子堆正好有一个当且仅当这两堆的大小不同，也就是说，各种大小的子堆总数是偶数当且仅当这两堆大小相同。</p>
+<p>  现在来考虑大小为$n_1,n_2,\cdots,n_k$的一般的Nim游戏。我们把每一个数字$n_i$表示成二进制：<br>
+$$<br>
+n_1 = a_s\cdots a_1a_0\<br>
+n_2 = b_s\cdots b_1b_0\<br>
+\vdots \<br>
+n_k = e_s\cdots e_1e_0<br>
+$$<br>
+我们可以通过在每个二进制数前面补$0$来将所有二进制的位数变得一致。我们称一个游戏是<font color='red'><strong>平衡的</strong></font>，指的是各种大小的子堆数是偶数。因此一个Nim游戏是平衡的当且仅当：<br>
+$$<br>
+a_s+b_s+\cdots e_s 为偶\<br>
+\vdots \<br>
+a_1+b_1+\cdots e_1 为偶\<br>
+\vdots \<br>
+a_0+b_0+\cdots e_0 为偶<br>
+$$<br>
+若一个Nim游戏是不平衡的，则称它为<font color='red'><strong>非平衡的</strong></font>。我们说第$i$位是平衡的，指的是和$a_i+b_i+\cdots + e_i$是偶数，否则就是非平衡的。因此，如果一个游戏是平衡的，则它在各个位上都是平衡的，而对于非平衡游戏来说，至少存在一个非平衡位。</p>
+<p>  于是我们有一个结论：<font color='red'><strong>玩家$A$能够在非平衡Nim游戏中获胜，而玩家$B$能够在平衡Nim游戏中获胜</strong></font>。</p>
+<p>  假设这个Nim游戏是非平衡的。设最大不平衡位是第$j$位。于是，玩家$A$以某种方式取走硬币给玩家$B$留下一个平衡游戏，他的做法是：<font color='red'><strong>选出一个第$j$位上是$1$的堆，并从中取走一定数目的硬币使得剩下的游戏是平衡的</strong></font>。无论玩家$B$怎么取，他都会给$A$留下一个不平衡游戏，玩家$A$再上述做法将这个游戏变平衡。这样便保证了玩家$A$获胜，反之如果游戏一开始就是平衡的，则$B$获胜。</p>
+<h1>例子</h1>
+<p>  给定一个$k=4$的Nim游戏，其中堆的大小为$7,9,12,15$ ，我们将其表示为二进制：<br>
+$$<br>
+\begin{aligned}<br>
+7\rightarrow 0111\<br>
+9\rightarrow1001\<br>
+12\rightarrow1100\<br>
+15\rightarrow 1111<br>
+\end{aligned}<br>
+$$<br>
+这个游戏的第$3,2,0$位是不平衡的。这时玩家$A$可以有$3$中方式取走石头：</p>
 <ol>
 <li>从$9$中取走$5$块，变为$0100$</li>
 <li>从$12$中取走$11$块石头，变为$0001$</li>
 <li>从$15$中取走$13$块石头，变为$0010$</li>
 </ol>
-<h1 id="直接判断胜负的方法"><a href="#直接判断胜负的方法" class="headerlink" title="直接判断胜负的方法"></a>直接判断胜负的方法</h1><p>&#8195;&#8195;对于给定的$k$堆石头，大小为$n_1,n_2,\cdots,n_k$，根据上面对平衡和非平衡的讨论，我们可以直接将这些数字异或起来来判断谁赢：<font color='red'><strong>如果$n_1\oplus n_2\oplus \cdots \oplus n_k \neq 0$则说明游戏非平衡，$A$赢，反之$B$赢</strong></font>。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<h1>直接判断胜负的方法</h1>
+<p>  对于给定的$k$堆石头，大小为$n_1,n_2,\cdots,n_k$，根据上面对平衡和非平衡的讨论，我们可以直接将这些数字异或起来来判断谁赢：<font color='red'><strong>如果$n_1\oplus n_2\oplus \cdots \oplus n_k \neq 0$则说明游戏非平衡，$A$赢，反之$B$赢</strong></font>。</p>
+<h1>参考资料</h1>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Nim%E6%B8%B8%E6%88%8F/6737105?fr=aladdin">百度百科 Nim游戏</a></li>
 <li>《组合数学》第5版 P10-P12</li>
 </ul>
@@ -607,7 +624,7 @@ a_0+b_0+\cdots e_0 为偶</script><p>若一个Nim游戏是不平衡的，则称�
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">问题描述</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">特殊情况</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%80%E8%88%AC%E6%83%85%E5%86%B5"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">一般情况</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">例子</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%88%A4%E6%96%AD%E8%83%9C%E8%B4%9F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">直接判断胜负的方法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">问题描述</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">特殊情况</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">一般情况</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">例子</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">直接判断胜负的方法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
         
         </div>
       </aside>
