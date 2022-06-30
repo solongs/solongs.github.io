@@ -242,6 +242,17 @@
           
           
           <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
             <a href="/about/">
               
               关于
@@ -256,17 +267,6 @@
             <a href="/archive/">
               
               归档
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/categories/">
-              
-              分类
               
               
             </a>
@@ -459,21 +459,19 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1>背景&amp;目的</h1>
-<p>  目前的情况来看，网站是复杂且相关联的。到2016年为止，很少有网站是完全独立的，90%的网站会依赖外部内容。</p>
-<p>  同时呢，外部内容依赖的增加也会导致安全问题。本文据此调查了与此相关的两个安全问题：</p>
+        <h1 id="背景-amp-目的"><a href="#背景-amp-目的" class="headerlink" title="背景&amp;目的"></a>背景&amp;目的</h1><p>&#8195;&#8195;目前的情况来看，网站是复杂且相关联的。到2016年为止，很少有网站是完全独立的，90%的网站会依赖外部内容。</p>
+<p>&#8195;&#8195;同时呢，外部内容依赖的增加也会导致安全问题。本文据此调查了与此相关的两个安全问题：</p>
 <ol>
 <li>与提供未知的、隐式信任的第三方内容相关的扩大的攻击面</li>
 <li>外部依赖的增加如何影响HTTPS的部署</li>
 </ol>
-<h1>数据采集</h1>
-<p>  本文关注的是桌面浏览器渲染流行网站时加载的那些资源（例如 图片、脚本、样式表等），本文使用的工具是无头版本的Chromium，通过记录网站的网络请求来构造每个站点的资源树。</p>
-<p>  数据集选取的是Alexa top 100W域名的所有网站，访问策略是，以google.com为例：</p>
+<h1 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h1><p>&#8195;&#8195;本文关注的是桌面浏览器渲染流行网站时加载的那些资源（例如 图片、脚本、样式表等），本文使用的工具是无头版本的Chromium，通过记录网站的网络请求来构造每个站点的资源树。</p>
+<p>&#8195;&#8195;数据集选取的是Alexa top 100W域名的所有网站，访问策略是，以google.com为例：</p>
 <ul>
-<li>访问http://google.com</li>
-<li>如果未响应则访问http://www.google.com</li>
+<li>访问<a target="_blank" rel="noopener" href="http://google.com">http://google.com</a></li>
+<li>如果未响应则访问<a target="_blank" rel="noopener" href="http://www.google.com">http://www.google.com</a></li>
 </ul>
-<p>  最后成功地加载了944000个网站，15K个域名没加载出来，13K个超时了，24K个抛出了HTTP错误码，5K个无法被Chromium渲染。</p>
+<p>&#8195;&#8195;最后成功地加载了944000个网站，15K个域名没加载出来，13K个超时了，24K个抛出了HTTP错误码，5K个无法被Chromium渲染。</p>
 <p>对于得到的资源还会做以下处理：</p>
 <ul>
 <li>使用ZGrab对每个资源进行额外的HTTP和HTTPS请求，来看看这个资源是否支持HTTPS访问。</li>
@@ -481,59 +479,62 @@
 <li>获取每个资源的AS</li>
 <li>获取web server的Maxmind地理位置</li>
 </ul>
-<p>  对于数据来源的确定，本文使用Public Suffix List来区分本地和外部资源。例如，<a target="_blank" rel="noopener" href="http://xn--staticxx-c49lz932bjro.facebook.xn--comwww-dn7iuc0a30ai58c2yi011b092dkuni3cyswi8c4u5n.facebook.com">不考虑staticxx.facebook.com托管在一个不同的网站上而非www.facebook.com</a>；考虑gstatic.com为google.com的外部资源。为了通过实体而非域名来对资源分组，本文还用每个资源的AS来对其标记。</p>
-<h1>网站复杂度</h1>
-<p>  如下图所示，网站是变得越来越复杂了，依赖的外部内容越来越多。</p>
+<p>&#8195;&#8195;对于数据来源的确定，本文使用Public Suffix List来区分本地和外部资源。例如，不考虑staticxx.facebook.com托管在一个不同的网站上而非www.facebook.com；考虑gstatic.com为google.com的外部资源。为了通过实体而非域名来对资源分组，本文还用每个资源的AS来对其标记。</p>
+<h1 id="网站复杂度"><a href="#网站复杂度" class="headerlink" title="网站复杂度"></a>网站复杂度</h1><p>&#8195;&#8195;如下图所示，网站是变得越来越复杂了，依赖的外部内容越来越多。</p>
 <div align=center>
 <img src="20210221225601605.png"/>
 </div>
-<h2 id="网站组成">网站组成</h2>
-<p>  站点加载的资源数量有很大变化，top 100万的网站平均加载73种资源，如下图所示</p>
+
+<h2 id="网站组成"><a href="#网站组成" class="headerlink" title="网站组成"></a>网站组成</h2><p>&#8195;&#8195;站点加载的资源数量有很大变化，top 100万的网站平均加载73种资源，如下图所示</p>
 <div align=center>
 <img src="20210221232446236.png"/>
 </div>
+
 <p>其中一个复杂的情况，LA Times的主页包含540个资源，来自270个IP、58个AS、8个国家，如下图所示。</p>
 <div align=center>
 <img src="20210221230131801.png"/>
 </div>
+
 <p>大多数资源是图片、脚本，如下表所示</p>
 <div align=center>
 <img src="20210221230726666.png"/>
 </div>
+
 <p>几乎所有最常包含的资源都支持广告/跟踪程序。</p>
-<h2 id="外部依赖">外部依赖</h2>
-<p>  top 100万网站中，有超过90%的网站有外部依赖，超过三分之二的资源是从外部网站加载的。Google、Facebook、Twitter、AppNexus这四家公司提供的内容很多，如下表</p>
+<h2 id="外部依赖"><a href="#外部依赖" class="headerlink" title="外部依赖"></a>外部依赖</h2><p>&#8195;&#8195;top 100万网站中，有超过90%的网站有外部依赖，超过三分之二的资源是从外部网站加载的。Google、Facebook、Twitter、AppNexus这四家公司提供的内容很多，如下表</p>
 <div align=center>
 <img src="20210221231018348.png"/>
 </div>
-<p>  对外部资源进行了一个分类，发现分析和跟踪资源是最常见的，而广告和社交媒体占据了很大比重，如下表所示</p>
+
+<p>&#8195;&#8195;对外部资源进行了一个分类，发现分析和跟踪资源是最常见的，而广告和社交媒体占据了很大比重，如下表所示</p>
 <div align=center>
 <img src="2021022123125459.png"/>
 </div>
-<h2 id="网络提供商">网络提供商</h2>
-<p>  云提供商、CDN、网络服务都可以像网站本身一样看到很多相同的数据，如果他们被攻击，则会影响到依赖他们的上游服务。为了测量流行网站依赖的服务提供商，本文通过AS聚合了资源。</p>
-<p>  至少20%的网站依赖于从Google、Facebook、Amazon、Cloudflare、Akamai 的AS加载的内容。十大最依赖的网络中有5个是CDN，2个是云提供商，1个Google扮演多种角色。如下表</p>
+
+<h2 id="网络提供商"><a href="#网络提供商" class="headerlink" title="网络提供商"></a>网络提供商</h2><p>&#8195;&#8195;云提供商、CDN、网络服务都可以像网站本身一样看到很多相同的数据，如果他们被攻击，则会影响到依赖他们的上游服务。为了测量流行网站依赖的服务提供商，本文通过AS聚合了资源。</p>
+<p>&#8195;&#8195;至少20%的网站依赖于从Google、Facebook、Amazon、Cloudflare、Akamai 的AS加载的内容。十大最依赖的网络中有5个是CDN，2个是云提供商，1个Google扮演多种角色。如下表</p>
 <div align=center>
 <img src="20210221231920561.png"/>
 </div>
-<p>  从CDN加载内容对于许多网站来说不是什么特别严重的安全问题，但是也带来一定的风险，历史上也有针对CDN的攻击，例如CDN向数万个网站提供恶意JavaScript。针对这种攻击，浏览器引入了SRI支持，一个HTML扩展，允许开发人员指定资源的预期加密三列。SRI防止受到攻击的服务提供商修改预期内容，但是只有不到1%的网站使用SRI。</p>
-<h1>隐式信任</h1>
-<p>  对外部信任的增加会增大网站和用户的攻击面，在许多情况下，网站运营商甚至不知道他们信任谁，因为外部服务加载了来自主网站运营商不知道的第三方的隐式信任内容</p>
-<p>  隐式信任就是网站直接引用的第三方内容又额外加载了第三方内容。这就有了安全隐患，包含隐式信任资源极大地增加了网站的攻击面，因为攻击者只需要攻击大量ad提供商中的一个，而不需要攻击主站点本身。</p>
-<p>  根据测量结果，DoubleClick是加载隐式内容最多的，Facebook、google、YouTube主要从fbcdn.net和gstatic.com那加载内容，如下表</p>
+
+<p>&#8195;&#8195;从CDN加载内容对于许多网站来说不是什么特别严重的安全问题，但是也带来一定的风险，历史上也有针对CDN的攻击，例如CDN向数万个网站提供恶意JavaScript。针对这种攻击，浏览器引入了SRI支持，一个HTML扩展，允许开发人员指定资源的预期加密三列。SRI防止受到攻击的服务提供商修改预期内容，但是只有不到1%的网站使用SRI。</p>
+<h1 id="隐式信任"><a href="#隐式信任" class="headerlink" title="隐式信任"></a>隐式信任</h1><p>&#8195;&#8195;对外部信任的增加会增大网站和用户的攻击面，在许多情况下，网站运营商甚至不知道他们信任谁，因为外部服务加载了来自主网站运营商不知道的第三方的隐式信任内容</p>
+<p>&#8195;&#8195;隐式信任就是网站直接引用的第三方内容又额外加载了第三方内容。这就有了安全隐患，包含隐式信任资源极大地增加了网站的攻击面，因为攻击者只需要攻击大量ad提供商中的一个，而不需要攻击主站点本身。</p>
+<p>&#8195;&#8195;根据测量结果，DoubleClick是加载隐式内容最多的，Facebook、google、YouTube主要从fbcdn.net和gstatic.com那加载内容，如下表</p>
 <div align=center>
 <img src="20210222124500578.png"/>
 </div>
-<p>  隐式信任的内在特征是资源加载深度，定义资源的深度为<strong>从根页面加载的嵌套资源的数量</strong>。根据测量结果，隐式信任资源的中位深度是3。如下图</p>
+
+<p>&#8195;&#8195;隐式信任的内在特征是资源加载深度，定义资源的深度为<strong>从根页面加载的嵌套资源的数量</strong>。根据测量结果，隐式信任资源的中位深度是3。如下图</p>
 <div align=center>
 <img src="20210222125108481.png"/>
 </div>
-<h1>HTTPS Blockers</h1>
-<p>  各个标准组织包括IETF、IAB、W3C，都呼吁使用HTTPS来保护web安全。Mozilla和Google都开始执行一些策略来推进HTTPS，但是在前100万的网站中只有35%的网站支持HTTPS，46%的HTTPS站点会将用户从HTTP重定向到HTTPS，11%的站点包含HSTS头，以指示未来的连接应该严格通过HTTPS服务。</p>
-<p>  有不少服务提供者都不想让网站升级到HTTPS，有报告称广告是最大的挑战，虽然有的广告网络和广告交换都支持HTTPS，但是部署情况参差不齐，这就可能导致网站利益损失。</p>
-<p>  为了使网站迁移到HTTPS，网站上的所有活动内容必须通过HTTPS加载，这是因为浏览器不会执行通过HTTP传递给HTTPS页面的活动内容，为了了解网站是否被阻止迁到HTTPS，本文检查了通过HTTP加载的那些外部内容，以及这些内容是否还可以通过HTTPS访问。</p>
-<p>  40%的HTTP请求的资源现在已经支持HTTPS访问了，45%的HTTP网站可以直接迁移到HTTPS，只要在他们的URL里升级一下协议。但是28%的HTTP-only网站加载第三方内容，而这些第三方还不支持HTTPS，也就是说这些网站没办法迁移到HTTPS，因为只有页面所有内容都是HTTPS之后才可以。</p>
-<p>  可将那些阻止网站升级到HTTPS的blocker可以分为两种：</p>
+
+<h1 id="HTTPS-Blockers"><a href="#HTTPS-Blockers" class="headerlink" title="HTTPS Blockers"></a>HTTPS Blockers</h1><p>&#8195;&#8195;各个标准组织包括IETF、IAB、W3C，都呼吁使用HTTPS来保护web安全。Mozilla和Google都开始执行一些策略来推进HTTPS，但是在前100万的网站中只有35%的网站支持HTTPS，46%的HTTPS站点会将用户从HTTP重定向到HTTPS，11%的站点包含HSTS头，以指示未来的连接应该严格通过HTTPS服务。</p>
+<p>&#8195;&#8195;有不少服务提供者都不想让网站升级到HTTPS，有报告称广告是最大的挑战，虽然有的广告网络和广告交换都支持HTTPS，但是部署情况参差不齐，这就可能导致网站利益损失。</p>
+<p>&#8195;&#8195;为了使网站迁移到HTTPS，网站上的所有活动内容必须通过HTTPS加载，这是因为浏览器不会执行通过HTTP传递给HTTPS页面的活动内容，为了了解网站是否被阻止迁到HTTPS，本文检查了通过HTTP加载的那些外部内容，以及这些内容是否还可以通过HTTPS访问。</p>
+<p>&#8195;&#8195;40%的HTTP请求的资源现在已经支持HTTPS访问了，45%的HTTP网站可以直接迁移到HTTPS，只要在他们的URL里升级一下协议。但是28%的HTTP-only网站加载第三方内容，而这些第三方还不支持HTTPS，也就是说这些网站没办法迁移到HTTPS，因为只有页面所有内容都是HTTPS之后才可以。</p>
+<p>&#8195;&#8195;可将那些阻止网站升级到HTTPS的blocker可以分为两种：</p>
 <ul>
 <li>direct blocker：例如一个HTTP-only的分析脚本</li>
 <li>indirect blocker：例如一个HTTPS的广告商，其加载的第三方广告是HTTP</li>
@@ -542,20 +543,23 @@
 <div align=center>
 <img src="20210222133041632.png"/>
 </div>
+
 <p>最大的indirect blocker是那些在大多数网站上加载纯HTTP内容的服务，他们主要是广告商，如下表</p>
 <div align=center>
 <img src="20210222133328809.png"/>
 </div>
+
 <p>不同类型站点之间的HTTPS部署存在很大差异，例如89%的购物网站已经部署HTTPS，而61%的新闻网站仍然使用HTTP，如下图</p>
 <div align=center>
 <img src="20210222133835320.png"/>
 </div>
+
 <p>下表列出了每种类型网站的五个最大的blocker。</p>
 <div align=center>
 <img src="20210222134053207.png"/>
 </div>
-<h1>结论</h1>
-<ul>
+
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><ul>
 <li>64%的资源是外部加载来的，超过90%的网站依赖外部站点和网络的内容</li>
 <li>前100万的网站的三分之一存在隐式信任，内容来自广告网络和其他第三方，大大增加了网站的攻击面</li>
 <li>几乎28%的HTTP网站被阻止迁移到HTTPS，55个HTTP站点将不能完全兼容HTTPS，直到他们的依赖迁移</li>
@@ -660,7 +664,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">数据采集</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">网站复杂度</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E7%BB%84%E6%88%90"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">网站组成</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%96%E9%83%A8%E4%BE%9D%E8%B5%96"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">外部依赖</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8F%90%E4%BE%9B%E5%95%86"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">网络提供商</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">隐式信任</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">HTTPS Blockers</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">结论</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF-amp-%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">数据采集</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">网站复杂度</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E7%BB%84%E6%88%90"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">网站组成</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%96%E9%83%A8%E4%BE%9D%E8%B5%96"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">外部依赖</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8F%90%E4%BE%9B%E5%95%86"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">网络提供商</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%9A%90%E5%BC%8F%E4%BF%A1%E4%BB%BB"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">隐式信任</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#HTTPS-Blockers"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">HTTPS Blockers</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">结论</span></a></li></ol>
         
         </div>
       </aside>

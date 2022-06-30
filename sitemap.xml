@@ -172,6 +172,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/tags/algorithm/</loc>
+    <lastmod>2022-06-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/tags/CDN/</loc>
     <lastmod>2022-06-30</lastmod>
     <changefreq>daily</changefreq>
@@ -187,13 +194,6 @@
   
   <url>
     <loc>http://yoursite-url/tags/CA/</loc>
-    <lastmod>2022-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/algorithm/</loc>
     <lastmod>2022-06-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
