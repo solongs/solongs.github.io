@@ -507,7 +507,7 @@ S=\{x_{n-1}, \cdots, x_1, x_0\}</script><p>我们想要寻找一种生成$S$的�
 100</script><p>&#8195;&#8195;我们可以持续地以这种方式对任意的整数$n\ge 1$递归地构建$n$阶$Gray$码。用这种方式构建的$Gray$称为<font color='red'><strong>反射$Gray$码</strong></font></p>
 <h2 id="递归生成反射-Gray-码"><a href="#递归生成反射-Gray-码" class="headerlink" title="递归生成反射$Gray$码"></a>递归生成反射$Gray$码</h2><p>&#8195;&#8195;递归定义：</p>
 <ul>
-<li>$1$阶反射$Gray$码是$\begin{matrix}0\1\end{matrix}$</li>
+<li>$1$阶反射$Gray$码是$\begin{matrix}0\\1\end{matrix}$</li>
 <li>假设$n\gt 1$且已经构建好了$n-1$阶反射$Gray$码。为了构建$n$阶反射$Gray$码，首先，以$n-1$阶反射$Gray$码所给出的顺序列出$0,1$的$(n-1)$元组，并把一个$0$添加到每个$(n-1)$元组左边，然后再以$(n-1)$阶反射$Gray$码所给顺序的相反顺序列出$0,1$的$(n-1)$元组，并把一个$1$添加到每个$(n-1)$元组左边。</li>
 </ul>
 <p>下面使用字符串的形式实现了一下这个递归生成反射$Gray$码算法：</p>
