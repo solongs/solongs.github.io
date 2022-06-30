@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -264,9 +264,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -716,6 +716,10 @@
     
     
     
+    <a href="/tags/#math" title="math" rel="5">math</a>
+    
+    
+    
     <a href="/tags/#Encrypt DNS" title="Encrypt DNS" rel="1">Encrypt DNS</a>
     
     
@@ -724,7 +728,11 @@
     
     
     
-    <a href="/tags/#math" title="math" rel="5">math</a>
+    <a href="/tags/#algorithm" title="algorithm" rel="5">algorithm</a>
+    
+    
+    
+    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
     
     
     
@@ -737,14 +745,6 @@
     
     
     <a href="/tags/#CA" title="CA" rel="1">CA</a>
-    
-    
-    
-    <a href="/tags/#algorithm" title="algorithm" rel="5">algorithm</a>
-    
-    
-    
-    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
     
     
     
@@ -1363,5 +1363,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>

@@ -172,6 +172,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/tags/math/</loc>
+    <lastmod>2022-06-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/tags/Encrypt-DNS/</loc>
     <lastmod>2022-06-30</lastmod>
     <changefreq>daily</changefreq>
@@ -186,7 +193,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/math/</loc>
+    <loc>http://yoursite-url/tags/algorithm/</loc>
+    <lastmod>2022-06-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/web%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2022-06-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -208,20 +222,6 @@
   
   <url>
     <loc>http://yoursite-url/tags/CA/</loc>
-    <lastmod>2022-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/algorithm/</loc>
-    <lastmod>2022-06-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/web%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2022-06-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
