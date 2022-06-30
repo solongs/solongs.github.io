@@ -505,7 +505,7 @@ S=\{x_{n-1}, \cdots, x_1, x_0\}</script><p>我们想要寻找一种生成$S$的�
 111\\
 101\\
 100</script><p>&#8195;&#8195;我们可以持续地以这种方式对任意的整数$n\ge 1$递归地构建$n$阶$Gray$码。用这种方式构建的$Gray$称为<font color='red'><strong>反射$Gray$码</strong></font></p>
-<h2 id="3-1-递归生成反射-Gray-码"><a href="#3-1-递归生成反射-Gray-码" class="headerlink" title="3.1 递归生成反射$Gray$码"></a>3.1 递归生成反射$Gray$码</h2><p>&#8195;&#8195;递归定义：</p>
+<h2 id="递归生成反射-Gray-码"><a href="#递归生成反射-Gray-码" class="headerlink" title="递归生成反射$Gray$码"></a>递归生成反射$Gray$码</h2><p>&#8195;&#8195;递归定义：</p>
 <ul>
 <li>$1$阶反射$Gray$码是$\begin{matrix}0\1\end{matrix}$</li>
 <li>假设$n\gt 1$且已经构建好了$n-1$阶反射$Gray$码。为了构建$n$阶反射$Gray$码，首先，以$n-1$阶反射$Gray$码所给出的顺序列出$0,1$的$(n-1)$元组，并把一个$0$添加到每个$(n-1)$元组左边，然后再以$(n-1)$阶反射$Gray$码所给顺序的相反顺序列出$0,1$的$(n-1)$元组，并把一个$1$添加到每个$(n-1)$元组左边。</li>
@@ -535,7 +535,7 @@ S=\{x_{n-1}, \cdots, x_1, x_0\}</script><p>我们想要寻找一种生成$S$的�
         <ul class="pager">
           
           <li class="previous">
-            <a href="/cn/supportEarly/" data-toggle="tooltip" data-placement="top" title="读论文《Supporting Early and Scalable Discovery of Disinformation Websites》">&larr; Previous Post</a>
+            <a href="/cn/quickMod/" data-toggle="tooltip" data-placement="top" title="幂模m与逐次平方法（快速幂算法）">&larr; Previous Post</a>
           </li>
           
           
@@ -627,7 +627,7 @@ S=\{x_{n-1}, \cdots, x_1, x_0\}</script><p>我们想要寻找一种生成$S$的�
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">问题描述</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">问题转换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90-x-n-1-cdots-x-1-x-0-%E7%9A%84%E5%AD%90%E9%9B%86%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">生成${x_{n-1}, \cdots, x_1, x_0}$的子集的二进制算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Gray%E7%A0%81"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Gray码</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-1-%E9%80%92%E5%BD%92%E7%94%9F%E6%88%90%E5%8F%8D%E5%B0%84-Gray-%E7%A0%81"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1 递归生成反射$Gray$码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%AD%E4%BB%A3%E7%94%9F%E6%88%90%E5%8F%8D%E5%B0%84-Gray-%E7%A0%81"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">迭代生成反射$Gray$码</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">问题描述</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">问题转换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90-x-n-1-cdots-x-1-x-0-%E7%9A%84%E5%AD%90%E9%9B%86%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">生成${x_{n-1}, \cdots, x_1, x_0}$的子集的二进制算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Gray%E7%A0%81"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Gray码</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%80%92%E5%BD%92%E7%94%9F%E6%88%90%E5%8F%8D%E5%B0%84-Gray-%E7%A0%81"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">递归生成反射$Gray$码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%AD%E4%BB%A3%E7%94%9F%E6%88%90%E5%8F%8D%E5%B0%84-Gray-%E7%A0%81"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">迭代生成反射$Gray$码</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
         
         </div>
       </aside>
