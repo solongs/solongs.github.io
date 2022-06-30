@@ -457,7 +457,8 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="算法的作用"><a href="#算法的作用" class="headerlink" title="算法的作用"></a>算法的作用</h1><p>&#8195;&#8195;Drain是一种基于<strong>固定深度树</strong>的<strong>在线日志解析</strong>（日志解析的目标是将原始日志信息转换为结构化的日志消息，如下图所示，结构化的日志分为<strong>常量部分</strong>例如src、dest和<strong>变量部分</strong>例如blk_3587）方法。当新的原始日志消息到达时，Drain将根据领域知识通过简单的正则表达式对其进行预处理。然后，Drain按照树内部节点中编码的特殊设计规则搜索日志组（即树的叶子节点）。如果找到合适的日志组，则日志消息将与存储在该日志组中的日志事件相匹配。否则，将根据日志信息创建新的日志组</p>
+        <p>change</p>
+<h1 id="算法的作用"><a href="#算法的作用" class="headerlink" title="算法的作用"></a>算法的作用</h1><p>&#8195;&#8195;Drain是一种基于<strong>固定深度树</strong>的<strong>在线日志解析</strong>（日志解析的目标是将原始日志信息转换为结构化的日志消息，如下图所示，结构化的日志分为<strong>常量部分</strong>例如src、dest和<strong>变量部分</strong>例如blk_3587）方法。当新的原始日志消息到达时，Drain将根据领域知识通过简单的正则表达式对其进行预处理。然后，Drain按照树内部节点中编码的特殊设计规则搜索日志组（即树的叶子节点）。如果找到合适的日志组，则日志消息将与存储在该日志组中的日志事件相匹配。否则，将根据日志信息创建新的日志组</p>
 <div align=center>
 <img src="3991fa39df2a46d691868d0fd4deacc7.png"/>
 </div>
