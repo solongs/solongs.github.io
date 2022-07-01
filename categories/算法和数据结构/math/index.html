@@ -134,7 +134,7 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/archives/2/">
+  <link rel="canonical" href="http://yoursite-url/categories/算法和数据结构/math/">
   <title>
     
       geniusMzy&#39;s cape
@@ -353,9 +353,9 @@
     }
 
     header.intro-header {
-       /*config*/
-        background-image: var(--intro-header-background-image-url-home);
-        /* background-image: url('/img/header_img/newhome_bg.jpg'); */
+       /*page*/
+        background-image: var(--intro-header-background-image-url-page);
+        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
       
     }
 
@@ -433,390 +433,318 @@
             ">
 
       <!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
+      <!-- 归档列表 -->
 
-
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/measureGlobal/">
-    <h2 class="post-title">
-      读论文《Measuring the Global Recursive DNS Infrastructure:A View From the Edge 》
-    </h2>
-    <h3 class="post-subtitle">
-      IEEE Access, 2019
-    </h3>
-    <div class="post-content-preview">
-      背景&amp;目的&#8195;&#8195;用户除了使用ISP提供的递归DNS解析器之外还会使用第三方DNS提供商，例如Google、OpenDNS、Cloudflare。
-&#8195;&#8195;理解全球递归DNS解析器的基础设施、行为是很重要要的
-&#8195;&#8195;本文采用AdTag，来进行DNS测量。开发基于Js的DNS测量脚本，这些脚本通过处于控制下的权威名称服务器（......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2021-02-06
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#DNS" title="DNS">DNS</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/analyzeThird/">
-    <h2 class="post-title">
-      读论文《Analyzing Third Party Service Dependencies in Modern Web Services:Have We Learned from the Mirai-Dyn Incident?》
-    </h2>
-    <h3 class="post-subtitle">
-      IMC, 2020
-    </h3>
-    <div class="post-content-preview">
-      背景&amp;目的&#8195;&#8195;目前web生态系统越来越依赖第三方服务，例如DNS、CDN。但是第三方服务并不总是安全的，例如2016年的Mirai Dyn攻击、2016的GlobalSign撤销错误事件、2019年的Amazon DNS DDoS攻击等。这些事件就引出了web生态系统的健壮性的问题：
-
-除了这些个别事件，是否有其他类型的第三方服务也是影响流行web服务的潜在弱......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2021-02-03
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#third-party dependency" title="third-party dependency">third-party dependency</a>
-    
-    <a href="/tags/#CDN" title="CDN">CDN</a>
-    
-    <a href="/tags/#DNS" title="DNS">DNS</a>
-    
-    <a href="/tags/#CA" title="CA">CA</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/supportEarly/">
-    <h2 class="post-title">
-      读论文《Supporting Early and Scalable Discovery of Disinformation Websites》
-    </h2>
-    <h3 class="post-subtitle">
-      ArXiv, 2020
-    </h3>
-    <div class="post-content-preview">
-      背景&amp;目的&#8195;&#8195;Disinformation Website，虚假信息网站。这些传播虚假信息的网站，影响大众的认知，制造舆论，理应被block，但是以往的方法都是通过人工进行区分。因此本文的目的是自动化地发现Disinformation Website。（后面我就用DIS网站代表这个虚假信息网站）
-&#8195;&#8195;本文设计了一个名为Disinfotr......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2021-01-31
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#fake news" title="fake news">fake news</a>
-    
-    <a href="/tags/#disinformation" title="disinformation">disinformation</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/quickMod/">
-    <h2 class="post-title">
-      幂模m与逐次平方法（快速幂算法）
-    </h2>
-    <h3 class="post-subtitle">
       
-    </h3>
-    <div class="post-content-preview">
-      计算幂模$m$&#8195;&#8195;如何计算：
 
-5^{100\ 000\ 000\ 000\ 000}\ (mod\ 12\ 830\ 603)呢？这么大的数字显然是不能硬算的，如果$12830603$是素数，我们可以使用费马小定理简化计算，即便不是素数，也可以使用欧拉公式。但即便简化了计算，剩余的计算量依旧大的离谱：
-
-5^{6\ 546\ 640}\ (mod\ 12\ 830\......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2020-10-24
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#math" title="math">math</a>
-    
-    <a href="/tags/#algorithm" title="algorithm">algorithm</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/genRSet/">
-    <h2 class="post-title">
-      生成r子集
-    </h2>
-    <h3 class="post-subtitle">
+      <!-- 归档列表 -->
       
-    </h3>
-    <div class="post-content-preview">
-      问题描述&#8195;&#8195;对于一个含有$n$个元素的集合$S={1,2,\cdots, n}$，我们考虑生成固定大小$r(1\le r \le n)$的子集。
-字典序&#8195;&#8195;集合$S$的自然顺序为：
-
-1\lt 2\lt \cdots \lt n设$A$和$B$是集合$S$的两个$r$子集。如果在并集$A\cup B$中但不在交集$A\cap B$中的最小整数在......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2020-08-10
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#math" title="math">math</a>
-    
-    <a href="/tags/#algorithm" title="algorithm">algorithm</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/genGray/">
-    <h2 class="post-title">
-      生成组合（Gray码）
-    </h2>
-    <h3 class="post-subtitle">
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2022">
+          <span class="tag-text">2022</span>
+        </span>
+        <ul>
+          
+          <li>
+            07-01
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/鸽巢原理（加强版）/" style="color: #0085a1">
+              <span>
+                Untitled
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            04-19
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/cacheRefuse/" style="color: #0085a1">
+              <span>
+                读论文《Cached and Confused:Web Cache Deception in the wild》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
       
-    </h3>
-    <div class="post-content-preview">
-      问题描述&#8195;&#8195;设$S$是$n$个元素的集合：
-
-S=\{x_{n-1}, \cdots, x_1, x_0\}我们想要寻找一种生成$S$的所有$2^n$个组合（子集）的算法。
-问题转换&#8195;&#8195;给定$S$的一个子集$A$，$S$中的每一个元素$x$或者属于$A$或者不属于$A$。如果用$1$表示属于，用$0$表示不属于，那么就可以把$S$的$2^n$个......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2020-08-10
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#math" title="math">math</a>
-    
-    <a href="/tags/#algorithm" title="algorithm">algorithm</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/sortAndRev/">
-    <h2 class="post-title">
-      排列与逆序
-    </h2>
-    <h3 class="post-subtitle">
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
+          <span class="tag-text">2021</span>
+        </span>
+        <ul>
+          
+          <li>
+            11-08
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/drain/" style="color: #0085a1">
+              <span>
+                Drain算法：日志解析
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-24
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/macChromium/" style="color: #0085a1">
+              <span>
+                Mac下构建Chromium
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            06-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/TreeArr/" style="color: #0085a1">
+              <span>
+                树状数组
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            04-14
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/socialMedia/" style="color: #0085a1">
+              <span>
+                读论文《Social Media and Fake News in the 2016 Election》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-09
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ChainofImp/" style="color: #0085a1">
+              <span>
+                读论文《The Chain of Implicit Trust:An Analysis of the Web Third-party Resources Loading》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-08
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/DomainEncry/" style="color: #0085a1">
+              <span>
+                读论文《Domain Name Encryption Is Not Enough Privacy Leakage via IP-based Website Fingerprinting》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-05
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/measureImpact/" style="color: #0085a1">
+              <span>
+                读论文《Measuring the Impact of a Successful DDoS Attack on the Customer Behaviour of Managed DNS Service Providers》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            02-22
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/securityCha/" style="color: #0085a1">
+              <span>
+                读论文《Security Challenges in an Increasingly Tangled Web》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            02-06
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/measureGlobal/" style="color: #0085a1">
+              <span>
+                读论文《Measuring the Global Recursive DNS Infrastructure:A View From the Edge 》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            02-03
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/analyzeThird/" style="color: #0085a1">
+              <span>
+                读论文《Analyzing Third Party Service Dependencies in Modern Web Services:Have We Learned from the Mirai-Dyn Incident?》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            01-31
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/supportEarly/" style="color: #0085a1">
+              <span>
+                读论文《Supporting Early and Scalable Discovery of Disinformation Websites》
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
       
-    </h3>
-    <div class="post-content-preview">
-      逆序&#8195;&#8195;逆序的概念大家都不陌生，它在行列式理论中是很重要的。
-&#8195;&#8195;设$i_1,i_2,\cdots,i_n$是集合${1,2,\cdots,n}$的一个排列。如果$k\lt l$且$i_k\gt i_l$，则称数对$(i_k,i_l)$为一个逆序。通俗地讲，一个排列中的逆序对应着不以自然顺序出现的一对数。例如$31524$中的逆序有$(3,1)......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2020-08-09
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#math" title="math">math</a>
-    
-    <a href="/tags/#algorithm" title="algorithm">algorithm</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/鸽巢原理（简单形式）/">
-    <h2 class="post-title">
-      鸽巢原理
-    </h2>
-    <h3 class="post-subtitle">
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
+          <span class="tag-text">2020</span>
+        </span>
+        <ul>
+          
+          <li>
+            10-24
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/quickMod/" style="color: #0085a1">
+              <span>
+                幂模m与逐次平方法（快速幂算法）
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-10
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/genRSet/" style="color: #0085a1">
+              <span>
+                生成r子集
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-10
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/genGray/" style="color: #0085a1">
+              <span>
+                生成组合（Gray码）
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-09
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/sortAndRev/" style="color: #0085a1">
+              <span>
+                排列与逆序
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-03
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/鸽巢原理（简单形式）/" style="color: #0085a1">
+              <span>
+                鸽巢原理
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-01
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/NimGame/" style="color: #0085a1">
+              <span>
+                Nim游戏
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            07-19
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/shuffle/" style="color: #0085a1">
+              <span>
+                洗牌算法（Knuth-Durstenfeld Shuffle）
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            07-18
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/hyperCuber/" style="color: #0085a1">
+              <span>
+                超立方体及其可视化（processing）
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
       
-    </h3>
-    <div class="post-content-preview">
-      简介&#8195;&#8195;鸽巢原理有许多名字，最普通的名字叫鸽巢原理，其他名字有狄利克雷（Dirichlet）抽屉原理、鞋盒（shoebox）原理。对鸽巢原理粗略地描述就是如果有许多鸽子飞进不够多的鸽巢内，那么至少要有一个鸽巢要被两个或多个鸽子占据。
-鸽巢原理（简单形式）&#8195;&#8195;定理：如果要把$n+1$个物体放进$n$个盒子，那么至少有一个盒子包含两个或更多的物体。......
     </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2020-08-03
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#math" title="math">math</a>
-    
   </div>
-  
-
 </div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/NimGame/">
-    <h2 class="post-title">
-      Nim游戏
-    </h2>
-    <h3 class="post-subtitle">
-      一个有趣的数学游戏
-    </h3>
-    <div class="post-content-preview">
-      背景&#8195;&#8195;根据百度百科：Nim游戏是博弈论中最经典的模型（之一），它又有着十分简单的规则和无比优美的结论 Nim游戏是组合游戏(Combinatorial Games)的一种，准确来说，属于“Impartial Combinatorial Games”（以下简称ICG）。
-问题描述&#8195;&#8195;Nim游戏是一种两个人玩的游戏，玩家面前是一堆石头，假设有$k......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2020-08-01
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#math" title="math">math</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/shuffle/">
-    <h2 class="post-title">
-      洗牌算法（Knuth-Durstenfeld Shuffle）
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      原理&#8195;&#8195;洗牌算法的思想很简单。给你一个数组$[1,2,3,4,5,6,7]$让你洗一洗，思路就是交换，从第一个元素开始，与包括它以及在它之后的所有元素进行交换。然后在交换第二个数，以此类推。
-实现1234567def shuffle(arr):	n = len(arr)    for i in range(n):    	# 生成随机数        j = rand......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ma Dala on
-    2020-07-19
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#math" title="math">math</a>
-    
-    <a href="/tags/#algorithm" title="algorithm">algorithm</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-
-  <!-- Pager -->
-  <ul class="pager">
-    
-    <li class="previous">
-      <a href="/">&larr; 上一页</a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/archives/3/">下一页 &rarr;</a>
-    </li>
-    
-  </ul>
 
 
       <!-- 如果开启评论功能 -->
@@ -958,23 +886,23 @@ S=\{x_{n-1}, \cdots, x_1, x_0\}我们想要寻找一种生成$S$的所有$2^n$�
 <div class="widget">
   <ul>
     
-    <a href="../../cn/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89/">
+    <a href="../../../cn/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89/">
       <li>(no title)</li>
     </a>
     
-    <a href="../../cn/cacheRefuse/">
+    <a href="../../../cn/cacheRefuse/">
       <li>读论文《Cached and Confused:Web Cache Deception in the wild》</li>
     </a>
     
-    <a href="../../cn/drain/">
+    <a href="../../../cn/drain/">
       <li>Drain算法：日志解析</li>
     </a>
     
-    <a href="../../cn/macChromium/">
+    <a href="../../../cn/macChromium/">
       <li>Mac下构建Chromium</li>
     </a>
     
-    <a href="../../cn/TreeArr/">
+    <a href="../../../cn/TreeArr/">
       <li>树状数组</li>
     </a>
     
@@ -988,7 +916,7 @@ S=\{x_{n-1}, \cdots, x_1, x_0\}我们想要寻找一种生成$S$的所有$2^n$�
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2022/07/">July 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2022/04/">April 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/11/">November 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/03/">March 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2020/08/">August 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2020/07/">July 2020</a><span class="archive-list-count">2</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2022/07/">July 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2022/04/">April 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/11/">November 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/03/">March 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2020/08/">August 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li></ul>
 </div>
 
 
