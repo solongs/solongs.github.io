@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -264,9 +264,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -397,7 +397,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.7k</span> In Total
+              Words <span class="post-count">1.8k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -459,39 +459,33 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="背景目的"><a class="markdownIt-Anchor" href="#背景目的"></a> 背景&amp;目的</h1>
-<p>  web是一个互相连接的服务的复杂集合，网站从各种第三方（例如广告、跟踪、分析服务，CDN等）导入一系列外部资源。而后者，即第三方也会从其他域名处加载资源。因此对于每个网站来说，这创建了一条<strong>依赖链</strong>，由第一方和传递连接的第三方之间的隐式信任形式为基础。</p>
+        <h1 id="背景-amp-目的"><a href="#背景-amp-目的" class="headerlink" title="背景&amp;目的"></a>背景&amp;目的</h1><p>&#8195;&#8195;web是一个互相连接的服务的复杂集合，网站从各种第三方（例如广告、跟踪、分析服务，CDN等）导入一系列外部资源。而后者，即第三方也会从其他域名处加载资源。因此对于每个网站来说，这创建了一条<strong>依赖链</strong>，由第一方和传递连接的第三方之间的隐式信任形式为基础。</p>
 <p>本文就从这个依赖链出发，对网络中的依赖链进行了大规模的研究</p>
-<h1 id="相关概念"><a class="markdownIt-Anchor" href="#相关概念"></a> 相关概念</h1>
-<p>  网站会从大量的第三方域名加载资源，例如广告、跟踪服务等。而第三方还会从其他域名加载资源，因此就有以下概念：</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><p>&#8195;&#8195;网站会从大量的第三方域名加载资源，例如广告、跟踪服务等。而第三方还会从其他域名加载资源，因此就有以下概念：</p>
 <ul>
 <li><strong>依赖链（dependency chain）</strong>：第一方引用第三方域名，而第三方又额外加载其他域名上的内容，这样便构成了一条依赖链</li>
 <li><strong>显示信任（explicit trust）</strong>：第一方与其直接引用的第三方构成显示信任关系</li>
 <li><strong>隐式信任（explict trust）</strong>：第一方与第三方额外引用的域名之间构成隐式信任关系</li>
 </ul>
-<p>  <a target="_blank" rel="noopener" href="http://xn--bbc-uc0ep96b.om">例如bbc.om</a>，它从widgets.com加载了JavaScript代码，而这个代码执行时，又从ads.com加载了额外的内容，这时候bbc.com就是第一方网站，<a target="_blank" rel="noopener" href="http://xn--widgets-ih5kx0e385cmxykv1c.com">它显示信任widgets.com</a>，<a target="_blank" rel="noopener" href="http://xn--ads-ev9d34bf47c1z2g.com">隐式信任ads.com</a>。在依赖链中，widgets.com可以表示为第一层，ads.com可以表示为第二层。</p>
-<p>  第一方网站在域名依赖链下加载的资源上缺乏可见性，会导致安全问题，例如DDoS攻击或勒索活动。</p>
-<p>  本文将第三方域名分类为<strong>良性的</strong>和<strong>可疑的</strong>两类。</p>
-<h1 id="数据集"><a class="markdownIt-Anchor" href="#数据集"></a> 数据集</h1>
-<h2 id="数据收集"><a class="markdownIt-Anchor" href="#数据收集"></a> 数据收集</h2>
-<p>  使用基于Chromium的无头浏览器爬取Alexa-top 200K的网站，可以根据网络请求跟踪资源的依赖关系。第一方可能会触发多个依赖链，也就是说形成树的结构，本文的第三方请求识别方法是<font color='red'><strong>对比二级域名，如果二级域名不一样就考虑为第三方</strong></font>。而子域名则不考虑是第三方。本文使用Mozilla Public Suffix和tldextract来消除网站子域名和country-specific子域名之间的歧义（<a target="_blank" rel="noopener" href="http://xn--player-9v9ii49d.bbc.xn--combbc-k76j.co.uk">例如player.bbc.com和bbc.co.uk</a>）。</p>
-<p>  最后得到11287230条URL，其中包含6806494个不同的外部资源，对应68828个第三方二级域名和196940个第一方二级域名。</p>
-<h2 id="数据丰富"><a class="markdownIt-Anchor" href="#数据丰富"></a> 数据丰富</h2>
-<p>  本文使用了VirusTotal提供的对第三方URL进行了检测，目的是为了找出恶意的内容。还收集域名的WebSense类别（VirusTotal记录API提供的），同时消除依赖链中的无效URL，最后收集到的是196940个第一方网站，以及68828个第三方域名</p>
-<h1 id="信任链"><a class="markdownIt-Anchor" href="#信任链"></a> 信任链</h1>
-<h2 id="网站是否依赖隐式信任"><a class="markdownIt-Anchor" href="#网站是否依赖隐式信任"></a> 网站是否依赖隐式信任？</h2>
-<p>  第一方加载的外部资源中位数是27个。下标展示了在每个Alexa排名区间的网站加载显式和隐式信任第三方的百分比。</p>
+<p>&#8195;&#8195;例如bbc.om，它从widgets.com加载了JavaScript代码，而这个代码执行时，又从ads.com加载了额外的内容，这时候bbc.com就是第一方网站，它显示信任widgets.com，隐式信任ads.com。在依赖链中，widgets.com可以表示为第一层，ads.com可以表示为第二层。</p>
+<p>&#8195;&#8195;第一方网站在域名依赖链下加载的资源上缺乏可见性，会导致安全问题，例如DDoS攻击或勒索活动。</p>
+<p>&#8195;&#8195;本文将第三方域名分类为<strong>良性的</strong>和<strong>可疑的</strong>两类。</p>
+<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><h2 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h2><p>&#8195;&#8195;使用基于Chromium的无头浏览器爬取Alexa-top 200K的网站，可以根据网络请求跟踪资源的依赖关系。第一方可能会触发多个依赖链，也就是说形成树的结构，本文的第三方请求识别方法是<font color='red'><strong>对比二级域名，如果二级域名不一样就考虑为第三方</strong></font>。而子域名则不考虑是第三方。本文使用Mozilla Public Suffix和tldextract来消除网站子域名和country-specific子域名之间的歧义（例如player.bbc.com和bbc.co.uk）。</p>
+<p>&#8195;&#8195;最后得到11287230条URL，其中包含6806494个不同的外部资源，对应68828个第三方二级域名和196940个第一方二级域名。</p>
+<h2 id="数据丰富"><a href="#数据丰富" class="headerlink" title="数据丰富"></a>数据丰富</h2><p>&#8195;&#8195;本文使用了VirusTotal提供的对第三方URL进行了检测，目的是为了找出恶意的内容。还收集域名的WebSense类别（VirusTotal记录API提供的），同时消除依赖链中的无效URL，最后收集到的是196940个第一方网站，以及68828个第三方域名</p>
+<h1 id="信任链"><a href="#信任链" class="headerlink" title="信任链"></a>信任链</h1><h2 id="网站是否依赖隐式信任？"><a href="#网站是否依赖隐式信任？" class="headerlink" title="网站是否依赖隐式信任？"></a>网站是否依赖隐式信任？</h2><p>&#8195;&#8195;第一方加载的外部资源中位数是27个。下标展示了在每个Alexa排名区间的网站加载显式和隐式信任第三方的百分比。</p>
 <div align=center>
 <img src="20210309161233516.png"/>
 </div>
-<p>  95%的网站都会加载外部资源，91%的网站加载外部JS代码。50%的网站确实依赖隐式信任。在更受欢迎的网站中，形成依赖链的倾向略高一些，换句话说即是，越流行的网站越是倾向于更多地依赖隐式信任的第三方。</p>
-<p>  隐式信任的第三方会出现在链中的各个位置，下图展示了所有第一方网站链长的累积分布函数（按照第一方网站类别进行划分）</p>
+
+<p>&#8195;&#8195;95%的网站都会加载外部资源，91%的网站加载外部JS代码。50%的网站确实依赖隐式信任。在更受欢迎的网站中，形成依赖链的倾向略高一些，换句话说即是，越流行的网站越是倾向于更多地依赖隐式信任的第三方。</p>
+<p>&#8195;&#8195;隐式信任的第三方会出现在链中的各个位置，下图展示了所有第一方网站链长的累积分布函数（按照第一方网站类别进行划分）</p>
 <div align=center>
 <img src="20210309161924574.png"/>
 </div>
-<p>  80%的网站依赖链长度都不超过3，但是每个类别的网站大概都会导入2%的超过3级及以上的外部资源。极端例子还有包含38层的链长</p>
-<h2 id="链中存在着哪些对象"><a class="markdownIt-Anchor" href="#链中存在着哪些对象"></a> 链中存在着哪些对象？</h2>
-<p>  本文对资源进行了分类，分为4种主要类型。</p>
+
+<p>&#8195;&#8195;80%的网站依赖链长度都不超过3，但是每个类别的网站大概都会导入2%的超过3级及以上的外部资源。极端例子还有包含38层的链长</p>
+<h2 id="链中存在着哪些对象？"><a href="#链中存在着哪些对象？" class="headerlink" title="链中存在着哪些对象？"></a>链中存在着哪些对象？</h2><p>&#8195;&#8195;本文对资源进行了分类，分为4种主要类型。</p>
 <ul>
 <li>Image</li>
 <li>JavaScript</li>
@@ -502,59 +496,64 @@
 <div align=center>
 <img src="20210309163304357.png"/>
 </div>
-<p>  本文检查了托管这些资源的第三方域名的类别，下图展示了链中每一层第三方类别的构成。</p>
+
+<p>&#8195;&#8195;本文检查了托管这些资源的第三方域名的类别，下图展示了链中每一层第三方类别的构成。</p>
 <div align=center>
 <img src="20210309172017116.png"/>
 </div>
+
 <p>可以看到无论是哪一层，广告占比都是最多的</p>
-<h1 id="可疑链"><a class="markdownIt-Anchor" href="#可疑链"></a> 可疑链</h1>
-<h2 id="链中是否包含可疑方"><a class="markdownIt-Anchor" href="#链中是否包含可疑方"></a> 链中是否包含可疑方？</h2>
-<p>  下表显示了使用几个VTscore阈值将第三方分类为可疑的第三方的比例。保守认为VTscore为10的是可疑的。</p>
+<h1 id="可疑链"><a href="#可疑链" class="headerlink" title="可疑链"></a>可疑链</h1><h2 id="链中是否包含可疑方？"><a href="#链中是否包含可疑方？" class="headerlink" title="链中是否包含可疑方？"></a>链中是否包含可疑方？</h2><p>&#8195;&#8195;下表显示了使用几个VTscore阈值将第三方分类为可疑的第三方的比例。保守认为VTscore为10的是可疑的。</p>
 <div align=center>
 <img src="20210309172751706.png"/>
 </div>
+
 <p>16%的第一方隐式信任了可疑的JS。</p>
-<h2 id="可疑方有多普遍"><a class="markdownIt-Anchor" href="#可疑方有多普遍"></a> 可疑方有多普遍？</h2>
-<p>  下图展示了每个第一方引用的第三方资源的累积分布函数，24.8%的第一方页面包含了至少3个被标记为可疑的第三方。</p>
+<h2 id="可疑方有多普遍？"><a href="#可疑方有多普遍？" class="headerlink" title="可疑方有多普遍？"></a>可疑方有多普遍？</h2><p>&#8195;&#8195;下图展示了每个第一方引用的第三方资源的累积分布函数，24.8%的第一方页面包含了至少3个被标记为可疑的第三方。</p>
 <div align=center>
 <img src="20210309173430268.png"/>
 </div>
+
 <p>即使只有1.6%的第三方被标记为可疑，但是他们至少分散到了三分之一的网站中。下标展示了top10提供可疑js的第三方</p>
 <div align=center>
 <img src="20210309173940544.png"/>
 </div>
-<p><a target="_blank" rel="noopener" href="http://xn--google-analytics-wi57ad2hm45hjw6e.com">有趣的是google-analytics.com</a>，调查发现它是因为加载了一个叫sf-helper.net的第三方，这个第三方分发adware和spyware，后来2018年9月发现这个域名已经不再加载了，下图展示了google-analytics.com变好之后累积分布图</p>
+
+<p>有趣的是google-analytics.com，调查发现它是因为加载了一个叫sf-helper.net的第三方，这个第三方分发adware和spyware，后来2018年9月发现这个域名已经不再加载了，下图展示了google-analytics.com变好之后累积分布图</p>
 <div align=center>
 <img src="20210309174400618.png"/>
 </div>
+
 <p>这有效地突出了高中心性第三方被允许加载更多资源的影响:一个网站的感染可以立即影响大部分网站。</p>
-<h2 id="可疑第三方有多流行"><a class="markdownIt-Anchor" href="#可疑第三方有多流行"></a> 可疑第三方有多流行？</h2>
-<p>  流行是指Alexa的排名。本文发现有几个可疑第三方排名在top 100内。</p>
-<p>  下图展示了第一方域名（根据Alexa排名）引入的可疑js代码数量，可见第一方域名在大于2层的时候引入了很多可疑js。</p>
+<h2 id="可疑第三方有多流行？"><a href="#可疑第三方有多流行？" class="headerlink" title="可疑第三方有多流行？"></a>可疑第三方有多流行？</h2><p>&#8195;&#8195;流行是指Alexa的排名。本文发现有几个可疑第三方排名在top 100内。</p>
+<p>&#8195;&#8195;下图展示了第一方域名（根据Alexa排名）引入的可疑js代码数量，可见第一方域名在大于2层的时候引入了很多可疑js。</p>
 <div align=center>
 <img src="20210309184937731.png"/>
 </div>
-<p>  下图展示了由可疑第三方（根据Alexa排名）导致而受影响的第一方域名的数量。</p>
+
+<p>&#8195;&#8195;下图展示了由可疑第三方（根据Alexa排名）导致而受影响的第一方域名的数量。</p>
 <div align=center>
 <img src="20210309185336843.png"/>
 </div>
-<p>  这些发现表明，各种第三方恶意JS内容是来自各种，不一定是“模糊”的第三方域名。</p>
-<h2 id="可疑第三方一般在哪一级存在"><a class="markdownIt-Anchor" href="#可疑第三方一般在哪一级存在"></a> 可疑第三方一般在哪一级存在？</h2>
-<p>  下表展示了加载了至少一个VTscore大于10的网站的比例。</p>
+
+<p>&#8195;&#8195;这些发现表明，各种第三方恶意JS内容是来自各种，不一定是“模糊”的第三方域名。</p>
+<h2 id="可疑第三方一般在哪一级存在？"><a href="#可疑第三方一般在哪一级存在？" class="headerlink" title="可疑第三方一般在哪一级存在？"></a>可疑第三方一般在哪一级存在？</h2><p>&#8195;&#8195;下表展示了加载了至少一个VTscore大于10的网站的比例。</p>
 <div align=center>
 <img src="20210309185823104.png"/>
 </div>
+
 <p>大多数被分类为可疑的资源位于依赖链的第1级，它们被第一方显示信任。这表明网站运营商并没有完全监控他们的第三方资源。更重要的是，可疑内容会通过隐式信任导入。在这种情况下，第一方可能不知道他们的存在。</p>
 <p>下图显示了在每一层每一个可疑第三方网站类别的分布。</p>
 <div align=center>
 <img src="20210309190613485.png"/>
 </div>
-<p>  下图显示了专门针对可疑JS资源的域名类别的细分。</p>
+
+<p>&#8195;&#8195;下图显示了专门针对可疑JS资源的域名类别的细分。</p>
  <div align=center>
 <img src="20210309190735179.png"/>
 </div>
-<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
-<p>  本文发现超过40%的网站确实依赖于隐形信任，本文发现了一些不常见的隐式信任第三方。这可能会增加攻击面</p>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&#8195;&#8195;本文发现超过40%的网站确实依赖于隐形信任，本文发现了一些不常见的隐式信任第三方。这可能会增加攻击面</p>
 
 
         <hr>
@@ -654,7 +653,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> 背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> 相关概念</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> 数据集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text"> 数据收集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%B0%E5%AF%8C"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text"> 数据丰富</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BF%A1%E4%BB%BB%E9%93%BE"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> 信任链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E6%98%AF%E5%90%A6%E4%BE%9D%E8%B5%96%E9%9A%90%E5%BC%8F%E4%BF%A1%E4%BB%BB"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text"> 网站是否依赖隐式信任？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%93%BE%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9D%80%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text"> 链中存在着哪些对象？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E9%93%BE"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"> 可疑链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%93%BE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%8F%AF%E7%96%91%E6%96%B9"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text"> 链中是否包含可疑方？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E6%96%B9%E6%9C%89%E5%A4%9A%E6%99%AE%E9%81%8D"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text"> 可疑方有多普遍？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%89%E5%A4%9A%E6%B5%81%E8%A1%8C"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text"> 可疑第三方有多流行？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E7%AC%AC%E4%B8%89%E6%96%B9%E4%B8%80%E8%88%AC%E5%9C%A8%E5%93%AA%E4%B8%80%E7%BA%A7%E5%AD%98%E5%9C%A8"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text"> 可疑第三方一般在哪一级存在？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text"> 总结</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF-amp-%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">相关概念</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">数据集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">数据收集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%B0%E5%AF%8C"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">数据丰富</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BF%A1%E4%BB%BB%E9%93%BE"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">信任链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E6%98%AF%E5%90%A6%E4%BE%9D%E8%B5%96%E9%9A%90%E5%BC%8F%E4%BF%A1%E4%BB%BB%EF%BC%9F"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">网站是否依赖隐式信任？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%93%BE%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9D%80%E5%93%AA%E4%BA%9B%E5%AF%B9%E8%B1%A1%EF%BC%9F"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">链中存在着哪些对象？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E9%93%BE"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">可疑链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%93%BE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%8F%AF%E7%96%91%E6%96%B9%EF%BC%9F"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">链中是否包含可疑方？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E6%96%B9%E6%9C%89%E5%A4%9A%E6%99%AE%E9%81%8D%EF%BC%9F"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">可疑方有多普遍？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%89%E5%A4%9A%E6%B5%81%E8%A1%8C%EF%BC%9F"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">可疑第三方有多流行？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E7%96%91%E7%AC%AC%E4%B8%89%E6%96%B9%E4%B8%80%E8%88%AC%E5%9C%A8%E5%93%AA%E4%B8%80%E7%BA%A7%E5%AD%98%E5%9C%A8%EF%BC%9F"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">可疑第三方一般在哪一级存在？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text">总结</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1246,7 +1245,6 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

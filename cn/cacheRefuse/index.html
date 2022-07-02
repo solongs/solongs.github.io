@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -264,9 +264,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -395,7 +395,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">3.4k</span> In Total
+              Words <span class="post-count">3.5k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -457,21 +457,18 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>  这篇论文讲述了web缓存欺骗攻击在真实的网站中的存在情况，并设计了一套测量该类攻击的方法，测量该攻击在Alexa Top网站中的存在情况。</p>
-<h1 id="背景"><a class="markdownIt-Anchor" href="#背景"></a> 背景</h1>
-<p>  在讲解检测方法之前，我们先来熟悉一下什么是web缓存欺骗攻击。</p>
-<h2 id="web缓存"><a class="markdownIt-Anchor" href="#web缓存"></a> web缓存</h2>
-<p>  我们都知道，在web服务器和终端用户之间频繁地交互数据是一件开销很大的事情。在客户机和服务器之间进行长距离的多次往返时，如果遇到网络中常见的技术问题或路由问题时，可能导致网站延迟的增加，进而导致web应用程序被判定为无响应。另外，经常访问的资源会浪费web服务器的计算周期和网络带宽。</p>
-<p>  缓存成为了这种问题的解决方案。缓存技术很常见，我们的计算机里也同样用到了缓存技术，减少CPU访问主存的次数，提高计算效率。</p>
-<p>  web缓存也是类似的道理，一些客户端应用程序例如web浏览器会为单个用户实现自己的私有缓存。或者web缓存作为通信路径上的中间人代理，实现一个共享缓存，存储和服务多个用户频繁访问的对象。如果缓存命中，则不必去原始服务器请求对象，这大大提高了数据传输效率。</p>
-<p>  特别的，web缓存是CDN的一个关键组成部分。CDN在全球部署<font color='red'><strong>共享缓存代理（也称边缘服务器）</strong></font>，形成大规模分布式网络，当用户发起请求时，CDN会选择距离用户最近的缓存去提供内容，而不必由源站去响应。</p>
-<p>  web缓存的目标通常是<strong>静态资源</strong>，包括<strong>静态HTML页面、脚本、样式表、图片及其他媒体文件、软件下载</strong>等。大多数缓存的<font color='red'><strong>共享特性</strong></font>使得那些动态的、个性化的、包含用户隐私的信息不会被缓存。</p>
-<h2 id="路径混淆"><a class="markdownIt-Anchor" href="#路径混淆"></a> 路径混淆</h2>
-<p>  URL通过将web资源直接映射到web服务器的文件系统结构来引用这些资源，例如</p>
+        <p>&#8195;&#8195;这篇论文讲述了web缓存欺骗攻击在真实的网站中的存在情况，并设计了一套测量该类攻击的方法，测量该攻击在Alexa Top网站中的存在情况。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>&#8195;&#8195;在讲解检测方法之前，我们先来熟悉一下什么是web缓存欺骗攻击。</p>
+<h2 id="web缓存"><a href="#web缓存" class="headerlink" title="web缓存"></a>web缓存</h2><p>&#8195;&#8195;我们都知道，在web服务器和终端用户之间频繁地交互数据是一件开销很大的事情。在客户机和服务器之间进行长距离的多次往返时，如果遇到网络中常见的技术问题或路由问题时，可能导致网站延迟的增加，进而导致web应用程序被判定为无响应。另外，经常访问的资源会浪费web服务器的计算周期和网络带宽。</p>
+<p>&#8195;&#8195;缓存成为了这种问题的解决方案。缓存技术很常见，我们的计算机里也同样用到了缓存技术，减少CPU访问主存的次数，提高计算效率。</p>
+<p>&#8195;&#8195;web缓存也是类似的道理，一些客户端应用程序例如web浏览器会为单个用户实现自己的私有缓存。或者web缓存作为通信路径上的中间人代理，实现一个共享缓存，存储和服务多个用户频繁访问的对象。如果缓存命中，则不必去原始服务器请求对象，这大大提高了数据传输效率。</p>
+<p>&#8195;&#8195;特别的，web缓存是CDN的一个关键组成部分。CDN在全球部署<font color='red'><strong>共享缓存代理（也称边缘服务器）</strong></font>，形成大规模分布式网络，当用户发起请求时，CDN会选择距离用户最近的缓存去提供内容，而不必由源站去响应。</p>
+<p>&#8195;&#8195;web缓存的目标通常是<strong>静态资源</strong>，包括<strong>静态HTML页面、脚本、样式表、图片及其他媒体文件、软件下载</strong>等。大多数缓存的<font color='red'><strong>共享特性</strong></font>使得那些动态的、个性化的、包含用户隐私的信息不会被缓存。</p>
+<h2 id="路径混淆"><a href="#路径混淆" class="headerlink" title="路径混淆"></a>路径混淆</h2><p>&#8195;&#8195;URL通过将web资源直接映射到web服务器的文件系统结构来引用这些资源，例如</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example.<span class="keyword">com</span>/home/<span class="built_in">index</span>.html?lang=<span class="keyword">en</span></span><br></pre></td></tr></table></figure>
 <p>该URL对应web服务器文档根目录下的index.html，lang=en代表语言参数。</p>
-<p>  web应用程序的规模和复杂性都在增加，web服务器引入了<font color='red'><strong>URL重写技术</strong></font>，实现高级路由结构、提升资源的可用性和可访问性。该技术导致了web服务器解析、处理和解释URL的方式并不能清晰地反应在URL字符串的外部可见表示中（通俗地讲就是你并不知道服务器是对这个URL做怎样处理的）。因此，web缓存是无法得知资源文件系统路径和URL之间的这个额外抽象层的，它们会以自己的方式去处理URL，这就是路径混淆。</p>
-<p>  REST-ful URL的广泛使用有助于说明由URL的不同解释产生的问题。REST-ful URL方案使用的结构与web服务器内部资源组织的抽象不同，它提供了一个可读性更强的面向api的表示。例如web服务器可能会选择URL</p>
+<p>&#8195;&#8195;web应用程序的规模和复杂性都在增加，web服务器引入了<font color='red'><strong>URL重写技术</strong></font>，实现高级路由结构、提升资源的可用性和可访问性。该技术导致了web服务器解析、处理和解释URL的方式并不能清晰地反应在URL字符串的外部可见表示中（通俗地讲就是你并不知道服务器是对这个URL做怎样处理的）。因此，web缓存是无法得知资源文件系统路径和URL之间的这个额外抽象层的，它们会以自己的方式去处理URL，这就是路径混淆。</p>
+<p>&#8195;&#8195;REST-ful URL的广泛使用有助于说明由URL的不同解释产生的问题。REST-ful URL方案使用的结构与web服务器内部资源组织的抽象不同，它提供了一个可读性更强的面向api的表示。例如web服务器可能会选择URL</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">example</span>.com/index/v<span class="number">1</span>/v<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <p>去表示</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">example</span>.com/index.php?p<span class="number">1</span>=v<span class="number">1</span>&amp;p<span class="number">2</span>=v<span class="number">2</span></span><br></pre></td></tr></table></figure>
@@ -480,25 +477,24 @@
 <p>在服务端与客户端的所有中间实体，如浏览器、web缓存、代理、防火墙等，都会误解这个请求，以为服务端会返回一个图片。web缓存还有可能将其视为需缓存资源。但是，在实际情况下，web服务器会将这条URL解释为</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">example</span>.com/index.php?p<span class="number">1</span>=img&amp;p<span class="number">2</span>=pic.jpg</span><br></pre></td></tr></table></figure>
 <p>然后返回index.php，响应码为200，尽管pic.jpg在服务端不存在，但还是返回了成功的状态码。</p>
-<h2 id="web缓存欺骗"><a class="markdownIt-Anchor" href="#web缓存欺骗"></a> web缓存欺骗</h2>
-<p>  现在到了我们的正题，也就是web缓存欺骗，用WCD来代表这一现象。攻击者可以利用它来破坏web应用程序的机密属性，最终可能导致用户的数据泄露等安全问题。其实早在2017年，Gil等人就提出了WCD，并成功攻击了PayPal上的在线支付者。</p>
-<p>  WCD攻击就是利用的路径混淆，攻击者会构造具备下述两种属性的URL：</p>
+<h2 id="web缓存欺骗"><a href="#web缓存欺骗" class="headerlink" title="web缓存欺骗"></a>web缓存欺骗</h2><p>&#8195;&#8195;现在到了我们的正题，也就是web缓存欺骗，用WCD来代表这一现象。攻击者可以利用它来破坏web应用程序的机密属性，最终可能导致用户的数据泄露等安全问题。其实早在2017年，Gil等人就提出了WCD，并成功攻击了PayPal上的在线支付者。</p>
+<p>&#8195;&#8195;WCD攻击就是利用的路径混淆，攻击者会构造具备下述两种属性的URL：</p>
 <ol>
 <li>URL必须被web服务器解释为对带有私有信息的不可缓存页面的请求，并且应该会触发成功的响应</li>
 <li>这条URL必须被中间的web缓存解释为一个匹配有效缓存规则的静态对象的请求。</li>
 </ol>
-<p>  接下来，攻击者会使用社会工程学攻击引诱受害者访问这条URL，这将导致不正确地缓存受害者的私人信息。然后攻击者将重复这条请求，获得缓存内容的访问权，下图展示了WCD攻击的过程。</p>
+<p>&#8195;&#8195;接下来，攻击者会使用社会工程学攻击引诱受害者访问这条URL，这将导致不正确地缓存受害者的私人信息。然后攻击者将重复这条请求，获得缓存内容的访问权，下图展示了WCD攻击的过程。</p>
 <div align=center>
 <img src="f01620404c064949b47378f53353303b.png"/>
 </div>
+
 <p>这个过程可以描述为：</p>
 <ol>
 <li>第一步：攻击者引诱受害者访问URL，请求account.php/nonexistent.jpg，这个图片实际在web服务器上不存在；</li>
 <li>第二步：请求到达web服务器并被处理。服务器利用重写规则丢弃被请求对象中不存在的部分，返回一个成功响应account.php，这里面包含了受害者账户的私有详细信息。web缓存不知道发生在服务器上的URL重写，它把这条资源视为图片资源，存储了下来；</li>
 <li>第三步：攻击者访问相同的URL，导致缓存命中，获取了受害者的缓存账户信息</li>
 </ol>
-<h1 id="wcd攻击测量方法"><a class="markdownIt-Anchor" href="#wcd攻击测量方法"></a> WCD攻击测量方法</h1>
-<p>  知道了WCD攻击的原理，接下来就是如何去测量这种攻击。作者将测量方法分为3个阶段：</p>
+<h1 id="WCD攻击测量方法"><a href="#WCD攻击测量方法" class="headerlink" title="WCD攻击测量方法"></a>WCD攻击测量方法</h1><p>&#8195;&#8195;知道了WCD攻击的原理，接下来就是如何去测量这种攻击。作者将测量方法分为3个阶段：</p>
 <ol>
 <li>测量设置</li>
 <li>攻击面检测</li>
@@ -508,58 +504,51 @@
 <div align=center>
 <img src="aa9863acbcfa4774a6bc70b869ebcf4a.png"/>
 </div>
-<h2 id="第一阶段测量设置"><a class="markdownIt-Anchor" href="#第一阶段测量设置"></a> 第一阶段：测量设置</h2>
-<p>  WCD攻击只有在脆弱站点管理私有最终用户信息并允许对这些数据执行敏感操作时才有意义。因此提供身份验证机制的站点是该攻击的主要目标，也是这篇文章的主要测量目标。第一阶段就是识别这些站点，并在这些站点上创建账户。</p>
-<h3 id="域名发现"><a class="markdownIt-Anchor" href="#域名发现"></a> 域名发现</h3>
-<p>  首先去访问Alexa top域名，同时，利用一些开源智能工具进行子域发现来增加网站覆盖率，添加到种子池里面。</p>
-<h3 id="账号创建"><a class="markdownIt-Anchor" href="#账号创建"></a> 账号创建</h3>
-<p>  在每个站点上创建两个测试账户：一个用于受害者，另一个用于攻击者。利用唯一的虚拟值填充每个账户。然后手动检查每个受害者账户，发现应被视为私人信息的数据字段（例如姓名、电子邮件、地址、支付账户等）或用户创建的内容（例如评论、帖子等）</p>
-<p>  对于这些字段，利用预定义的标记去填充，如果在后续的缓存响应中发现了这些标记，就代表成功检测到了WCD攻击。另一方面，攻击者的账户不需要数据输入。</p>
-<h3 id="cookie收集"><a class="markdownIt-Anchor" href="#cookie收集"></a> Cookie收集</h3>
-<p>  如果成功登录到站点，爬虫程序会为受害者和攻击者的账户收集两套cookie，用于实验期间保持身份验证。此外，爬虫使用正则表达式和黑名单以避免访问页面上的注销链接。</p>
-<h2 id="第二阶段攻击面检测"><a class="markdownIt-Anchor" href="#第二阶段攻击面检测"></a> 第二阶段：攻击面检测</h2>
-<p>  这个阶段的主要目标是从种子池中的域名映射到一组页面（完整的url）中，意思就是说看这个域名下包含了哪些网站页面。这些页面会被用于测试是否存在WCD漏洞。</p>
-<p>  许多的现代网站具有相似的结构，暴露出类似的攻击。在理想情况下，这些相似的页面应该被组合在一起，并只选择一个作为代表来检测WCD。这样做的目的是去冗余，减少分析量。</p>
-<p>  具体分组方式是通过查询字符串参数名称或路径参数完成的，将这种方式分组的url转换为抽象表示，如下表所示。每一组只选择一个URL做代表进行分析。</p>
+
+<h2 id="第一阶段：测量设置"><a href="#第一阶段：测量设置" class="headerlink" title="第一阶段：测量设置"></a>第一阶段：测量设置</h2><p>&#8195;&#8195;WCD攻击只有在脆弱站点管理私有最终用户信息并允许对这些数据执行敏感操作时才有意义。因此提供身份验证机制的站点是该攻击的主要目标，也是这篇文章的主要测量目标。第一阶段就是识别这些站点，并在这些站点上创建账户。</p>
+<h3 id="域名发现"><a href="#域名发现" class="headerlink" title="域名发现"></a>域名发现</h3><p>&#8195;&#8195;首先去访问Alexa top域名，同时，利用一些开源智能工具进行子域发现来增加网站覆盖率，添加到种子池里面。</p>
+<h3 id="账号创建"><a href="#账号创建" class="headerlink" title="账号创建"></a>账号创建</h3><p>&#8195;&#8195;在每个站点上创建两个测试账户：一个用于受害者，另一个用于攻击者。利用唯一的虚拟值填充每个账户。然后手动检查每个受害者账户，发现应被视为私人信息的数据字段（例如姓名、电子邮件、地址、支付账户等）或用户创建的内容（例如评论、帖子等）</p>
+<p>&#8195;&#8195;对于这些字段，利用预定义的标记去填充，如果在后续的缓存响应中发现了这些标记，就代表成功检测到了WCD攻击。另一方面，攻击者的账户不需要数据输入。</p>
+<h3 id="Cookie收集"><a href="#Cookie收集" class="headerlink" title="Cookie收集"></a>Cookie收集</h3><p>&#8195;&#8195;如果成功登录到站点，爬虫程序会为受害者和攻击者的账户收集两套cookie，用于实验期间保持身份验证。此外，爬虫使用正则表达式和黑名单以避免访问页面上的注销链接。</p>
+<h2 id="第二阶段：攻击面检测"><a href="#第二阶段：攻击面检测" class="headerlink" title="第二阶段：攻击面检测"></a>第二阶段：攻击面检测</h2><p>&#8195;&#8195;这个阶段的主要目标是从种子池中的域名映射到一组页面（完整的url）中，意思就是说看这个域名下包含了哪些网站页面。这些页面会被用于测试是否存在WCD漏洞。</p>
+<p>&#8195;&#8195;许多的现代网站具有相似的结构，暴露出类似的攻击。在理想情况下，这些相似的页面应该被组合在一起，并只选择一个作为代表来检测WCD。这样做的目的是去冗余，减少分析量。</p>
+<p>&#8195;&#8195;具体分组方式是通过查询字符串参数名称或路径参数完成的，将这种方式分组的url转换为抽象表示，如下表所示。每一组只选择一个URL做代表进行分析。</p>
 <div align=center>
 <img src="5da19e9ae64546f7ba47852a33e68cf1.png"/>
 </div>
-<h2 id="第三阶段wcd检测"><a class="markdownIt-Anchor" href="#第三阶段wcd检测"></a> 第三阶段：WCD检测</h2>
-<p>  在这一阶段，对上一阶段中的每个URL发起WCD攻击，分析响应来确定是否达成了WCD攻击。</p>
-<p>  WCD攻击和上述攻击场景图逻辑相同，这里对于每个URL，进行如下攻击步骤：</p>
+
+<h2 id="第三阶段：WCD检测"><a href="#第三阶段：WCD检测" class="headerlink" title="第三阶段：WCD检测"></a>第三阶段：WCD检测</h2><p>&#8195;&#8195;在这一阶段，对上一阶段中的每个URL发起WCD攻击，分析响应来确定是否达成了WCD攻击。</p>
+<p>&#8195;&#8195;WCD攻击和上述攻击场景图逻辑相同，这里对于每个URL，进行如下攻击步骤：</p>
 <ol>
-<li>设计一个攻击URL，引用一个不存在的静态资源，这里选取的是在源站URL后面添加“/&lt;random&gt;.css”</li>
+<li>设计一个攻击URL，引用一个不存在的静态资源，这里选取的是在源站URL后面添加“/\<random\>.css”</li>
 <li>从受害者账户向这个攻击URL发起请求，记录响应</li>
 <li>从攻击者账户发出相同的请求，保存响应以供比较</li>
 <li>最后，作为一个未经身份验证的用户，忽略保存在cookie jar中的攻击者身份标识符来重复攻击。以确定没有身份验证的攻击者是否也可以利用WCD漏洞</li>
 </ol>
-<p>  如果攻击者账户请求的URL中存在受害者标记，则攻击者一定收到了受害者错误缓存的内容，因此目标URL包含可利用的WCD漏洞。</p>
-<p>  然后，扫描攻击者的响应，发现被频繁用作web应用安全机制的一部分秘密令牌，以及任何其他应用验证令牌。例如CSRF token、session identifier、API credential等</p>
-<h1 id="wcd测量分析"><a class="markdownIt-Anchor" href="#wcd测量分析"></a> WCD测量分析</h1>
-<h2 id="wcd漏洞在流行网站中的存在情况"><a class="markdownIt-Anchor" href="#wcd漏洞在流行网站中的存在情况"></a> WCD漏洞在流行网站中的存在情况</h2>
-<p>  在这次测量中，选取了Alexa Top 5K的站点，使用OAuth认证过滤出来295个最终网站，在这些网站中发现了16个网站包含WCD漏洞</p>
+<p>&#8195;&#8195;如果攻击者账户请求的URL中存在受害者标记，则攻击者一定收到了受害者错误缓存的内容，因此目标URL包含可利用的WCD漏洞。</p>
+<p>&#8195;&#8195;然后，扫描攻击者的响应，发现被频繁用作web应用安全机制的一部分秘密令牌，以及任何其他应用验证令牌。例如CSRF token、session identifier、API credential等</p>
+<h1 id="WCD测量分析"><a href="#WCD测量分析" class="headerlink" title="WCD测量分析"></a>WCD测量分析</h1><h2 id="WCD漏洞在流行网站中的存在情况"><a href="#WCD漏洞在流行网站中的存在情况" class="headerlink" title="WCD漏洞在流行网站中的存在情况"></a>WCD漏洞在流行网站中的存在情况</h2><p>&#8195;&#8195;在这次测量中，选取了Alexa Top 5K的站点，使用OAuth认证过滤出来295个最终网站，在这些网站中发现了16个网站包含WCD漏洞</p>
 <div align=center>
 <img src="75fe1de5c72d40c29aacea21790fa8af.png"/>
 </div>
-<p>  下图表示了Alexa Top 5K的站点分布情况，WCD漏洞情况和爬取站点的数量成正比。也就是说，WCD漏洞的发生率与网站的流行程度并不是很相关</p>
+
+<p>&#8195;&#8195;下图表示了Alexa Top 5K的站点分布情况，WCD漏洞情况和爬取站点的数量成正比。也就是说，WCD漏洞的发生率与网站的流行程度并不是很相关</p>
 <div align=center>
 <img src="7f7bcfe15efc4e3ca5a2c19ee23b0bc5.png"/>
 </div>
-<h2 id="wcd漏洞是否会暴露以及会暴露何种pii"><a class="markdownIt-Anchor" href="#wcd漏洞是否会暴露以及会暴露何种pii"></a> WCD漏洞是否会暴露以及会暴露何种PII</h2>
-<p>  14/16个站点暴露出PII（personally identifiable information，个人验证信息），包含姓名、用户名、电子邮件、电话号码等。还有一些包含财务和健康信息，例如账户余额、购物历史、体重等。这些信息是作为高效鱼叉式钓鱼攻击的基础。</p>
-<h2 id="wcd漏洞是否可以击败针对web应用程序攻击的防御"><a class="markdownIt-Anchor" href="#wcd漏洞是否可以击败针对web应用程序攻击的防御"></a> WCD漏洞是否可以击败针对web应用程序攻击的防御</h2>
-<p>  6/16个站点泄露了有效的CSRF令牌，这可能允许攻击者在部署了CSRF防御的情况下进行CSRF攻击</p>
-<p>  6/16个站点泄露了内联Javascript中的会话标识符或用户特定的API令牌。</p>
-<h2 id="wcd漏洞是否会被未认证用户利用"><a class="markdownIt-Anchor" href="#wcd漏洞是否会被未认证用户利用"></a> WCD漏洞是否会被未认证用户利用</h2>
-<p>  在第三阶段的最后一步提到，用为认证的用户去访问。查看未认证用户是否可以利用WCD漏洞。经过验证发现，所有漏洞都可以被未认证用户利用。这就意味着，WCD作为一类漏洞，往往不需要攻击者进行身份验证，降低了攻击门槛。</p>
-<h1 id="路径混淆变种"><a class="markdownIt-Anchor" href="#路径混淆变种"></a> 路径混淆变种</h1>
-<p>  除了检测WCD漏洞外，这篇论文还对路径混淆进行了变种，利用各种字符构造URL进行攻击，如下</p>
+
+<h2 id="WCD漏洞是否会暴露以及会暴露何种PII"><a href="#WCD漏洞是否会暴露以及会暴露何种PII" class="headerlink" title="WCD漏洞是否会暴露以及会暴露何种PII"></a>WCD漏洞是否会暴露以及会暴露何种PII</h2><p>&#8195;&#8195;14/16个站点暴露出PII（personally identifiable information，个人验证信息），包含姓名、用户名、电子邮件、电话号码等。还有一些包含财务和健康信息，例如账户余额、购物历史、体重等。这些信息是作为高效鱼叉式钓鱼攻击的基础。</p>
+<h2 id="WCD漏洞是否可以击败针对web应用程序攻击的防御"><a href="#WCD漏洞是否可以击败针对web应用程序攻击的防御" class="headerlink" title="WCD漏洞是否可以击败针对web应用程序攻击的防御"></a>WCD漏洞是否可以击败针对web应用程序攻击的防御</h2><p>&#8195;&#8195;6/16个站点泄露了有效的CSRF令牌，这可能允许攻击者在部署了CSRF防御的情况下进行CSRF攻击</p>
+<p>&#8195;&#8195;6/16个站点泄露了内联Javascript中的会话标识符或用户特定的API令牌。</p>
+<h2 id="WCD漏洞是否会被未认证用户利用"><a href="#WCD漏洞是否会被未认证用户利用" class="headerlink" title="WCD漏洞是否会被未认证用户利用"></a>WCD漏洞是否会被未认证用户利用</h2><p>&#8195;&#8195;在第三阶段的最后一步提到，用为认证的用户去访问。查看未认证用户是否可以利用WCD漏洞。经过验证发现，所有漏洞都可以被未认证用户利用。这就意味着，WCD作为一类漏洞，往往不需要攻击者进行身份验证，降低了攻击门槛。</p>
+<h1 id="路径混淆变种"><a href="#路径混淆变种" class="headerlink" title="路径混淆变种"></a>路径混淆变种</h1><p>&#8195;&#8195;除了检测WCD漏洞外，这篇论文还对路径混淆进行了变种，利用各种字符构造URL进行攻击，如下</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">1</span>.换行符\n，编码%<span class="number">0</span>A</span><br><span class="line"><span class="attribute">2</span>.分号;，编码%<span class="number">03</span>B</span><br><span class="line"><span class="attribute">3</span>.井号#，编码%<span class="number">023</span></span><br><span class="line"><span class="attribute">4</span>.问号?，编码%<span class="number">03</span>F</span><br></pre></td></tr></table></figure>
 <div align=center>
 <img src="c787ad79a0974650b89ff24ea5977a68.png"/>
 </div>
+
 <p>源站服务器倾向于忽略这些字符后面的内容，缓存服务器则可能仍然以文件拓展名做缓存决策。</p>
-<p>  经实验，有如下结论：</p>
+<p>&#8195;&#8195;经实验，有如下结论：</p>
 <ul>
 <li>累计发现25个受WCD攻击影响的站点</li>
 <li>原始路劲混淆方法发现14个受WCD攻击影响的站点</li>
@@ -570,22 +559,23 @@
 <div align=center>
 <img src="5f1a16a521af4c039c4f2d0c6c67d04f.png"/>
 </div>
+
 <div align=center>
 <img src="fc7fbf0d9c5e4eaeaeff6e16f1c53b87.png"/>
 </div>
-<h1 id="empirical-experiments"><a class="markdownIt-Anchor" href="#empirical-experiments"></a> Empirical Experiments</h1>
-<p>  最后，这篇论文做了一个实际场景下的实验，演示不同缓存设置对WCD的影响</p>
+
+<h1 id="Empirical-Experiments"><a href="#Empirical-Experiments" class="headerlink" title="Empirical Experiments"></a>Empirical Experiments</h1><p>&#8195;&#8195;最后，这篇论文做了一个实际场景下的实验，演示不同缓存设置对WCD的影响</p>
 <ul>
 <li>缓存地点因素：受害者选取在美国波士顿，攻击者在意大利特伦托，19个站点攻击成功，6个</li>
 <li>缓存时间因素：对19个站点分别在1小时、6小时、24小时候试试攻击，分别有16、10、9个站点被成功攻击</li>
 </ul>
 <p>地理位置和实施攻击的时间都会显著影响攻击的成功率。</p>
-<p>  另外，几乎所有CDN厂商都提供“忽略Cache Control”头部字段的选项，并且普遍依赖文件扩展名做缓存决策。</p>
+<p>&#8195;&#8195;另外，几乎所有CDN厂商都提供“忽略Cache Control”头部字段的选项，并且普遍依赖文件扩展名做缓存决策。</p>
 <div align=center>
 <img src="68aaa50de6b648c3a8c9826b020c261d.png"/>
 </div>
-<h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
-<p>  总结下来，这篇论文可得出几个基本结论：</p>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>&#8195;&#8195;总结下来，这篇论文可得出几个基本结论：</p>
 <ol>
 <li>正确配置 Web 缓存并非易事，基于文件扩展名做缓存决策容易出现安全问题，出CDN 并非即插即用解决方案，需要考虑系统性安全问题</li>
 <li>WCD 是一个“系统安全”问题，安全组件和安全组件组成的系统也可能是不安全的，必须考虑不同技术之间的复杂交互</li>
@@ -686,7 +676,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> 背景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web%E7%BC%93%E5%AD%98"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"> web缓存</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B7%AF%E5%BE%84%E6%B7%B7%E6%B7%86"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"> 路径混淆</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web%E7%BC%93%E5%AD%98%E6%AC%BA%E9%AA%97"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text"> web缓存欺骗</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#wcd%E6%94%BB%E5%87%BB%E6%B5%8B%E9%87%8F%E6%96%B9%E6%B3%95"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> WCD攻击测量方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%B5%8B%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text"> 第一阶段：测量设置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E5%8F%91%E7%8E%B0"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text"> 域名发现</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B4%A6%E5%8F%B7%E5%88%9B%E5%BB%BA"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text"> 账号创建</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cookie%E6%94%B6%E9%9B%86"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text"> Cookie收集</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%94%BB%E5%87%BB%E9%9D%A2%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text"> 第二阶段：攻击面检测</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5wcd%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text"> 第三阶段：WCD检测</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#wcd%E6%B5%8B%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> WCD测量分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#wcd%E6%BC%8F%E6%B4%9E%E5%9C%A8%E6%B5%81%E8%A1%8C%E7%BD%91%E7%AB%99%E4%B8%AD%E7%9A%84%E5%AD%98%E5%9C%A8%E6%83%85%E5%86%B5"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text"> WCD漏洞在流行网站中的存在情况</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#wcd%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E4%BC%9A%E6%9A%B4%E9%9C%B2%E4%BB%A5%E5%8F%8A%E4%BC%9A%E6%9A%B4%E9%9C%B2%E4%BD%95%E7%A7%8Dpii"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text"> WCD漏洞是否会暴露以及会暴露何种PII</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#wcd%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%87%BB%E8%B4%A5%E9%92%88%E5%AF%B9web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%E7%9A%84%E9%98%B2%E5%BE%A1"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text"> WCD漏洞是否可以击败针对web应用程序攻击的防御</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#wcd%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E4%BC%9A%E8%A2%AB%E6%9C%AA%E8%AE%A4%E8%AF%81%E7%94%A8%E6%88%B7%E5%88%A9%E7%94%A8"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text"> WCD漏洞是否会被未认证用户利用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%B7%AF%E5%BE%84%E6%B7%B7%E6%B7%86%E5%8F%98%E7%A7%8D"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> 路径混淆变种</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#empirical-experiments"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"> Empirical Experiments</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"> 总结</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web%E7%BC%93%E5%AD%98"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">web缓存</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B7%AF%E5%BE%84%E6%B7%B7%E6%B7%86"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">路径混淆</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web%E7%BC%93%E5%AD%98%E6%AC%BA%E9%AA%97"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">web缓存欺骗</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#WCD%E6%94%BB%E5%87%BB%E6%B5%8B%E9%87%8F%E6%96%B9%E6%B3%95"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">WCD攻击测量方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%B5%8B%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">第一阶段：测量设置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E5%8F%91%E7%8E%B0"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">域名发现</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B4%A6%E5%8F%B7%E5%88%9B%E5%BB%BA"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">账号创建</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Cookie%E6%94%B6%E9%9B%86"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">Cookie收集</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%94%BB%E5%87%BB%E9%9D%A2%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">第二阶段：攻击面检测</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9AWCD%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">第三阶段：WCD检测</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#WCD%E6%B5%8B%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">WCD测量分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E5%9C%A8%E6%B5%81%E8%A1%8C%E7%BD%91%E7%AB%99%E4%B8%AD%E7%9A%84%E5%AD%98%E5%9C%A8%E6%83%85%E5%86%B5"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">WCD漏洞在流行网站中的存在情况</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E4%BC%9A%E6%9A%B4%E9%9C%B2%E4%BB%A5%E5%8F%8A%E4%BC%9A%E6%9A%B4%E9%9C%B2%E4%BD%95%E7%A7%8DPII"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">WCD漏洞是否会暴露以及会暴露何种PII</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%87%BB%E8%B4%A5%E9%92%88%E5%AF%B9web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%94%BB%E5%87%BB%E7%9A%84%E9%98%B2%E5%BE%A1"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">WCD漏洞是否可以击败针对web应用程序攻击的防御</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WCD%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E4%BC%9A%E8%A2%AB%E6%9C%AA%E8%AE%A4%E8%AF%81%E7%94%A8%E6%88%B7%E5%88%A9%E7%94%A8"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">WCD漏洞是否会被未认证用户利用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%B7%AF%E5%BE%84%E6%B7%B7%E6%B7%86%E5%8F%98%E7%A7%8D"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">路径混淆变种</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Empirical-Experiments"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Empirical Experiments</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">总结</span></a></li></ol>
         
         </div>
       </aside>
@@ -1276,7 +1266,6 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
