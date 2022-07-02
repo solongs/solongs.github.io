@@ -200,13 +200,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/math/</loc>
-    <lastmod>2022-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite-url/tags/Encrypt-DNS/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
@@ -221,14 +214,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/algorithm/</loc>
+    <loc>http://yoursite-url/tags/math/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/web%E5%AE%89%E5%85%A8/</loc>
+    <loc>http://yoursite-url/tags/algorithm/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -256,7 +249,21 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/tags/web%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2022-07-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/tags/processing/</loc>
+    <lastmod>2022-07-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/chromium/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -278,13 +285,6 @@
   
   <url>
     <loc>http://yoursite-url/tags/disinformation/</loc>
-    <lastmod>2022-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/chromium/</loc>
     <lastmod>2022-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

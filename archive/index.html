@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -264,9 +264,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -768,10 +768,6 @@
     
     
     
-    <a href="/tags/#math" title="math" rel="8">math</a>
-    
-    
-    
     <a href="/tags/#Encrypt DNS" title="Encrypt DNS" rel="1">Encrypt DNS</a>
     
     
@@ -780,11 +776,11 @@
     
     
     
+    <a href="/tags/#math" title="math" rel="8">math</a>
+    
+    
+    
     <a href="/tags/#algorithm" title="algorithm" rel="7">algorithm</a>
-    
-    
-    
-    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
     
     
     
@@ -800,7 +796,15 @@
     
     
     
+    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
+    
+    
+    
     <a href="/tags/#processing" title="processing" rel="1">processing</a>
+    
+    
+    
+    <a href="/tags/#chromium" title="chromium" rel="1">chromium</a>
     
     
     
@@ -813,10 +817,6 @@
     
     
     <a href="/tags/#disinformation" title="disinformation" rel="1">disinformation</a>
-    
-    
-    
-    <a href="/tags/#chromium" title="chromium" rel="1">chromium</a>
     
     
   </div>
@@ -1427,5 +1427,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>

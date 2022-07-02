@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -264,9 +264,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -395,7 +395,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">564</span> In Total
+              Words <span class="post-count">566</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -457,20 +457,29 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>&#8195;&#8195;学习一下Chromium的源码，先从自己构建Chromium开始</p>
-<h1 id="depot-tools获取"><a href="#depot-tools获取" class="headerlink" title="depot_tools获取"></a>depot_tools获取</h1><p>depot_tools是用来管理Chromium代码库和开发过程的工具，我们首先获取它</p>
+        <p>  学习一下Chromium的源码，先从自己构建Chromium开始</p>
+<h1 id="depot_tools获取"><a class="markdownIt-Anchor" href="#depot_tools获取"></a> depot_tools获取</h1>
+<p>depot_tools是用来管理Chromium代码库和开发过程的工具，我们首先获取它</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://chromium.googlesource.com/chromium/tools/depot_tools.git</span><br></pre></td></tr></table></figure>
 <p>然后将它配置到环境变量里，首先打开bash_profile</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>然后再里面添加你的depot_tools路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="string">&quot;/path/to/depot_tools:<span class="variable">$&#123;PATH&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure><br>退出保存一下再执行</p>
+<p>然后再里面添加你的depot_tools路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="string">&quot;/path/to/depot_tools:<span class="variable">$&#123;PATH&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+<p>退出保存一下再执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
 <p>这就搞定了</p>
-<h1 id="chromium源码获取"><a href="#chromium源码获取" class="headerlink" title="chromium源码获取"></a>chromium源码获取</h1><p>在你心仪的位置创建一个文件夹存放chromium源码</p>
+<h1 id="chromium源码获取"><a class="markdownIt-Anchor" href="#chromium源码获取"></a> chromium源码获取</h1>
+<p>在你心仪的位置创建一个文件夹存放chromium源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir myChromium &amp;&amp; <span class="built_in">cd</span> myChromium</span><br></pre></td></tr></table></figure>
 <p>然后用depot_tools中的fetch命令拉取chromium源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetch --no-history chromium</span><br></pre></td></tr></table></figure>
-<p>如果这中间中断了下载，后续只需要使用gclient工具就可以继续同步之前未下载完的部分（gclient是一个python脚本，用来管理模块依赖项的工作区，每个模块依赖项是从不同的子版本和git仓库里独立检查的）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gclient sync</span><br></pre></td></tr></table></figure><br>这中间你可能还会遇到一个问题，就是在running hooks的时候出错，提示如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package_version: Could not download URL (https://storage.googleapis.com/nativeclient-once/object/binutils_arm_x86_64_apple_darwin_b33eac0121acfb07112b84a130824382abab91e2.tgz): No active exception to reraise</span><br></pre></td></tr></table></figure><br>就是没法下载这个链接下的.tgz，但是你会发现如果直接浏览器访问这个链接是可以直接下载的。后面发现这大概是证书的问题。python3不使用系统的openssl库，而是依赖于自己的库，没有访问os级别的证书，这时我直接用的python2去下载就可以了。</p>
-<h1 id="Chromium构建"><a href="#Chromium构建" class="headerlink" title="Chromium构建"></a>Chromium构建</h1><p>depot_tools里面的Ninja工具是用来构建Chromium的，下载完源码后执行以下命令</p>
+<p>如果这中间中断了下载，后续只需要使用gclient工具就可以继续同步之前未下载完的部分（gclient是一个python脚本，用来管理模块依赖项的工作区，每个模块依赖项是从不同的子版本和git仓库里独立检查的）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gclient sync</span><br></pre></td></tr></table></figure>
+<p>这中间你可能还会遇到一个问题，就是在running hooks的时候出错，提示如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package_version: Could not download URL (https://storage.googleapis.com/nativeclient-once/object/binutils_arm_x86_64_apple_darwin_b33eac0121acfb07112b84a130824382abab91e2.tgz): No active exception to reraise</span><br></pre></td></tr></table></figure>
+<p>就是没法下载这个链接下的.tgz，但是你会发现如果直接浏览器访问这个链接是可以直接下载的。后面发现这大概是证书的问题。python3不使用系统的openssl库，而是依赖于自己的库，没有访问os级别的证书，这时我直接用的python2去下载就可以了。</p>
+<h1 id="chromium构建"><a class="markdownIt-Anchor" href="#chromium构建"></a> Chromium构建</h1>
+<p>depot_tools里面的Ninja工具是用来构建Chromium的，下载完源码后执行以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src</span><br><span class="line"><span class="comment"># 这里的out/mychromium是你自定义的目录</span></span><br><span class="line">gn gen out/mychrome --ide=xode</span><br></pre></td></tr></table></figure>
 <p>然后会在你的定义的路径下生成文件夹，找到里面的out/mychrome/args.gn文件，写入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">is_debug = <span class="literal">true</span></span><br><span class="line">is_component_build = <span class="literal">true</span></span><br><span class="line">symbol_level = 2</span><br></pre></td></tr></table></figure>
@@ -478,7 +487,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autoninja -C out/mychrome chrome</span><br></pre></td></tr></table></figure>
 <p>构建好之后，执行下面的命令即可运行你构建好的Chromium了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out/mychrome/Chromium.app/Contents/MacOS/Chromium</span><br></pre></td></tr></table></figure>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<h1 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h1>
+<ul>
 <li><a target="_blank" rel="noopener" href="http://dev.chromium.org/developers/how-tos/depottools">depot_tools工具</a>：</li>
 <li><a target="_blank" rel="noopener" href="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/mac_build_instructions.md">官方文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://groups.google.com/a/chromium.org/g/chromium-dev/c/bKPRL5SRERk">问题解决</a></li>
@@ -583,7 +593,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#depot-tools%E8%8E%B7%E5%8F%96"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">depot_tools获取</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#chromium%E6%BA%90%E7%A0%81%E8%8E%B7%E5%8F%96"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">chromium源码获取</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Chromium%E6%9E%84%E5%BB%BA"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Chromium构建</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#depot_tools%E8%8E%B7%E5%8F%96"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> depot_tools获取</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#chromium%E6%BA%90%E7%A0%81%E8%8E%B7%E5%8F%96"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> chromium源码获取</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#chromium%E6%9E%84%E5%BB%BA"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> Chromium构建</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> 参考资料</span></a></li></ol>
         
         </div>
       </aside>
@@ -1159,5 +1169,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>

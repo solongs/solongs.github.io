@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -264,9 +264,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -432,13 +432,15 @@
                 post-container
             ">
 
-      <h2 id="The-Longest-Way-…"><a href="#The-Longest-Way-…" class="headerlink" title="The Longest Way …"></a>The Longest Way …</h2><p><img src="/img/scenery/about_bg4.jpg" width="350" alt="about_bg4"></img></p>
+      <h2 id="the-longest-way"><a class="markdownIt-Anchor" href="#the-longest-way"></a> The Longest Way …</h2>
+<p><img src="/img/scenery/about_bg4.jpg" width="350" alt="about_bg4"></img></p>
 <blockquote>
-<p> 活在当下 然后忘记 继续往前走 …</p>
-<p> 即便是一个人 …</p>
-<p> On the way to meet myself …</p>
+<p>活在当下 然后忘记 继续往前走 …</p>
+<p>即便是一个人 …</p>
+<p>On the way to meet myself …</p>
 </blockquote>
-<h2 id="Contact-me"><a href="#Contact-me" class="headerlink" title="Contact me"></a>Contact me</h2><blockquote>
+<h2 id="contact-me"><a class="markdownIt-Anchor" href="#contact-me"></a> Contact me</h2>
+<blockquote>
 <p>Email：logg10006@outlook.com</p>
 </blockquote>
 
@@ -477,10 +479,6 @@
     
     
     
-    <a href="/tags/#math" title="math" rel="8">math</a>
-    
-    
-    
     <a href="/tags/#Encrypt DNS" title="Encrypt DNS" rel="1">Encrypt DNS</a>
     
     
@@ -489,11 +487,11 @@
     
     
     
+    <a href="/tags/#math" title="math" rel="8">math</a>
+    
+    
+    
     <a href="/tags/#algorithm" title="algorithm" rel="7">algorithm</a>
-    
-    
-    
-    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
     
     
     
@@ -509,7 +507,15 @@
     
     
     
+    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
+    
+    
+    
     <a href="/tags/#processing" title="processing" rel="1">processing</a>
+    
+    
+    
+    <a href="/tags/#chromium" title="chromium" rel="1">chromium</a>
     
     
     
@@ -522,10 +528,6 @@
     
     
     <a href="/tags/#disinformation" title="disinformation" rel="1">disinformation</a>
-    
-    
-    
-    <a href="/tags/#chromium" title="chromium" rel="1">chromium</a>
     
     
   </div>
@@ -1136,5 +1138,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>

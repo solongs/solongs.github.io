@@ -253,9 +253,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -264,9 +264,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -393,11 +393,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">10</span> Minutes
+              Estimated Reading Time <span class="post-count">9</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.8k</span> In Total
+              Words <span class="post-count">2.7k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -459,31 +459,38 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="背景-amp-目的"><a href="#背景-amp-目的" class="headerlink" title="背景&amp;目的"></a>背景&amp;目的</h1><p>&#8195;&#8195;Disinformation Website，虚假信息网站。这些传播虚假信息的网站，影响大众的认知，制造舆论，理应被block，但是以往的方法都是通过人工进行区分。因此本文的目的是自动化地发现Disinformation Website。（后面我就用DIS网站代表这个虚假信息网站）</p>
-<p>&#8195;&#8195;本文设计了一个名为Disinfotron的系统，它可以实现自动化早期检测DIS网站，因为DIS网站的不良影响集中在最初发布后的一段时间内。因此早期检测使得DIS网站在流行起来产生广泛的负面影响之前，促使人们对其真实性进行手动审查。</p>
-<h1 id="虚假信息的定义"><a href="#虚假信息的定义" class="headerlink" title="虚假信息的定义"></a>虚假信息的定义</h1><p>&#8195;&#8195;以往的工作将虚假信息定义为：</p>
+        <h1 id="背景目的"><a class="markdownIt-Anchor" href="#背景目的"></a> 背景&amp;目的</h1>
+<p>  Disinformation Website，虚假信息网站。这些传播虚假信息的网站，影响大众的认知，制造舆论，理应被block，但是以往的方法都是通过人工进行区分。因此本文的目的是自动化地发现Disinformation Website。（后面我就用DIS网站代表这个虚假信息网站）</p>
+<p>  本文设计了一个名为Disinfotron的系统，它可以实现自动化早期检测DIS网站，因为DIS网站的不良影响集中在最初发布后的一段时间内。因此早期检测使得DIS网站在流行起来产生广泛的负面影响之前，促使人们对其真实性进行手动审查。</p>
+<h1 id="虚假信息的定义"><a class="markdownIt-Anchor" href="#虚假信息的定义"></a> 虚假信息的定义</h1>
+<p>  以往的工作将虚假信息定义为：</p>
 <ul>
 <li>欺骗事实的意图</li>
 <li>损害的意图</li>
 <li>促进传播的意图</li>
 </ul>
 <p>也有许多文章关注的是“fake news”假新闻，对于这一类别与虚假信息的关系也有不同的定义和不同的概念。</p>
-<p>&#8195;&#8195;本文使用的术语是Disinformation，定义：<font color='red'><strong>Disinformation website作为网站表现为提供政治、时事新闻，但是运作的方式明显不符合规范、标准、伦理</strong></font>。</p>
-<h1 id="网站类别-amp-数据集"><a href="#网站类别-amp-数据集" class="headerlink" title="网站类别&amp;数据集"></a>网站类别&amp;数据集</h1><p>&#8195;&#8195;本文将待分类网站分类三类：</p>
+<p>  本文使用的术语是Disinformation，定义：<font color='red'><strong>Disinformation website作为网站表现为提供政治、时事新闻，但是运作的方式明显不符合规范、标准、伦理</strong></font>。</p>
+<h1 id="网站类别数据集"><a class="markdownIt-Anchor" href="#网站类别数据集"></a> 网站类别&amp;数据集</h1>
+<p>  本文将待分类网站分类三类：</p>
 <ul>
 <li><strong>Disinformation</strong>：数据集包含769个DIS网站，其中582（76%）的网站处于不活跃的状态，要么不可用，要么就是在domain parking。通过重建，获得364（63%）个不活跃的域名，最终形成<strong>551个</strong>DIS网站。</li>
 <li><strong>news</strong>：随机抽取亚马逊Alexa Web信息服务中的275个和278个地方报纸、电视台、杂志网站目录中的新闻网站。共<strong>553个</strong>。</li>
 <li><strong>other</strong>：从Twitter的流媒体API中采样建立了<strong>555个</strong>新闻网站</li>
 </ul>
 <p>理由是分三类有利于特征工程。</p>
-<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="特征粒度"><a href="#特征粒度" class="headerlink" title="特征粒度"></a>特征粒度</h2><p>&#8195;&#8195;在网站域名的粒度上研究DIS网站，而不是单个文章、声明、广告等。<br>&#8195;&#8195;在域名粒度上分类有几个好处：</p>
+<h1 id="特征工程"><a class="markdownIt-Anchor" href="#特征工程"></a> 特征工程</h1>
+<h2 id="特征粒度"><a class="markdownIt-Anchor" href="#特征粒度"></a> 特征粒度</h2>
+<p>  在网站域名的粒度上研究DIS网站，而不是单个文章、声明、广告等。<br />
+  在域名粒度上分类有几个好处：</p>
 <ul>
 <li><strong>早期警报（Early Warning）</strong>：原则上，应该在DIS网站发布内容之前就识别它。</li>
 <li><strong>长期价值（Longer-Term Value）</strong>：DIS网站的文章和社交媒体具有固有生命周期，可能持续好几年</li>
 <li><strong>平台独立（Platform Independence）</strong>：识别虚假信息域是可行的，无需访问主要在线平台的内部账户和活动数据</li>
 <li><strong>生态价值（Ecosystem Value）</strong>：DIS的实时识别在整个互联网生态系统汇总都有价值，类似于恶意软件、钓鱼等。</li>
 </ul>
-<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><p>&#8195;&#8195;主要关注3类特征：</p>
+<h2 id="特征"><a class="markdownIt-Anchor" href="#特征"></a> 特征</h2>
+<p>  主要关注3类特征：</p>
 <ul>
 <li>Domain：与注册和操作域名相关的特征，包括DNS注册属性、域名本身、nameserver配置等</li>
 <li>Certificate：来自TLS证书的特征，包括证书和证书权威属性</li>
@@ -493,65 +500,70 @@
 <ol>
 <li>在Internet Archive Wayback Machine中获取那些网站还在互动时候的快照，通过检索原生HTML内容来提取hosting特征；</li>
 <li>使用DomainTools API检索历史DNS和WHOIS记录（这些网站开始提供虚假信息的时间点开始），用来提取domain特征；</li>
-<li>使用crt.sh Certificate Transparency日志数据库来恢复TLS证书。</li>
+<li><a target="_blank" rel="noopener" href="http://xn--crt-hb0er53o.sh">使用crt.sh</a> Certificate Transparency日志数据库来恢复TLS证书。</li>
 </ol>
 <p>下表为Disinfotron用来分类网站的特征集合。</p>
 <div align=center>
 <img src="20210131173513818.png"/>
 </div>
-
-
-<h2 id="Domain-Features"><a href="#Domain-Features" class="headerlink" title="Domain Features"></a>Domain Features</h2><p>&#8195;&#8195;域名本身显示网站的信息。</p>
-<p>&#8195;&#8195;注册域名的过程反映registrar（域名注册的service provider）、registrant（注册域名的个人或组织）、注册情况（例如首次注册的日期）的信息</p>
-<p>&#8195;&#8195;DNS还显示网站使用的authoritative nameserver的信息。</p>
-<h3 id="注册商（registrar）"><a href="#注册商（registrar）" class="headerlink" title="注册商（registrar）"></a>注册商（registrar）</h3><p>&#8195;&#8195;使用WHOIS来识别每个域名的注册商，结果发现每个类别的绝大多数域名（DIS 84%、News 90%、other 82%使用top3的注册商）都依赖于相对较小的注册商，对于每个类别单独来讲，流行的注册商稍有不同，如下表。</p>
+<h2 id="domain-features"><a class="markdownIt-Anchor" href="#domain-features"></a> Domain Features</h2>
+<p>  域名本身显示网站的信息。</p>
+<p>  注册域名的过程反映registrar（域名注册的service provider）、registrant（注册域名的个人或组织）、注册情况（例如首次注册的日期）的信息</p>
+<p>  DNS还显示网站使用的authoritative nameserver的信息。</p>
+<h3 id="注册商registrar"><a class="markdownIt-Anchor" href="#注册商registrar"></a> 注册商（registrar）</h3>
+<p>  使用WHOIS来识别每个域名的注册商，结果发现每个类别的绝大多数域名（DIS 84%、News 90%、other 82%使用top3的注册商）都依赖于相对较小的注册商，对于每个类别单独来讲，流行的注册商稍有不同，如下表。</p>
 <div align=center>
 <img src="20210131173926467.png"/>
 </div>
-
-
-<h3 id="注册者（registrant）"><a href="#注册者（registrant）" class="headerlink" title="注册者（registrant）"></a>注册者（registrant）</h3><p>&#8195;&#8195;使用WHOIS查询注册者，但并不总是可行的，因为它经常被WHOIS代理服务或越来越多的注册商隐私选项所掩盖。恶意网站的DNS记录经常掩盖注册者的身份，在DIS网站中也发现了类似的隐私保护模式。<br>&#8195;&#8195;数据集的57%的DIS网站使用WHOIS Privacy。而只有9%的新闻网站使用WHOIS Privacy</p>
-<h3 id="注册信息（Registration）"><a href="#注册信息（Registration）" class="headerlink" title="注册信息（Registration）"></a>注册信息（Registration）</h3><p>&#8195;&#8195;域名的注册信息可以提供一个网站的有用特性。例如新闻网站域名通常由十多年的历史，而DIS网站可能是刚刚注册，且短期到期。</p>
+<h3 id="注册者registrant"><a class="markdownIt-Anchor" href="#注册者registrant"></a> 注册者（registrant）</h3>
+<p>  使用WHOIS查询注册者，但并不总是可行的，因为它经常被WHOIS代理服务或越来越多的注册商隐私选项所掩盖。恶意网站的DNS记录经常掩盖注册者的身份，在DIS网站中也发现了类似的隐私保护模式。<br />
+  数据集的57%的DIS网站使用WHOIS Privacy。而只有9%的新闻网站使用WHOIS Privacy</p>
+<h3 id="注册信息registration"><a class="markdownIt-Anchor" href="#注册信息registration"></a> 注册信息（Registration）</h3>
+<p>  域名的注册信息可以提供一个网站的有用特性。例如新闻网站域名通常由十多年的历史，而DIS网站可能是刚刚注册，且短期到期。</p>
 <div align=center>
 <img src="20210131174233962.png"/>
 </div>
-
-<h3 id="域名本身（Domain-Name）"><a href="#域名本身（Domain-Name）" class="headerlink" title="域名本身（Domain Name）"></a>域名本身（Domain Name）</h3><p>&#8195;&#8195;域名本身也包含有价值的信息。新闻网站倾向于使用一个流行的TLD，83.5%的新闻网站有一个a.com域名。</p>
-<p>&#8195;&#8195;DIS网站也好使用这些，它们有时候利用更新的TLD，包括.news  .xyz  .club</p>
-<h3 id="Nameserver"><a href="#Nameserver" class="headerlink" title="Nameserver"></a>Nameserver</h3><p>&#8195;&#8195;每个公开网站都有一个权威nameserver，来解析域名。通过制造DNS请求，来识别第一个nameserver和它的ip。</p>
-<p>&#8195;&#8195;DIS网站使用廉价的nameserver提供商。这些提供商通常与网站托管平台有关，例如Cloudflare、HostGator、BlueHost，或者网站域名注册商，例如GoDaddy、Namecheap。</p>
-<p>&#8195;&#8195;新闻网站也经常使用这些提供商，但是他们也使用一组不同的 business-oriented nameserver提供商例如NS1或Qwest。</p>
-<h2 id="Certificate-Features"><a href="#Certificate-Features" class="headerlink" title="Certificate Features"></a>Certificate Features</h2><p>&#8195;&#8195;越来越多的网站支持使用HTTPS进行加密和认证的公共访问</p>
-<p>&#8195;&#8195;这些步骤内在地揭示了正在颁发的证书颁发机构（验证域所有者的服务提供者）和证书本身的属性（例如有效期和验证范围）。</p>
-<h3 id="SAN-Count"><a href="#SAN-Count" class="headerlink" title="SAN Count"></a>SAN Count</h3><p>&#8195;&#8195;Subject Alternate Name 拓展，在TLS证书中，允许跨多个域共享一个证书。传统的TLS部署中，SAN字段描述属于单个组织的域名集合。</p>
-<p>&#8195;&#8195;越来越多的基础设施提供商使用SAN来有效地为使用共享基础设施托管多个域提供便利。例如，Cloudflare会自动在共享证书中包含数十个客户，除非客户为专用证书支付额外费用。</p>
-<p>&#8195;&#8195;直觉上<strong>新闻网站更有可能管理自己的证书或购买专门的证书，而DIS网站和其他网站有可能使用方便廉价的共享证书</strong>。但是与直觉相反，<strong>新闻网站比虚假信息网站更容易拥有多的SAN</strong>。一些母新闻机构已经配置了涵盖大量附属新闻机构的证书。</p>
+<h3 id="域名本身domain-name"><a class="markdownIt-Anchor" href="#域名本身domain-name"></a> 域名本身（Domain Name）</h3>
+<p>  域名本身也包含有价值的信息。新闻网站倾向于使用一个流行的TLD，83.5%的新闻网站有一个a.com域名。</p>
+<p>  DIS网站也好使用这些，它们有时候利用更新的TLD，包括.news  .xyz  .club</p>
+<h3 id="nameserver"><a class="markdownIt-Anchor" href="#nameserver"></a> Nameserver</h3>
+<p>  每个公开网站都有一个权威nameserver，来解析域名。通过制造DNS请求，来识别第一个nameserver和它的ip。</p>
+<p>  DIS网站使用廉价的nameserver提供商。这些提供商通常与网站托管平台有关，例如Cloudflare、HostGator、BlueHost，或者网站域名注册商，例如GoDaddy、Namecheap。</p>
+<p>  新闻网站也经常使用这些提供商，但是他们也使用一组不同的 business-oriented nameserver提供商例如NS1或Qwest。</p>
+<h2 id="certificate-features"><a class="markdownIt-Anchor" href="#certificate-features"></a> Certificate Features</h2>
+<p>  越来越多的网站支持使用HTTPS进行加密和认证的公共访问</p>
+<p>  这些步骤内在地揭示了正在颁发的证书颁发机构（验证域所有者的服务提供者）和证书本身的属性（例如有效期和验证范围）。</p>
+<h3 id="san-count"><a class="markdownIt-Anchor" href="#san-count"></a> SAN Count</h3>
+<p>  Subject Alternate Name 拓展，在TLS证书中，允许跨多个域共享一个证书。传统的TLS部署中，SAN字段描述属于单个组织的域名集合。</p>
+<p>  越来越多的基础设施提供商使用SAN来有效地为使用共享基础设施托管多个域提供便利。例如，Cloudflare会自动在共享证书中包含数十个客户，除非客户为专用证书支付额外费用。</p>
+<p>  直觉上<strong>新闻网站更有可能管理自己的证书或购买专门的证书，而DIS网站和其他网站有可能使用方便廉价的共享证书</strong>。但是与直觉相反，<strong>新闻网站比虚假信息网站更容易拥有多的SAN</strong>。一些母新闻机构已经配置了涵盖大量附属新闻机构的证书。</p>
 <div align=center>
 <img src="20210131174804137.png"/>
 </div>
-
-
-<h3 id="Configuration-Error"><a href="#Configuration-Error" class="headerlink" title="Configuration Error"></a>Configuration Error</h3><p>&#8195;&#8195;直觉上DIS网站更容易出现证书配置错误，因为它们不是由专业新闻机构管理的。但直觉相反，在这三类网站中，证书配置错误很少发生。</p>
-<p>&#8195;&#8195;可能是因为越来越多地使用自动平台来管理证书，以避免错误配置，或者因为证书错误很容易检测(通过HTTPS的网站不可用)并且很容易纠正。</p>
-<h2 id="Hosting-Features"><a href="#Hosting-Features" class="headerlink" title="Hosting Features"></a>Hosting Features</h2><p>&#8195;&#8195;这个特征与网站的托管基础设施有关，这些特征发生在域名注册和证书颁发之后，在添加内容和在社交媒体上传播之前。即<strong>服务器在地里位置上的位置</strong>，以及<strong>如何在网站上托管内容</strong>。</p>
-<h3 id="CMS和插件（Content-Management-Systems-and-Plugins）"><a href="#CMS和插件（Content-Management-Systems-and-Plugins）" class="headerlink" title="CMS和插件（Content Management Systems and Plugins）"></a>CMS和插件（Content Management Systems and Plugins）</h3><p>&#8195;&#8195;许多网站使用CMS建立，应用程序级别的平台，定义了网站的样式和布局，促进内容发布和组织。</p>
-<p>&#8195;&#8195;直觉上DIS网站使用免费CMS，以及使用CMS Plugins进行社交媒体整合和搜索引擎优化，以及使用通用CMS主题的变体，而不是自己设计一个新的主题。</p>
-<p>&#8195;&#8195;结果发现WordPress的部署更加普遍，82%的DIS网站使用，20%的新闻网站使用。同时WordPress插件的分布不同于新闻和虚假网站。</p>
-<h3 id="托管提供商和地理位置（Hosting-Provider-and-Location）"><a href="#托管提供商和地理位置（Hosting-Provider-and-Location）" class="headerlink" title="托管提供商和地理位置（Hosting Provider and Location）"></a>托管提供商和地理位置（Hosting Provider and Location）</h3><p>&#8195;&#8195;使用DNS解析IP地址，使用BGP路由表来映射IP地址到AS，以及使用MaxMind GeoLite2数据库来映射IP地址到一个国家。直觉上<strong>DIS网站不对称地使用廉价的托管提供商，并在美国境外</strong>。</p>
-<p>&#8195;&#8195;结果是86%的DIS，84%的新闻网站，80%的其他网站，托管在top3的AS中。（分别独立）</p>
-<p>&#8195;&#8195;与直觉一致的是，<strong>像GoDaddy和Namecheap这样廉价且面向大众市场的托管提供商在DIS网站中比在新闻网站中更常见</strong>。相比之下，新闻网站更频繁地使用像Incapsula这样的面向商业的付费网站。</p>
-<p>&#8195;&#8195;与直觉相反<strong>托管提供商的地理位置并不是一个特别有价值的特性。这三个类别的绝大多数网站都在美国托管</strong></p>
+<h3 id="configuration-error"><a class="markdownIt-Anchor" href="#configuration-error"></a> Configuration Error</h3>
+<p>  直觉上DIS网站更容易出现证书配置错误，因为它们不是由专业新闻机构管理的。但直觉相反，在这三类网站中，证书配置错误很少发生。</p>
+<p>  可能是因为越来越多地使用自动平台来管理证书，以避免错误配置，或者因为证书错误很容易检测(通过HTTPS的网站不可用)并且很容易纠正。</p>
+<h2 id="hosting-features"><a class="markdownIt-Anchor" href="#hosting-features"></a> Hosting Features</h2>
+<p>  这个特征与网站的托管基础设施有关，这些特征发生在域名注册和证书颁发之后，在添加内容和在社交媒体上传播之前。即<strong>服务器在地里位置上的位置</strong>，以及<strong>如何在网站上托管内容</strong>。</p>
+<h3 id="cms和插件content-management-systems-and-plugins"><a class="markdownIt-Anchor" href="#cms和插件content-management-systems-and-plugins"></a> CMS和插件（Content Management Systems and Plugins）</h3>
+<p>  许多网站使用CMS建立，应用程序级别的平台，定义了网站的样式和布局，促进内容发布和组织。</p>
+<p>  直觉上DIS网站使用免费CMS，以及使用CMS Plugins进行社交媒体整合和搜索引擎优化，以及使用通用CMS主题的变体，而不是自己设计一个新的主题。</p>
+<p>  结果发现WordPress的部署更加普遍，82%的DIS网站使用，20%的新闻网站使用。同时WordPress插件的分布不同于新闻和虚假网站。</p>
+<h3 id="托管提供商和地理位置hosting-provider-and-location"><a class="markdownIt-Anchor" href="#托管提供商和地理位置hosting-provider-and-location"></a> 托管提供商和地理位置（Hosting Provider and Location）</h3>
+<p>  使用DNS解析IP地址，使用BGP路由表来映射IP地址到AS，以及使用MaxMind GeoLite2数据库来映射IP地址到一个国家。直觉上<strong>DIS网站不对称地使用廉价的托管提供商，并在美国境外</strong>。</p>
+<p>  结果是86%的DIS，84%的新闻网站，80%的其他网站，托管在top3的AS中。（分别独立）</p>
+<p>  与直觉一致的是，<strong>像GoDaddy和Namecheap这样廉价且面向大众市场的托管提供商在DIS网站中比在新闻网站中更常见</strong>。相比之下，新闻网站更频繁地使用像Incapsula这样的面向商业的付费网站。</p>
+<p>  与直觉相反<strong>托管提供商的地理位置并不是一个特别有价值的特性。这三个类别的绝大多数网站都在美国托管</strong></p>
 <div align=center>
 <img src="20210131175338508.png"/>
 </div>
-
-
-<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>&#8195;&#8195;使用随机森林分类器，易于解释。250次5折交叉验证。Disinfotron能够有效区分三类网站。</p>
+<h1 id="分类"><a class="markdownIt-Anchor" href="#分类"></a> 分类</h1>
+<p>  使用随机森林分类器，易于解释。250次5折交叉验证。Disinfotron能够有效区分三类网站。</p>
 <div align=center>
 <img src="20210131170918859.png"/>
 </div>
-
-<h1 id="先导测试（pilot-test）"><a href="#先导测试（pilot-test）" class="headerlink" title="先导测试（pilot test）"></a>先导测试（pilot test）</h1><p>&#8195;&#8195;Disinfotron先导测试的实施分为4个阶段：</p>
+<h1 id="先导测试pilot-test"><a class="markdownIt-Anchor" href="#先导测试pilot-test"></a> 先导测试（pilot test）</h1>
+<p>  Disinfotron先导测试的实施分为4个阶段：</p>
 <ol>
 <li><strong>domain ingestion</strong></li>
 <li><strong>feature extraction</strong></li>
@@ -561,18 +573,22 @@
 <div align=center>
 <img src="20210131164925826.png"/>
 </div>
-
-<p><strong>1）domain ingestion</strong><br>&#8195;&#8195;选择初始数据源，跨越DIS网站的生命周期早期（域名注册、整数颁发、网站部署）。数据源：</p>
+<p><strong>1）domain ingestion</strong><br />
+  选择初始数据源，跨越DIS网站的生命周期早期（域名注册、整数颁发、网站部署）。数据源：</p>
 <ul>
 <li><strong>DomainTools</strong>：当有新的带有news关键字的域名注册时，DomainTools就会通知Disinfotron。</li>
 <li><strong>CertStream</strong>：会通知Disinfotron新颁发的TLS整数</li>
 <li><strong>Twitter and Reddit</strong>：Disinfotron从这里获取包含URL的发布活动</li>
 </ul>
-<p><strong>2）Feature Extraction</strong><br>&#8195;&#8195;Disinfotron发出DNS查询，发起TLS握手，并向候选域提交web请求。以提取之前提到的特征。</p>
-<p><strong>3）Classification</strong><br>&#8195;&#8195;使用提取的特征作为分类器的输入，将网站分类为虚假信息、新闻或其他</p>
-<p><strong>4）human moderation</strong><br>&#8195;&#8195;手工回顾分类输出样本。</p>
-<p>&#8195;&#8195;使用两台企业级服务器，一台提特征，一台分类。</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>结论无非是总结一下工作，证明是可行的，展望一下未来。</p>
+<p><strong>2）Feature Extraction</strong><br />
+  Disinfotron发出DNS查询，发起TLS握手，并向候选域提交web请求。以提取之前提到的特征。</p>
+<p><strong>3）Classification</strong><br />
+  使用提取的特征作为分类器的输入，将网站分类为虚假信息、新闻或其他</p>
+<p><strong>4）human moderation</strong><br />
+  手工回顾分类输出样本。</p>
+<p>  使用两台企业级服务器，一台提特征，一台分类。</p>
+<h1 id="结论"><a class="markdownIt-Anchor" href="#结论"></a> 结论</h1>
+<p>结论无非是总结一下工作，证明是可行的，展望一下未来。</p>
 <ol>
 <li>虚假信息网站与真实新闻网站依赖不同的基础设施，监督机器学习可以利用这一差异进行自动识别。</li>
 <li>Disinfotron在历史数据上是准确的，在端到端、实时的试点部署中是可行的。</li>
@@ -679,7 +695,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF-amp-%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%99%9A%E5%81%87%E4%BF%A1%E6%81%AF%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">虚假信息的定义</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E7%B1%BB%E5%88%AB-amp-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">网站类别&amp;数据集</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">特征工程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81%E7%B2%92%E5%BA%A6"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">特征粒度</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">特征</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Domain-Features"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Domain Features</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E5%86%8C%E5%95%86%EF%BC%88registrar%EF%BC%89"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text">注册商（registrar）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E5%86%8C%E8%80%85%EF%BC%88registrant%EF%BC%89"><span class="toc-nav-number">4.3.2.</span> <span class="toc-nav-text">注册者（registrant）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF%EF%BC%88Registration%EF%BC%89"><span class="toc-nav-number">4.3.3.</span> <span class="toc-nav-text">注册信息（Registration）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E6%9C%AC%E8%BA%AB%EF%BC%88Domain-Name%EF%BC%89"><span class="toc-nav-number">4.3.4.</span> <span class="toc-nav-text">域名本身（Domain Name）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Nameserver"><span class="toc-nav-number">4.3.5.</span> <span class="toc-nav-text">Nameserver</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Certificate-Features"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">Certificate Features</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SAN-Count"><span class="toc-nav-number">4.4.1.</span> <span class="toc-nav-text">SAN Count</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Configuration-Error"><span class="toc-nav-number">4.4.2.</span> <span class="toc-nav-text">Configuration Error</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Hosting-Features"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">Hosting Features</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CMS%E5%92%8C%E6%8F%92%E4%BB%B6%EF%BC%88Content-Management-Systems-and-Plugins%EF%BC%89"><span class="toc-nav-number">4.5.1.</span> <span class="toc-nav-text">CMS和插件（Content Management Systems and Plugins）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%89%98%E7%AE%A1%E6%8F%90%E4%BE%9B%E5%95%86%E5%92%8C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%EF%BC%88Hosting-Provider-and-Location%EF%BC%89"><span class="toc-nav-number">4.5.2.</span> <span class="toc-nav-text">托管提供商和地理位置（Hosting Provider and Location）</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">分类</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%88%E5%AF%BC%E6%B5%8B%E8%AF%95%EF%BC%88pilot-test%EF%BC%89"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">先导测试（pilot test）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">结论</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> 背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%99%9A%E5%81%87%E4%BF%A1%E6%81%AF%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> 虚假信息的定义</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E7%B1%BB%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> 网站类别&amp;数据集</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> 特征工程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81%E7%B2%92%E5%BA%A6"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text"> 特征粒度</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text"> 特征</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#domain-features"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text"> Domain Features</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E5%86%8C%E5%95%86registrar"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text"> 注册商（registrar）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E5%86%8C%E8%80%85registrant"><span class="toc-nav-number">4.3.2.</span> <span class="toc-nav-text"> 注册者（registrant）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AFregistration"><span class="toc-nav-number">4.3.3.</span> <span class="toc-nav-text"> 注册信息（Registration）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E6%9C%AC%E8%BA%ABdomain-name"><span class="toc-nav-number">4.3.4.</span> <span class="toc-nav-text"> 域名本身（Domain Name）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nameserver"><span class="toc-nav-number">4.3.5.</span> <span class="toc-nav-text"> Nameserver</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#certificate-features"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text"> Certificate Features</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#san-count"><span class="toc-nav-number">4.4.1.</span> <span class="toc-nav-text"> SAN Count</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#configuration-error"><span class="toc-nav-number">4.4.2.</span> <span class="toc-nav-text"> Configuration Error</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#hosting-features"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text"> Hosting Features</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cms%E5%92%8C%E6%8F%92%E4%BB%B6content-management-systems-and-plugins"><span class="toc-nav-number">4.5.1.</span> <span class="toc-nav-text"> CMS和插件（Content Management Systems and Plugins）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%89%98%E7%AE%A1%E6%8F%90%E4%BE%9B%E5%95%86%E5%92%8C%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AEhosting-provider-and-location"><span class="toc-nav-number">4.5.2.</span> <span class="toc-nav-text"> 托管提供商和地理位置（Hosting Provider and Location）</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"> 分类</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%88%E5%AF%BC%E6%B5%8B%E8%AF%95pilot-test"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"> 先导测试（pilot test）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">7.</span> <span class="toc-nav-text"> 结论</span></a></li></ol>
         
         </div>
       </aside>
@@ -1257,5 +1273,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>
