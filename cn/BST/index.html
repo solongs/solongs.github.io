@@ -138,10 +138,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/cn/heap/">
+  <link rel="canonical" href="http://yoursite-url/cn/BST/">
   <title>
     
-      堆、堆排序、优先队列 - geniusMzy&#39;s cape
+      二叉搜索树 - geniusMzy&#39;s cape
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -383,11 +383,11 @@
               <a class="tag" href="/tags/#algorithm" title="algorithm">algorithm</a>
               
             </div>
-            <h1>堆、堆排序、优先队列</h1>
+            <h1>二叉搜索树</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by Ma Dala on
-              2020-03-31
+              2020-03-24
             </span>
 
 
@@ -399,7 +399,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.3k</span> In Total
+              Words <span class="post-count">2.5k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -461,135 +461,109 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>本文参考及图片来源：《算法导论》P84~P94</p>
-<h1>（二叉）堆</h1>
-<p>  （二叉）堆是一个<strong>数组</strong>，它可以被看作成一个<strong>近似的完全二叉树</strong>，树上的每一个节点对应数组中的一个元素。如下图所示。</p>
-<div align=center>
-	<img src="20200330115729961.png" width="700" height="300">
-</div>
-<p>表示堆的数组$A$包括两个属性：</p>
+        <p>本文参考：《算法导论》P286~P307</p>
+<p>  二叉搜索树由一棵二叉树组织。这样的一棵树可以使用一个链表的数据结构来表示，每个节点就是一个对象。节点的属性值包含<font color='red'>$left$（左孩子）、$right$（右孩子）、$parent$（双亲）、$key$（关键字/节点值）</font> ，如果二叉搜索树的某个节点的孩子节点或双亲节点不存在，其对应的属性值就为$None$。（根节点是二叉搜索树中唯一父指针为$None$的节点）<br>
+  二叉搜索树支持的操作有：$SEARCH$（查找）、$MINIMUM$（最小值）、$MAXIMUM$（最大值）、$SUCCESSOR$（后继）、$PREDECESSOR$（前驱）等。</p>
+<h1>二叉搜索树的性质</h1>
+<p>  性质：<font color='red'><strong>对于任何节点$x$，其左子树中的关键字最大不超过$x.key$，其右子树中的关键字最小不小于$x.key$</strong></font>。不同的二叉搜索树可以代表同一组值的集合。大部分搜索树的操作的最坏运行时间与树的高度成正比。<br>
+  二叉搜索树的关键字$key$总是以满足二叉搜索树性质的方式来存储，设$x$是二叉搜索树的一个节点，则：</p>
 <ul>
-<li>$A.length$：通常给出数组元素的个数；</li>
-<li>$A.heap_size$：表示有多少个堆元素存储在该数组中。</li>
+<li>如果$y$是$x$左子树中的一个节点，那么$y.key\le x.key$。</li>
+<li>如果$y$是$x$右子树中的一个节点，那么$y.key\ge x.key$。</li>
 </ul>
-<p>$A$的两个属性表明，虽然$A[1\cdots A.length]$可能都存有数据，但是只有$A[1\cdots A.heap_size]$中存放的是堆的有效元素，因此二者满足关系$0\le A.heap_size \le A.length$。$A[1]$表示的是树的根节点。</p>
-<p>  根据完全二叉树父子节点之间的关系，给出一个节点的下标$i$,我们可以很容易地找到它的父节点、左孩子、右孩子的下标。伪代码表示如下，对照上图理解。</p>
-<p><strong>$PARENT(i)$：找到$i$的父节点下标。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PARENT(i):</span><br><span class="line"><span class="keyword">return</span> i/<span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p><strong>$LEFT(i)$：找到$i$的左孩子下标。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LEFT(i):</span><br><span class="line"><span class="keyword">return</span> <span class="number">2</span>*i</span><br></pre></td></tr></table></figure>
-<p><strong>$RIGHT(i)$：找到$i$的右孩子下标。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RIGHT(i):</span><br><span class="line"><span class="keyword">return</span> <span class="number">2</span>*i + <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h1>二叉堆的两种形式</h1>
-<p>  二叉堆具体可以分为两种形式：<font color='red'><strong>最大堆和最小堆</strong></font>。这两种堆中，节点的值都要满足堆的性质。</p>
-<p>  <strong>最大堆的性质</strong>是指除了根以外的所有节点$i$都要满足：<br>
-$$<br>
-A[PARENT(i)]\ge A[i]<br>
-$$<br>
-也就是所，某个节点的值至多与其父节点一样大。因此，堆中的最大元素存放在根节点中，其任意子树都满足这个性质。相对地，最小堆的性质与最大堆刚好相反，最小堆的性质是指除了根以外的所有节点$i$都要满足：<br>
-$$<br>
-A[PARENT(i)]\le A[i]<br>
-$$</p>
-<p>  最大堆往往用作堆排序算法中，最小堆通常用于构造优先队列。</p>
-<p>  如果把堆看作一棵树，那么定义一个堆中的节点的高度为：<strong>该节点到叶节点最长简单路径上边的数目</strong>，若一个包含$n$个元素的堆可以看作一棵完全二叉树，则高度为$log\ n$。堆上的一些基本操作的运行时间至多与树的高度成正比，即时间复杂度为$O(logn)$。</p>
-<h1>维护堆的性质</h1>
-<p>  $MAX-HEAPIFY$过程用于维护最大堆的性质。它的输入为一个数组$A$和一个下标$i$。在调用$MAX-HEAPIFY$的时候，我们假定根节点为$LEFT(i)$和$RIGHT(i)$的二叉树都是最大堆，但这时$A[i]$有可能小于其孩子，这样就违背了最大堆的性质。因此$MAX-HEAPIFY$实现的是让$A[i]$的值在最大堆中<strong>逐级下降</strong>，进而使得以$A[i]$为根节点的子树满足最大堆的性质。该过程的伪代码描述如下：</p>
-<p><strong>$MAX-HEAPIFY(A,i)$：使$A[i]$为根节点的子树满足最大堆的性质。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">MAX-HEAPIFY(A, i):</span><br><span class="line">l = LEFT(i)    	//获取i的左孩子</span><br><span class="line">r = RIGHT(i)   	//获取i的右孩子</span><br><span class="line"><span class="keyword">if</span> l &lt;= A.heap_size <span class="keyword">and</span> A[l] &gt; A[i]:   //比较l和i对应节点的大小</span><br><span class="line">	largest = l 					   //largest记录l,i,r中最大值对应的下标</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	largest = i</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line"><span class="keyword">if</span> r &lt;= A.heap_size <span class="keyword">and</span> A[r] &gt; A[largest]:</span><br><span class="line">	largest = r</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line"><span class="keyword">if</span> largest != i:</span><br><span class="line">	exchange A[i] <span class="keyword">with</span> A[largest]  //如果i不是三个中最大的，则A[i]与最大的孩子交换位置</span><br><span class="line">	MAX-HEAPIFY(A, largest)        //递归</span><br><span class="line">end <span class="keyword">if</span></span><br></pre></td></tr></table></figure>
-<p>根据伪代码可以很清晰地看到，每次要从$A[i], A[RIGHT(i)],A[LEFT(i)]$中选取最大的那个值对应下标$largest$，然后交换$A[i]$和$A[largest]$，之后递归$largest$下标为根的子树。配合下图理解一下这个过程。</p>
-<div align=center>
-	<img src="20200330131447950.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330131532531.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330131552553.png" width="400" height="250">
-</div>
-<p>  仿照$MAX-HEAPIFY$，书上没有关于最小堆性质维护的伪代码，这里算作补充吧，维护最小堆的过程将其命名为$MIN-HEAPIFY$。伪代码描述如下：</p>
-<p><strong>$MIN-HEAPIFY(A,i)$：使$A[i]$为根节点的子树满足最小堆的性质。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">MIN-HEAPIFY(A, i):</span><br><span class="line">l = LEFT(i)    	//获取i的左孩子</span><br><span class="line">r = RIGHT(i)   	//获取i的右孩子</span><br><span class="line"><span class="keyword">if</span> l &lt;= A.heap_size <span class="keyword">and</span> A[l] &lt; A[i]:   //比较l和i对应节点的大小</span><br><span class="line">	smallest = l 					   //smallest记录l,i,r中最小值对应的下标</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	smallest = i</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line"><span class="keyword">if</span> r &lt;= A.heap_size <span class="keyword">and</span> A[r] &lt; A[smallest]:</span><br><span class="line">	smallest = r</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line"><span class="keyword">if</span> smallest != i:</span><br><span class="line">	exchange A[i] <span class="keyword">with</span> A[smallest]  //如果i不是三个中最大的，则A[i]与最大的孩子交换位置</span><br><span class="line">	MIN-HEAPIFY(A, smallest)        //递归</span><br><span class="line">end <span class="keyword">if</span></span><br></pre></td></tr></table></figure>
-<h1>建堆</h1>
-<p>  利用过程$MAX-HEAPIFY$，我们可以使用自底向上的方法来将一个大小为$n=A.length$的数组$A[1\cdots n]$转换为最大堆。子数组$A[\frac{1}{2}n+1\cdots n]$中的元素都是树的叶子节点。每个叶子节点都可以看成只包含一个元素的堆。那么建堆的过程伪代码描述如下：</p>
-<p><strong>$BUILD-MAX-HEAP(A)$：将$A$建立为最大堆。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BUILD-MAX-HEAP(A):</span><br><span class="line">A.heap_size = A.length</span><br><span class="line"><span class="keyword">for</span> i = A.length/<span class="number">2</span> downto <span class="number">1</span>:</span><br><span class="line">	MAX-HEAPIFY(A, i)</span><br><span class="line">end <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
-<p>  下图完整地表示了这个过程。配合理解。</p>
-<div align=center>
-	<img src="20200330134058962.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330134140520.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330134207474.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330134229546.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330134248897.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330134307339.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330134325411.png" width="400" height="250">
-</div>
-<h1>堆排序</h1>
-<p>  堆排序算法首先利用$BUILD-MAX-HEAP$过程，将数组$A[1\cdots n]$建成最大堆，其中$n=A.length$。由于根节点是$A[1]$，它始终是数组中最大的元素，如果将$A[1]$与$A[n]$交换，那么最大元素就找到了正确的位置，然后将$A[1\cdots n-1]$作为新堆，堆的元素范围$heap_size$减去1，对$A[1]$进行最大堆性质维护$MAX-HEAPIFY$，以此类推。算法的伪代码描述如下：</p>
-<p><strong>$HEAPSORT(A)$：对$A$进行堆排序。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HEAPSORT(A):</span><br><span class="line">BUILD-MAX-HEAP(A)          		   //对A进行建堆操作</span><br><span class="line"><span class="keyword">for</span> i = A.length downto <span class="number">2</span>:</span><br><span class="line">	exchange A[<span class="number">1</span>] <span class="keyword">with</span> A[i]        //交换A[<span class="number">1</span>]到堆中最后的位置</span><br><span class="line">	A.heap_size = A.heap_size - <span class="number">1</span>  //堆的有效范围减<span class="number">1</span></span><br><span class="line">	MAX-HEAPIFY(A, <span class="number">1</span>)			   //对A[<span class="number">1</span>]进行最大堆性质维护</span><br><span class="line">end <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
-<p>下面一组图展示了整个排序过程。图片并不是很清晰，但是这个过程很好理解。</p>
-<div align=center>
-	<img src="20200330140709882.png">
-</div>
-<div align=center>
-	<img src="20200330140744400.png">
-</div>
-<h1>优先队列</h1>
-<p>  优先队列是<font color='red'><strong>一种用来维护由一组元素构成的集合$S$的数据结构</strong></font>，其中的每一个元素都有一个相关的值，称为关键字$key$。<br>
-  优先队列也有两种形式：<strong>最大优先队列</strong>和<strong>最小优先队列</strong>。最大和最小是大同小异的，这里选取最大优先队列来说，一个最大优先队列支持以下几种操作：</p>
+<p>  二叉搜索树的性质允许我们通过<font color='red'><strong>中序遍历</strong></font>（$inorder\ tree\ walk$）来输出二叉搜索树中的所有关键字。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/104508451">leetcode 94.二叉树的中序遍历</a>可以用作练习。下面是中序遍历的递归版伪代码描述。（非递归需要借助栈的数据结构）</p>
+<p><strong>$INORDER-TREE-WALK(T.root)$：中序遍历二叉树$T$</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INORDER-TREE-WALK(x):</span><br><span class="line"><span class="keyword">if</span> x != <span class="literal">None</span>:</span><br><span class="line">	INORDER-TREE-WALK(x.left)</span><br><span class="line">	<span class="built_in">print</span> x.key</span><br><span class="line">	INORDER-TREE-WALK(x.right)</span><br><span class="line">end <span class="keyword">if</span></span><br></pre></td></tr></table></figure>
+<p>与中序遍历有关的二叉搜索树基本性质的练习还有：</p>
 <ul>
-<li>$INSERT(S, x)$：把元素$x$插入集合$S$中</li>
-<li>$MAXIMUM(S)$：返回$S$中具有最大关键字的元素</li>
-<li>$EXTRACT-MAX(S)$：去掉并返回$S$中的具有最大关键字的元素</li>
-<li>$INCREASE-KEY(S,x,k)$：将元素$x$的关键字增加到$k$，这里假设$k$的值不小于$x$的原关键字值</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105014305">Leetcode 98.验证二叉搜索树</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105088211">Leetcode 99.恢复二叉搜索树</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105177398">Leetcode 173.二叉搜索树迭代器</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105262352">Leetcode 230.二叉搜索树中第K小的元素</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105064432">Leetcode 530.二叉搜索树的最小绝对差</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105115378">Leetcode 538.把二叉搜索树转换为累加树</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105064520">Leetcode 783.二叉搜索树结点最小距离</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105023665">Leetcode 938.二叉搜索树的范围和</a></li>
 </ul>
-<p>显然优先队列可以通过堆来实现，下面具体针对<strong>最大优先队列</strong>的操作。</p>
-<h2 id="最大值（-MAXIMUM-）">最大值（$MAXIMUM$）</h2>
-<p>  最大值显然就是$A[1]$了，所以直接返回就可以了，伪代码描述如下：</p>
-<p><strong>$HEAP-MAXIMUM(A)$：返回最大关键字的元素。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HEAP-MAXIMUM(A):</span><br><span class="line"><span class="keyword">return</span> A[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="返回并弹出最大值（-EXTRACT-MAX-）">返回并弹出最大值（$EXTRACT-MAX$）</h2>
-<p>  弹出，并返回最大值的过程类似于$HEAPSORT$过程，需要改变$heap_size$。伪代码描述如下：</p>
-<p><strong>$HEAP-EXTRACT-MAX(A)$：弹出并返回最大值。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HEAP-EXTRACT-MAX(A):</span><br><span class="line"><span class="keyword">if</span> A.heap_size &lt; <span class="number">1</span>:</span><br><span class="line">	error <span class="string">&quot;heap underflow&quot;</span></span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line"><span class="built_in">max</span> = A[<span class="number">1</span>]                      //最大值为堆顶</span><br><span class="line">A[<span class="number">1</span>] = A[A.heap_size]			//堆的最后一个孩子与A[<span class="number">1</span>]交换</span><br><span class="line">A.heap_size = A.heap_size - <span class="number">1</span>	//堆的有效范围减<span class="number">1</span></span><br><span class="line">MAX-HEAPIFY(A, <span class="number">1</span>)				//对堆顶进行最大堆性质维护</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">max</span></span><br></pre></td></tr></table></figure>
-<h2 id="增大关键字（-INCREASE-KEY-）">增大关键字（$INCREASE-KEY$）</h2>
-<p>  在优先队列中，我们希望增加关键字的优先队列元素由对应的数组下标$i$来标识。这个操作需要将$A[i]$更新为新值。增大的$A[i]$可能会影响堆的性质，所以需要在当前节点到根节点的路径上找到一个合适的位置插入这个新值。伪代码描述如下：</p>
-<p><strong>$HEAP-INCREASE-KEY(A, i, key)$：将$A[i]$的值更新为$key$。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HEAP-INCREASE-KEY(A, i, key):</span><br><span class="line"><span class="keyword">if</span> key &lt; A[i]:</span><br><span class="line">	error <span class="string">&quot;new key is smaller than current key&quot;</span></span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line">A[i] = key</span><br><span class="line"><span class="keyword">while</span> i &gt; <span class="number">1</span> <span class="keyword">and</span> A[PARENT(i)] &lt; A[i]:</span><br><span class="line">	exchange A[i] <span class="keyword">with</span> A[PARENT(i)]</span><br><span class="line">	i = PARENT(i)</span><br><span class="line">end <span class="keyword">while</span></span><br></pre></td></tr></table></figure>
-<p>结合下图来理解伪代码，图中是将$4$更新为$15$。</p>
-<div align=center>
-	<img src="20200330211245675.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330211324738.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330211419308.png" width="400" height="250">
-</div>
-<div align=center>
-	<img src="20200330211433837.png" width="400" height="250">
-</div>
+<h1>查询二叉搜索树</h1>
+<p>  我们经常需要查找一个存储在二叉搜索树中的关键字。这些查询操作在高度为$h$的二叉搜索树上，都可以在$O(h)$的时间内执行完毕。</p>
+<h2 id="查找（-SEARCH-）">查找（$SEARCH$）</h2>
+<p>  输入一个指向树根的指针和一个关键字$k$，如果这个节点存在，$TREE-SEARCH$返回一个指向关键字为$k$的节点的指针，否则返回$None$。算法伪代码如下：</p>
+<p><strong>$TREE-SEARCH(x,k)$：找到关键字为$k$的节点。（递归版本）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">TREE-SEARCH(x,k):</span><br><span class="line"><span class="keyword">if</span> x == <span class="literal">None</span> <span class="keyword">or</span> k == x.key:</span><br><span class="line">	<span class="keyword">return</span> x</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line"><span class="keyword">if</span> k &lt; x.key:</span><br><span class="line">	<span class="keyword">return</span> TREE-SEARCH(x.left, k)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">return</span> TREE-SEARCH(x.right, k)</span><br><span class="line">end <span class="keyword">if</span> </span><br></pre></td></tr></table></figure>
+<p><strong>$ITERATIVE-TREE-SEARCH(x,k)$：找到关键字为$k$的节点。（迭代版本）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ITERATIVE-TREE-SEARCH(x,k):</span><br><span class="line"><span class="keyword">while</span> x != <span class="literal">None</span> <span class="keyword">and</span> k != x.key:</span><br><span class="line">	<span class="keyword">if</span> k &lt; x.key:</span><br><span class="line">		x = x.left</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		x = x.right</span><br><span class="line">	end <span class="keyword">if</span></span><br><span class="line">end <span class="keyword">while</span></span><br><span class="line"><span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<p>与查找有关的练习：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105023925">Leetcode 700.二叉搜索树中的搜索</a></li>
+</ul>
+<h2 id="最大-最小关键字（-MAXIMUM-MINMUM-）">最大/最小关键字（$MAXIMUM,MINMUM$）</h2>
+<p>  根据二叉搜索树的性质，我们可以很容易地想到，整棵树中，一直向左的最后一个孩子的关键字就是最小的。相对地，一直向右的最后一个孩子的关键字就是最大的。算法的伪代码描述如下：</p>
+<p><strong>$TREE-MINIMUM(x)$，返回二叉搜索树关键字最小的节点。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TREE-MINIMUM(x):</span><br><span class="line"><span class="keyword">while</span> x.left != <span class="literal">None</span>:</span><br><span class="line">	x = x.left</span><br><span class="line">end <span class="keyword">while</span></span><br><span class="line"><span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<p><strong>$TREE-MAXIMUM(x)$，返回二叉搜索树关键字最大的节点。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TREE-MAXIMUM(x):</span><br><span class="line"><span class="keyword">while</span> x.right != <span class="literal">None</span>:</span><br><span class="line">	x = x.right</span><br><span class="line">end <span class="keyword">while</span></span><br><span class="line"><span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<h2 id="后继和前驱（-SUCCESSOR-PREDECESSOR-）">后继和前驱（$SUCCESSOR,PREDECESSOR$）</h2>
+<p>  给定二叉搜索树中的一个节点，有时候需要按中序遍历的次序查找它的后继。如果所有的关键字互不相同，则<font color='red'><strong>一个节点$x$的后继是大于$x.key$的最小关键字的节点</strong></font>。一棵二叉搜索树的结构允许我们通过没有任何关键字的比较来确定一个节点的后继。下面用伪代码来描述查找节点$x$的后继：</p>
+<p><strong>$TREE-SUCCESSOR(x)$，寻找节点$x$的后继。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TREE-SUCCESSOR(x):</span><br><span class="line"><span class="keyword">if</span> x.right != <span class="literal">None</span>:</span><br><span class="line">	<span class="keyword">return</span> TREE-MINIMUM(x.right)</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line">y = x.parent</span><br><span class="line"><span class="keyword">while</span> y != <span class="literal">None</span> <span class="keyword">and</span> x == y.right:</span><br><span class="line">	x = y</span><br><span class="line">	y = y.parent</span><br><span class="line">end <span class="keyword">while</span></span><br><span class="line"><span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
+<p>根据伪代码，可以看出$TREE-SUCCESSOR$被分成了两个部分：</p>
+<ul>
+<li>如果节点$x$的右子树非空，那么$x$的后继就是$x$右子树中的最左节点$TREE-MINIMUM(x.right)$</li>
+<li>如果节点$x$的右子树为空并且$x$有一个后继$y$，那么$y$就是$x$的最底层祖先，并且$y$的左孩子也是$x$的一个祖先。</li>
+</ul>
+<p>要理解这两种情况只需要根据伪代码思考一下中序遍历的过程。</p>
+<p>  节点$x$的前驱的查找与后继刚好是<strong>对称的</strong>，思考一下如何逆序输出一棵二叉搜索树，答案就是将中序遍历倒过来。书上并没有给出前驱的伪代码，这里做一下补充。伪代码如下：</p>
+<p><strong>$TREE-PREDECESSOR(x)$，寻找节点$x$的前驱。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TREE-PREDECESSOR(x)：</span><br><span class="line"><span class="keyword">if</span> x.left != <span class="literal">None</span>:</span><br><span class="line">	<span class="keyword">return</span> TREE-MAXIMUM(x.left)</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line">y = x.parent</span><br><span class="line"><span class="keyword">while</span> y != <span class="literal">None</span> <span class="keyword">and</span> x == y.left:</span><br><span class="line">	x = y</span><br><span class="line">	y = y.parent</span><br><span class="line">end <span class="keyword">while</span></span><br><span class="line"><span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
 <h2 id="插入（-INSERT-）">插入（$INSERT$）</h2>
-<p>  向优先队列中插入一个新值$key$，这需要将先拓展堆，增加一个关键字为$-\infty$的叶节点，然后调用$HEAP-INCREASE-KEY$将它的值更新为$key$，同时维持了最大堆的性质。伪代码描述如下：</p>
-<p><strong>$MAX-HEAP-INSERT(A, key)$：插入一个新元素到优先队列中。</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MAX-HEAP-INSERT(A, key):</span><br><span class="line">A.heap_size = A.heap_size + <span class="number">1</span></span><br><span class="line">A[heap_size] = -∞</span><br><span class="line">HEAP-INCREASE-KEY(A,heap_size,key)</span><br></pre></td></tr></table></figure>
-<h2 id="优先队列的应用">优先队列的应用</h2>
-<p>  相关应用如下：</p>
+<p>  插入操作会引起由二叉搜索树表示的动态集合的变化。一定要修改数据结构来反映这个变化，同时修改不能破坏二叉搜索树的性质。<br>
+  将一个新的值$v$插入到一个二叉搜索树$T$中，需要调用过程$TREE-INSERT$。该过程以节点$z$作为输入，其中$z.key=v,z.left=None,z.right=None$。算法的伪代码描述如下：</p>
+<p><strong>$TREE-INSERT(T,z)$，将值为$v$的节点$z$插入树$T$。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">TREE-INSERT(T,z):</span><br><span class="line">y = <span class="literal">None</span></span><br><span class="line">x = T.root</span><br><span class="line"><span class="keyword">while</span> x != <span class="literal">None</span>:</span><br><span class="line">	y = x</span><br><span class="line">	<span class="keyword">if</span> z.key &lt; x.key:</span><br><span class="line">		x = x.left</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		x = x.right</span><br><span class="line">	end <span class="keyword">if</span></span><br><span class="line">end <span class="keyword">while</span></span><br><span class="line">z.p = y</span><br><span class="line"><span class="keyword">if</span> y == <span class="literal">None</span>:</span><br><span class="line">	T.root = z   //树T为空树</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> z.key &lt; y.key:</span><br><span class="line">	y.left = z</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	y.right = z</span><br><span class="line">end <span class="keyword">if</span></span><br></pre></td></tr></table></figure>
+<p>那么分析一下这个伪代码：</p>
+<ol>
+<li>首先$y$一直记录$x$的父节点，代码的$while$循环部分类似于$SEARCH$操作，找到$z$应该插入的位置，最后$x$为空的位置就是$z$要插入的位置。</li>
+<li>接下来判断了一下$y$是否为空，如果为空说明是一棵空树。</li>
+<li>最后判断$z$应该是$y$的左孩子还是右孩子。</li>
+</ol>
+<p>二叉搜索树插入的练习：</p>
 <ul>
-<li>最大优先队列：共享计算机系统的作业调度，依据优先级调度作业。</li>
-<li>最小优先队列：可以被用于基于事件驱动的模拟器，事件需要按照发生的时间顺序进行模拟。</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105045056">Leetcode 701.二叉搜索树中的插入操作</a></li>
+</ul>
+<h2 id="删除（-DELETE-）">删除（$DELETE$）</h2>
+<p>  删除操作与插入操作同样需要修改数据结构，从一棵二叉搜索树$T$中删除一个节点$z$的整个策略分为三种基本情况：</p>
+<ul>
+<li>如果$z$没有孩子节点，那么只是简单地将它删除，并修改它的父节点，用$None$作为孩子来替换$z$。</li>
+<li>如果$z$只有一个孩子，那么将这个孩子提升到树中$z$的位置上，并修改$z$的父节点，用$z$的孩子来替换$z$。</li>
+<li>如果$z$有两个孩子，那么找$z$的后继$y$（一定在$z$的右子树中），并让$y$占据树中$z$的位置。$z$的原来右子树部分称为$y$ 的新的右子树，并且$z$的左子树成为$y$的新的左子树。</li>
+</ul>
+<p>前两种情况都很简单，<font color='red'><strong>第三种情况比较麻烦，因为还与$y$是否为$z$的右孩子相关。</strong></font>那么，结合图来具体分析一下上面三种情况。</p>
+<p>（1）如果$z$没有左孩子，那么用其右孩子来替换$z$，这个右孩子可以是$None$，也可以不是。如果是$None$则对应于上述第一种情况，如果不是$None$则对应于上述第二种情况，如下图所示。</p>
+<div align=center>
+	<img src="20200324100653724.png" width="400" height="250">
+</div>
+<p>（2）如果$z$只有一个孩子且为其左孩子，那么用左孩子来替换$z$，如下图所示。</p>
+<div align=center>
+	<img src="20200324101012291.png" width="400" height="250">
+</div>
+<p>（3）如果$z$有两个孩子，那么就要查找$z$的后继$y$，这个后继位于$z$的右子树中，并且没有左孩子。需要将$y$移出原来的位置进行拼接，并替换树中的$z$。这时，如果$y$是$z$的右孩子，那么用$y$替换$z$，并仅留下$y$的右孩子，如下图所示。</p>
+<div align=center>
+	<img src="20200324101820681.png" width="400" height="250">
+</div>
+<p>（4）接着（3）,$y$位于$z$的右子树中但不是$z$的右孩子。在这种情况下，先用$y$的右孩子替换$y$，然后再用$y$替换$z$，如下图所示。</p>
+<div align=center>
+	<img src="20200324102742437.png">
+</div>
+<p>  为了在二叉搜索树中内移动子树，定义一个子过程$TRANSPLANT$，它是用另一棵子树替换一棵子树并成为其双亲的孩子节点。当$TRANSPLANT$用一棵以$v$为根的子树来替换一棵以$u$为根的子树时，节点$u$的双亲就变为节点$v$的双亲，并且最后$v$成为$u$的双亲的相应孩子。算法伪代码描述如下：</p>
+<p><strong>$TRANSPLANT(T,u,v)$，用$v$替换$u$。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TRANSPLANT(T,u,v):</span><br><span class="line"><span class="keyword">if</span> u.parent == <span class="literal">None</span>:   //处理u为根节点的情况</span><br><span class="line">	T.root = v</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> u == u.parent.left:</span><br><span class="line">	u.parent.left = v</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	u.parent.right = v</span><br><span class="line">end <span class="keyword">if</span></span><br><span class="line"><span class="keyword">if</span> v != <span class="literal">None</span>:		//允许v为<span class="literal">None</span></span><br><span class="line">	v.parent = u.parent  </span><br><span class="line">end <span class="keyword">if</span></span><br></pre></td></tr></table></figure>
+<p>那么通过$TRANSPLANT$以及查找节点后继的方法，我们就可以写出从二叉搜索树$T$中删除节点$z$的删除过程，伪代码描述如下：</p>
+<p><strong>$TREE-DELETE(T, z)$，从二叉搜索树$T$中删除节点$z$。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">TREE-DELETE(T,z):</span><br><span class="line"><span class="keyword">if</span> z.left == <span class="literal">None</span>:</span><br><span class="line">	TRANSPLANT(T, z, z.right)</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> z.right = <span class="literal">None</span>:</span><br><span class="line">	TRANSPLANT(T, z, z.left)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	y = TREE-MINIMUM(z.right)</span><br><span class="line">	<span class="keyword">if</span> y.parent != z:</span><br><span class="line">		TRANSPLANT(T, y, y.right)</span><br><span class="line">		y.right = z.right</span><br><span class="line">		y.right.parent = y</span><br><span class="line">	end <span class="keyword">if</span></span><br><span class="line">	TRANSPLANT(T, z, y)</span><br><span class="line">	y.left = z.left</span><br><span class="line">	y.left.parent = z</span><br><span class="line">end <span class="keyword">if</span></span><br></pre></td></tr></table></figure>
+<p>二叉搜索树节点删除的相关练习：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/105069327">Leetcode 450.删除二叉搜索树中的节点</a></li>
 </ul>
 
 
@@ -598,12 +572,12 @@ $$</p>
         <ul class="pager">
           
           <li class="previous">
-            <a href="/cn/hyperCuber/" data-toggle="tooltip" data-placement="top" title="超立方体及其可视化（processing）">&larr; Previous Post</a>
+            <a href="/cn/heap/" data-toggle="tooltip" data-placement="top" title="堆、堆排序、优先队列">&larr; Previous Post</a>
           </li>
           
           
           <li class="next">
-            <a href="/cn/BST/" data-toggle="tooltip" data-placement="top" title="二叉搜索树">Next Post &rarr;</a>
+            <a href="/cn/隐马尔可夫模型/" data-toggle="tooltip" data-placement="top" title="隐马尔可夫模型">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -652,7 +626,7 @@ $$</p>
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=堆、堆排序、优先队列&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/heap/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=二叉搜索树&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/BST/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -690,7 +664,7 @@ $$</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">（二叉）堆</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二叉堆的两种形式</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">维护堆的性质</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">建堆</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">堆排序</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">优先队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%80%E5%A4%A7%E5%80%BC%EF%BC%88-MAXIMUM-%EF%BC%89"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">最大值（$MAXIMUM$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%94%E5%9B%9E%E5%B9%B6%E5%BC%B9%E5%87%BA%E6%9C%80%E5%A4%A7%E5%80%BC%EF%BC%88-EXTRACT-MAX-%EF%BC%89"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">返回并弹出最大值（$EXTRACT-MAX$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A2%9E%E5%A4%A7%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88-INCREASE-KEY-%EF%BC%89"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">增大关键字（$INCREASE-KEY$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8F%92%E5%85%A5%EF%BC%88-INSERT-%EF%BC%89"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">插入（$INSERT$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-nav-number">6.5.</span> <span class="toc-nav-text">优先队列的应用</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">二叉搜索树的性质</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">查询二叉搜索树</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9F%A5%E6%89%BE%EF%BC%88-SEARCH-%EF%BC%89"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">查找（$SEARCH$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%80%E5%A4%A7-%E6%9C%80%E5%B0%8F%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88-MAXIMUM-MINMUM-%EF%BC%89"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">最大&#x2F;最小关键字（$MAXIMUM,MINMUM$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%90%8E%E7%BB%A7%E5%92%8C%E5%89%8D%E9%A9%B1%EF%BC%88-SUCCESSOR-PREDECESSOR-%EF%BC%89"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">后继和前驱（$SUCCESSOR,PREDECESSOR$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8F%92%E5%85%A5%EF%BC%88-INSERT-%EF%BC%89"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">插入（$INSERT$）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4%EF%BC%88-DELETE-%EF%BC%89"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">删除（$DELETE$）</span></a></li></ol></li></ol>
         
         </div>
       </aside>
