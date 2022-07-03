@@ -499,7 +499,7 @@
 </ul>
 <p>指纹可以表示为：<br>
 $$<br>
-d_p + {d_{s_1}, d_{s_2}, \cdots, d_{s_n}}<br>
+d_p + \{d_{s_1}, d_{s_2}, \cdots, d_{s_n}\}<br>
 $$</p>
 <p>  攻击者可以从上述基于域名的指纹获取他们对应的基于IP的指纹，通过重复解析域名到IP地址。假设一个域名可能被解析为多个IP地址，那么基于域名的指纹中的每个域名将被转换为一组至少包含一个IP地址的IP地址。</p>
 <p>  基于IP地址的指纹也由两部分组成：</p>
@@ -509,13 +509,15 @@ $$</p>
 </ul>
 <p>指纹可以表示为：</p>
 <p>$$<br>
-{d_pip_1, d_pip_2, \cdots, d_pip_n} + { {d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n},\<br>
-{d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n}, \cdots, {d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n} }<br>
+\{d_pip_1, d_pip_2, \cdots, d_pip_n\} + \\<br>
+\{ \{d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n\},<br>
+\{d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n\}, \cdots, \{d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n\} \}<br>
 $$</p>
 <p>为了简化指纹的构造和匹配，考虑所有次域名的IP地址的并集来减少上述指纹。简化表示为：</p>
 <p>$$<br>
-{d_pip_1, d_pip_2, \cdots, d_pip_n} + { d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n,\<br>
-d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n, \cdots, d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n  }<br>
+\{d_pip_1, d_pip_2, \cdots, d_pip_n\} + \\<br>
+\{ d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n,<br>
+d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n, \cdots, d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n  \}<br>
 $$</p>
 <h2 id="通过Connection-Bucketing加强基于IP的指纹">通过Connection Bucketing加强基于IP的指纹</h2>
 <p>  当页面被访问时，为了获取web资源还会发起多个请求，一旦获取了资源，这些资源可能也会触发额外的对子资源的请求（例如js代码）。这些请求的绝对顺序可能会改变，由于一些不确定因素例如网络供应商的性能和底层操作系统。所以在构建基于域名的指纹时不考虑这种顺序。不过当将所有这些请求当做一个整体来 看时，仍然存在一种高级别的排序关系，当考虑<strong>关键渲染路径</strong>时，可以可靠地捕获这种关系。具体来说就是，有一些渲染阻塞和关键对象总是要在其他对象之前加载。</p>
@@ -533,7 +535,7 @@ $$</p>
 </ul>
 <p>  基于这些关键渲染路径，本文增强了指纹的结构，以构成主域名和3个事件对应的3组域名，加强的基于域名的指纹可以表示为：</p>
 <p>$$<br>
-d_p + {d_{s_1}, d_{s_2}, \cdots}+ {d_{s_2}, d_{s_3}, \cdots}+ { \cdots, d_{s_{n-1}}, d_{s_n}}<br>
+d_p + \{d_{s_1}, d_{s_2}, \cdots\}+ \{d_{s_2}, d_{s_3}, \cdots\}+ \{ \cdots, d_{s_{n-1}}, d_{s_n}\}<br>
 $$<br>
   如果在不同时间从一个域名获取多个对象，那么该域名可以出现在多个桶中。因此增强的基于IP的指纹遵循同样的结构，由4组IP地址组成，即主域名的IP地址集合+3个桶对应的3组IP地址集合。</p>
 <h1>实验</h1>

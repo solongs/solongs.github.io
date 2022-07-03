@@ -401,7 +401,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.1k</span> In Total
+              Words <span class="post-count">1.2k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -479,31 +479,31 @@ $$</p>
 <p>  第一步创建表格，给出$7,7^2,7^4,7^8,7^{16},\cdots (mod\ 853)$的值。注意，要得到表中的每个项，我们仅仅需要平方前面的数。由于在平方前总是模$853$进行简化，所以从未使数大于$853^2$，下面是$7^{2^k}\ (mod\ 853)$的列表</p>
 <p>$$<br>
 \begin{aligned}<br>
-&amp;7^1\equiv7\equiv7\ (mod\ 853)\<br>
-&amp;7^2\equiv(7^1)^2\equiv7^2\equiv 49\equiv 49\  (mod\ 853)\<br>
-&amp;7^4\equiv(7^2)^2\equiv49^2\equiv 2401\equiv 695\  (mod\ 853)\<br>
-&amp;7^8\equiv(7^4)^2\equiv695^2\equiv 483025\equiv 227\  (mod\ 853)\<br>
-&amp;7^{16}\equiv(7^8)^2\equiv227^2\equiv 51529\equiv 349\  (mod\ 853)\<br>
-&amp;7^{32}\equiv(7^{16})^2\equiv349^2\equiv 121801\equiv 675\  (mod\ 853)\<br>
-&amp;7^{64}\equiv(7^{32})^2\equiv675^2\equiv 455625\equiv 123\  (mod\ 853)\<br>
-&amp;7^{128}\equiv(7^{64})^2\equiv123^2\equiv 15129\equiv 628\  (mod\ 853)\<br>
+&amp;7^1\equiv7\equiv7\ (mod\ 853)\\<br>
+&amp;7^2\equiv(7^1)^2\equiv7^2\equiv 49\equiv 49\  (mod\ 853)\\<br>
+&amp;7^4\equiv(7^2)^2\equiv49^2\equiv 2401\equiv 695\  (mod\ 853)\\<br>
+&amp;7^8\equiv(7^4)^2\equiv695^2\equiv 483025\equiv 227\  (mod\ 853)\\<br>
+&amp;7^{16}\equiv(7^8)^2\equiv227^2\equiv 51529\equiv 349\  (mod\ 853)\\<br>
+&amp;7^{32}\equiv(7^{16})^2\equiv349^2\equiv 121801\equiv 675\  (mod\ 853)\\<br>
+&amp;7^{64}\equiv(7^{32})^2\equiv675^2\equiv 455625\equiv 123\  (mod\ 853)\\<br>
+&amp;7^{128}\equiv(7^{64})^2\equiv123^2\equiv 15129\equiv 628\  (mod\ 853)\\<br>
 &amp;7^{256}\equiv(7^{128})^2\equiv628^2\equiv 394384\equiv 298\  (mod\ 853)<br>
 \end{aligned}<br>
 $$</p>
 <p>  下一步，将指数$327$表成$2$的幂次和：</p>
 <p>$$<br>
 327 = 256+71=256+64+7=256+64+4+3=256+64+4+2+1<br>
-$$<br>
-现在使用$327$的二进制展开式计算<br>
-$$<br>
-7^{327} = 7^{256+64+4+2+1} = 298<em>123</em>695<em>49</em>7\ (mod\ 853)<br>
-$$<br>
-要完成$7^{327}\ (mod\ 853)$的计算，我们只需要程这$5$个数，然后用模$853$进行简化。如果所有$5$个数的乘积对我们来说尝试太大，则可以乘前两个数简化，再与第三个数相乘简化，以这种方式，我们就不需要对任何大于$853^2$的数进行计算，因此：<br>
-$$<br>
+$$</p>
+<p>现在使用$327$的二进制展开式计算</p>
+<p>$$<br>
+7^{327} = 7^{256+64+4+2+1} = 298*123*695*49*7\ (mod\  853)<br>
+$$</p>
+<p>要完成$7^{327}\ (mod\ 853)$的计算，我们只需要程这$5$个数，然后用模$853$进行简化。如果所有$5$个数的乘积对我们来说尝试太大，则可以乘前两个数简化，再与第三个数相乘简化，以这种方式，我们就不需要对任何大于$853^2$的数进行计算，因此：</p>
+<p>$$<br>
 \begin{aligned}<br>
-298<em>123</em>695<em>49</em>7\ (mod\ 853) &amp;= 828<em>695</em>49<em>7\ (mod\ 853) \<br>
-&amp;=  538</em>49<em>7\ (mod\ 853)\<br>
-&amp;= 772</em>7\ (mod\ 853)\equiv\ 286\ (mod\ 853)<br>
+298*123*695*49*7\ (mod\ 853) &amp;= 828*695*49*7\ (mod\ 853) \\<br>
+&amp;=  538*49*7\ (mod\ 853)\\<br>
+&amp;= 772*7\ (mod\ 853)\equiv\ 286\ (mod\ 853)<br>
 \end{aligned}<br>
 $$</p>
 <h1>逐次平方法</h1>
@@ -511,24 +511,24 @@ $$</p>
 <ol>
 <li>将$k$表成$2$的幂次和:<br>
 $$<br>
-k = u_0 + u_1<em>2+u_2</em>2^2+u_3<em>2^3+\cdots +u_r</em>2^r<br>
+k = u_0 + u_1*2+u_2*2^2+u_3*2^3+\cdots +u_r*2^r<br>
 $$<br>
 其中$u_i$为$0$或$1$</li>
 <li>使用逐次平方法制作模$m$的$a$的幂次表<br>
 $$<br>
 \begin{aligned}<br>
-&amp;a^1\equiv A_0\  (mod\ m)\<br>
-&amp;a^2\equiv(a^1)^2\equiv A_0^2\equiv A_1\  (mod\ m)\<br>
-&amp;a^4\equiv(a^2)^2\equiv A_1^2\equiv A_2\  (mod\ m)\<br>
-&amp;a^8\equiv(a^4)^2\equiv A_2^2\equiv A_3\  (mod\ m)\<br>
-&amp;\vdots\<br>
-&amp;a^{2^r}\equiv(a^{2^{r-1}})^2\equiv A_{r-1}^2\equiv A_r\  (mod\ m)\<br>
+&amp;a^1\equiv A_0\  (mod\ m)\\<br>
+&amp;a^2\equiv(a^1)^2\equiv A_0^2\equiv A_1\  (mod\ m)\\<br>
+&amp;a^4\equiv(a^2)^2\equiv A_1^2\equiv A_2\  (mod\ m)\\<br>
+&amp;a^8\equiv(a^4)^2\equiv A_2^2\equiv A_3\  (mod\ m)\\<br>
+&amp;\vdots\\<br>
+&amp;a^{2^r}\equiv(a^{2^{r-1}})^2\equiv A_{r-1}^2\equiv A_r\  (mod\ m)\\<br>
 \end{aligned}<br>
 $$<br>
 注意要计算表的每一行，仅需要取前一行最末的数，平方它然后用模$m$简化。也注意到表有$r+1$行，其中$r$是第一步中$k$的二进制展开式中$2$的最高指数。</li>
 <li>乘积：<br>
 $$<br>
-A_0^{u_0}*A_1^{u_1}<em>A_2^{u_2}</em>\cdots *A_r^{u_r}\ (mod\ m)<br>
+A_0^{u_0}*A_1^{u_1}*A_2^{u_2}*\cdots *A_r^{u_r}\ (mod\ m)<br>
 $$<br>
 同余于$a^k\ (mod\ m)$。注意到所有$u_i$是$0,1$。因此这个数实际上是$u_i=1$的那些$A_i$的乘积。</li>
 </ol>
@@ -546,14 +546,14 @@ $$<br>
 </ul>
 <p>下面来解释一下该算法，首先需要知道一个取模运算的运算法则，即：<br>
 $$<br>
-(a*b)%p = (a%p * b%p)% p<br>
+(a*b)\%p = (a\%p * b\%p)\% p<br>
 $$<br>
 对于一个大数次幂，可以通过降幂的方法来进行加速计算，降幂方法就是指数除以$2$，底数开平方，例如$a^{11}$，我们可以通过以下步骤来计算：</p>
 <p>$$<br>
 \begin{aligned}<br>
-a^{11} &amp;= (a^2)^5<em>a\<br>
-&amp;=(a^2)^4</em>a^2<em>a\<br>
-&amp;=(a^4)^2 * a^2</em>a\<br>
+a^{11} &amp;= (a^2)^5*a\\<br>
+&amp;=(a^2)^4*a^2*a\\<br>
+&amp;=(a^4)^2 * a^2*a\\<br>
 &amp;=(a^8)^1 * a^2*a<br>
 \end{aligned}<br>
 $$<br>

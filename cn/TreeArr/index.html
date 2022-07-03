@@ -488,14 +488,14 @@
 </ol>
 <p>  先解决第一个函数，看几个例子：<br>
 $$<br>
-A[1] + \cdots + A[14]  = C[8] + C[12] + C[14]\<br>
-A[1] + \cdots + A[11]  = C[8] + C[10] + C[11]\<br>
+A[1] + \cdots + A[14]  = C[8] + C[12] + C[14]\\<br>
+A[1] + \cdots + A[11]  = C[8] + C[10] + C[11]\\<br>
 $$<br>
 类似地，数组$A$的前$n$项和都可以由树状数组中的一些项的求和来表达，我们可以通过$lowbit$操作来找出这些项：</p>
 <p>$$<br>
 \begin{aligned}<br>
-getSum(n) &amp;= A[1] + \cdots + A[n] \<br>
-&amp;= A[1] + \cdots + A[n - lowbit(n)] + A[n - lowbit(n) + 1] + \cdots + A[n]\<br>
+getSum(n) &amp;= A[1] + \cdots + A[n] \\<br>
+&amp;= A[1] + \cdots + A[n - lowbit(n)] + A[n - lowbit(n) + 1] + \cdots + A[n]\\<br>
 &amp;= getSum(n - lowbit(n)) + C(n)<br>
 \end{aligned}<br>
 $$<br>
@@ -509,8 +509,8 @@ $$<br>
   实际上这就是刚刚求和的逆操作，每次加上一个$lowbit$就可以得到下一个位置：</p>
 <p>$$<br>
 \begin{aligned}<br>
-&amp; C[6]: 110\<br>
-&amp; C[8]: 1000 = 6 + lowbit(6) = 110 + 10\<br>
+&amp; C[6]: 110\\<br>
+&amp; C[8]: 1000 = 6 + lowbit(6) = 110 + 10\\<br>
 &amp; C[16]: 10000  = 8 + lowbit(8) = 1000 + 1000<br>
 \end{aligned}<br>
 $$</p>
