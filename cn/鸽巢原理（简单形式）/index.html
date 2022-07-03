@@ -138,10 +138,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/categories/论文阅读/算法和数据结构/">
+  <link rel="canonical" href="http://yoursite-url/cn/鸽巢原理（简单形式）/">
   <title>
     
-      geniusMzy&#39;s cape
+      鸽巢原理 - geniusMzy&#39;s cape
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -347,19 +347,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -377,10 +377,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Just Be Yourself</h1>
-            <!--<hr class="small">-->
-            <span class="subheading"></span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#math" title="math">math</a>
+              
+            </div>
+            <h1>鸽巢原理</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Ma Dala on
+              2020-08-03
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">11</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2.8k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -421,527 +453,342 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h1>简介</h1>
+<p>  鸽巢原理有许多名字，最普通的名字叫鸽巢原理，其他名字有狄利克雷（Dirichlet）抽屉原理、鞋盒（shoebox）原理。对鸽巢原理粗略地描述就是如果有许多鸽子飞进不够多的鸽巢内，那么至少要有一个鸽巢要被两个或多个鸽子占据。</p>
+<h1>鸽巢原理（简单形式）</h1>
+<p>  <font color='red'><strong>定理：如果要把$n+1$个物体放进$n$个盒子，那么至少有一个盒子包含两个或更多的物体</strong></font>。</p>
+<p>  可以说这个定理是相当显然的，如果$n$个盒子中的每一个都至多含有一个物体，那么物体的总数最多是$n$。这与$n+1$个物体矛盾。这个定理只是简单地断言，它只能保证这样盒子的存在性，因此，在使用鸽巢原理去证明一个排列或某种现象的存在时，在不考察所有可能性的情况下，它都不能对如何构造排列或寻找某一现象的例子给出任何有价值的指导。</p>
+<p>  下面是两个简单的应用：</p>
+<p>  <strong>应用1</strong>：在13个人中存在两个人，他们的生日在同一月份里<br>
+  <strong>应用2</strong>：设有$n$对已婚夫妇。至少要从这$2n$个人中选出$n+1$人才能保证能够选出一对夫妇</p>
+<p>  与鸽巢原理相关的其他原理：</p>
+<ul>
+<li>如果将$n$个物体放入$n$个盒子并且没有一个盒子是空的，那么每个盒子恰好有一个物体。</li>
+<li>如果将$n$个物体放入$n$个盒子并且没有盒子被放入多于一个的物体，那么每个盒子里有一个物体。</li>
+</ul>
+<p>  这三个原理的更抽象表述为：设$X$和$Y$是有限集合，并令$f:X\rightarrow Y$是一个从$X$到$Y$的函数</p>
+<ul>
+<li>如果$X$的元素多于$Y$的元素，那么$f$就不是一一映射</li>
+<li>如果$X$和$Y$含有相同个数的元素，并且$f$是满射，那么$f$就是一一映射</li>
+<li>如果$X$和$Y$含有相同个数的元素，并且$f$是一一映射，那么$f$就是满射</li>
+</ul>
+<p>下面介绍几个鸽巢原理的应用<br>
+**</p>
+<h2 id="应用1">应用1</h2>
+<p>  在13个人中存在两个人，他们的生日在同一月份里</p>
+<h2 id="应用2">应用2</h2>
+<p>  设有$n$对已婚夫妇。至少要从这$2n$个人中选出$n+1$人才能保证能够选出一对夫妇</p>
+<h2 id="应用3">应用3</h2>
+<p>  <font color='red'><strong>给定$m$个整数$a_1,a_2,\cdots, a_m$，存在满足$0\le k\lt l \le m$的整数$k$和$l$，使得$a_{k+1} + a_{k+2} + \cdots +a_l$能被$m$整除</strong></font>。通俗地说，就是在序列$a_1,a_2,\cdots, a_m$中存在连续的$a$，这些$a$的和能被$m$整除。</p>
+<p>证明：</p>
+<p>  考虑$m$个前缀和$s_i$（指的是从序列开始位置到某一位置的和）：<br>
+$$<br>
+\begin{aligned}<br>
+&amp;s_1=a_1\\<br>
+&amp;s_2=a_1+a_2\\<br>
+&amp;s_3=a_1+a_2+a_3\\<br>
+&amp;\vdots \\<br>
+&amp;s_m=a_1 +a_2+\cdots + a_m<br>
+\end{aligned}<br>
+$$<br>
+知道了这$m$个前缀和后，对于$a_{k+1} + a_{k+2} + \cdots +a_l$序列的和就可以通过$s_l-s_k$得来。我们知道一个数除以$m$得到的余数是$1,2,\cdots,m-1$中的一个，对于这$m$个前缀和，根据鸽巢原理，必有两个除以$m$有相同的余数。设余数为$r$，则存在$k\lt l$使得：<br>
+$$<br>
+s_l \equiv s_k\ (mod\ r)<br>
+$$<br>
+即：<br>
+$$<br>
+s_l - s_k = a_{k+1} + a_{k+2} + \cdots +a_l=cm<br>
+$$</p>
+<p>即：<br>
+$$<br>
+m\mid a_{k+1} + a_{k+2} + \cdots +a_l<br>
+$$</p>
+<h2 id="应用4">应用4</h2>
+<p>  一位国际象棋大师有$11$周的时间备战一场锦标赛，他决定每天至少下一盘棋，但为了不使自己过于疲劳他还决定每周不能下超过$12$盘棋。证明存在连续若干天，期间这位大师恰好下了$21$盘棋。</p>
+<p>证明：</p>
+<p>  设$a_1$是在第一天所下的盘数，$a_2$是第一天和第二天所下的总盘数（就是前面说的前缀和），以此类推。因为每天至少下一盘棋，因此我们会得到一个<strong>严格递增序列</strong>：<br>
+$$<br>
+a_1,a_2,\cdots,a_{77}<br>
+$$<br>
+另外，由于每周不能下超过$12$盘棋，所以$a_{77}\le 11*12=132$，故有：<br>
+$$<br>
+1\le a_1 \lt a_2 \lt \cdots \lt a_{77} \le 132<br>
+$$<br>
+序列$a_1+21,a_2+21,\cdots,a_{77}+21$也是一个严格递增序列：</p>
+<p>$$<br>
+22\le a_1+21 \lt a_2+21 \lt \cdots \lt a_{77}+21 \le 153<br>
+$$<br>
+于是，这$154$个数：<br>
+$$<br>
+a_1,a_2,\cdots,a_{77},a_1+21,a_2+21,\cdots,a_{77}+21<br>
+$$<br>
+中的每一个数都是$[1,153]$之间的整数，又因为左半边和右半边都是严格递增的两个序列，所以根据鸽巢原理，一定存在$i,j$满足$a_j = a_i + 21$，即：<br>
+$$<br>
+i+1,i+2,\cdots,j<br>
+$$<br>
+天总共下了21盘棋。</p>
+<h2 id="应用5">应用5</h2>
+<p>  从整数$1,2,\cdots,200$中选出$101$个整数。证明：在所选的这些整数之间存在两个这样的整数，其中一个可被另一个整除。</p>
+<p>证明：</p>
+<p>  通过分解出尽可能多的$2$因子，任意整数都可以写成$2^k<em>a$的形式，其中$k\ge 0$，$a$为奇数。对于$[1,200]$之间的整数，$a$是$100$个数$1,3,5,\cdots,199$中的一个。因此在所选的$101$个整数中存在两个整数，当写成上述形式时这两个数具有相同的$a$值。令其为$2^r</em>a,2^s*a$，根据$r,s$的大小关系可知必定有一个数整除另一个数。</p>
+<h1>鸽巢原理（加强版）</h1>
+<p>  上述定理是下面定理的特殊情况。</p>
+<p>  <font color='red'><strong>定理：设$q_1,q_2,\cdots q_n$是正整数。如果将<br>
+$$q_1 + q_2 + \cdots+q_n -n+1$$<br>
+个物体放入$n$个盒子内，那么或者第一个盒子至少含有$q_1$个物体，或者第二个盒子至少含有$q_2$个物体，$\cdots$，或者第$n$个盒子至少含有$q_n$个物体</strong>。</font></p>
+<p>证明：</p>
+<p>  假设我们把$q_1+q_2+\cdots+q_n - n + 1$个物体分放到$n$个盒子中。如果对于每个$i=1,2,\cdots,n$，第$i$个盒子含有少于$q_i$个物体，那么所有盒子中的物体总数不超过：<br>
+$$<br>
+(q_1-1) +(q_2-1)+\cdots + (q_n -1)= q_1 + q_2 + \cdots + q_n -n<br>
+$$<br>
+由于这个数比分配的物体总数少$1$，矛盾，因此我们得出结论对于某一个$i=1,2,\cdots,n$，第$i$个盒子至少包含$q_i$个物体。</p>
+<p>  鸽巢原理的简单形式可以通过取$q_1=q_2=\cdots = q_n=2$而由加强版得到。此时有：</p>
+<p>$$<br>
+q_1 + q_2 + \cdots+q_n -n+1=2n-n+1=n+1<br>
+$$</p>
+<p>鸽巢原理的加强版用着色的术语表述就是：<font color='red'><strong>如果$q_1 + q_2 + \cdots+q_n -n+1$个物体中的每一个物体被指定用$n$种颜色中的一种着色，那么存在某个$i$使得第$i$种颜色的物体（至少）有$q_i$个</strong>。</font></p>
+<p>  <font color='red'><strong>推论：设$n$和$r$都是正整数。如果把$n(r-1)+1$个物体分配到$n$个盒子中，那么至少有一个盒子含有$r$个或更多的物体。</strong></font></p>
+<p>  这个推论还可以用<strong>平均原理</strong>解释，即$\cfrac{n(r-1)+1}{n}=(r-1)+\cfrac{1}{n}$，那么这些盒子中有一个盒子至少含有$r$个物体。</p>
+<h2 id="平均原理">平均原理</h2>
+<ul>
+<li>如果$n$个非负整数$m_1,m_2,\cdots,m_n$的平均数大于$r-1$，即：$\cfrac{m_1+m_2+\cdots +m_n}{n}\gt r-1$，那么至少有一个整数大于或等于$r$</li>
+<li>如果$n$个非负整数$m_1,m_2,\cdots,m_n$的平均数小于$r+1$，即：$\cfrac{m_1+m_2+\cdots +m_n}{n}\lt r+1$，那么至少有一个整数小于$r+1$</li>
+<li>如果$n$个非负整数$m_1,m_2,\cdots,m_n$的平均数至少等于$r$，那么这$n$个整数$m_1,m_2,\cdots,m_n$至少有一个满足$m_i\ge r$</li>
+</ul>
+<h2 id="应用1-2">应用1</h2>
+<p>  一个果篮装有苹果、香蕉和橘子。为了保证篮子中或者至少有$8$个苹果，或者至少有$6$个香蕉，或者至少有$9$个橘子，则放入篮子中的水果的最小件数是多少？</p>
+<p>  根据鸽巢原理加强版可知，无论如何选择，$8+6+9-3+1=21$个水果将保证篮子内的水果满足所要求的性质。</p>
+<h2 id="应用2-2">应用2</h2>
+<p>  有两个碟子，其中一个比另一个小，它们都被分成$200$个均等的扇形。在大碟子中，任选$100$个扇形并着成红色；而且与的$100$个扇形被着成蓝色。在小碟子中，每一个扇形或者着成红色，或者着成蓝色，所着红色扇形和蓝色扇形的数目没有限制。然后，将小碟子放到大碟子上面使两个碟子的中心重合。证明：能够将两个碟子的扇形对齐使得小碟子和大碟子上相同颜色重合的扇形数目至少是$100$个。</p>
+<p>证明：<br>
+  将大碟子固定时，那么就存在$200$个可能的位置使得小碟子的每一个扇形含于大碟子的扇形中。首先数一下两个碟子重合的$200$个扇形中颜色一致的扇形的总数。因为大碟子每种颜色的扇形都有$100$个，因此在$200$个可能位置中，小碟子上的每一个扇形都恰好在$100$个位置上与大碟子上的对应扇形颜色一致，于是，在所有的位置上，颜色重合的总数等于小碟子上的扇形数乘以$100$，其结果为$20000$。因此每一个位置上的平均颜色重合数是$20000/200=100$。从而必然存在某个位置其颜色匹配数至少为$100$。</p>
+<h2 id="应用3-2">应用3</h2>
+<p>  证明每个由$n^2 + 1$个实数构成的序列$a_1,a_2,\cdots a_{n^2 + 1}$或者含有长度为$n+1$的递增子序列，或者含有长度为$n+1$的递减子序列。（注意是子序列不要求连续）</p>
+<p>证明：</p>
+<p>  <strong>假设不存在长度为$n+1$的递增子序列，那么就证明必然存在长度为$n+1$的递减子序列</strong>。对于每一个$k=1,2,\cdots,n^2+1$，<strong>设$m_k$为以$a_k$开始的最长递增子序列的长度</strong>。假设对于每一个$k=1,2,\cdots,n^2+1$，有$m_k \le n$，使得不存在长度为$n+1$的递增子序列。因为对于每一个$k$，都有$m_k \ge 1$成立，所以$m_1,m_2,\cdots,m_{n^2+1}$是$[1,n]$之间的$n^2 + 1$个整数。根据鸽巢原理，$m_1,m_2,\cdots,m_{n^2+1}$中有$n+1$个是相等的。令：<br>
+$$<br>
+m_{k_1} = m_{k_2} =\cdots =m_{k_{n+1}}<br>
+$$<br>
+其中$1\le k_1\lt k_2\lt \cdots \lt k_{n+1}\le n^2 + 1$。假设对于某个$i=1,2,\cdots, n$有$a_{k_i} \lt a_{k_{i+1}}$。那么，由于$k_i\lt k_{i+1}$，我们可以通过将$a_{k_i}$和$a_{k_{i+1}}$为起点的连续递增子序列合并成一个以$a_{k_i}$为起点的更长的递增子序列，这意味着$m_i\gt m_{i+1}$。所以我们得到结论$a_{k_i} \ge a_{k_{i+1}}$，因此：<br>
+$$a_{k_1}\ge a_{k_2}\ge \cdots \ge a_{k_{n+1}}$$<br>
+这是个长度为$n+1$的递减子序列。</p>
+<h1>4 参考资料</h1>
+<ul>
+<li>《组合数学》第五版 P42-P44</li>
+</ul>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/sortAndRev/" data-toggle="tooltip" data-placement="top" title="排列与逆序">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/NimGame/" data-toggle="tooltip" data-placement="top" title="Nim游戏">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=鸽巢原理&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/鸽巢原理（简单形式）/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">鸽巢原理（简单形式）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A81"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">应用1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A82"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">应用2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A83"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">应用3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A84"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">应用4</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A85"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">应用5</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">鸽巢原理（加强版）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B9%B3%E5%9D%87%E5%8E%9F%E7%90%86"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">平均原理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A81-2"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">应用1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A82-2"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">应用2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A83-2"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">应用3</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4 参考资料</span></a></li></ol>
+        
+        </div>
+      </aside>
     
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
+
+
+      <!-- Sidebar Container -->
+      <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2022">
-          <span class="tag-text">2022</span>
-        </span>
-        <ul>
-          
-          <li>
-            04-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/cacheRefuse/" style="color: #0085a1">
-              <span>
-                读论文《Cached and Confused:Web Cache Deception in the wild》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <li>
-            11-08
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/drain/" style="color: #0085a1">
-              <span>
-                Drain算法：日志解析
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-24
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/macChromium/" style="color: #0085a1">
-              <span>
-                Mac下构建Chromium
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/TreeArr/" style="color: #0085a1">
-              <span>
-                树状数组
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/socialMedia/" style="color: #0085a1">
-              <span>
-                读论文《Social Media and Fake News in the 2016 Election》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ChainofImp/" style="color: #0085a1">
-              <span>
-                读论文《The Chain of Implicit Trust:An Analysis of the Web Third-party Resources Loading》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-08
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/DomainEncry/" style="color: #0085a1">
-              <span>
-                读论文《Domain Name Encryption Is Not Enough Privacy Leakage via IP-based Website Fingerprinting》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/measureImpact/" style="color: #0085a1">
-              <span>
-                读论文《Measuring the Impact of a Successful DDoS Attack on the Customer Behaviour of Managed DNS Service Providers》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            02-22
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/securityCha/" style="color: #0085a1">
-              <span>
-                读论文《Security Challenges in an Increasingly Tangled Web》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            02-06
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/measureGlobal/" style="color: #0085a1">
-              <span>
-                读论文《Measuring the Global Recursive DNS Infrastructure:A View From the Edge 》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            02-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/analyzeThird/" style="color: #0085a1">
-              <span>
-                读论文《Analyzing Third Party Service Dependencies in Modern Web Services:Have We Learned from the Mirai-Dyn Incident?》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            01-31
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/supportEarly/" style="color: #0085a1">
-              <span>
-                读论文《Supporting Early and Scalable Discovery of Disinformation Websites》
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <li>
-            10-24
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/quickMod/" style="color: #0085a1">
-              <span>
-                幂模m与逐次平方法（快速幂算法）
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/genRSet/" style="color: #0085a1">
-              <span>
-                生成r子集
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/genGray/" style="color: #0085a1">
-              <span>
-                生成组合（Gray码）
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/sortAndRev/" style="color: #0085a1">
-              <span>
-                排列与逆序
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/NimGame/" style="color: #0085a1">
-              <span>
-                Nim游戏
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/shuffle/" style="color: #0085a1">
-              <span>
-                洗牌算法（Knuth-Durstenfeld Shuffle）
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-18
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/hyperCuber/" style="color: #0085a1">
-              <span>
-                超立方体及其可视化（processing）
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#math" title="math">math</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#third-party dependency" title="third-party dependency" rel="4">third-party dependency</a>
-    
-    
-    
-    <a href="/tags/#web resource" title="web resource" rel="2">web resource</a>
-    
-    
-    
-    <a href="/tags/#math" title="math" rel="7">math</a>
-    
-    
-    
-    <a href="/tags/#Encrypt DNS" title="Encrypt DNS" rel="1">Encrypt DNS</a>
-    
-    
-    
-    <a href="/tags/#website fingerprint" title="website fingerprint" rel="1">website fingerprint</a>
-    
-    
-    
-    <a href="/tags/#algorithm" title="algorithm" rel="7">algorithm</a>
-    
-    
-    
-    <a href="/tags/#CDN" title="CDN" rel="1">CDN</a>
-    
-    
-    
-    <a href="/tags/#DNS" title="DNS" rel="3">DNS</a>
-    
-    
-    
-    <a href="/tags/#CA" title="CA" rel="1">CA</a>
-    
-    
-    
-    <a href="/tags/#web安全" title="web安全" rel="1">web安全</a>
-    
-    
-    
-    <a href="/tags/#processing" title="processing" rel="1">processing</a>
-    
-    
-    
-    <a href="/tags/#chromium" title="chromium" rel="1">chromium</a>
-    
-    
-    
-    <a href="/tags/#DDoS" title="DDoS" rel="1">DDoS</a>
-    
-    
-    
-    <a href="/tags/#fake news" title="fake news" rel="2">fake news</a>
-    
-    
-    
-    <a href="/tags/#disinformation" title="disinformation" rel="1">disinformation</a>
-    
-    
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://v-vincen.life/" target="_blank">V_Vincen</a>
+          </li>
+          
+          <li>
+            <a href="http://beantech.org" target="_blank">Bean Tech</a>
+          </li>
+          
+          <li>
+            <a href="http://huangxuan.me" target="_blank">Hux Blog</a>
+          </li>
+          
+          <li>
+            <a href="https://hexo.io/" target="_blank">Hexo</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</section>
+</article>
 
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
 
-    
-    <img id="avatar_pic" src="/img/avatar/grootKD.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
 
-    
-    <p>开摆</p>
-    
+<!-- anchorjs end -->
 
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/solongs">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../../cn/cacheRefuse/">
-      <li>读论文《Cached and Confused:Web Cache Deception in the wild》</li>
-    </a>
-    
-    <a href="../../../cn/drain/">
-      <li>Drain算法：日志解析</li>
-    </a>
-    
-    <a href="../../../cn/macChromium/">
-      <li>Mac下构建Chromium</li>
-    </a>
-    
-    <a href="../../../cn/TreeArr/">
-      <li>树状数组</li>
-    </a>
-    
-    <a href="../../../cn/socialMedia/">
-      <li>读论文《Social Media and Fake News in the 2016 Election》</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2022/04/">April 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/11/">November 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/09/">September 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/03/">March 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2020/08/">August 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#论文阅读">
-      <li>论文阅读</li>
-    </a>
-    
-    <a href="/categories/#math">
-      <li>math</li>
-    </a>
-    
-    <a href="/categories/#算法和数据结构">
-      <li>算法和数据结构</li>
-    </a>
-    
-    <a href="/categories/#算法和数据结构">
-      <li>算法和数据结构</li>
-    </a>
-    
-    <a href="/categories/#Chromiume">
-      <li>Chromiume</li>
-    </a>
-    
-    <a href="/categories/#math">
-      <li>math</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
-  </div>
-</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
