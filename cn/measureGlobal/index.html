@@ -243,16 +243,16 @@
 
           
           
+          
+          
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
           </li>
-          
-          
           
           
           
@@ -268,9 +268,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -279,9 +279,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/tags/">
               
-              关于
+              标签
               
               
             </a>
@@ -395,11 +395,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">2</span> Minutes
+              Estimated Reading Time <span class="post-count">5</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">708</span> In Total
+              Words <span class="post-count">1.5k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -461,60 +461,67 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="背景-amp-目的"><a href="#背景-amp-目的" class="headerlink" title="背景&amp;目的"></a>背景&amp;目的</h1><p>&#8195;&#8195;用户除了使用ISP提供的递归DNS解析器之外还会使用第三方DNS提供商，例如Google、OpenDNS、Cloudflare。</p>
-<p>&#8195;&#8195;理解全球递归DNS解析器的基础设施、行为是很重要要的</p>
-<p>&#8195;&#8195;本文采用AdTag，来进行DNS测量。开发基于Js的DNS测量脚本，这些脚本通过处于控制下的权威名称服务器（NS）触发DNS解析过程。利用在线广告分发脚本以进行测量。</p>
-<p>&#8195;&#8195;通过该方法来分析全球DNS基础实施的三个方面：</p>
+        <h1>背景&amp;目的</h1>
+<p>  用户除了使用ISP提供的递归DNS解析器之外还会使用第三方DNS提供商，例如Google、OpenDNS、Cloudflare。</p>
+<p>  理解全球递归DNS解析器的基础设施、行为是很重要要的</p>
+<p>  本文采用AdTag，来进行DNS测量。开发基于Js的DNS测量脚本，这些脚本通过处于控制下的权威名称服务器（NS）触发DNS解析过程。利用在线广告分发脚本以进行测量。</p>
+<p>  通过该方法来分析全球DNS基础实施的三个方面：</p>
 <ul>
 <li>量化全球第三方DNS提供商的使用情况。重新审视终端用户使用商业DNS提供商而不是isp提供的解析器的动机。</li>
 <li>探索递归DNS解析器，为来自178个国家的用户提供服务，包括其部署策略和全球布局。</li>
 <li>比较由isp部署的DNS基础设施，它们为通过移动和固定网络连接的用户提供服务。</li>
 </ul>
-<h1 id="测量方法"><a href="#测量方法" class="headerlink" title="测量方法"></a>测量方法</h1><p>&#8195;&#8195;为了同时满足地理、时间范围、再现性和开放性的要求。本文采用了AdTag，一种灵活的基于js的方法，在全球范围内核短时间内测量递归DNS解析器的全球基础设施和用户的DNS选择。</p>
-<p>&#8195;&#8195;本方法利用专门构建的轻量级JS代码，以从浏览器探测配置的递归DNS解析器。</p>
-<p>&#8195;&#8195;通过将js代码嵌入在在线广告中，从用户的有利位置执行机会主义的网络测量。</p>
-<h2 id="基于js的DNS测量"><a href="#基于js的DNS测量" class="headerlink" title="基于js的DNS测量"></a>基于js的DNS测量</h2><div align=center>
+<h1>测量方法</h1>
+<p>  为了同时满足地理、时间范围、再现性和开放性的要求。本文采用了AdTag，一种灵活的基于js的方法，在全球范围内核短时间内测量递归DNS解析器的全球基础设施和用户的DNS选择。</p>
+<p>  本方法利用专门构建的轻量级JS代码，以从浏览器探测配置的递归DNS解析器。</p>
+<p>  通过将js代码嵌入在在线广告中，从用户的有利位置执行机会主义的网络测量。</p>
+<h2 id="基于js的DNS测量">基于js的DNS测量</h2>
+<div align=center>
 <img src="20210206175223385.png"/>
 </div>
-
-<p>&#8195;&#8195;通过在在线广告中插入js代码来出发对subdomain.dnserv.es的DNS请求，从而研究用户的递归DNS基础结构。dnserv.es的NS和HTTP服务器都处于本文的控制下，可以安全合法地记录客户端d和递归解析器R的ip级信息。</p>
+<p>  通过在在线广告中插入js代码来出发对subdomain.dnserv.es的DNS请求，从而研究用户的递归DNS基础结构。dnserv.es的NS和HTTP服务器都处于本文的控制下，可以安全合法地记录客户端d和递归解析器R的ip级信息。</p>
 <p>本文的权威NS受到R的请求后会做两件事儿：</p>
 <ol>
 <li>向自己的日志服务器报告R的IP地址及其子域名</li>
 <li>用A记录回应R，其中包含dnserv.es的IP地址</li>
 </ol>
 <p>初始的HTTP请求将使用404错误来结束。</p>
-<p>&#8195;&#8195;与DNS解析过程并行，js代码还会打开一个与自己的日志服务器的HTTP连接，来发送一条消息，其中包括：</p>
+<p>  与DNS解析过程并行，js代码还会打开一个与自己的日志服务器的HTTP连接，来发送一条消息，其中包括：</p>
 <ul>
 <li>子域名（用来识别session）</li>
 <li>设备的User-Agent</li>
 <li>Network Information API报告的网络信息连接类型，例如cellular、WiFi（只针对移动设备）</li>
 </ul>
-<p>&#8195;&#8195;终端设备的公网IP地址是从服务器端的套接字连接中获取的，这样就可以：</p>
+<p>  终端设备的公网IP地址是从服务器端的套接字连接中获取的，这样就可以：</p>
 <ul>
 <li>获取国家级的物理定位</li>
 <li>使用MaxMind为用户和递归DNS解析器识别network operator（AS级别）</li>
 </ul>
 <p>最终，每个DNS测量结果为：</p>
-<script type="math/tex; mode=display">
-<R's\  IP\  address,R's\ AS,R's\ country\ geolocation,\\anonymized\ d's\ public\ IP\ address,d's\ AS,d's\ country\ geolocation,\\d's\ type\ of\ connection></script><h2 id="全球范围内进行DNS测量"><a href="#全球范围内进行DNS测量" class="headerlink" title="全球范围内进行DNS测量"></a>全球范围内进行DNS测量</h2><p>&#8195;&#8195;利用在线广告活动来分发基于js的测试。这些活动可以通过不同类型的广告技术供应商来进行策划和分发，例如需求方平台（DSP）、广告网络（ad-network）</p>
-<p>&#8195;&#8195;本文运算还挺足的，在真实的终端用户设备中，可能获得数百万到数亿的每日广告印象（ad impression，指的是一次广告曝光）</p>
-<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>&#8195;&#8195;本文的成本是450美元，平均CPM是0.12美元。在这样的预算下，本文成功地从2.5M个IP地址中获得了3.8M的DNS测量样本。包括来自178个国家的25k个不同AS的1M/24 IP前缀。发现了76k个不同的DNS递归解析服务器，分布于14k个AS中的49k/24 IP前缀 </p>
-<h1 id="测量结果（DNS全球基础设施）"><a href="#测量结果（DNS全球基础设施）" class="headerlink" title="测量结果（DNS全球基础设施）"></a>测量结果（DNS全球基础设施）</h1><div align=center>
+<p>$$<br>
+&lt;R’s\  IP\  address,R’s\ AS,R’s\ country\ geolocation,\anonymized\ d’s\ public\ IP\ address,d’s\ AS,d’s\ country\ geolocation,\d’s\ type\ of\ connection&gt;<br>
+$$</p>
+<h2 id="全球范围内进行DNS测量">全球范围内进行DNS测量</h2>
+<p>  利用在线广告活动来分发基于js的测试。这些活动可以通过不同类型的广告技术供应商来进行策划和分发，例如需求方平台（DSP）、广告网络（ad-network）</p>
+<p>  本文运算还挺足的，在真实的终端用户设备中，可能获得数百万到数亿的每日广告印象（ad impression，指的是一次广告曝光）</p>
+<h2 id="数据集">数据集</h2>
+<p>  本文的成本是450美元，平均CPM是0.12美元。在这样的预算下，本文成功地从2.5M个IP地址中获得了3.8M的DNS测量样本。包括来自178个国家的25k个不同AS的1M/24 IP前缀。发现了76k个不同的DNS递归解析服务器，分布于14k个AS中的49k/24 IP前缀</p>
+<h1>测量结果（DNS全球基础设施）</h1>
+<div align=center>
 <img src="20210206190140908.png"/>
 </div>
-
-<p>&#8195;&#8195;上图展示了拥有递归DNS解析器的前20家机构，大型商业isp专门为其递归DNS基础设施提供了一个大型IP池。然而，数据还显示，世界各地的许多互联网用户倾向于修改他们设备的DNS配置，使用第三方递归DNS解析器，即CloudFlare、Google、Level3和OpenDNS。</p>
+<p>  上图展示了拥有递归DNS解析器的前20家机构，大型商业isp专门为其递归DNS基础设施提供了一个大型IP池。然而，数据还显示，世界各地的许多互联网用户倾向于修改他们设备的DNS配置，使用第三方递归DNS解析器，即CloudFlare、Google、Level3和OpenDNS。</p>
 <div align=center>
 <img src="20210206192836544.png"/>
 </div>
-
-<p>&#8195;&#8195;DNS基础设施为每个AS提供支持的情况是不同的，如上图，圆圈的大小显示了由每种类型的解析器触发的DNS查找的比例。</p>
-<h2 id="AS部署基础设施"><a href="#AS部署基础设施" class="headerlink" title="AS部署基础设施"></a>AS部署基础设施</h2><p><strong>1）终端设备与DNS解析器的地理距离</strong></p>
-<p>&#8195;&#8195;99%的eyeball AS（We define an ‘’eyeball AS’’ as any type of network in which an online advertisement has been rendered. This might include commercial ISPs, enterprise networks, or VPNservices. ）可以解析超过95%的DNS请求，在相同国家内</p>
+<p>  DNS基础设施为每个AS提供支持的情况是不同的，如上图，圆圈的大小显示了由每种类型的解析器触发的DNS查找的比例。</p>
+<h2 id="AS部署基础设施">AS部署基础设施</h2>
+<p><strong>1）终端设备与DNS解析器的地理距离</strong></p>
+<p>  99%的eyeball AS（We define an ‘‘eyeball AS’’ as any type of network in which an online advertisement has been rendered. This might include commercial ISPs, enterprise networks, or VPNservices. ）可以解析超过95%的DNS请求，在相同国家内</p>
 <p><strong>2）负载均衡策略</strong></p>
-<p>&#8195;&#8195;大多数ASes都实现了负载平衡策略。</p>
-<h2 id="第三方DNS提供商"><a href="#第三方DNS提供商" class="headerlink" title="第三方DNS提供商"></a>第三方DNS提供商</h2><p>&#8195;&#8195;Google、OpenDNS、Level3、CloudFlare。主要是这四家</p>
+<p>  大多数ASes都实现了负载平衡策略。</p>
+<h2 id="第三方DNS提供商">第三方DNS提供商</h2>
+<p>  Google、OpenDNS、Level3、CloudFlare。主要是这四家</p>
 <p><strong>1）使用情况</strong></p>
 <p>四家提供商中，Google是最流行的一个。</p>
 <p><strong>2）使用第三方DNS提供商的动机</strong></p>
@@ -522,18 +529,18 @@
 <div align=center>
 <img src="20210206195226482.png"/>
 </div>
-
 <p>本文关于动机的分析结论：</p>
 <ul>
 <li>性能：根据本文的调查结果，即上表，性能似乎并不能成为选择第三方DNS的理由</li>
 <li>审查：供应商加强隐私和安全，避免互联网审查的动机是可能的</li>
 </ul>
-<h2 id="Mobile-vs-fixed-ISP"><a href="#Mobile-vs-fixed-ISP" class="headerlink" title="Mobile vs fixed ISP"></a>Mobile vs fixed ISP</h2><p>截个图放这吧。</p>
+<h2 id="Mobile-vs-fixed-ISP">Mobile vs fixed ISP</h2>
+<p>截个图放这吧。</p>
 <div align=center>
 <img src="20210206200118514.png"/>
 </div>
-
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><ul>
+<h1>结论</h1>
+<ul>
 <li>13%的全球DNS查询是由第三方商业DNS提供商如Google DNS解析，而不是由isp提供的DNS解析器。</li>
 <li>在一些国家，采用第三方DNS并非出于性能的提升，而是作为一种增强隐私、规避审查和监视的机制。</li>
 <li>同时提供移动和fixed访问的isp往往会将服务于每种网络访问类型的DNS基础设施解耦。</li>
@@ -638,7 +645,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF-amp-%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E6%96%B9%E6%B3%95"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">测量方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9F%BA%E4%BA%8Ejs%E7%9A%84DNS%E6%B5%8B%E9%87%8F"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">基于js的DNS测量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%A8%E7%90%83%E8%8C%83%E5%9B%B4%E5%86%85%E8%BF%9B%E8%A1%8CDNS%E6%B5%8B%E9%87%8F"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">全球范围内进行DNS测量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">数据集</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E7%BB%93%E6%9E%9C%EF%BC%88DNS%E5%85%A8%E7%90%83%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%EF%BC%89"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">测量结果（DNS全球基础设施）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#AS%E9%83%A8%E7%BD%B2%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">AS部署基础设施</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9DNS%E6%8F%90%E4%BE%9B%E5%95%86"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">第三方DNS提供商</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mobile-vs-fixed-ISP"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Mobile vs fixed ISP</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结论</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">测量方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9F%BA%E4%BA%8Ejs%E7%9A%84DNS%E6%B5%8B%E9%87%8F"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">基于js的DNS测量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%A8%E7%90%83%E8%8C%83%E5%9B%B4%E5%86%85%E8%BF%9B%E8%A1%8CDNS%E6%B5%8B%E9%87%8F"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">全球范围内进行DNS测量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">数据集</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">测量结果（DNS全球基础设施）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#AS%E9%83%A8%E7%BD%B2%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">AS部署基础设施</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9DNS%E6%8F%90%E4%BE%9B%E5%95%86"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">第三方DNS提供商</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mobile-vs-fixed-ISP"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Mobile vs fixed ISP</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结论</span></a></li></ol>
         
         </div>
       </aside>
@@ -1214,20 +1221,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>

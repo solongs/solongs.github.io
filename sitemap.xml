@@ -193,6 +193,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/tags/math/</loc>
+    <lastmod>2022-07-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/tags/Encrypt-DNS/</loc>
     <lastmod>2022-07-03</lastmod>
     <changefreq>daily</changefreq>
@@ -201,13 +208,6 @@
   
   <url>
     <loc>http://yoursite-url/tags/website-fingerprint/</loc>
-    <lastmod>2022-07-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/math/</loc>
     <lastmod>2022-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -256,14 +256,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/DDoS/</loc>
+    <loc>http://yoursite-url/tags/chromium/</loc>
     <lastmod>2022-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/chromium/</loc>
+    <loc>http://yoursite-url/tags/DDoS/</loc>
     <lastmod>2022-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

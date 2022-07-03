@@ -243,16 +243,16 @@
 
           
           
+          
+          
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
           </li>
-          
-          
           
           
           
@@ -268,9 +268,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -279,9 +279,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/tags/">
               
-              关于
+              标签
               
               
             </a>
@@ -401,7 +401,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.7k</span> In Total
+              Words <span class="post-count">1.6k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -463,49 +463,60 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="逆序"><a href="#逆序" class="headerlink" title="逆序"></a>逆序</h1><p>&#8195;&#8195;逆序的概念大家都不陌生，它在行列式理论中是很重要的。</p>
-<p>&#8195;&#8195;设$i_1,i_2,\cdots,i_n$是集合${1,2,\cdots,n}$的一个排列。如果$k\lt l$且$i_k\gt i_l$，则称数对$(i_k,i_l)$为一个逆序。通俗地讲，<font color="red"><strong>一个排列中的逆序对应着不以自然顺序出现的一对数</strong></font>。例如$31524$中的逆序有$(3,1),(3,1),(5,2),(5,4)$。显然集合${1,2,\cdots,n}$的自然顺序$12\cdots n$是唯一没有逆序的排列。</p>
-<p>&#8195;&#8195;对于一个排列$i_1,i_2,\cdots,i_n$，令<font color="red"><strong>$a_j$表示逆序对第二个成分为$j$的逆序对数量</strong></font>，即$a_j$表示在排列中在$j$前面且大于$j$的整数的个数。<font color="red"><strong>它度量$j$的无序程度</strong></font>。</p>
-<p>&#8195;&#8195;<font color="red"><strong>逆序列</strong></font>：数值序列$a_1,a_2,\cdots,a_n$叫做排列$i_1,i_2,\cdots,i_n$逆序列。$a_1+a_2+\cdots+a_n$度量一个排列的无序程度。例如$31524$的逆序列为$1,2,0,1,0$。</p>
-<p>&#8195;&#8195;逆序列满足下面的条件：</p>
-<script type="math/tex; mode=display">
-0\le a_1 \le n-1\\
-0\le a_2 \le n-2\\
-\cdots \\
-0\le a_{n-1}\le 1\\
-a_n = 0</script><p>这个条件的原因很显然，对于每个$k=1,2,\cdots, n$，在集合中存在$n-k$个大于$k$的整数。显然满足上述条件的序列个数等于$n<em>(n-1)</em>\cdots 1=n!$。这个数等于${1,2,\cdots,n}$的排列个数。</p>
-<h1 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h1><p>&#8195;&#8195;设$b_1,b_2,\cdots,b_n$是满足下面条件的整数序列：</p>
-<script type="math/tex; mode=display">
-0\le b_1 \le n-1\\
-0\le b_2 \le n-2\\
-\cdots \\
-0\le b_{n-1}\le 1\\
-b_n = 0</script><p>那么，一定存在一个唯一一个${1,2,\cdots,n}$排列，它的逆序列是$b_1,b_2,\cdots,b_n$。我们可以通过找到唯一构建逆序列的排列的方法来证明这个定理。</p>
-<h2 id="算法1：从逆序构建一个排列"><a href="#算法1：从逆序构建一个排列" class="headerlink" title="算法1：从逆序构建一个排列"></a>算法1：从逆序构建一个排列</h2><p>&#8195;&#8195;算法步骤如下：</p>
+        <h1>逆序</h1>
+<p>  逆序的概念大家都不陌生，它在行列式理论中是很重要的。</p>
+<p>  设$i_1,i_2,\cdots,i_n$是集合${1,2,\cdots,n}$的一个排列。如果$k\lt l$且$i_k\gt i_l$，则称数对$(i_k,i_l)$为一个逆序。通俗地讲，<font color="red"><strong>一个排列中的逆序对应着不以自然顺序出现的一对数</strong></font>。例如$31524$中的逆序有$(3,1),(3,1),(5,2),(5,4)$。显然集合${1,2,\cdots,n}$的自然顺序$12\cdots n$是唯一没有逆序的排列。</p>
+<p>  对于一个排列$i_1,i_2,\cdots,i_n$，令<font color="red"><strong>$a_j$表示逆序对第二个成分为$j$的逆序对数量</strong></font>，即$a_j$表示在排列中在$j$前面且大于$j$的整数的个数。<font color="red"><strong>它度量$j$的无序程度</strong></font>。</p>
+<p>  <font color="red"><strong>逆序列</strong></font>：数值序列$a_1,a_2,\cdots,a_n$叫做排列$i_1,i_2,\cdots,i_n$逆序列。$a_1+a_2+\cdots+a_n$度量一个排列的无序程度。例如$31524$的逆序列为$1,2,0,1,0$。</p>
+<p>  逆序列满足下面的条件：</p>
+<p>$$<br>
+0\le a_1 \le n-1\<br>
+0\le a_2 \le n-2\<br>
+\cdots \<br>
+0\le a_{n-1}\le 1\<br>
+a_n = 0<br>
+$$</p>
+<p>这个条件的原因很显然，对于每个$k=1,2,\cdots, n$，在集合中存在$n-k$个大于$k$的整数。显然满足上述条件的序列个数等于$n*(n-1)*\cdots 1=n!$。这个数等于${1,2,\cdots,n}$的排列个数。</p>
+<h1>定理</h1>
+<p>  设$b_1,b_2,\cdots,b_n$是满足下面条件的整数序列：<br>
+$$<br>
+0\le b_1 \le n-1\<br>
+0\le b_2 \le n-2\<br>
+\cdots \<br>
+0\le b_{n-1}\le 1\<br>
+b_n = 0<br>
+$$<br>
+那么，一定存在一个唯一一个${1,2,\cdots,n}$排列，它的逆序列是$b_1,b_2,\cdots,b_n$。我们可以通过找到唯一构建逆序列的排列的方法来证明这个定理。</p>
+<h2 id="算法1：从逆序构建一个排列">算法1：从逆序构建一个排列</h2>
+<p>  算法步骤如下：</p>
 <ul>
 <li>$n$：写出$n$。</li>
-<li>$n-1$：考虑$b<em>{n-1}$。我们知道$0\le b</em>{n-1}\le 1$。如果$b<em>{n-1}=0$，则$n-1$应该放在$n$的前面。如果$b</em>{n-1}=1$，则$n-1$应该放在$n$的后面。</li>
-<li>$n-2$：考虑$b<em>{n-2}$。类似地，我们知道$0\le b</em>{n-1}\le 2$。如果$b<em>{n-2}=0$，则$n-2$应该放在上一步构建完的两个数的前面。如果$b</em>{n-2}=1$，则$n-2$应该放在两个数的中间。如果$b_{n-2}=0$，则$n-2$应该放在两个数的后面。</li>
+<li>$n-1$：考虑$b_{n-1}$。我们知道$0\le b_{n-1}\le 1$。如果$b_{n-1}=0$，则$n-1$应该放在$n$的前面。如果$b_{n-1}=1$，则$n-1$应该放在$n$的后面。</li>
+<li>$n-2$：考虑$b_{n-2}$。类似地，我们知道$0\le b_{n-1}\le 2$。如果$b_{n-2}=0$，则$n-2$应该放在上一步构建完的两个数的前面。如果$b_{n-2}=1$，则$n-2$应该放在两个数的中间。如果$b_{n-2}=0$，则$n-2$应该放在两个数的后面。</li>
 <li>$\cdots \cdots$</li>
-<li>$n-k$：（一般步骤）我们知道$0\le b<em>{n-k}\le k$，从步骤$n$到步骤$n-k+1$中，$k$个数$n,n-1,\cdots,n-k+1$的顺序都已经排好了。如果$b</em>{n-k}=0$则放在最前面$\dots\dots$如果$b_{n-k}=k$则放在最后面。</li>
+<li>$n-k$：（一般步骤）我们知道$0\le b_{n-k}\le k$，从步骤$n$到步骤$n-k+1$中，$k$个数$n,n-1,\cdots,n-k+1$的顺序都已经排好了。如果$b_{n-k}=0$则放在最前面$\dots\dots$如果$b_{n-k}=k$则放在最后面。</li>
 <li>$\cdots \cdots$</li>
 <li>$1$：我们必须把$1$放在上一步所构造的序列的第$b_1$个数的后面。</li>
 </ul>
-<p>&#8195;&#8195;通过上述步骤构建排列时，步骤$n,n-1,n-2,\cdots,1$根据逆序列$b_1,b_2,\cdots,b_n$唯一确定${1,2,\cdots,n}$的一个排列。这个算法的缺点是：<font color="red"><strong>排列中的每一个整数的位置不到最后是不得而知的，算法在执行的过程中只做到了这些整数的相对位置保持固定</strong></font>。</p>
-<p>&#8195;&#8195;例子：构建${1,2,3,4,5,6,7,8}$的一个排列，使其逆序列是$5,3,4,0,2,1,1,0$。根据上述算法：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&8:8\\
-&7:87\\
-&6:867\\
-&5:8657\\
-&4:48657\\
-&3:486537\\
-&2:4862537\\
-&1:48625137
-\end{aligned}</script><p>python实现起来也比较容易：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_algo1</span>(<span class="params">seq</span>):</span></span><br><span class="line">    permutation = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(seq), <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        permutation.insert(<span class="built_in">int</span>(seq[i-<span class="number">1</span>]), i)</span><br><span class="line">    <span class="keyword">return</span> permutation</span><br><span class="line"></span><br><span class="line">seq = <span class="built_in">input</span>().split()</span><br><span class="line"><span class="built_in">print</span>(generate_algo1(seq))</span><br></pre></td></tr></table></figure></p>
+<p>  通过上述步骤构建排列时，步骤$n,n-1,n-2,\cdots,1$根据逆序列$b_1,b_2,\cdots,b_n$唯一确定${1,2,\cdots,n}$的一个排列。这个算法的缺点是：<font color="red"><strong>排列中的每一个整数的位置不到最后是不得而知的，算法在执行的过程中只做到了这些整数的相对位置保持固定</strong></font>。</p>
+<p>  例子：构建${1,2,3,4,5,6,7,8}$的一个排列，使其逆序列是$5,3,4,0,2,1,1,0$。根据上述算法：<br>
+$$<br>
+\begin{aligned}<br>
+&amp;8:8\<br>
+&amp;7:87\<br>
+&amp;6:867\<br>
+&amp;5:8657\<br>
+&amp;4:48657\<br>
+&amp;3:486537\<br>
+&amp;2:4862537\<br>
+&amp;1:48625137<br>
+\end{aligned}<br>
+$$</p>
+<p>python实现起来也比较容易：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_algo1</span>(<span class="params">seq</span>):</span></span><br><span class="line">    permutation = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(seq), <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        permutation.insert(<span class="built_in">int</span>(seq[i-<span class="number">1</span>]), i)</span><br><span class="line">    <span class="keyword">return</span> permutation</span><br><span class="line"></span><br><span class="line">seq = <span class="built_in">input</span>().split()</span><br><span class="line"><span class="built_in">print</span>(generate_algo1(seq))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：<span class="number">5</span> <span class="number">3</span> <span class="number">4</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span></span><br><span class="line">输出：[<span class="number">4</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="算法2：从逆序列构建一个排列"><a href="#算法2：从逆序列构建一个排列" class="headerlink" title="算法2：从逆序列构建一个排列"></a>算法2：从逆序列构建一个排列</h2><p>&#8195;&#8195;我们从$n$个空位置上出发，把这些空位置从左到右标记上$1,2,\cdots, n$。算法步骤如下：</p>
+<h2 id="算法2：从逆序列构建一个排列">算法2：从逆序列构建一个排列</h2>
+<p>  我们从$n$个空位置上出发，把这些空位置从左到右标记上$1,2,\cdots, n$。算法步骤如下：</p>
 <ul>
 <li>$1$：因为在这个排列中$1$之前有$b_1$个整数，所以必须把$1$放在位置标签为$b_1 + 1$的位置上。</li>
 <li>$2$：因为在这个排列中有$b_2$个整数大于$2$且在$2$之前，又因为这些证书还没有被插入进来，所以必须给这些数留出$b_2$个空位置。因此，把$2$放在第$b_2+1$的空位置上。</li>
@@ -514,38 +525,47 @@ b_n = 0</script><p>那么，一定存在一个唯一一个${1,2,\cdots,n}$排列
 <li>$\cdots \cdots$</li>
 <li>$n$：把$n$放在剩下的一个空位置上。</li>
 </ul>
-<p>&#8195;&#8195;这种方法中，$1,2,\cdots,n$在排列中的位置是确定的。依旧用上述例子$5,3,4,0,2,1,1,0$来过一遍该算法：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&1:\_ \ \_\ \_\ \_\ \_\ 1\ \_\ \_\\
-&2:\_ \ \_\ \_\ 2\ \_\ 1\ \_\ \_\\
-&3:\_ \ \_\ \_\ 2\ \_\ 1\ 3\ \_\\
-&4:4 \ \_\ \_\ 2\ \_\ 1\ 3\ \_\\
-&5:4 \ \_\ \_\ 2\ 5\ 1\ 3\ \_\\
-&6:4 \ \_\ 6\ 2\ 5\ 1\ 3\ \_\\
-&7:4 \ \_\ 6\ 2\ 5\ 1\ 3\ 7\\
-&8:4 \ 8\ 6\ 2\ 5\ 1\ 3\ 7\\
-\end{aligned}</script><p>python实现：</p>
+<p>  这种方法中，$1,2,\cdots,n$在排列中的位置是确定的。依旧用上述例子$5,3,4,0,2,1,1,0$来过一遍该算法：<br>
+$$<br>
+\begin{aligned}<br>
+&amp;1:_ \ _\ _\ _\ _\ 1\ _\ _\<br>
+&amp;2:_ \ _\ _\ 2\ _\ 1\ _\ _\<br>
+&amp;3:_ \ _\ _\ 2\ _\ 1\ 3\ _\<br>
+&amp;4:4 \ _\ _\ 2\ _\ 1\ 3\ _\<br>
+&amp;5:4 \ _\ _\ 2\ 5\ 1\ 3\ _\<br>
+&amp;6:4 \ _\ 6\ 2\ 5\ 1\ 3\ _\<br>
+&amp;7:4 \ _\ 6\ 2\ 5\ 1\ 3\ 7\<br>
+&amp;8:4 \ 8\ 6\ 2\ 5\ 1\ 3\ 7\<br>
+\end{aligned}<br>
+$$<br>
+python实现：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_algo2</span>(<span class="params">seq</span>):</span></span><br><span class="line">    n = <span class="built_in">len</span>(seq)</span><br><span class="line">    permutation = [<span class="literal">None</span>]*n</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        j, k = <span class="number">0</span>, <span class="built_in">int</span>(seq[i-<span class="number">1</span>]) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j &lt; n:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> permutation[j]:</span><br><span class="line">                k -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> k == <span class="number">0</span>:</span><br><span class="line">                    permutation[j] = i</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> permutation</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：<span class="number">5</span> <span class="number">3</span> <span class="number">4</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span></span><br><span class="line">输出：[<span class="number">4</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="奇排列与偶排列"><a href="#奇排列与偶排列" class="headerlink" title="奇排列与偶排列"></a>奇排列与偶排列</h1><p>&#8195;&#8195;习惯上，按照某个排列中的逆序个数是偶数还是奇数而把${1,2,\cdots, n}$的这个排列$i<em>1i_2\cdots i_n$称为<font color="red"><strong>偶排列或奇排列</strong></font>。排列的<font color="red"><strong>符号</strong></font>按照排列是偶排列还是奇排列而定义为$+1,-1$。行列式的定义就包含了这一点，$n*n$的矩阵$A=[a</em>{ij}](i=1,2,\cdots,n)$，其行列式为</p>
-<script type="math/tex; mode=display">
-det(A)=\sum \varepsilon(i_1i_2\cdots i_n)a_{1i_1}a_{2i_2}\cdots  a_{ni_n}</script><p>其中$\varepsilon(i_1i_2\cdots i_n)$为$i_1i_2\cdots i_n$的符号。</p>
-<h1 id="交换得到自然顺序"><a href="#交换得到自然顺序" class="headerlink" title="交换得到自然顺序"></a>交换得到自然顺序</h1><p>&#8195;&#8195;如果排列$i_1i_2\cdots i_n$有逆序列$b_1,b_2,\cdots,b_n$且$k=b_1+b_2+\cdots +b_n$为<strong>逆序数</strong>，那么可以通过连续$k$次交换相邻两个数而把$i_1i_2\cdots i_n$转化成$12\cdots n$。步骤为：</p>
+<h1>奇排列与偶排列</h1>
+<p>  习惯上，按照某个排列中的逆序个数是偶数还是奇数而把${1,2,\cdots, n}$的这个排列$i_1i_2\cdots i_n$称为<font color="red"><strong>偶排列或奇排列</strong></font>。排列的<font color="red"><strong>符号</strong></font>按照排列是偶排列还是奇排列而定义为$+1,-1$。行列式的定义就包含了这一点，$n*n$的矩阵$A=<a href="i=1,2,%5Ccdots,n">a_{ij}</a>$，其行列式为<br>
+$$<br>
+det(A)=\sum \varepsilon(i_1i_2\cdots i_n)a_{1i_1}a_{2i_2}\cdots  a_{ni_n}<br>
+$$<br>
+其中$\varepsilon(i_1i_2\cdots i_n)$为$i_1i_2\cdots i_n$的符号。</p>
+<h1>交换得到自然顺序</h1>
+<p>  如果排列$i_1i_2\cdots i_n$有逆序列$b_1,b_2,\cdots,b_n$且$k=b_1+b_2+\cdots +b_n$为<strong>逆序数</strong>，那么可以通过连续$k$次交换相邻两个数而把$i_1i_2\cdots i_n$转化成$12\cdots n$。步骤为：</p>
 <ul>
 <li>首先连续地把$1$与它左边的$b_1$个整数交换；</li>
 <li>再连续地把$2$与它左边大于$2$的整数交换；</li>
 <li>$\cdots$</li>
 </ul>
-<p>&#8195;&#8195;例子：交换$361245$到$123456$。</p>
-<script type="math/tex; mode=display">
-361245\\
-316245\\
-136245\\
-132645\\
-123645\\
-123465\\
-123456</script><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<p>  例子：交换$361245$到$123456$。<br>
+$$<br>
+361245\<br>
+316245\<br>
+136245\<br>
+132645\<br>
+123645\<br>
+123465\<br>
+123456<br>
+$$</p>
+<h1>参考资料</h1>
+<ul>
 <li>《组合数学》第五版 P57-P60</li>
 </ul>
 
@@ -647,7 +667,7 @@ det(A)=\sum \varepsilon(i_1i_2\cdots i_n)a_{1i_1}a_{2i_2}\cdots  a_{ni_n}</scrip
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%80%86%E5%BA%8F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">逆序</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">定理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%951%EF%BC%9A%E4%BB%8E%E9%80%86%E5%BA%8F%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">算法1：从逆序构建一个排列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%952%EF%BC%9A%E4%BB%8E%E9%80%86%E5%BA%8F%E5%88%97%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">算法2：从逆序列构建一个排列</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A5%87%E6%8E%92%E5%88%97%E4%B8%8E%E5%81%B6%E6%8E%92%E5%88%97"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">奇排列与偶排列</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%BE%97%E5%88%B0%E8%87%AA%E7%84%B6%E9%A1%BA%E5%BA%8F"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">交换得到自然顺序</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">逆序</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">定理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%951%EF%BC%9A%E4%BB%8E%E9%80%86%E5%BA%8F%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">算法1：从逆序构建一个排列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%952%EF%BC%9A%E4%BB%8E%E9%80%86%E5%BA%8F%E5%88%97%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">算法2：从逆序列构建一个排列</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">奇排列与偶排列</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">交换得到自然顺序</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
         
         </div>
       </aside>
@@ -1225,20 +1245,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>

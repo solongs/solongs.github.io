@@ -243,16 +243,16 @@
 
           
           
+          
+          
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
           </li>
-          
-          
           
           
           
@@ -268,9 +268,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -279,9 +279,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/tags/">
               
-              关于
+              标签
               
               
             </a>
@@ -463,49 +463,73 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&#8195;&#8195;对于一个含有$n$个元素的集合$S={1,2,\cdots, n}$，我们考虑生成固定大小$r(1\le r \le n)$的子集。</p>
-<h1 id="字典序"><a href="#字典序" class="headerlink" title="字典序"></a>字典序</h1><p>&#8195;&#8195;集合$S$的自然顺序为：</p>
-<script type="math/tex; mode=display">
-1\lt 2\lt \cdots \lt n</script><p>设$A$和$B$是集合$S$的两个$r$子集。如果在并集$A\cup B$中但不在交集$A\cap B$中的最小整数在$A$中，我们就说在<font color='red'><strong>字典序中$A$先于$B$</strong></font>。</p>
-<p>&#8195;&#8195;由于子集中的元素并不考虑顺序，例如$123$和$321$作为子集是一样的。但是为了便于生成子集，我们约定：当书写${1,2,\cdots, n}$的子集时，<strong>以从最小整数到最大整数的顺序书写其中的整数</strong>，即下面的形式：</p>
-<script type="math/tex; mode=display">
-a_1,a_2,\cdots,a_r其中1\le a_1\lt a_2 \lt \cdots \lt a_r \le n</script><p>这样我们就有了生成$r$子集的一个先后顺序了。</p>
-<p>&#8195;&#8195;例如考虑${1,2,3,4,5,6,7,8,9}$的$5$子集。第一个$5$子集是$12345$，最后一个$5$子集是$56789$。在字典序中$12389$的直接后继是$12456$。</p>
-<h1 id="字典序后继"><a href="#字典序后继" class="headerlink" title="字典序后继"></a>字典序后继</h1><p>&#8195;&#8195;定理：设$a<em>1a_2\cdots a_r$是${1,2,\cdots, n}$的$r$子集。在字典序中，第一个$r$子集是$12\cdots r$，最后一个$r$子集是$(n-r+1)(n-r+2)\cdots n$。假设$a_1a_2\cdot a_r\ne (n-r+1)(n-r+2)\cdots n$。设$k$是满足$a_k\lt n$且是的$a_k+1$不等于$a</em>{k+1},\cdots, a_r$中任一个数的最大整数。那么，在字典序中，$a_1a_2\cdots a_r$的直接后继是：</p>
-<script type="math/tex; mode=display">
-a_1\cdots a_{k-1}(a_k + 1)(a_k+2)\cdots(a_k+r-k+1)</script><p>证明：<br>&#8195;&#8195;根据字典序的定义，设$a_1a_2\cdots a_r$是任意一个$r$子集，但不是最后的，确定出指定的$k$，于是：</p>
-<script type="math/tex; mode=display">
-a_1a_2\cdots a_r=a_1\cdots a_{k-1}a_k(n-r+k+1)(n-r+k+2)\cdots (n)，其中a_k+1\lt n-r+k+1</script><p>是以$a<em>1\cdots a</em>{k-1}a_k$开始的最后的$r$子集。而下面的$r$子集：</p>
-<script type="math/tex; mode=display">
-a_1\cdots a_{k-1}(a_k + 1)(a_k+2)\cdots(a_k+r-k+1)</script><p>是以$a<em>1\cdots a</em>{k-1}a_k+1$开始的第一个$r$子集，从而是$a_1a_2\cdots a_r$的直接后继。</p>
-<h1 id="按字典序生成-1-2-cdots-n-的-r-子集算法"><a href="#按字典序生成-1-2-cdots-n-的-r-子集算法" class="headerlink" title="按字典序生成${1,2,\cdots, n}$的$r$子集算法"></a>按字典序生成${1,2,\cdots, n}$的$r$子集算法</h1><p>&#8195;&#8195;根据上述定理，我们可以描述算法如下：从$r$子集$12\cdots r$开始，当$a_1a_2\cdot a_r\ne (n-r+1)(n-r+2)\cdots n$时，执行下列操作：</p>
+        <h1>问题描述</h1>
+<p>  对于一个含有$n$个元素的集合$S={1,2,\cdots, n}$，我们考虑生成固定大小$r(1\le r \le n)$的子集。</p>
+<h1>字典序</h1>
+<p>  集合$S$的自然顺序为：<br>
+$$<br>
+1\lt 2\lt \cdots \lt n<br>
+$$<br>
+设$A$和$B$是集合$S$的两个$r$子集。如果在并集$A\cup B$中但不在交集$A\cap B$中的最小整数在$A$中，我们就说在<font color='red'><strong>字典序中$A$先于$B$</strong></font>。</p>
+<p>  由于子集中的元素并不考虑顺序，例如$123$和$321$作为子集是一样的。但是为了便于生成子集，我们约定：当书写${1,2,\cdots, n}$的子集时，<strong>以从最小整数到最大整数的顺序书写其中的整数</strong>，即下面的形式：<br>
+$$<br>
+a_1,a_2,\cdots,a_r其中1\le a_1\lt a_2 \lt \cdots \lt a_r \le n<br>
+$$<br>
+这样我们就有了生成$r$子集的一个先后顺序了。</p>
+<p>  例如考虑${1,2,3,4,5,6,7,8,9}$的$5$子集。第一个$5$子集是$12345$，最后一个$5$子集是$56789$。在字典序中$12389$的直接后继是$12456$。</p>
+<h1>字典序后继</h1>
+<p>  定理：设$a_1a_2\cdots a_r$是${1,2,\cdots, n}$的$r$子集。在字典序中，第一个$r$子集是$12\cdots r$，最后一个$r$子集是$(n-r+1)(n-r+2)\cdots n$。假设$a_1a_2\cdot a_r\ne (n-r+1)(n-r+2)\cdots n$。设$k$是满足$a_k\lt n$且是的$a_k+1$不等于$a_{k+1},\cdots, a_r$中任一个数的最大整数。那么，在字典序中，$a_1a_2\cdots a_r$的直接后继是：<br>
+$$<br>
+a_1\cdots a_{k-1}(a_k + 1)(a_k+2)\cdots(a_k+r-k+1)<br>
+$$</p>
+<p>证明：<br>
+  根据字典序的定义，设$a_1a_2\cdots a_r$是任意一个$r$子集，但不是最后的，确定出指定的$k$，于是：<br>
+$$<br>
+a_1a_2\cdots a_r=a_1\cdots a_{k-1}a_k(n-r+k+1)(n-r+k+2)\cdots (n)，其中a_k+1\lt n-r+k+1<br>
+$$</p>
+<p>是以$a_1\cdots a_{k-1}a_k$开始的最后的$r$子集。而下面的$r$子集：<br>
+$$<br>
+a_1\cdots a_{k-1}(a_k + 1)(a_k+2)\cdots(a_k+r-k+1)<br>
+$$<br>
+是以$a_1\cdots a_{k-1}a_k+1$开始的第一个$r$子集，从而是$a_1a_2\cdots a_r$的直接后继。</p>
+<h1>按字典序生成${1,2,\cdots, n}$的$r$子集算法</h1>
+<p>  根据上述定理，我们可以描述算法如下：从$r$子集$12\cdots r$开始，当$a_1a_2\cdot a_r\ne (n-r+1)(n-r+2)\cdots n$时，执行下列操作：</p>
 <ul>
 <li>确定最大的整数$k$，是的$a_k + 1\le n$且$a_k + 1$不是$a_1,a_2,\cdots,a_r$中的一个。</li>
-<li>用$r$子集$a<em>1\cdots a</em>{k-1}(a_k + 1)(a_k+2)\cdots(a_k+r-k+1)$替换$a_1a_2\cdots a_r$</li>
+<li>用$r$子集$a_1\cdots a_{k-1}(a_k + 1)(a_k+2)\cdots(a_k+r-k+1)$替换$a_1a_2\cdots a_r$</li>
 </ul>
-<p>依照算法生成${1,2,3,4,5,6}$的$4$子集：</p>
-<script type="math/tex; mode=display">
-1234\ 1256\ 2345\\
-1235\ 1345\ 2346\\
-1236\ 1346\ 2356\\
-1245\ 1356\ 2456\\
-1246\ 1456\ 3456</script><p>算法实现如下：</p>
+<p>依照算法生成${1,2,3,4,5,6}$的$4$子集：<br>
+$$<br>
+1234\ 1256\ 2345\<br>
+1235\ 1345\ 2346\<br>
+1236\ 1346\ 2356\<br>
+1245\ 1356\ 2456\<br>
+1246\ 1456\ 3456<br>
+$$</p>
+<p>算法实现如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_r</span>(<span class="params">n, r</span>):</span></span><br><span class="line">    res = []</span><br><span class="line">    curr, end = <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(r):</span><br><span class="line">        curr += <span class="built_in">str</span>(i+<span class="number">1</span>)</span><br><span class="line">        end += <span class="built_in">str</span>(n-r+i+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> curr != end:</span><br><span class="line">        res.append(curr)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(r-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> curr[i] != <span class="built_in">str</span>(n-r+i+<span class="number">1</span>):</span><br><span class="line">                new = curr[:i]</span><br><span class="line">                k = <span class="built_in">int</span>(curr[i])</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, r-i+<span class="number">1</span>):</span><br><span class="line">                    new += <span class="built_in">str</span>(j+k)</span><br><span class="line">                curr = new</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    res.append(end)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：<span class="number">6</span> <span class="number">4</span></span><br><span class="line">输出：[<span class="string">&#x27;1234&#x27;</span>, <span class="string">&#x27;1235&#x27;</span>, <span class="string">&#x27;1236&#x27;</span>, <span class="string">&#x27;1245&#x27;</span>, <span class="string">&#x27;1246&#x27;</span>, <span class="string">&#x27;1256&#x27;</span>, <span class="string">&#x27;1345&#x27;</span>, <span class="string">&#x27;1346&#x27;</span>, <span class="string">&#x27;1356&#x27;</span>, <span class="string">&#x27;1456&#x27;</span>, <span class="string">&#x27;2345&#x27;</span>, <span class="string">&#x27;2346&#x27;</span>, <span class="string">&#x27;2356&#x27;</span>, <span class="string">&#x27;2456&#x27;</span>, <span class="string">&#x27;3456&#x27;</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="r-子集在字典序中的位置"><a href="#r-子集在字典序中的位置" class="headerlink" title="$r$子集在字典序中的位置"></a>$r$子集在字典序中的位置</h1><p>&#8195;&#8195;定理：${1,2,\cdots,n}$的$r$子集$a_1a_2\cdots a_r$出现在${1,2,\cdots,n}$的$r$子集的字典序中的位置下标（从$1$开始）是：</p>
-<script type="math/tex; mode=display">
-\begin{pmatrix}n\\r\end{pmatrix}-\begin{pmatrix}n-a_1\\r\end{pmatrix}-\begin{pmatrix}n-a_2\\r-1\end{pmatrix}-\cdots-\begin{pmatrix}n-a_{r-1}\\2\end{pmatrix}-\begin{pmatrix}n-a_r\\1\end{pmatrix}</script><p>&#8195;&#8195;这个定理还是比较好理解的，就是总的$r$子集数量减去出现在$a_1a_2\cdots a_r$后面的$r$子集数量：</p>
+<h1>$r$子集在字典序中的位置</h1>
+<p>  定理：${1,2,\cdots,n}$的$r$子集$a_1a_2\cdots a_r$出现在${1,2,\cdots,n}$的$r$子集的字典序中的位置下标（从$1$开始）是：<br>
+$$<br>
+\begin{pmatrix}n\r\end{pmatrix}-\begin{pmatrix}n-a_1\r\end{pmatrix}-\begin{pmatrix}n-a_2\r-1\end{pmatrix}-\cdots-\begin{pmatrix}n-a_{r-1}\2\end{pmatrix}-\begin{pmatrix}n-a_r\1\end{pmatrix}<br>
+$$</p>
+<p>  这个定理还是比较好理解的，就是总的$r$子集数量减去出现在$a_1a_2\cdots a_r$后面的$r$子集数量：</p>
 <ul>
 <li>第一个元素比$a_1$大的数量是$\begin{pmatrix}n-a_1\r\end{pmatrix}$</li>
 <li>第一个元素与$a_1$相等，但是第二个元素比$a_2$大的数量是$\begin{pmatrix}n-a_2\r-1\end{pmatrix}$</li>
 <li>$\cdots \cdots$</li>
-<li>以$a<em>1a_2\cdots a</em>{r-1}$开始，但最后一个元素比$a_r$大的数量是$\begin{pmatrix}n-a_r\1\end{pmatrix}$</li>
+<li>以$a_1a_2\cdots a_{r-1}$开始，但最后一个元素比$a_r$大的数量是$\begin{pmatrix}n-a_r\1\end{pmatrix}$</li>
 </ul>
-<p>例如${1,2,3,4,5,6,7,8}$的$4$子集的字典序之下，子集$1258$所处位置为：</p>
-<script type="math/tex; mode=display">
-\begin{pmatrix}8\\4\end{pmatrix}-\begin{pmatrix}7\\4\end{pmatrix}-\begin{pmatrix}6\\3\end{pmatrix}-\begin{pmatrix}3\\2\end{pmatrix}-\begin{pmatrix}0\\1\end{pmatrix}=12</script><p>寻找下标程序实现如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_index</span>(<span class="params">n, subset</span>):</span></span><br><span class="line">    C = <span class="keyword">lambda</span> x, y: math.factorial(x)//math.factorial(y)//math.factorial(x-y) <span class="keyword">if</span> x &gt;= y <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    r = <span class="built_in">len</span>(subset)</span><br><span class="line">    a = C(n, r)</span><br><span class="line">    s = <span class="built_in">sum</span>(C(n-<span class="built_in">int</span>(subset[r-i-<span class="number">1</span>]), i+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(r))</span><br><span class="line">    <span class="keyword">return</span> a - s</span><br></pre></td></tr></table></figure></p>
+<p>例如${1,2,3,4,5,6,7,8}$的$4$子集的字典序之下，子集$1258$所处位置为：<br>
+$$<br>
+\begin{pmatrix}8\4\end{pmatrix}-\begin{pmatrix}7\4\end{pmatrix}-\begin{pmatrix}6\3\end{pmatrix}-\begin{pmatrix}3\2\end{pmatrix}-\begin{pmatrix}0\1\end{pmatrix}=12<br>
+$$</p>
+<p>寻找下标程序实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_index</span>(<span class="params">n, subset</span>):</span></span><br><span class="line">    C = <span class="keyword">lambda</span> x, y: math.factorial(x)//math.factorial(y)//math.factorial(x-y) <span class="keyword">if</span> x &gt;= y <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    r = <span class="built_in">len</span>(subset)</span><br><span class="line">    a = C(n, r)</span><br><span class="line">    s = <span class="built_in">sum</span>(C(n-<span class="built_in">int</span>(subset[r-i-<span class="number">1</span>]), i+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(r))</span><br><span class="line">    <span class="keyword">return</span> a - s</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：<span class="number">8</span> <span class="string">&quot;1258&quot;</span></span><br><span class="line">输出：<span class="number">12</span></span><br></pre></td></tr></table></figure>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<h1>参考资料</h1>
+<ul>
 <li>《组合数学》第五版 P67-P70</li>
 </ul>
 
@@ -607,7 +631,7 @@ a_1\cdots a_{k-1}(a_k + 1)(a_k+2)\cdots(a_k+r-k+1)</script><p>是以$a<em>1\cdot
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">问题描述</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AD%97%E5%85%B8%E5%BA%8F"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">字典序</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AD%97%E5%85%B8%E5%BA%8F%E5%90%8E%E7%BB%A7"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">字典序后继</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%8C%89%E5%AD%97%E5%85%B8%E5%BA%8F%E7%94%9F%E6%88%90-1-2-cdots-n-%E7%9A%84-r-%E5%AD%90%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">按字典序生成${1,2,\cdots, n}$的$r$子集算法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#r-%E5%AD%90%E9%9B%86%E5%9C%A8%E5%AD%97%E5%85%B8%E5%BA%8F%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">$r$子集在字典序中的位置</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">问题描述</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">字典序</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">字典序后继</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">按字典序生成${1,2,\cdots, n}$的$r$子集算法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">$r$子集在字典序中的位置</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
         
         </div>
       </aside>
@@ -1185,20 +1209,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>

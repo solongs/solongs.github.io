@@ -243,16 +243,16 @@
 
           
           
+          
+          
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
           </li>
-          
-          
           
           
           
@@ -268,9 +268,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -279,9 +279,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/tags/">
               
-              关于
+              标签
               
               
             </a>
@@ -403,7 +403,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.1k</span> In Total
+              Words <span class="post-count">2k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -465,28 +465,32 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="背景-amp-目的"><a href="#背景-amp-目的" class="headerlink" title="背景&amp;目的"></a>背景&amp;目的</h1><p>&#8195;&#8195;DDoS攻击严重威胁到基于网络的服务的可用性，互联网的核心服务之一就是DNS，如果DNS不可用，那么web服务对大多数用户也就不可用了。对于一个优先关注可用性的公司来说，选择一个对DDoS攻击有弹性的DNS提供商是很重要的。</p>
-<p>&#8195;&#8195;NS1、Dyn这样的DNS提供商都会提供DDoS弹性服务。在2016年5月16日和2016年9月21日，NS1和Dyn都遭到了DDos攻击，攻击成功使得二者暂停服务超过一天。</p>
-<p>&#8195;&#8195;本文对这两个攻击事件进行了分析。本文的关注点是，<font color='red'><strong>这种攻击对受影响的MDNS（managed DNS）提供商的客户行为有什么影响？</strong></font>从而回答一些问题：</p>
+        <h1>背景&amp;目的</h1>
+<p>  DDoS攻击严重威胁到基于网络的服务的可用性，互联网的核心服务之一就是DNS，如果DNS不可用，那么web服务对大多数用户也就不可用了。对于一个优先关注可用性的公司来说，选择一个对DDoS攻击有弹性的DNS提供商是很重要的。</p>
+<p>  NS1、Dyn这样的DNS提供商都会提供DDoS弹性服务。在2016年5月16日和2016年9月21日，NS1和Dyn都遭到了DDos攻击，攻击成功使得二者暂停服务超过一天。</p>
+<p>  本文对这两个攻击事件进行了分析。本文的关注点是，<font color='red'><strong>这种攻击对受影响的MDNS（managed DNS）提供商的客户行为有什么影响？</strong></font>从而回答一些问题：</p>
 <ul>
 <li>在MDNS被攻击之后，他们的客户是否还会继续使用他们提供的服务？</li>
 <li>如果还是客户，那么客户会改变他们的行为吗？</li>
 </ul>
-<h1 id="DDoS攻击的影响"><a href="#DDoS攻击的影响" class="headerlink" title="DDoS攻击的影响"></a>DDoS攻击的影响</h1><p>&#8195;&#8195;通过分析NS1和Dyn遭到的DDoS攻击来分析DDoS攻击带来的影响。</p>
-<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>&#8195;&#8195;本文将OpenINTEL数据集作为源数据，来分析DDoS攻击对使用MDNS提供商的域名行为的影响。OpenINTEL为互联网上主要的顶级域下的所有域名收集独特的长期数据集，包括每天的DNS测量。本文使用了3个gTLD，分别是.com、.net、.org。</p>
-<p>&#8195;&#8195;为了得到某一天的域名使用的是Dyn还是NS1，查询当天NS记录中所有使用Dyn和NS1的名称服务器的域名数据集。</p>
-<p>&#8195;&#8195;测量的时间跨度如下表。</p>
+<h1>DDoS攻击的影响</h1>
+<p>  通过分析NS1和Dyn遭到的DDoS攻击来分析DDoS攻击带来的影响。</p>
+<h2 id="数据集-2">数据集</h2>
+<p>  本文将OpenINTEL数据集作为源数据，来分析DDoS攻击对使用MDNS提供商的域名行为的影响。OpenINTEL为互联网上主要的顶级域下的所有域名收集独特的长期数据集，包括每天的DNS测量。本文使用了3个gTLD，<a target="_blank" rel="noopener" href="http://xn--kbr6cv54e.com">分别是.com</a>、.net、.org。</p>
+<p>  为了得到某一天的域名使用的是Dyn还是NS1，查询当天NS记录中所有使用Dyn和NS1的名称服务器的域名数据集。</p>
+<p>  测量的时间跨度如下表。</p>
 <div align=center>
 <img src="20210305143633965.png"/>
 </div>
-
-<h2 id="域名类型"><a href="#域名类型" class="headerlink" title="域名类型"></a>域名类型</h2><p>&#8195;&#8195;根据在一个域名的NS记录中发现的不同服务提供商的数量，将域名分为两种类型：</p>
+<h2 id="域名类型">域名类型</h2>
+<p>  根据在一个域名的NS记录中发现的不同服务提供商的数量，将域名分为两种类型：</p>
 <ul>
 <li><strong>单独的（Exclusive）</strong>：域名只使用了Dyn/NS1的nameserver</li>
 <li><strong>非单独的（Non-exclusive）</strong>：域名使用了包括Dyn/NS1在内的多提供商的nameserver</li>
 </ul>
 <p>这样分类是有根据的，因为在攻击期间，非单独的域名不会体验到太差的服务质量。</p>
-<h2 id="测量影响"><a href="#测量影响" class="headerlink" title="测量影响"></a>测量影响</h2><p>&#8195;&#8195;测量影响使用以下5个步骤：</p>
+<h2 id="测量影响">测量影响</h2>
+<p>  测量影响使用以下5个步骤：</p>
 <ol>
 <li>定义各种域名行为的表示</li>
 <li>定义一个趋势时期（trend period）和一个事件时期（event period）</li>
@@ -494,7 +498,8 @@
 <li>测量事件时期内的行为</li>
 <li>分析行为的变化</li>
 </ol>
-<h3 id="域名行为定义"><a href="#域名行为定义" class="headerlink" title="域名行为定义"></a>域名行为定义</h3><ul>
+<h3 id="域名行为定义">域名行为定义</h3>
+<ul>
 <li>$Domains_n$：在第$n$天使用NS1/Dyn的域名总数</li>
 <li>$Exclusive_Domains_n$：在第$n$天使用NS1/Dyn的单独类型的域名总数</li>
 <li>$Nonexclusive_Domains_n$：在第$n$天使用NS1/Dyn的非单独类型的域名总数</li>
@@ -506,81 +511,79 @@
 <li>$Ex_Nonexclusive_n$：在第$n$天，停止使用NS1/Dyn的非单独类型域名总数</li>
 <li>$Ex_Domains_n$：在第$n$天，停止使用NS1/Dyn的域名总数</li>
 </ul>
-<p>&#8195;&#8195;下图显示了各种行为之间的关系</p>
+<p>  下图显示了各种行为之间的关系</p>
 <div align=center>
 <img src="20210305150050954.png"/>
 </div>
-
-<p>&#8195;&#8195;每天对每个行为的测量提供了一个时间序列 。为了分析时间序列，分别计算行为变量的日变化和10天累积平均变化。例如，对于$Domains_n$，变化量计算为:</p>
-<script type="math/tex; mode=display">\Delta Domains_n = Domains_n - Domains_{(n-1)}</script><p>&#8195;&#8195;计算10天累积平均变化可以从时间序列中过滤随机事件的短期影响，对于第$i$天的累积平均行为变化可计算为：</p>
-<script type="math/tex; mode=display">Cumulative\_Variable_i = \frac{1}{10}\sum_{n=9}^0Behaviour\_Variable_{i-n}</script><h3 id="趋势和事件时期（trend-and-event-period）"><a href="#趋势和事件时期（trend-and-event-period）" class="headerlink" title="趋势和事件时期（trend and event period）"></a>趋势和事件时期（trend and event period）</h3><p>&#8195;&#8195;趋势时期是攻击日期之前的时间间隔，用来分析研究行为变化的通常趋势。这提供了一个不受大型DDoS攻击事件影响的行为变量的度量。（通俗讲就是，可以从攻击之前的一段时间的趋势来判断如果没有攻击的话，趋势大致是怎样的）本文研究了DDoS攻击前200天内行为变量的一般行为。</p>
-<p>&#8195;&#8195;事件时期是攻击日期之后的时间间隔，通过分析该事件间隔来研究与通常趋势的偏差。本文选择了20天作为事件时期。</p>
-<h3 id="行为变量的测量"><a href="#行为变量的测量" class="headerlink" title="行为变量的测量"></a>行为变量的测量</h3><p>&#8195;&#8195;通过计算前面定义的行为变量的每日值来度量域名的行为，计算这些行为变量的日变化，以绘制出时间序列曲线。</p>
-<h1 id="测量结果分析"><a href="#测量结果分析" class="headerlink" title="测量结果分析"></a>测量结果分析</h1><p>&#8195;&#8195;从3个方面分析域名行为的变化</p>
+<p>  每天对每个行为的测量提供了一个时间序列 。为了分析时间序列，分别计算行为变量的日变化和10天累积平均变化。例如，对于$Domains_n$，变化量计算为:<br>
+$$\Delta Domains_n = Domains_n - Domains_{(n-1)}$$</p>
+<p>  计算10天累积平均变化可以从时间序列中过滤随机事件的短期影响，对于第$i$天的累积平均行为变化可计算为：</p>
+<p>$$Cumulative_Variable_i = \frac{1}{10}\sum_{n=9}^0Behaviour_Variable_{i-n}$$</p>
+<h3 id="趋势和事件时期（trend-and-event-period）">趋势和事件时期（trend and event period）</h3>
+<p>  趋势时期是攻击日期之前的时间间隔，用来分析研究行为变化的通常趋势。这提供了一个不受大型DDoS攻击事件影响的行为变量的度量。（通俗讲就是，可以从攻击之前的一段时间的趋势来判断如果没有攻击的话，趋势大致是怎样的）本文研究了DDoS攻击前200天内行为变量的一般行为。</p>
+<p>  事件时期是攻击日期之后的时间间隔，通过分析该事件间隔来研究与通常趋势的偏差。本文选择了20天作为事件时期。</p>
+<h3 id="行为变量的测量">行为变量的测量</h3>
+<p>  通过计算前面定义的行为变量的每日值来度量域名的行为，计算这些行为变量的日变化，以绘制出时间序列曲线。</p>
+<h1>测量结果分析</h1>
+<p>  从3个方面分析域名行为的变化</p>
 <ul>
 <li>行为变量的时间序列分析</li>
 <li>检查观察到的变化的统计意义</li>
 <li>对变成非单独类型的域名，研究了第二DNS服务提供商的选择</li>
 </ul>
-<h2 id="时间序列变化"><a href="#时间序列变化" class="headerlink" title="时间序列变化"></a>时间序列变化</h2><div align=center>
+<h2 id="时间序列变化">时间序列变化</h2>
+<div align=center>
 <img src="20210305153534191.png"/>
 </div>
-
-<p>&#8195;&#8195;如上图所示，攻击发生后，NS1和Dyn的域名数量出现了一个显著下降，同时也能看出NS1是一个比Dyn小不少的服务提供商，Dyn的变化更加明显。攻击后出现了恢复区，因为域名总数在攻击后的一天开始再次增加。</p>
-<p>&#8195;&#8195;对于$Exclusive_Domains$，没有看到类似的模式，如下图所示。</p>
+<p>  如上图所示，攻击发生后，NS1和Dyn的域名数量出现了一个显著下降，同时也能看出NS1是一个比Dyn小不少的服务提供商，Dyn的变化更加明显。攻击后出现了恢复区，因为域名总数在攻击后的一天开始再次增加。</p>
+<p>  对于$Exclusive_Domains$，没有看到类似的模式，如下图所示。</p>
 <div align=center>
 <img src="20210305153647909.png"/>
 </div>
-
 <p>$Nonexclusive_Domain$出现了上升，如下图所示。</p>
 <div align=center>
 <img src="20210305153851854.png"/>
 </div>
-
 <p>使用Dyn和NS1的非单独类型域名数量的上升可以由下图清楚地表现出来。</p>
 <div align=center>
 <img src="20210305154044786.png"/>
 </div>
-
 <p>单独类型到非单独类型的变化如下图所示，可以看到是变多了。</p>
 <div align=center>
 <img src="20210305154213288.png"/>
 </div>
-
 <p>大量的域名在攻击之后离开了NS1/Dyn，在事件时期中，对于NS1来说离开的域名中有63.5%是单独类型的，对Dyn这个比例则是96.7%，如下图所示。</p>
 <div align=center>
 <img src="20210305154624345.png"/>
 </div>
-
 <p>通过累积变化的时间序列可以看到DDoS对Dyn影响的严重程度。通过累积变化，可以看到在事件时期内，使用Dyn的域名总数受到了强烈的负面影响，如下图。</p>
 <div align=center>
 <img src="20210305154835790.png"/>
 </div>
-
 <p>趋势期唯一出现的负下降可能是由于攻击前80 - 120天有大量非单独类型域名离开Dyn，如下图。</p>
 <div align=center>
 <img src="202103051551329.png"/>
 </div>
-
-<h2 id="行为变化的统计学意义"><a href="#行为变化的统计学意义" class="headerlink" title="行为变化的统计学意义"></a>行为变化的统计学意义</h2><p>&#8195;&#8195;假设：在趋势和事件时期中，行为变量的均值没有变化。</p>
-<p>&#8195;&#8195;通过比较两个MDNS提供商在趋势和事件期间的行为变量的平均值来评估这个假设。本文认为，变量的变化在p值小于0.05时具有统计学意义，下标展示了每个变量的测试统计信息。</p>
+<h2 id="行为变化的统计学意义">行为变化的统计学意义</h2>
+<p>  假设：在趋势和事件时期中，行为变量的均值没有变化。</p>
+<p>  通过比较两个MDNS提供商在趋势和事件期间的行为变量的平均值来评估这个假设。本文认为，变量的变化在p值小于0.05时具有统计学意义，下标展示了每个变量的测试统计信息。</p>
 <div align=center>
 <img src="2021030515591954.png"/>
 </div>
-
-<p>&#8195;&#8195;在总的域名数量的变化平均值和单独类型域名变化的平均值上，趋势时期要远高于事件时期。域名的日变化和单独类型域名的日变化负均值表明域名在事件时期离开了Dyn。</p>
-<p>&#8195;&#8195;$Ex_Exclusive$的变化对于Dyn和NS1都具有统计学意义。这说明，在事件期间异常大量的单独类型域名停止使用他们的服务。</p>
-<h2 id="DNS的第二选择"><a href="#DNS的第二选择" class="headerlink" title="DNS的第二选择"></a>DNS的第二选择</h2><p>&#8195;&#8195;下图展示了非单独类型域名在攻击后的一天的top第二DNS选择</p>
+<p>  在总的域名数量的变化平均值和单独类型域名变化的平均值上，趋势时期要远高于事件时期。域名的日变化和单独类型域名的日变化负均值表明域名在事件时期离开了Dyn。</p>
+<p>  $Ex_Exclusive$的变化对于Dyn和NS1都具有统计学意义。这说明，在事件期间异常大量的单独类型域名停止使用他们的服务。</p>
+<h2 id="DNS的第二选择">DNS的第二选择</h2>
+<p>  下图展示了非单独类型域名在攻击后的一天的top第二DNS选择</p>
 <div align=center>
 <img src="20210305160839732.png"/>
 </div>
-
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>&#8195;&#8195;根据对数据集的观察，有两种客户行为类型：</p>
+<h1>结论</h1>
+<p>  根据对数据集的观察，有两种客户行为类型：</p>
 <ul>
 <li>大多数Dyn和NS1客户都是单独类型的，也就是说他们只为他们的域名配置了唯一的权威名称服务器</li>
 <li>一小部分客户是非单独类型的</li>
 </ul>
-<p>&#8195;&#8195;对于攻击，有一些统计意义的结论：</p>
+<p>  对于攻击，有一些统计意义的结论：</p>
 <ul>
 <li>攻击之后大量的MDNS客户从单独类型转成非单独类型。且这种变化是持续的，在所分析的期间内，从单独类型转换到非单独类型的大多数域名仍然保持这种配置</li>
 <li>非单独类型的Dyn客户的行为没有明显的变化，因为他们貌似不会太受攻击的影响</li>
@@ -685,7 +688,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF-amp-%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#DDoS%E6%94%BB%E5%87%BB%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">DDoS攻击的影响</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">数据集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">域名类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">测量影响</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E8%A1%8C%E4%B8%BA%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">域名行为定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B6%8B%E5%8A%BF%E5%92%8C%E4%BA%8B%E4%BB%B6%E6%97%B6%E6%9C%9F%EF%BC%88trend-and-event-period%EF%BC%89"><span class="toc-nav-number">2.3.2.</span> <span class="toc-nav-text">趋势和事件时期（trend and event period）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A1%8C%E4%B8%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%B5%8B%E9%87%8F"><span class="toc-nav-number">2.3.3.</span> <span class="toc-nav-text">行为变量的测量</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">测量结果分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">时间序列变化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6%E6%84%8F%E4%B9%89"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">行为变化的统计学意义</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DNS%E7%9A%84%E7%AC%AC%E4%BA%8C%E9%80%89%E6%8B%A9"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">DNS的第二选择</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结论</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">DDoS攻击的影响</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86-2"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">数据集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">域名类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">测量影响</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E8%A1%8C%E4%B8%BA%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">域名行为定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B6%8B%E5%8A%BF%E5%92%8C%E4%BA%8B%E4%BB%B6%E6%97%B6%E6%9C%9F%EF%BC%88trend-and-event-period%EF%BC%89"><span class="toc-nav-number">2.3.2.</span> <span class="toc-nav-text">趋势和事件时期（trend and event period）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A1%8C%E4%B8%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%B5%8B%E9%87%8F"><span class="toc-nav-number">2.3.3.</span> <span class="toc-nav-text">行为变量的测量</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">测量结果分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">时间序列变化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6%E6%84%8F%E4%B9%89"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">行为变化的统计学意义</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DNS%E7%9A%84%E7%AC%AC%E4%BA%8C%E9%80%89%E6%8B%A9"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">DNS的第二选择</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结论</span></a></li></ol>
         
         </div>
       </aside>
@@ -1265,20 +1268,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>

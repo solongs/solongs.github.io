@@ -243,16 +243,16 @@
 
           
           
+          
+          
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
           </li>
-          
-          
           
           
           
@@ -268,9 +268,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -279,9 +279,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/tags/">
               
-              关于
+              标签
               
               
             </a>
@@ -401,7 +401,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">4.6k</span> In Total
+              Words <span class="post-count">4.5k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -463,50 +463,63 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="背景-amp-目的"><a href="#背景-amp-目的" class="headerlink" title="背景&amp;目的"></a>背景&amp;目的</h1><p>&#8195;&#8195;域名加密技术，例如DoT、DoH、ESNI等技术，可以提高安全和隐私，但是在保护用户隐私上，仍然存在问题，那就是用户访问的网站可以在网络层的观察者那里通过ip-域名映射表得到。不过CDN、DNS负载均衡、同一台服务器上托管多个不同网站这些技术都使得ip-域名映射表变得不稳定。</p>
-<p>&#8195;&#8195;本文说明，这种不稳定性并不能成为可靠浏览跟踪的阻碍（假设部署的是通用DoT/DoH、ESNI）。本文提出了一个<font color='red'><strong>基于IP的网站指纹技术</strong></font>，这种技术可以帮助网络层的观察者高准确率地识别出用户访问的网站。并讨论总结了一些网站所有者和托管提供商可用的策略，用来对抗这种基于IP的网站指纹技术，最大限度地提高域名加密技术提供的隐私利益。</p>
-<h1 id="域名加密（Domain-Name-Encryption）"><a href="#域名加密（Domain-Name-Encryption）" class="headerlink" title="域名加密（Domain Name Encryption）"></a>域名加密（Domain Name Encryption）</h1><p>&#8195;&#8195;在当下的web浏览环境下，有两种渠道可以获取到域名信息：</p>
+        <h1>背景&amp;目的</h1>
+<p>  域名加密技术，例如DoT、DoH、ESNI等技术，可以提高安全和隐私，但是在保护用户隐私上，仍然存在问题，那就是用户访问的网站可以在网络层的观察者那里通过ip-域名映射表得到。不过CDN、DNS负载均衡、同一台服务器上托管多个不同网站这些技术都使得ip-域名映射表变得不稳定。</p>
+<p>  本文说明，这种不稳定性并不能成为可靠浏览跟踪的阻碍（假设部署的是通用DoT/DoH、ESNI）。本文提出了一个<font color='red'><strong>基于IP的网站指纹技术</strong></font>，这种技术可以帮助网络层的观察者高准确率地识别出用户访问的网站。并讨论总结了一些网站所有者和托管提供商可用的策略，用来对抗这种基于IP的网站指纹技术，最大限度地提高域名加密技术提供的隐私利益。</p>
+<h1>域名加密（Domain Name Encryption）</h1>
+<p>  在当下的web浏览环境下，有两种渠道可以获取到域名信息：</p>
 <ul>
 <li>明文DNS请求和响应</li>
 <li>TLS握手过程中的SNI</li>
 </ul>
 <p>明文DNS不仅仅暴露用户隐私，还允许网络层的实体干扰用户连接。DoT、DoH、ESNI就是保护域名信息的几种解决方案。</p>
-<p>&#8195;&#8195;DoH和DoT将DNS请求和响应加密，几家服务提供商已经开始提供公开DoT/DoH解析器，包括Google和Cloudflare。在客户端，几家流行的浏览器也开始支持DoH/DoT。不过这些供应商将所有DNS解析集中到一个受信任的解析器的设计选择还引起了另外的一些隐私问题。</p>
-<p>&#8195;&#8195;TLS握手中的SNI字段表示客户端想要访问的网站的域名，为了获得其域名的整数。TLS1.2之前，SNI字段都是明文传输的，也存在安全和隐私风险。TLS1.3提供了加密SNI字段的选项。但是为了是ESNI工作，从服务器公钥派生的对称加密密钥必须通过ESNIKeys DNS查找提前获得。所以，如果ESNI不适用DoT/DoH，那它就无法带来任何隐私收益。</p>
-<h1 id="网站指纹（Website-Fingerprinting）"><a href="#网站指纹（Website-Fingerprinting）" class="headerlink" title="网站指纹（Website Fingerprinting）"></a>网站指纹（Website Fingerprinting）</h1><p>&#8195;&#8195;网站指纹是一种利用加密流量分析技术，根据浏览网站时观察到的流量模式，为一组网站构建指纹的攻击方式。指纹将被用来确定受监控的用户是否访问过任何受监控的网站。</p>
-<p>&#8195;&#8195;前人关于网站指纹的工作主要关注于识别网站，这些网站是通过匿名化或混淆渠道浏览的，它们的真实目的IP被隐藏起来，例如使用Tor、VPN或代理服务器。</p>
-<p>&#8195;&#8195;针对标准加密网络流量的网站指纹攻击尚未得到全面调查，大概是因为在明文时代，只通过DNS和SNI 中的域名信息就能大致推断出访问的应用或web服务。</p>
-<h1 id="威胁模型"><a href="#威胁模型" class="headerlink" title="威胁模型"></a>威胁模型</h1><p>&#8195;&#8195;考虑一个真实场景，一个攻击者（例如一个ISP）被动地监视用户流量，并试图确定一个特定的网站是否被给定的用户访问，仅仅基于从IP地址获得的信息。</p>
-<p>&#8195;&#8195;假设攻击者执行以下步骤来创建网站指纹：</p>
+<p>  DoH和DoT将DNS请求和响应加密，几家服务提供商已经开始提供公开DoT/DoH解析器，包括Google和Cloudflare。在客户端，几家流行的浏览器也开始支持DoH/DoT。不过这些供应商将所有DNS解析集中到一个受信任的解析器的设计选择还引起了另外的一些隐私问题。</p>
+<p>  TLS握手中的SNI字段表示客户端想要访问的网站的域名，为了获得其域名的整数。TLS1.2之前，SNI字段都是明文传输的，也存在安全和隐私风险。TLS1.3提供了加密SNI字段的选项。但是为了是ESNI工作，从服务器公钥派生的对称加密密钥必须通过ESNIKeys DNS查找提前获得。所以，如果ESNI不适用DoT/DoH，那它就无法带来任何隐私收益。</p>
+<h1>网站指纹（Website Fingerprinting）</h1>
+<p>  网站指纹是一种利用加密流量分析技术，根据浏览网站时观察到的流量模式，为一组网站构建指纹的攻击方式。指纹将被用来确定受监控的用户是否访问过任何受监控的网站。</p>
+<p>  前人关于网站指纹的工作主要关注于识别网站，这些网站是通过匿名化或混淆渠道浏览的，它们的真实目的IP被隐藏起来，例如使用Tor、VPN或代理服务器。</p>
+<p>  针对标准加密网络流量的网站指纹攻击尚未得到全面调查，大概是因为在明文时代，只通过DNS和SNI 中的域名信息就能大致推断出访问的应用或web服务。</p>
+<h1>威胁模型</h1>
+<p>  考虑一个真实场景，一个攻击者（例如一个ISP）被动地监视用户流量，并试图确定一个特定的网站是否被给定的用户访问，仅仅基于从IP地址获得的信息。</p>
+<p>  假设攻击者执行以下步骤来创建网站指纹：</p>
 <ul>
 <li>攻击者访问一组网站，并记录所有与其联系获得资源的域名。每个网站的基于域名的指纹可以通过这组相联系的域名构建</li>
 <li>这些域名被定期解析到它们的主机IP地址，这些地址用于构建基于IP的指纹。根据域名和它主机IP(es)地址之间的关系，连接到唯一的IP地址可以很容易地显示哪个网站正在被访问。</li>
 <li>攻击者将被监控用户的网络踪迹中发现的IP地址序列与前一步构建的基于IP的指纹相匹配，以推断哪个网站被访问。</li>
 </ul>
 <p>攻击的有效性取决于指纹的<strong>唯一性</strong>和<strong>稳定性</strong></p>
-<h1 id="指纹构造"><a href="#指纹构造" class="headerlink" title="指纹构造"></a>指纹构造</h1><h2 id="基于IP的指纹"><a href="#基于IP的指纹" class="headerlink" title="基于IP的指纹"></a>基于IP的指纹</h2><p>&#8195;&#8195;假设理想的环境就是域名信息无法从网络流量中提取出来，攻击者唯一可以看到的元数据就是远程连接服务器的IP地址。在这种情况下，攻击者只能通过观察到的IP地址来识别目标网站。</p>
-<p>&#8195;&#8195;当浏览网站时，浏览器首先会与web服务器连接获取到HTML文档，然后解析HTML文档获取其中引用的其他web资源。基于这个逻辑，攻击者首先构造基于域名的指纹。</p>
-<p>&#8195;&#8195;对于一个给定的网站，它的基于域名的指纹由两部分组成：</p>
+<h1>指纹构造</h1>
+<h2 id="基于IP的指纹">基于IP的指纹</h2>
+<p>  假设理想的环境就是域名信息无法从网络流量中提取出来，攻击者唯一可以看到的元数据就是远程连接服务器的IP地址。在这种情况下，攻击者只能通过观察到的IP地址来识别目标网站。</p>
+<p>  当浏览网站时，浏览器首先会与web服务器连接获取到HTML文档，然后解析HTML文档获取其中引用的其他web资源。基于这个逻辑，攻击者首先构造基于域名的指纹。</p>
+<p>  对于一个给定的网站，它的基于域名的指纹由两部分组成：</p>
 <ul>
 <li><strong>主域名（primary domain）</strong>，用$d_p$来表示。它是浏览器地址栏里面URL中的域名，对应的是首次连接获取初始HTML文档的服务器</li>
 <li><strong>从域名（secondary domain）</strong>，用$d_s$来标示。它可能与主域名不一样，它是HTML文档里面引用的托管其他web资源的域名。</li>
 </ul>
-<p>指纹可以表示为：</p>
-<script type="math/tex; mode=display">
-d_p + \{d_{s_1}, d_{s_2}, \cdots, d_{s_n}\}</script><p>&#8195;&#8195;攻击者可以从上述基于域名的指纹获取他们对应的基于IP的指纹，通过重复解析域名到IP地址。假设一个域名可能被解析为多个IP地址，那么基于域名的指纹中的每个域名将被转换为一组至少包含一个IP地址的IP地址。</p>
-<p>&#8195;&#8195;基于IP地址的指纹也由两部分组成：</p>
+<p>指纹可以表示为：<br>
+$$<br>
+d_p + {d_{s_1}, d_{s_2}, \cdots, d_{s_n}}<br>
+$$</p>
+<p>  攻击者可以从上述基于域名的指纹获取他们对应的基于IP的指纹，通过重复解析域名到IP地址。假设一个域名可能被解析为多个IP地址，那么基于域名的指纹中的每个域名将被转换为一组至少包含一个IP地址的IP地址。</p>
+<p>  基于IP地址的指纹也由两部分组成：</p>
 <ul>
 <li>主域名的IP地址</li>
 <li>解析从域名得到的一组IP地址</li>
 </ul>
 <p>指纹可以表示为：</p>
-<script type="math/tex; mode=display">
-\{d_pip_1, d_pip_2, \cdots, d_pip_n\} + \{ \{d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n\},\\
-\{d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n\}, \cdots, \{d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n\} \}</script><p>为了简化指纹的构造和匹配，考虑所有次域名的IP地址的并集来减少上述指纹。简化表示为：</p>
-<script type="math/tex; mode=display">
-\{d_pip_1, d_pip_2, \cdots, d_pip_n\} + \{ d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n,\\
-d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n, \cdots, d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n  \}</script><h2 id="通过Connection-Bucketing加强基于IP的指纹"><a href="#通过Connection-Bucketing加强基于IP的指纹" class="headerlink" title="通过Connection Bucketing加强基于IP的指纹"></a>通过Connection Bucketing加强基于IP的指纹</h2><p>&#8195;&#8195;当页面被访问时，为了获取web资源还会发起多个请求，一旦获取了资源，这些资源可能也会触发额外的对子资源的请求（例如js代码）。这些请求的绝对顺序可能会改变，由于一些不确定因素例如网络供应商的性能和底层操作系统。所以在构建基于域名的指纹时不考虑这种顺序。不过当将所有这些请求当做一个整体来 看时，仍然存在一种高级别的排序关系，当考虑<strong>关键渲染路径</strong>时，可以可靠地捕获这种关系。具体来说就是，有一些渲染阻塞和关键对象总是要在其他对象之前加载。</p>
-<p>&#8195;&#8195;从获取初始HTML文档到屏幕上呈现出网站中间的时间链称为<font color='red'><strong>关键渲染路径（critical rendering path）</strong></font>。</p>
+<p>$$<br>
+{d_pip_1, d_pip_2, \cdots, d_pip_n} + { {d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n},\<br>
+{d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n}, \cdots, {d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n} }<br>
+$$</p>
+<p>为了简化指纹的构造和匹配，考虑所有次域名的IP地址的并集来减少上述指纹。简化表示为：</p>
+<p>$$<br>
+{d_pip_1, d_pip_2, \cdots, d_pip_n} + { d_{s_1}ip_1, d_{s_1}ip_2, \cdots, d_{s_1}ip_n,\<br>
+d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n, \cdots, d_{s_n}ip_1, d_{s_n}ip_2, \cdots, d_{s_n}ip_n  }<br>
+$$</p>
+<h2 id="通过Connection-Bucketing加强基于IP的指纹">通过Connection Bucketing加强基于IP的指纹</h2>
+<p>  当页面被访问时，为了获取web资源还会发起多个请求，一旦获取了资源，这些资源可能也会触发额外的对子资源的请求（例如js代码）。这些请求的绝对顺序可能会改变，由于一些不确定因素例如网络供应商的性能和底层操作系统。所以在构建基于域名的指纹时不考虑这种顺序。不过当将所有这些请求当做一个整体来 看时，仍然存在一种高级别的排序关系，当考虑<strong>关键渲染路径</strong>时，可以可靠地捕获这种关系。具体来说就是，有一些渲染阻塞和关键对象总是要在其他对象之前加载。</p>
+<p>  从获取初始HTML文档到屏幕上呈现出网站中间的时间链称为<font color='red'><strong>关键渲染路径（critical rendering path）</strong></font>。</p>
 <ol>
 <li>首先浏览器从主域名那获取到初始HTML文档（例如index.html）</li>
 <li>然后HTML文档被解析为DOM树</li>
@@ -518,22 +531,32 @@ d_{s_2}ip_1, d_{s_2}ip_2, \cdots, d_{s_2}ip_n, \cdots, d_{s_n}ip_1, d_{s_n}ip_2,
 <li><strong>domContentLoaded</strong>：DOM和CSSOM准备好时触发，通知浏览器创建渲染树。该事件通常在不等待样式表、图像、subframe的加载时触发。触发事件后，会观察到一组用于获取非阻塞样式表、JS文件、图像、subframe等的连接。</li>
 <li><strong>domComplete</strong>：当网站和子资源被加载完时触发。触发事件后，非必要对象仍然可以在后台下载，而关键渲染路径不受影响。例如外部js文件被认为是渲染阻塞的，建议将其移动到网页的末尾，因此在触发此事件后，通常可以观察到一小群连接。</li>
 </ul>
-<p>&#8195;&#8195;基于这些关键渲染路径，本文增强了指纹的结构，以构成主域名和3个事件对应的3组域名，加强的基于域名的指纹可以表示为：</p>
-<script type="math/tex; mode=display">
-d_p + \{d_{s_1}, d_{s_2}, \cdots\}+ \{d_{s_2}, d_{s_3}, \cdots\}+ \{ \cdots, d_{s_{n-1}}, d_{s_n}\}</script><p>&#8195;&#8195;如果在不同时间从一个域名获取多个对象，那么该域名可以出现在多个桶中。因此增强的基于IP的指纹遵循同样的结构，由4组IP地址组成，即主域名的IP地址集合+3个桶对应的3组IP地址集合。</p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="测试域名的选择"><a href="#测试域名的选择" class="headerlink" title="测试域名的选择"></a>测试域名的选择</h2><p>&#8195;&#8195;选取Tranco的top网站排名列表，该列表与Chrome用户体验报告中的web流量有很好的重叠。</p>
-<p>&#8195;&#8195;通常情况下大家都会选择Alexa、Majestic、Umbrella、Quantcast这四个top网站列表之一来做研究，但是有的人研究说这些列表可能会对实验结果带来负面影响。Tranco列表已经汇总了这4个列表，从而形成超过700万个域名的列表。</p>
-<p>&#8195;&#8195;本文选取该列表的top 100K进行研究。同时对敏感网站的访问也是一个重要问题，如果在很专制的地区，浏览特定内容会违反当地法规。因此本文又手动选择Alexa上的敏感类别网站。</p>
-<p>&#8195;&#8195;最后，数据集包含220743个域名，包括来自Tranco的100K以及Alexa敏感类别中的126597个域名</p>
-<h2 id="测量时间和地点"><a href="#测量时间和地点" class="headerlink" title="测量时间和地点"></a>测量时间和地点</h2><p>&#8195;&#8195;前人的许多工作忽略了时间，从而忽略了指纹的时间特征。domain-IP映射的变化是个主要问题，以前构造的指纹在特定时间段后可能无效。</p>
-<p>&#8195;&#8195;本文在60天内对220K个网站进行重复爬取，对每个网站都提取所有域名来构造指纹。在网络层，捕获IP地址序列，用来评估指纹准确性。</p>
-<p>&#8195;&#8195;由于DNS负载均衡，许多域名可能会映射到不同的IP地址上，因此一旦提取出每个网站的一组域名，就一直对其进行解析，直到下次抓取。</p>
-<p>&#8195;&#8195;测量地点位于美国东海岸的一组机器</p>
-<p>&#8195;&#8195;60天内总共收集了24批数据。</p>
-<h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><h2 id="指纹准确率"><a href="#指纹准确率" class="headerlink" title="指纹准确率"></a>指纹准确率</h2><h3 id="指纹信息熵"><a href="#指纹信息熵" class="headerlink" title="指纹信息熵"></a>指纹信息熵</h3><p>&#8195;&#8195;基于IP的指纹来自于每个网站中提取的域名，因此这些域名的唯一性是影响IP指纹的重要因素。这很直观，如果一个域名每个网站都用，那么这个域名就做不了指纹，反之如果一个域名越独特，就越容易区分，信息熵就越大。</p>
-<p>令$P(d)$是在目标网站中访问一个网站时联系某一个特定域名的概率，那么信息熵可以计算如下：</p>
-<script type="math/tex; mode=display">
-Information entropy = -log_2P(d)</script><p>对于IP来说有两种可能：</p>
+<p>  基于这些关键渲染路径，本文增强了指纹的结构，以构成主域名和3个事件对应的3组域名，加强的基于域名的指纹可以表示为：</p>
+<p>$$<br>
+d_p + {d_{s_1}, d_{s_2}, \cdots}+ {d_{s_2}, d_{s_3}, \cdots}+ { \cdots, d_{s_{n-1}}, d_{s_n}}<br>
+$$<br>
+  如果在不同时间从一个域名获取多个对象，那么该域名可以出现在多个桶中。因此增强的基于IP的指纹遵循同样的结构，由4组IP地址组成，即主域名的IP地址集合+3个桶对应的3组IP地址集合。</p>
+<h1>实验</h1>
+<h2 id="测试域名的选择">测试域名的选择</h2>
+<p>  选取Tranco的top网站排名列表，该列表与Chrome用户体验报告中的web流量有很好的重叠。</p>
+<p>  通常情况下大家都会选择Alexa、Majestic、Umbrella、Quantcast这四个top网站列表之一来做研究，但是有的人研究说这些列表可能会对实验结果带来负面影响。Tranco列表已经汇总了这4个列表，从而形成超过700万个域名的列表。</p>
+<p>  本文选取该列表的top 100K进行研究。同时对敏感网站的访问也是一个重要问题，如果在很专制的地区，浏览特定内容会违反当地法规。因此本文又手动选择Alexa上的敏感类别网站。</p>
+<p>  最后，数据集包含220743个域名，包括来自Tranco的100K以及Alexa敏感类别中的126597个域名</p>
+<h2 id="测量时间和地点">测量时间和地点</h2>
+<p>  前人的许多工作忽略了时间，从而忽略了指纹的时间特征。domain-IP映射的变化是个主要问题，以前构造的指纹在特定时间段后可能无效。</p>
+<p>  本文在60天内对220K个网站进行重复爬取，对每个网站都提取所有域名来构造指纹。在网络层，捕获IP地址序列，用来评估指纹准确性。</p>
+<p>  由于DNS负载均衡，许多域名可能会映射到不同的IP地址上，因此一旦提取出每个网站的一组域名，就一直对其进行解析，直到下次抓取。</p>
+<p>  测量地点位于美国东海岸的一组机器</p>
+<p>  60天内总共收集了24批数据。</p>
+<h1>实验结果</h1>
+<h2 id="指纹准确率">指纹准确率</h2>
+<h3 id="指纹信息熵">指纹信息熵</h3>
+<p>  基于IP的指纹来自于每个网站中提取的域名，因此这些域名的唯一性是影响IP指纹的重要因素。这很直观，如果一个域名每个网站都用，那么这个域名就做不了指纹，反之如果一个域名越独特，就越容易区分，信息熵就越大。</p>
+<p>令$P(d)$是在目标网站中访问一个网站时联系某一个特定域名的概率，那么信息熵可以计算如下：<br>
+$$<br>
+Information entropy = -log_2P(d)<br>
+$$</p>
+<p>对于IP来说有两种可能：</p>
 <ul>
 <li>IP地址只与一个域名关联，则容易根据域名的信息熵推导出来</li>
 <li>IP地址可以托管多个域名，则IP地址的信息熵是对其托管的所有域名信息熵的平均值来计算</li>
@@ -542,74 +565,75 @@ Information entropy = -log_2P(d)</script><p>对于IP来说有两种可能：</p>
 <div align=center>
 <img src="20210308134025897.png"/>
 </div>
-
-<h3 id="主域名到IP的匹配"><a href="#主域名到IP的匹配" class="headerlink" title="主域名到IP的匹配"></a>主域名到IP的匹配</h3><p>&#8195;&#8195;很多情况下网站的域名和IP地址都存在一对一的关系，本文调查发现52%的网站只需要通过他们的IP地址就可以推断出主域名，而剩余48%的网站服务器上都至少还托管了其他网站。也就是说52%的网站都可以在与主域名的第一次连接时通过IP进行识别。</p>
-<p>&#8195;&#8195;下表展示了使用不同方法识别的成功率，第3列是仅仅通过主域名进行判断。</p>
+<h3 id="主域名到IP的匹配">主域名到IP的匹配</h3>
+<p>  很多情况下网站的域名和IP地址都存在一对一的关系，本文调查发现52%的网站只需要通过他们的IP地址就可以推断出主域名，而剩余48%的网站服务器上都至少还托管了其他网站。也就是说52%的网站都可以在与主域名的第一次连接时通过IP进行识别。</p>
+<p>  下表展示了使用不同方法识别的成功率，第3列是仅仅通过主域名进行判断。</p>
 <div align=center>
 <img src="20210308135318944.png"/>
 </div>
-
-<h3 id="基本指纹（Basic-Fingerprinting）"><a href="#基本指纹（Basic-Fingerprinting）" class="headerlink" title="基本指纹（Basic Fingerprinting）"></a>基本指纹（Basic Fingerprinting）</h3><p>&#8195;&#8195;基本指纹如上所述包含主域名IP和从域名 IP两部分，给定一个IP序列$[ip_0, ip_1, ip_2, \cdots, ip_n]$，首先从所有基于IP的指纹的主部分扫描$ip_0$，如果匹配到，则这条指纹加入候选中。然后对比${ip_1, ip_2, \cdots, ip_n}$和候选集中的从域名部分。对于每个匹配的IP地址，将该IP地址提供的熵加到该特定候选指纹获得的熵总量中。最后选择最高熵值的指纹来预测网站。</p>
-<p>&#8195;&#8195;上表第4列是通过基本的IP指纹进行匹配的准确率。</p>
-<h3 id="通过Connectiong-Bucketing加强过的指纹"><a href="#通过Connectiong-Bucketing加强过的指纹" class="headerlink" title="通过Connectiong Bucketing加强过的指纹"></a>通过Connectiong Bucketing加强过的指纹</h3><p>&#8195;&#8195;给定一个IP地址序列$[ip_0, ip_1, ip_2, \cdots, ip_n]$，首先将$ip_0$和所有指纹进行匹配，获得候选集。对于$[ip_1, ip_2, \cdots, ip_n]$，需要将其划分到3个桶里，基于在网络层每个连接的发起时间，使用k-means来将这些IP聚成3类，然后对于每个候选指纹，将指纹中的每个IP地址桶与聚类好的3个IP地址桶取交集。对于每个IP地址，把它的熵与候选指纹的总熵加载一起，最后选取熵最大的那个来预测网站。</p>
-<p>&#8195;&#8195;上表最后一列是通过这种方法进行匹配的准确率。</p>
-<p>&#8195;&#8195;对于剩余的9%的网站，20%的网站只有两个候选指纹，50%有10个 候选指纹。如下图所示</p>
+<h3 id="基本指纹（Basic-Fingerprinting）">基本指纹（Basic Fingerprinting）</h3>
+<p>  基本指纹如上所述包含主域名IP和从域名 IP两部分，给定一个IP序列$[ip_0, ip_1, ip_2, \cdots, ip_n]$，首先从所有基于IP的指纹的主部分扫描$ip_0$，如果匹配到，则这条指纹加入候选中。然后对比${ip_1, ip_2, \cdots, ip_n}$和候选集中的从域名部分。对于每个匹配的IP地址，将该IP地址提供的熵加到该特定候选指纹获得的熵总量中。最后选择最高熵值的指纹来预测网站。</p>
+<p>  上表第4列是通过基本的IP指纹进行匹配的准确率。</p>
+<h3 id="通过Connectiong-Bucketing加强过的指纹">通过Connectiong Bucketing加强过的指纹</h3>
+<p>  给定一个IP地址序列$[ip_0, ip_1, ip_2, \cdots, ip_n]$，首先将$ip_0$和所有指纹进行匹配，获得候选集。对于$[ip_1, ip_2, \cdots, ip_n]$，需要将其划分到3个桶里，基于在网络层每个连接的发起时间，使用k-means来将这些IP聚成3类，然后对于每个候选指纹，将指纹中的每个IP地址桶与聚类好的3个IP地址桶取交集。对于每个IP地址，把它的熵与候选指纹的总熵加载一起，最后选取熵最大的那个来预测网站。</p>
+<p>  上表最后一列是通过这种方法进行匹配的准确率。</p>
+<p>  对于剩余的9%的网站，20%的网站只有两个候选指纹，50%有10个 候选指纹。如下图所示</p>
 <div align=center>
 <img src="2021030814132442.png"/>
 </div>
-
-<p>&#8195;&#8195;通过手动检查这些指纹，发现许多情况下匹配到的候选域名通常指向同一个网站。这些大多数被那些相同名称在不同TLD下注册的组织拥有，例如bayer.de或bayer.com，或者域名的变种，例如christianrock.net和christianhardrock.net。</p>
-<p>&#8195;&#8195;这意味着，91%的准确率可视为准确度下限。字符串相似度可以用来对相似的域名进行聚类，而图像相似度可以用来对具有相似的起始页截图进行分组。</p>
-<h3 id="Co-location和流行度对攻击准确率的影响"><a href="#Co-location和流行度对攻击准确率的影响" class="headerlink" title="Co-location和流行度对攻击准确率的影响"></a>Co-location和流行度对攻击准确率的影响</h3><p>&#8195;&#8195;下图显示了指纹攻击成功的流行网站和敏感网站的散点图。和预期一样，没有和其他网站一起托管的网站使用指纹攻击是很敏感的。尽管co-location程度高，那使用加强过的指纹一样可以很好地识别。</p>
+<p>  通过手动检查这些指纹，发现许多情况下匹配到的候选域名通常指向同一个网站。这些大多数被那些相同名称在不同TLD下注册的组织拥有，<a target="_blank" rel="noopener" href="http://xn--bayer-4d3hh90d.xn--debayer-if7n.com">例如bayer.de或bayer.com</a>，或者域名的变种，<a target="_blank" rel="noopener" href="http://xn--christianrock-9i5us37i.xn--netchristianhardrock-y328a.net">例如christianrock.net和christianhardrock.net</a>。</p>
+<p>  这意味着，91%的准确率可视为准确度下限。字符串相似度可以用来对相似的域名进行聚类，而图像相似度可以用来对具有相似的起始页截图进行分组。</p>
+<h3 id="Co-location和流行度对攻击准确率的影响">Co-location和流行度对攻击准确率的影响</h3>
+<p>  下图显示了指纹攻击成功的流行网站和敏感网站的散点图。和预期一样，没有和其他网站一起托管的网站使用指纹攻击是很敏感的。尽管co-location程度高，那使用加强过的指纹一样可以很好地识别。</p>
 <div align=center>
 <img src="20210308142450216.png"/>
 </div>
-
-<p>&#8195;&#8195;下图展示了成功指纹识别的网站的流行度的累积分布函数。可以看到识别成功的网站数量略微倾向于更受欢迎的网站。</p>
+<p>  下图展示了成功指纹识别的网站的流行度的累积分布函数。可以看到识别成功的网站数量略微倾向于更受欢迎的网站。</p>
 <div align=center>
 <img src="20210308142641965.png"/>
 </div>
-
-<h2 id="指纹稳定性"><a href="#指纹稳定性" class="headerlink" title="指纹稳定性"></a>指纹稳定性</h2><p>&#8195;&#8195;网站指纹失效的原因主要由两个：</p>
+<h2 id="指纹稳定性">指纹稳定性</h2>
+<p>  网站指纹失效的原因主要由两个：</p>
 <ul>
 <li>网站可能会改变现存元素，移除或新增</li>
 <li>域名和IP地址的映射会改变</li>
 </ul>
 <p>由于基于ip的指纹是根据浏览目标网站与其引用的域名组成，因此首先评估后者的稳定程度。本文使用一种不同的方法对域名随时间变化进行度量。</p>
-<p>&#8195;&#8195;令$D<em>{t_0}$和$D</em>{t_1}$表示在$t_0, t_1$时刻浏览网站时发现的与其相关联的域名。网站的不同程度可以计算为：</p>
-<script type="math/tex; mode=display">
-Difference\ degree = \cfrac{(D_{t_0}\cup D_{t_1}) - (D_{t_0}\cap D_{t_1})}{D_{t_0}\cup D_{t_1}}</script><p>值为0时则代表没变化，即稳定。而1代表不稳定，意味着所有域名都发生了改变。</p>
-<p>&#8195;&#8195;下图展示了这些网站的稳定性。2个月期间，30%的网站引用了额外的域名下载资源。5天内，80%的网站仍然完全稳定，而2个月后这个值就下降到了50%。而2个月后，几乎80%的网站也还比较稳定，大概小于0.3，意味着70%的域名还在被用于下载web资源。</p>
+<p>  令$D_{t_0}$和$D_{t_1}$表示在$t_0, t_1$时刻浏览网站时发现的与其相关联的域名。网站的不同程度可以计算为：<br>
+$$<br>
+Difference\ degree = \cfrac{(D_{t_0}\cup D_{t_1}) - (D_{t_0}\cap D_{t_1})}{D_{t_0}\cup D_{t_1}}<br>
+$$</p>
+<p>值为0时则代表没变化，即稳定。而1代表不稳定，意味着所有域名都发生了改变。</p>
+<p>  下图展示了这些网站的稳定性。2个月期间，30%的网站引用了额外的域名下载资源。5天内，80%的网站仍然完全稳定，而2个月后这个值就下降到了50%。而2个月后，几乎80%的网站也还比较稳定，大概小于0.3，意味着70%的域名还在被用于下载web资源。</p>
 <div align=center>
 <img src="20210308143706692.png"/>
 </div>
-
-
 <p>对于IP地址来说，使用同样的方法来量化IP指纹的稳定性，如下图所示，其实效更快</p>
 <div align=center>
 <img src="20210308144039264.png"/>
 </div>
-
 <p>为了看一看这些老的指纹在新时间的识别准确率，用加强过的指纹来验证2个月后的准确率。5到10天内，准确率大概在80%，2个月后下降到了70%。如下图所示。</p>
 <div align=center>
 <img src="20210308144305443.png"/>
 </div>
-
-<h2 id="指纹健壮性"><a href="#指纹健壮性" class="headerlink" title="指纹健壮性"></a>指纹健壮性</h2><h3 id="HTTP缓存对指纹准确率的影响"><a href="#HTTP缓存对指纹准确率的影响" class="headerlink" title="HTTP缓存对指纹准确率的影响"></a>HTTP缓存对指纹准确率的影响</h3><p>&#8195;&#8195;通过对测试网站爬取过程中观察到的21.3万个响应头进行分析，发现86.1%是可缓存的。通过响应头计算缓存更新时间，下图为这些对象的更新时间分布。</p>
+<h2 id="指纹健壮性">指纹健壮性</h2>
+<h3 id="HTTP缓存对指纹准确率的影响">HTTP缓存对指纹准确率的影响</h3>
+<p>  通过对测试网站爬取过程中观察到的21.3万个响应头进行分析，发现86.1%是可缓存的。通过响应头计算缓存更新时间，下图为这些对象的更新时间分布。</p>
 <div align=center>
 <img src="20210308145003396.png"/>
 </div>
-
 <p>通过移除缓存资源的IP地址来验证指纹准确率。准确率仍旧很高。</p>
 <div align=center>
 <img src="20210308145349343.png"/>
 </div>
-
-<h3 id="AdBlocking下的网站指纹"><a href="#AdBlocking下的网站指纹" class="headerlink" title="AdBlocking下的网站指纹"></a>AdBlocking下的网站指纹</h3><p>&#8195;&#8195;使用Brave浏览器来研究广告拦截对指纹识别的影响。使用Brave浏览器浏览时观察到的IP地址序列与机遇IP的指纹进行匹配，使用了增强指纹后，正确率从91%下降到了76%。</p>
-<h1 id="对策"><a href="#对策" class="headerlink" title="对策"></a>对策</h1><p>&#8195;&#8195;对网站所有者来说，屏蔽广告、跟踪等对象会阻碍指纹识别的准确率，想要隐私最大化的网站可以最小化第三方资源的引用。</p>
-<p>&#8195;&#8195;隐私保护意识强的用户可以用广告、跟踪拦截器来保护浏览活动。</p>
-<p>&#8195;&#8195;对于托管提供商来说可以增加co-location的程度和域名-IP映射的动态性。</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>&#8195;&#8195;域名加密很重要，但是还是不足以完全保护用户的隐私。多管闲事的网络层攻击者还是会根据IP信息推测用户看到的网站。本文的IP指纹能够达到91%的网站识别准确率。网站所有者和托管服务商在隐私保护上仍需努力。</p>
+<h3 id="AdBlocking下的网站指纹">AdBlocking下的网站指纹</h3>
+<p>  使用Brave浏览器来研究广告拦截对指纹识别的影响。使用Brave浏览器浏览时观察到的IP地址序列与机遇IP的指纹进行匹配，使用了增强指纹后，正确率从91%下降到了76%。</p>
+<h1>对策</h1>
+<p>  对网站所有者来说，屏蔽广告、跟踪等对象会阻碍指纹识别的准确率，想要隐私最大化的网站可以最小化第三方资源的引用。</p>
+<p>  隐私保护意识强的用户可以用广告、跟踪拦截器来保护浏览活动。</p>
+<p>  对于托管提供商来说可以增加co-location的程度和域名-IP映射的动态性。</p>
+<h1>结论</h1>
+<p>  域名加密很重要，但是还是不足以完全保护用户的隐私。多管闲事的网络层攻击者还是会根据IP信息推测用户看到的网站。本文的IP指纹能够达到91%的网站识别准确率。网站所有者和托管服务商在隐私保护上仍需努力。</p>
 
 
         <hr>
@@ -709,7 +733,7 @@ Difference\ degree = \cfrac{(D_{t_0}\cup D_{t_1}) - (D_{t_0}\cap D_{t_1})}{D_{t_
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%83%8C%E6%99%AF-amp-%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D%E5%8A%A0%E5%AF%86%EF%BC%88Domain-Name-Encryption%EF%BC%89"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">域名加密（Domain Name Encryption）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E7%AB%99%E6%8C%87%E7%BA%B9%EF%BC%88Website-Fingerprinting%EF%BC%89"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">网站指纹（Website Fingerprinting）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A8%81%E8%83%81%E6%A8%A1%E5%9E%8B"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">威胁模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E6%9E%84%E9%80%A0"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">指纹构造</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9F%BA%E4%BA%8EIP%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">基于IP的指纹</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87Connection-Bucketing%E5%8A%A0%E5%BC%BA%E5%9F%BA%E4%BA%8EIP%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">通过Connection Bucketing加强基于IP的指纹</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">实验</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95%E5%9F%9F%E5%90%8D%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">测试域名的选择</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E6%97%B6%E9%97%B4%E5%92%8C%E5%9C%B0%E7%82%B9"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">测量时间和地点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">实验结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E5%87%86%E7%A1%AE%E7%8E%87"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">指纹准确率</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="toc-nav-number">7.1.1.</span> <span class="toc-nav-text">指纹信息熵</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E5%9F%9F%E5%90%8D%E5%88%B0IP%E7%9A%84%E5%8C%B9%E9%85%8D"><span class="toc-nav-number">7.1.2.</span> <span class="toc-nav-text">主域名到IP的匹配</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E7%BA%B9%EF%BC%88Basic-Fingerprinting%EF%BC%89"><span class="toc-nav-number">7.1.3.</span> <span class="toc-nav-text">基本指纹（Basic Fingerprinting）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87Connectiong-Bucketing%E5%8A%A0%E5%BC%BA%E8%BF%87%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">7.1.4.</span> <span class="toc-nav-text">通过Connectiong Bucketing加强过的指纹</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Co-location%E5%92%8C%E6%B5%81%E8%A1%8C%E5%BA%A6%E5%AF%B9%E6%94%BB%E5%87%BB%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">7.1.5.</span> <span class="toc-nav-text">Co-location和流行度对攻击准确率的影响</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">指纹稳定性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E5%81%A5%E5%A3%AE%E6%80%A7"><span class="toc-nav-number">7.3.</span> <span class="toc-nav-text">指纹健壮性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP%E7%BC%93%E5%AD%98%E5%AF%B9%E6%8C%87%E7%BA%B9%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">7.3.1.</span> <span class="toc-nav-text">HTTP缓存对指纹准确率的影响</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#AdBlocking%E4%B8%8B%E7%9A%84%E7%BD%91%E7%AB%99%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">7.3.2.</span> <span class="toc-nav-text">AdBlocking下的网站指纹</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AF%B9%E7%AD%96"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">对策</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">结论</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">背景&amp;目的</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">域名加密（Domain Name Encryption）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">网站指纹（Website Fingerprinting）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">威胁模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">指纹构造</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9F%BA%E4%BA%8EIP%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">基于IP的指纹</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87Connection-Bucketing%E5%8A%A0%E5%BC%BA%E5%9F%BA%E4%BA%8EIP%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">通过Connection Bucketing加强基于IP的指纹</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">实验</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95%E5%9F%9F%E5%90%8D%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">测试域名的选择</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E9%87%8F%E6%97%B6%E9%97%B4%E5%92%8C%E5%9C%B0%E7%82%B9"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">测量时间和地点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">实验结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E5%87%86%E7%A1%AE%E7%8E%87"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">指纹准确率</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="toc-nav-number">7.1.1.</span> <span class="toc-nav-text">指纹信息熵</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E5%9F%9F%E5%90%8D%E5%88%B0IP%E7%9A%84%E5%8C%B9%E9%85%8D"><span class="toc-nav-number">7.1.2.</span> <span class="toc-nav-text">主域名到IP的匹配</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E7%BA%B9%EF%BC%88Basic-Fingerprinting%EF%BC%89"><span class="toc-nav-number">7.1.3.</span> <span class="toc-nav-text">基本指纹（Basic Fingerprinting）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87Connectiong-Bucketing%E5%8A%A0%E5%BC%BA%E8%BF%87%E7%9A%84%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">7.1.4.</span> <span class="toc-nav-text">通过Connectiong Bucketing加强过的指纹</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Co-location%E5%92%8C%E6%B5%81%E8%A1%8C%E5%BA%A6%E5%AF%B9%E6%94%BB%E5%87%BB%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">7.1.5.</span> <span class="toc-nav-text">Co-location和流行度对攻击准确率的影响</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">指纹稳定性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E7%BA%B9%E5%81%A5%E5%A3%AE%E6%80%A7"><span class="toc-nav-number">7.3.</span> <span class="toc-nav-text">指纹健壮性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP%E7%BC%93%E5%AD%98%E5%AF%B9%E6%8C%87%E7%BA%B9%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-nav-number">7.3.1.</span> <span class="toc-nav-text">HTTP缓存对指纹准确率的影响</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#AdBlocking%E4%B8%8B%E7%9A%84%E7%BD%91%E7%AB%99%E6%8C%87%E7%BA%B9"><span class="toc-nav-number">7.3.2.</span> <span class="toc-nav-text">AdBlocking下的网站指纹</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">对策</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">结论</span></a></li></ol>
         
         </div>
       </aside>
@@ -1287,20 +1311,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
