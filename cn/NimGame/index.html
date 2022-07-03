@@ -490,17 +490,17 @@ $$<br>
 <p>  对于$2$堆Nim游戏，各种大小的子堆总数只能是$0,1,2$。具有特定大小的子堆正好有一个当且仅当这两堆的大小不同，也就是说，各种大小的子堆总数是偶数当且仅当这两堆大小相同。</p>
 <p>  现在来考虑大小为$n_1,n_2,\cdots,n_k$的一般的Nim游戏。我们把每一个数字$n_i$表示成二进制：<br>
 $$<br>
-n_1 = a_s\cdots a_1a_0\<br>
-n_2 = b_s\cdots b_1b_0\<br>
-\vdots \<br>
+n_1 = a_s\cdots a_1a_0\\<br>
+n_2 = b_s\cdots b_1b_0\\<br>
+\vdots \\<br>
 n_k = e_s\cdots e_1e_0<br>
 $$<br>
 我们可以通过在每个二进制数前面补$0$来将所有二进制的位数变得一致。我们称一个游戏是<font color='red'><strong>平衡的</strong></font>，指的是各种大小的子堆数是偶数。因此一个Nim游戏是平衡的当且仅当：<br>
 $$<br>
-a_s+b_s+\cdots e_s 为偶\<br>
-\vdots \<br>
-a_1+b_1+\cdots e_1 为偶\<br>
-\vdots \<br>
+a_s+b_s+\cdots e_s 为偶\\<br>
+\vdots \\<br>
+a_1+b_1+\cdots e_1 为偶\\<br>
+\vdots \\<br>
 a_0+b_0+\cdots e_0 为偶<br>
 $$<br>
 若一个Nim游戏是不平衡的，则称它为<font color='red'><strong>非平衡的</strong></font>。我们说第$i$位是平衡的，指的是和$a_i+b_i+\cdots + e_i$是偶数，否则就是非平衡的。因此，如果一个游戏是平衡的，则它在各个位上都是平衡的，而对于非平衡游戏来说，至少存在一个非平衡位。</p>
@@ -510,9 +510,9 @@ $$<br>
 <p>  给定一个$k=4$的Nim游戏，其中堆的大小为$7,9,12,15$ ，我们将其表示为二进制：<br>
 $$<br>
 \begin{aligned}<br>
-7\rightarrow 0111\<br>
-9\rightarrow1001\<br>
-12\rightarrow1100\<br>
+7\rightarrow 0111\\<br>
+9\rightarrow1001\\<br>
+12\rightarrow1100\\<br>
 15\rightarrow 1111<br>
 \end{aligned}<br>
 $$<br>
@@ -1204,5 +1204,22 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
