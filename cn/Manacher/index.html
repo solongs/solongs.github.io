@@ -395,11 +395,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">9</span> Minutes
+              Estimated Reading Time <span class="post-count">7</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.2k</span> In Total
+              Words <span class="post-count">1.9k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -461,14 +461,14 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1>1 算法背景</h1>
+        <h1>算法背景</h1>
 <p>  Manacher算法用于解决回文子串问题。给定字符串$s$，求其回文子串，回文子串形如$aba$、$abba$。例如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;abcbbc&quot;</span></span><br><span class="line">回文子串有：<span class="string">&quot;bcb&quot;</span>、<span class="string">&quot;cbbc&quot;</span></span><br><span class="line">最长回文子串为：<span class="string">&quot;cbbc&quot;</span>**</span><br></pre></td></tr></table></figure>
 <p>1975年Manacher，提出Manacher算法将回文子串问题的时间复杂度提升为$O(n)$</p>
-<h1>2 常规求解</h1>
+<h1>常规求解</h1>
 <p>  回文串分<strong>奇回文</strong>（形如$aba$）和<strong>偶回文</strong>（形如$abba$），最常规的求解方法就是以每个字符为中心向两端拓展，以及以两个相邻且相等字符为中心向两端拓展。这样做在处理上和时间复杂度上都很麻烦。下面来详细看看Manacher算法是怎样做的。</p>
-<h1>3 Manacher算法</h1>
-<h2 id="3-1-字符串预处理">3.1 字符串预处理</h2>
+<h1>Manacher算法</h1>
+<h2 id="字符串预处理">字符串预处理</h2>
 <p>  Manacher算法首先将整个字符串的首尾以及相邻字符之间插入一个没出现过的特殊字符，假设原字符串为：<br>
 $$<br>
 abcbohhou<br>
@@ -481,7 +481,7 @@ $$<br>
 $$<br>
 $#a#b#c#b#o#h#h#o#u#%<br>
 $$</p>
-<h2 id="3-2-回文半径数组">3.2 回文半径数组</h2>
+<h2 id="回文半径数组">回文半径数组</h2>
 <p>  Manacher算法需要引入一个辅助数组$arr$，数组长度等于新字符串的长度，数组元素代表<font color='red'><strong>以当前字符为中心的最长回文子串的半径</strong></font>，所以叫它回文半径数组。上面的例子及对应的回文半径数组如下。</p>
 <table>
 <thead>
@@ -539,9 +539,9 @@ $$</p>
 </table>
 <p>知道了这个数组的定义后，我们可以很清楚地发现，以任意一个字符为中心的最长回文子串的长度就是该字符对应的数组元素值减1。例如$#b#c#b#$是以$c$为中心的回文子串，对应真实的$bcb$长度就是$4-1=3$；$#o#h#h#o#$是以$#$为中心的回文子串，对应真实的$ohho$长度就是$5-1=4$。<br>
   所以最重要的就是填充这个回文半径数组了。</p>
-<h2 id="3-3-对称关系">3.3 对称关系</h2>
+<h2 id="对称关系">对称关系</h2>
 <p>  回文子串中心的两侧是镜面对称的如$abacaba$，这也就意味着<font color='red'><strong>在除了中心的整个回文子串内，以某一个字符为中心的回文串长度，等于以其对称位置字符为中心的回文串长度</strong></font>。例如$abacaba$中，以左边$b$为中心的回文串长度等于以右边$b$为中心的回文串长度。</p>
-<h2 id="3-4-填充数组">3.4 填充数组</h2>
+<h2 id="填充数组">填充数组</h2>
 <p>  数组需要遍历填充，在遍历之前先维护两个变量，结合图片（假设数组已经填好一部分）解释其含义：</p>
 <div align=center>
 <img src="20200229142649961.png"/>
@@ -556,7 +556,7 @@ arr[i]=min(arr[2</em>center-i],\ \ r_border-i )<br>
 $$<br>
   拿上图的当前位置来说，$#$落入了$c$为中心的回文串中，那么这个位置就等于它关于$c$对称位置的值，即$1$。那什么时候受右边界影响呢，假设$c$左边那个$#$的值为4（仅仅是假设！），那么当前位置就应该是$r_border-i=3$，因为我们不知道$r_border$往右那部分是啥，这也是上式的由来。<br>
   我们希望$r_border$越靠右边越好，这样能加速判断，所以要时刻更新$center$和$r_border$。</p>
-<h2 id="3-5-算法流程以及伪代码">3.5 算法流程以及伪代码</h2>
+<h2 id="算法流程以及伪代码">算法流程以及伪代码</h2>
 <p>  算法流程如下：</p>
 <ol>
 <li>字符串预处理得到$new_s$；</li>
@@ -568,7 +568,7 @@ $$<br>
 </ol>
 <p>算法伪代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">findPalindrome(s):</span><br><span class="line"></span><br><span class="line">new_s = reprocess(s) <span class="comment">#字符串预处理，插入无关字符以及首尾边界字符</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to new_s.length then</span><br><span class="line">	<span class="keyword">if</span> arr[i] &lt; r_border:  <span class="comment">#当前元素落在右边界内，则找对称关系</span></span><br><span class="line">		arr[i] = <span class="built_in">min</span>(arr[<span class="number">2</span>*center-i], r_border-i)</span><br><span class="line">	<span class="keyword">else</span>                   <span class="comment">#否则arr[i] = 1</span></span><br><span class="line">		arr[i] = <span class="number">1</span></span><br><span class="line">	end <span class="keyword">if</span> </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> new_s[i-arr[i]] == new_s[i+arr[i]] then <span class="comment">#以i为中心向两端拓展，同时半径自增。首尾再加入无关字符就是为了处理边界</span></span><br><span class="line">		arr[i]++</span><br><span class="line">	end <span class="keyword">while</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> arr[i] + i &gt; r_border then   <span class="comment">#如果以字符为中心的回文子串右端超过右边界，则更新右边界和对称中心</span></span><br><span class="line">		center = i</span><br><span class="line">		r_border = arr[i]+i</span><br><span class="line">	end <span class="keyword">if</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="3-6-实例">3.6 实例</h2>
+<h2 id="实例">实例</h2>
 <p>  关说不练就比较难受了，拿一个简单例子$babad$来过一遍，对照着上面的伪代码。最开始让$r_border=center=0$（别的值也无所谓，别影响后面第一步判断就行），开始填充下面这个数组。</p>
 <table>
 <thead>
@@ -654,7 +654,6 @@ $$<br>
 <div align=center>
 <img src="20200228182542990.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228182542990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228182542990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -697,7 +696,6 @@ $$<br>
 <div align=center>
 <img src="20200228182728988.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228182728988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228182728988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -740,7 +738,6 @@ $$<br>
 <div align=center>
 <img src="20200228182951105.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228182951105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228182951105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -781,9 +778,8 @@ $$<br>
 </table>
 <p><strong>（5）$i=5 \lt r_border$则$arr[5] =min(arr[3],r_border-5 )=1$，拓展后$arr[5]$仍为1，不更新$center,r_border$。</strong></p>
 <div align=center>
-<img src="20200228183901597.png"/>
+<img src="20200228182951105 (1).png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228182951105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228182951105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -820,28 +816,12 @@ $$<br>
 <td></td>
 <td></td>
 </tr>
-<tr>
-<td><strong>（6）$i=6 \lt r_border$则$arr[6] =min(arr[2],r_border-6 )=2$，拓展后$arr[6]$为4，更新$center=6,r_border=10$。</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
+<p><strong>（6）$i=6 \lt r_border$则$arr[6] =min(arr[2],r_border-6 )=2$，拓展后$arr[6]$为4，更新$center=6,r_border=10$。</strong></p>
 <div align=center>
-<img src="20200228184008147.png"/>
+<img src="20200228183901597.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228183901597.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228183901597.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -882,9 +862,8 @@ $$<br>
 </table>
 <p><strong>（7）$i=7 \lt r_border$则$arr[7] =min(arr[5],r_border-7 )=1$，拓展后$arr[7]$仍为1，不更新$center,r_border$。</strong></p>
 <div align=center>
-<img src="20200228184131214.png"/>
+<img src="20200228184008147.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228184008147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228184008147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -925,9 +904,8 @@ $$<br>
 </table>
 <p><strong>（8）$i=8 \lt r_border$则$arr[8] =min(arr[4],r_border-8 )=2$，拓展后$arr[8]$仍为2，不更新$center,r_border$。</strong></p>
 <div align=center>
-<img src="20200228184238925.png"/>
+<img src="20200228184131214.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228184131214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228184131214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -968,9 +946,8 @@ $$<br>
 </table>
 <p><strong>（9）$i=9 \lt r_border$则$arr[9] =min(arr[3],r_border-9 )=1$，拓展后$arr[9]$仍为1，不更新$center,r_border$。</strong></p>
 <div align=center>
-<img src="20200228184444472.png"/>
+<img src="20200228184238925.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228184238925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228184238925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -1011,9 +988,8 @@ $$<br>
 </table>
 <p><strong>（10）$i=10 \ge r_border$则$arr[10] =1$，拓展后$arr[10]$为2，更新$center=10,r_border=12$。</strong></p>
 <div align=center>
-<img src="20200229142649961.png"/>
+<img src="20200228184444472.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228184444472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228184444472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -1054,9 +1030,8 @@ $$<br>
 </table>
 <p><strong>（11）$i=11 \lt r_border$则$arr[11] =min(arr[9],r_border-11 )=1$，拓展后$arr[11]$仍为1，不更新$center,r_border$。</strong></p>
 <div align=center>
-<img src="20200229142649961.png"/>
+<img src="20200228184559321.png"/>
 </div>
-<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200228184559321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center">https://img-blog.csdnimg.cn/20200228184559321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc4MjIx,size_16,color_FFFFFF,t_70#pic_center</a> =600x150)</p>
 <table>
 <thead>
 <tr>
@@ -1096,7 +1071,7 @@ $$<br>
 </tbody>
 </table>
 <p><strong>（12）结束。</strong></p>
-<h1>4 结束</h1>
+<h1>结束</h1>
 <p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378221/article/details/104060693">Leetcode 5</a>是这个算法的练习。</p>
 
 
@@ -1197,7 +1172,7 @@ $$<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1 算法背景</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2 常规求解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3 Manacher算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1 字符串预处理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-2-%E5%9B%9E%E6%96%87%E5%8D%8A%E5%BE%84%E6%95%B0%E7%BB%84"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2 回文半径数组</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-3-%E5%AF%B9%E7%A7%B0%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.3 对称关系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-4-%E5%A1%AB%E5%85%85%E6%95%B0%E7%BB%84"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">3.4 填充数组</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-5-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E4%BB%A5%E5%8F%8A%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">3.5 算法流程以及伪代码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-6-%E5%AE%9E%E4%BE%8B"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">3.6 实例</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4 结束</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">算法背景</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">常规求解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Manacher算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">字符串预处理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9B%9E%E6%96%87%E5%8D%8A%E5%BE%84%E6%95%B0%E7%BB%84"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">回文半径数组</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">对称关系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A1%AB%E5%85%85%E6%95%B0%E7%BB%84"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">填充数组</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E4%BB%A5%E5%8F%8A%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">算法流程以及伪代码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">实例</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结束</span></a></li></ol>
         
         </div>
       </aside>
