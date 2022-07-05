@@ -440,7 +440,7 @@
         
         <a href="#website fingerprint" title="website fingerprint" rel="1">website fingerprint</a>
         
-        <a href="#algorithm" title="algorithm" rel="13">algorithm</a>
+        <a href="#algorithm" title="algorithm" rel="14">algorithm</a>
         
         <a href="#CDN" title="CDN" rel="1">CDN</a>
         
@@ -965,6 +965,19 @@
           <a href="/cn/拓扑排序/">
             <h2 class="post-title">
               拓扑排序
+              
+              -- cn
+              
+            </h2>
+            
+          </a>
+        </div>
+        <hr>
+        
+        <div class="post-preview">
+          <a href="/cn/Manacher/">
+            <h2 class="post-title">
+              Manacher算法详解
               
               -- cn
               
@@ -1733,5 +1746,22 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script> -->
+</body>
 </html>
