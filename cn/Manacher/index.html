@@ -395,7 +395,7 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">7</span> Minutes
+              Estimated Reading Time <span class="post-count">8</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
@@ -548,23 +548,23 @@ $$</p>
 </div>
 <ul>
 <li>$center$：表示到目前为止最右边界的回文子串的中心的位置，如上图，遍历到当前位置时，左边$c$的半径能够得最远，别的中心加半径都够不到这么远；</li>
-<li>$r_border$：表示以$center$为中心，$arr[center]$为半径的回文子串的右边界，如上图。也就是说$$r_border=center+arr[center]$$</li>
+<li>$r\_border$：表示以$center$为中心，$arr[center]$为半径的回文子串的右边界，如上图。也就是说$$r\_border=center+arr[center]$$</li>
 </ul>
-<p>因此当遍历到第$i$个字符的时候，如果$i\lt r_border$，那就意味着当前字符落入了以$center$为中心的回文子串中，那么我们就可以利用对称关系找到其对称字符的位置$j=2<em>center-i$，同时令$arr[i]=arr[j]$。需要注意的是，$arr[i]$还受右边界的影响，因此：<br>
-$$<br>
-arr[i]=min(arr[2</em>center-i],\ \ r_border-i )<br>
-$$<br>
-  拿上图的当前位置来说，$#$落入了$c$为中心的回文串中，那么这个位置就等于它关于$c$对称位置的值，即$1$。那什么时候受右边界影响呢，假设$c$左边那个$#$的值为4（仅仅是假设！），那么当前位置就应该是$r_border-i=3$，因为我们不知道$r_border$往右那部分是啥，这也是上式的由来。<br>
-  我们希望$r_border$越靠右边越好，这样能加速判断，所以要时刻更新$center$和$r_border$。</p>
+<p>因此当遍历到第$i$个字符的时候，如果$i\lt r\_border$，那就意味着当前字符落入了以$center$为中心的回文子串中，那么我们就可以利用对称关系找到其对称字符的位置$j=2*center-i$，同时令$arr[i]=arr[j]$。需要注意的是，$arr[i]$还受右边界的影响，因此：</p>
+<p>$$<br>
+arr[i]=min(arr[2*center-i],\ \ r\_border-i )<br>
+$$</p>
+<p>  拿上图的当前位置来说，$#$落入了$c$为中心的回文串中，那么这个位置就等于它关于$c$对称位置的值，即$1$。那什么时候受右边界影响呢，假设$c$左边那个$#$的值为4（仅仅是假设！），那么当前位置就应该是$r\_border-i=3$，因为我们不知道$r\_border$往右那部分是啥，这也是上式的由来。<br>
+  我们希望$r\_border$越靠右边越好，这样能加速判断，所以要时刻更新$center$和$r\_border$。</p>
 <h2 id="算法流程以及伪代码">算法流程以及伪代码</h2>
 <p>  算法流程如下：</p>
 <ol>
 <li>字符串预处理得到$new_s$；</li>
 <li>建立回文半径数组；</li>
 <li>遍历字符串填充数组：<br>
-1）如果$i\lt r_border$，则$arr[i]=min(arr[2*center-i],\ \ r_border-i)$，否则$arr[i]=1$<br>
+1）如果$i\lt r\_border$，则$arr[i]=min(arr[2*center-i],\ \ r\_border-i)$，否则$arr[i]=1$<br>
 2）以$new_s[i]$为中心向两边拓展，同时更新$arr[i]$<br>
-3）如果$arr[i] + i\gt r_border$，更新$center=i$，$r_border=arr[i]+i$</li>
+3）如果$arr[i] + i\gt r\_border$，更新$center=i$，$r\_border=arr[i]+i$</li>
 </ol>
 <p>算法伪代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">findPalindrome(s):</span><br><span class="line"></span><br><span class="line">new_s = reprocess(s) <span class="comment">#字符串预处理，插入无关字符以及首尾边界字符</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to new_s.length then</span><br><span class="line">	<span class="keyword">if</span> arr[i] &lt; r_border:  <span class="comment">#当前元素落在右边界内，则找对称关系</span></span><br><span class="line">		arr[i] = <span class="built_in">min</span>(arr[<span class="number">2</span>*center-i], r_border-i)</span><br><span class="line">	<span class="keyword">else</span>                   <span class="comment">#否则arr[i] = 1</span></span><br><span class="line">		arr[i] = <span class="number">1</span></span><br><span class="line">	end <span class="keyword">if</span> </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> new_s[i-arr[i]] == new_s[i+arr[i]] then <span class="comment">#以i为中心向两端拓展，同时半径自增。首尾再加入无关字符就是为了处理边界</span></span><br><span class="line">		arr[i]++</span><br><span class="line">	end <span class="keyword">while</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> arr[i] + i &gt; r_border then   <span class="comment">#如果以字符为中心的回文子串右端超过右边界，则更新右边界和对称中心</span></span><br><span class="line">		center = i</span><br><span class="line">		r_border = arr[i]+i</span><br><span class="line">	end <span class="keyword">if</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -608,7 +608,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（1）$i=1 \ge r_border$则$arr[1] = 1$，拓展后$arr[1]$仍为1，更新$center=1,r_border=2$。</strong></p>
+<p><strong>（1）$i=1 \ge r\_border$则$arr[1] = 1$，拓展后$arr[1]$仍为1，更新$center=1,r\_border=2$。</strong></p>
 <div align=center>
 <img src="20200228182333472.png"/>
 </div>
@@ -650,7 +650,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（2）$i=2 \ge r_border$则$arr[2] = 1$，拓展后$arr[2]$为2，更新$center=2,r_border=4$。</strong></p>
+<p><strong>（2）$i=2 \ge r\_border$则$arr[2] = 1$，拓展后$arr[2]$为2，更新$center=2,r\_border=4$。</strong></p>
 <div align=center>
 <img src="20200228182542990.png"/>
 </div>
@@ -692,7 +692,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（3）$i=3 \lt r_border$则$arr[3] = min(arr[1],r_border-3 )=1$，拓展后$arr[3]$仍为1，不更新$center,r_border$。</strong></p>
+<p><strong>（3）$i=3 \lt r\_border$则$arr[3] = min(arr[1],r\_border-3 )=1$，拓展后$arr[3]$仍为1，不更新$center,r\_border$。</strong></p>
 <div align=center>
 <img src="20200228182728988.png"/>
 </div>
@@ -734,7 +734,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（4）$i=4 \ge r_border$则$arr[4] =1$，拓展后$arr[4]$为4，更新$center=4,r_border=8$。</strong></p>
+<p><strong>（4）$i=4 \ge r\_border$则$arr[4] =1$，拓展后$arr[4]$为4，更新$center=4,r\_border=8$。</strong></p>
 <div align=center>
 <img src="20200228182951105.png"/>
 </div>
@@ -776,7 +776,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（5）$i=5 \lt r_border$则$arr[5] =min(arr[3],r_border-5 )=1$，拓展后$arr[5]$仍为1，不更新$center,r_border$。</strong></p>
+<p><strong>（5）$i=5 \lt r\_border$则$arr[5] =min(arr[3],r\_border-5 )=1$，拓展后$arr[5]$仍为1，不更新$center,r\_border$。</strong></p>
 <div align=center>
 <img src="20200228182951105 (1).png"/>
 </div>
@@ -818,7 +818,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（6）$i=6 \lt r_border$则$arr[6] =min(arr[2],r_border-6 )=2$，拓展后$arr[6]$为4，更新$center=6,r_border=10$。</strong></p>
+<p><strong>（6）$i=6 \lt r\_border$则$arr[6] =min(arr[2],r\_border-6 )=2$，拓展后$arr[6]$为4，更新$center=6,r\_border=10$。</strong></p>
 <div align=center>
 <img src="20200228183901597.png"/>
 </div>
@@ -860,7 +860,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（7）$i=7 \lt r_border$则$arr[7] =min(arr[5],r_border-7 )=1$，拓展后$arr[7]$仍为1，不更新$center,r_border$。</strong></p>
+<p><strong>（7）$i=7 \lt r\_border$则$arr[7] =min(arr[5],r\_border-7 )=1$，拓展后$arr[7]$仍为1，不更新$center,r\_border$。</strong></p>
 <div align=center>
 <img src="20200228184008147.png"/>
 </div>
@@ -902,7 +902,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（8）$i=8 \lt r_border$则$arr[8] =min(arr[4],r_border-8 )=2$，拓展后$arr[8]$仍为2，不更新$center,r_border$。</strong></p>
+<p><strong>（8）$i=8 \lt r\_border$则$arr[8] =min(arr[4],r\_border-8 )=2$，拓展后$arr[8]$仍为2，不更新$center,r\_border$。</strong></p>
 <div align=center>
 <img src="20200228184131214.png"/>
 </div>
@@ -944,7 +944,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（9）$i=9 \lt r_border$则$arr[9] =min(arr[3],r_border-9 )=1$，拓展后$arr[9]$仍为1，不更新$center,r_border$。</strong></p>
+<p><strong>（9）$i=9 \lt r\_border$则$arr[9] =min(arr[3],r\_border-9 )=1$，拓展后$arr[9]$仍为1，不更新$center,r\_border$。</strong></p>
 <div align=center>
 <img src="20200228184238925.png"/>
 </div>
@@ -986,7 +986,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（10）$i=10 \ge r_border$则$arr[10] =1$，拓展后$arr[10]$为2，更新$center=10,r_border=12$。</strong></p>
+<p><strong>（10）$i=10 \ge r\_border$则$arr[10] =1$，拓展后$arr[10]$为2，更新$center=10,r\_border=12$。</strong></p>
 <div align=center>
 <img src="20200228184444472.png"/>
 </div>
@@ -1028,7 +1028,7 @@ $$<br>
 </tr>
 </tbody>
 </table>
-<p><strong>（11）$i=11 \lt r_border$则$arr[11] =min(arr[9],r_border-11 )=1$，拓展后$arr[11]$仍为1，不更新$center,r_border$。</strong></p>
+<p><strong>（11）$i=11 \lt r\_border$则$arr[11] =min(arr[9],r\_border-11 )=1$，拓展后$arr[11]$仍为1，不更新$center,r\_border$。</strong></p>
 <div align=center>
 <img src="20200228184559321.png"/>
 </div>
