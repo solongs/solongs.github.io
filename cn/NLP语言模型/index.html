@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script> -->
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-B1Z5FEHMDR"></script>
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-B1Z5FEHMDR');
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?c4d31088c083b37893d8a308d1639d5d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="keyword" content="IT  blog,Blog"/>
+  <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/cn/NLP语言模型/">
+  <title>
+    
+      NLP语言模型 - geniusMzy&#39;s cape
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'your-community/your-room'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Just Be Yourself</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+      
+    }
+
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#algorithm" title="algorithm">algorithm</a>
+              
+              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+              
+            </div>
+            <h1>NLP语言模型</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Ma Dala on
+              2019-12-24
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">15</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">3.6k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <p>  一个语言模型通常构建为字符串$s$的概率分布$p(s)$，$p(s)$试图反应的是字符串$s$作为一个句子出现的概率，用来判断这个句子该不该出现，例如，在一个描述人类说话的语言模型中，如果一个句子说“这只鸡把人吃了”，即便这句话的语法正确，它出现的概率仍然为0。语言模型就是这样一个计算句子概率的东西。</p>
+<h1>基本概念</h1>
+<p>  对于一个句子$s=w_1w_2\cdots w_m$，其概率计算公式可以表示为：<br>
+$$<br>
+p(s)=p(w_1)p(w_2|w_1)p(w_3|w_1w_2)\cdots p(w_m|w_1w_2\cdots w_{m-1})=\prod_{i=1}^mp(w_i|w_1\cdots w_{i-1})<br>
+$$<br>
+这个概率公式就是条件概率的乘法规则，需要注意的是当$i=1$时，$p(w_1|w_0)=p(w_1)$。该式中的$w_i$叫做<font color='red'>统计基元</font>（基元），它可以是字、词、短语或词类等，为了方便表述，通常以“词”代之。$w_i$的概率由$w_1\cdots w_{i-1}$决定，一般地我们把前$i-1$个词$w_1\cdots w_{i-1}$称为第$i$个词的<font color='red'>“历史”</font>。</p>
+<h2 id="一个问题">一个问题</h2>
+<p>  随着历史中基元数量的增加，不同的“历史”按指数级增长。现在对于第$i$个基元来说，历史基元的个数为$i-1$，如果一共有$L$个不同的基元（假设$L$为词汇集的大小），理论上每一个基元都有可能出现在$i-1$个位置中的任意一处，那么$i$基元就有$L^{i-1}$种不同的历史情况。这样的话，我们必须考虑在所有的$L^{i-1}$种不同的历史情况下产生第$i$个基元的概率。那么模型中就有$L^m$个自由参数。$p(w_m|w_1w_2\cdots w_{m-1})$。指数级的增长对运算带来的负担是非常大的，如果$L=5000,m=3$，自由参数的数目为1250亿。</p>
+<h2 id="问题的解决方法">问题的解决方法</h2>
+<p>  设法减少历史基元的个数，将$w_1\cdots w_{i-1}$映射到等价类$S=(w_1w_2\cdots w_{i-1})$，使等价类的数目远远小于原来不同历史基元的数目。则有：<br>
+$$p(w_i|w_1\cdots w_{i-1})=p(w_i|S=(w_1w_2\cdots w_{i-1}))$$<br>
+划分等价类的规则是，将<strong>两个历史</strong>映射到同一个等价类，当且仅当这两个历史中的最近$n-1$个基元相同，即：<br>
+$$H_1:w_1w_2\cdots \cdots (w_{i-n+1}w_{i-n+2}\cdots w_{i-1})w_i \cdots \cdots \<br>
+H_2:v_1v_2\cdots \cdots (v_{k-n+1}v_{k-n+2}\cdots v_{k-1})v_k \cdots \cdots$$<br>
+对于上面两个串中的$w_i$和$v_k$，它们的历史最近的$n-1$个基元，也就是括号括起来的那部分，如果这些基元相同，则$w_i$和$v_k$的历史就可以映射到同一个等价类$S(w_1\cdots w_{i-1})=S(w_k\cdots w_{k-1})$。换句话说，这么做的目的就是让一个基元$w_i$的概率只和其最近的$n-1$个历史有关，这样便大大地减少了历史基元的数量。</p>
+<h2 id="n-gram">n-gram</h2>
+<p>  在上述情况下的语言模型就称为<font color='red'>n元文法/语法模型（n-gram model）</font>。当然，$n$不能取太大，否则历史基元的数量一样很多。一般都用4或5元，效果好。$n$取不同值有一些特别的叫法：</p>
+<ul>
+<li>$n=1$时，也就是说第$i$位上的基元$w_i$独立于历史，一元文法也被写为uni-gram或monogram；</li>
+<li>$n=2$时，2-gram（bi-gram）被称为1阶马尔可夫链；</li>
+<li>$n=3$时，3-gram（tri-gram）被称为2阶马尔可夫链。</li>
+</ul>
+<p>以此类推。</p>
+<p>  n-gram实际上就是$n$个临近词构成的一个$n$元词组，或称词序列，例如：Today is Tuesday.</p>
+<ul>
+<li>bi-grams就是：Today is, is Tuesday, Tuesday.</li>
+<li>tri-grams就是：Today is Tuesday, is Tuesday.</li>
+</ul>
+<p>为了保证条件概率在$i=1$时有意义，同时为了保证句子内所有字符串的概率和为1，即$\sum_sp(s)=1$，可以在句子首尾两端增加两个标志：<font color='red'>&lt;BOS&gt;$w_1w_2\cdots w_{m}$&lt;EOS&gt;</font>。不失一般性，对于$n \gt 2$的n-gram，$p(s)$可以分解为：<br>
+$$<br>
+p(s)=\prod_{i=1}^{m+1}p(w_i|w_{i-n+1}^{i-1})<br>
+$$<br>
+其中$w_i^j$表示词序列$w_i\cdots w_j$，$w_0$为&lt;BOS&gt;，$w_{m+1}$为&lt;EOS&gt;。举例：<br>
+给定句子：John read a book<br>
+首先增加标记：&lt;BOS&gt;John read a book &lt;EOS&gt;<br>
+Uni-gram：&lt;BOS&gt;,John,read,a,book,&lt;EOS&gt;<br>
+Bi-gram：(&lt;BOS&gt;John),(John read),(read a),(a book), (book&lt;EOS&gt;)<br>
+Tri-gram：(&lt;BOS&gt;John read),(John read a),(read a book),(a book&lt;EOS&gt;)<br>
+拿bi-gram来说，句子的概率为:</p>
+<p>$$<br>
+p ( John \ read\ a\ book ) =p ( John|&lt;BOS&gt; ) *p ( read|John ) *p ( a|read ) *p ( book|a ) *p (&lt;EOS&gt;|book )<br>
+$$</p>
+<h2 id="n-gram的应用">n-gram的应用</h2>
+<p>  1）音字转换问题：给定拼音之后可能的汉字串可能有很多，利用n-gram可以找到概率最大的字串<br>
+  2）汉语分词问题：给定汉字串，可以切分的方法很多，利用n-gram可以找到切分后概率最大的切分方法。<br>
+  问题是：如何获得n元语法模型？也就是说我用来计算句子概率的那些条件概率怎么来的。</p>
+<h1>参数估计</h1>
+<p>  参数估计中的两个重要概念：</p>
+<ul>
+<li>训练预料（training data）：用于建立模型，确定模型参数的已知语料。</li>
+<li>最大似然估计（maximum likelihood Evaluation, MLE）：用相对频率计算概率的方法。</li>
+</ul>
+<p>对于n-gram来说，参数$p(w_i|w_{i-n+1}^{i-1})$可由最大似然估计求得：<br>
+$$<br>
+p(w_i|w_{i-n+1}^{i-1})=f(w_i|w_{i-n+1}^{i-1})=\cfrac{c(w_{i-n+1}^i)}{\sum_{w_i}c(w_{i-n+1}^i)}<br>
+$$<br>
+其中，$\sum_{w_i}c(w_{i-n+1}^i)$是历史串$w_{i-n+1}^{i-1}$在给定语料中出现的次数，即$c(w_{i-n+1}^{i-1})$，不管$w_i$是什么。$f(w_i|w_{i-n+1}^{i-1})$是在给定$w_{i-n+1}^{i-1}$的条件下$w_i$出现的相对频度，分子为$w_{i-n+1}^{i-1}$与$w_i$同时出现的次数。下面举例说明。</p>
+<h2 id="一个例子">一个例子</h2>
+<p>  给定一个训练预料：</p>
+<center>"John read Moby Dick"</center>
+<center>"Mary read a different book"</center>
+<center>"She read a book by Cher"</center>
+我们来看根据bi-gram来求"John read a book"的概率
+<p>  根据1.3最后的式子，我们需要计算其中的每一个条件概率：<br>
+$$<br>
+p(John|&lt;BOS&gt;)=\cfrac{c(&lt;BOS&gt; John)}{\sum_{w_i}c(&lt;BOS&gt;\ w_i)}=\cfrac{1}{3}\\<br>
+p(read|John)=\cfrac{c(John\ read)}{\sum_{w_i}c(John\ w_i)}=\cfrac{1}{1}\\<br>
+p(a|read)=\cfrac{c(read\ a)}{\sum_{w_i}c(read\ w_i)}=\cfrac{2}{3}\\<br>
+p(book|a)=\cfrac{c(a\ book)}{\sum_{w_i}c(a\ w_i)}=\cfrac{1}{2}\\<br>
+p(&lt;EOS&gt;|book)=\cfrac{c(book\ &lt;EOS&gt;)}{\sum_{w_i}c(book\ w_i)}=\cfrac{1}{2}<br>
+$$<br>
+最后：<br>
+$$<br>
+\begin{aligned}<br>
+p(John \ read\ a\ book)&amp;=p(John|&lt;BOS&gt;)*p(read|John)*p(a|read)*p(book|a)*p(&lt;EOS&gt;|book)\\<br>
+&amp;\approx0.06<br>
+\end{aligned}<br>
+$$<br>
+最后这些概率相乘就是句子的概率了。但是现在考虑另外一个句子&quot;Cher read a book&quot;，我们计算$p(Cher|&lt;BOS&gt;)$和$p(read|Cher)$的时候会发现是0，但这个句子怎么看都是很合理的，这就是<font color='red'>数据匮乏（稀疏）</font>引起零概率的问题。解决这个问题要使用数据平滑的方法。</p>
+<h1>数据平滑</h1>
+<p>  数据平滑的基本思想是调整最大似然估计的概率值，使零概率增值，使非零概率下调，劫富济贫，消除零概率，改进模型的整体正确率。基本目标是使测试样本的语言模型困惑度越小越好。基本约束：<br>
+$$<br>
+\sum_{w_i}p(w_i|w_1w_2\cdots w_{i-1})=1<br>
+$$</p>
+<h2 id="加1法">加1法</h2>
+<p>  基本思想是每一种情况出现的次数加1，例如对于uni-gram来说，设$w_1,w_2,w_3$三个词的概率分别为$\cfrac{1}{3},0,\cfrac{2}{3}$，每个词出现的次数加1后就变为了$\cfrac{2}{6},\cfrac{1}{6},\cfrac{3}{6}$。对于bi-gram则有：<br>
+$$<br>
+p(w_i|w_{i-n+1}^{i-1})=\cfrac{1+c(w_{i-1}w_i)}{\sum_{w_i}[1+c(w_{i-1}w_i)]}=\cfrac{1+c(w_{i-1}w_i)}{|V|+\sum_{w_i}c(w_{i-1}w_i)}<br>
+$$<br>
+其中$V$为被考虑预料的词汇量（全部可能的基元数），现在回到上面的例子&quot;Cher read a book&quot;：<br>
+$$<br>
+p(Cher|&lt;BOS&gt;)=\cfrac{1+c(&lt;BOS&gt; Cher)}{|V|+\sum_{w_i}c(&lt;BOS&gt;\ w_i)}=\cfrac{1+0}{11+3}\\<br>
+p(read|Cher)=\cfrac{1+c(Cher\ read)}{|V|+\sum_{w_i}c(Cher\ w_i)}=\cfrac{1+0}{11+1}\\<br>
+p(a|read)=\cfrac{1+c(read\ a)}{|V|+\sum_{w_i}c(read\ w_i)}=\cfrac{1+2}{11+3}\\<br>
+p(book|a)=\cfrac{1+c(a\ book)}{|V|+\sum_{w_i}c(a\ w_i)}=\cfrac{1+1}{11+2}\\<br>
+p(&lt;EOS&gt;|book)=\cfrac{1+c(book\ &lt;EOS&gt;)}{|V|+\sum_{w_i}c(book\ w_i)}=\cfrac{1+1}{11+2}<br>
+$$<br>
+得到概率：<br>
+$$<br>
+\begin{aligned}<br>
+p(Cher \ read\ a\ book)&amp;=p(Cher|&lt;BOS&gt;)*p(read|Cher)*p(a|read)*p(book|a)*p(&lt;EOS&gt;|book)\\<br>
+&amp;\approx0.00003<br>
+\end{aligned}<br>
+$$<br>
+  在实际应用中，最简单的平滑技术之一就是加法平滑方法，这种方法的基本思想是上述bi-gram方法的通用化，不是假设每个n元语法发生的次数比实际统计次数多一次，而是假设它比实际出现情况多发生$\delta$次，$0 \le \delta \le 1$，那么就有加法平滑法的通用形式：<br>
+$$<br>
+p_{add}(w_i|w_{i-n+1}^{i-1})=\cfrac{\delta+c(w_{i-n+1}^i)}{\delta |V|+\sum_{w_i}c(w_{i-n+1}^i)}<br>
+$$</p>
+<h2 id="减值法-折扣法（Discounting）">减值法/折扣法（Discounting）</h2>
+<p>  基本思想是修改训练样本中事件的实际计数，使样本中（实际出现的）不同事件的概率之和小于1，剩余的概率量分配给未见概率。</p>
+<h3 id="古德-图灵（Good-Turing）估计法">古德-图灵（Good-Turing）估计法</h3>
+<p>  Good-Turing估计法是很多平滑技术的核心。假设$N$是原来训练样本数据的大小，$n_r$是在样本中正好出现$r$次的事件的数目（此处事件为n-gram），即出现1次的n-gram有$n_1$个，出现2次的n-gram有$n_2$个，$\cdots$出现$r$次的n-gram有$n_r$个。基本思路是，对于任何一个出现$r$次的$n$元语法，都假设它出现了$r^*$次，这里：<br>
+$$<br>
+r*=(r+1)\cfrac{n_{r+1}}{n_r}<br>
+$$<br>
+$n_r$是训练预料中恰好出现$r$次的n元语法的数目。要把这个统计数转化为概率，只需要进行归一化处理：对于统计数为$r$的n元语法，其概率为：<br>
+$$<br>
+p_r=\cfrac{r^*}{N}<br>
+$$<br>
+其中，$N=\sum_{r=0}^\infty n_rr^*$。需要注意的是：<br>
+$$<br>
+N=\sum_{r=0}^\infty n_rr^*=\sum_{r=0}^\infty (r+1)n_{r+1}=\sum_{r=1}^\infty n_rr<br>
+$$<br>
+也就是说，$N$等于这个分布中最初的计数。这样，原样本中所有事件的概率之和为：<br>
+$$<br>
+\sum_{r&gt;0}n_rp_r=1-\cfrac{n_1}{N} \lt 1<br>
+$$<br>
+因此，有$\cfrac{n_1}{N}$的剩余的概率量就可以均分给所有的未见事件(r=0)。<br>
+  Good-Turing估计法适用于大词汇集产生的符合多项式分布的大量的观察数据。有关Good-Turing方法的详细推导可以参考论文：<strong>on Turing’s Formula for Word Probabilities</strong></p>
+<h3 id="Back-off（后备-后退方法，Katz平滑方法）">Back-off（后备/后退方法，Katz平滑方法）</h3>
+<p>  当某一事件在样本中出现的频率大于阈值$k$（通常取$k$为0或1）时，运用最大似然估计的减值法来估计其概率；而当时间的出现的频率小于$k$值时，使用低阶的语法模型作为代替高阶语法模型的后备，即(n-1)gram的概率替代n-gram概率，而这种替代需受归一化因子$\alpha$的作用。<br>
+  另一种理解就是，对于每个计数$r \lt 0$的n元语法的出现次数减值，把因减值而节省下来的剩余概率根据低阶的(n-1)gram分配给未见事件。</p>
+<h3 id="绝对减值法（Absolute-discounting）">绝对减值法（Absolute discounting）</h3>
+<p>  基本思想是从每个计数$r$中减去同样的量，剩余的概率量由未见事件均分。设$R$为所有可能事件的数目（当事件为n-gram时，如果统计基元为词，且词汇集的大小为$L$，则$R=L^n$）<br>
+  那么，样本出现了$r$次的事件的概率可以由如下公式估计：<br>
+$$<br>
+p_r=<br>
+\begin{cases}<br>
+\cfrac{r-b}{N} &amp; \ r&gt;0 \\<br>
+\cfrac{b(R-n_0)}{Nn_0} &amp;\ r=0<br>
+\end{cases}<br>
+$$<br>
+其中，$n_0$为样本中未出现的事件的数目。$b$为减去的常量，$b \le 1$。$b(R-n_0)/N$是由于减值而产生的概率量。$N$为样本中出现了$r$次的事件总次数：$n_r*r$。$b$为自由参数，可以通过留存数据方法求得$b$的上限为：<br>
+$$<br>
+b \le \cfrac{n_1}{n_1+2n_2} \lt 1<br>
+$$<br>
+详细可以参考论文：<strong>Estimating Small Probabilities by Leaving-one-Out.</strong></p>
+<h3 id="线性减值法（Linear-discounting）">线性减值法（Linear discounting）</h3>
+<p>  基本思想是从每个计数$r$中减去与该计数成正比的量（减值函数为线性的），剩余概率量$\alpha$被$n_0$个未见事件均分。<br>
+$$<br>
+p_r=<br>
+\begin{cases}<br>
+\cfrac{(1-\alpha)r}{N} &amp; \ r&gt;0 \\<br>
+\cfrac{\alpha}{n_0} &amp; \ r=0 \\<br>
+\end{cases}<br>
+$$<br>
+自由参数$\alpha$的优化值为$\cfrac{n_1}{N}$。<br>
+  绝对减值法产生的n-gram通常优于线性减值法。</p>
+<h3 id="四种减值法的比较">四种减值法的比较</h3>
+<ul>
+<li>Good-Turing：对非0事件按公式削减出现的次数，节留出来的概率均分给0概率事件。</li>
+<li>Katz：对非0事件按Good-Turing法计算减值，节留出来的概率按低阶分布分给0概率事件。</li>
+<li>绝对减值法：对非0事件无条件削弱某一固定的出现次数值，节留出来的概率均分给0概率事件。</li>
+<li>线性减值法：对非0事件根据出现次数按比例削减次数值，节留出来的概率均分给0概率事件。</li>
+</ul>
+<h2 id="删除插值法（Deleted-interpolation）">删除插值法（Deleted interpolation）</h2>
+<p>  基本思想是用低阶语法估计高阶语法，即当3-gram的值不能从训练数据中准确估计时，用2-gram来替代，同样，当2-gram的值不能从训练语料中准确估计时，可以用1-gram的值来代替。插值公式：<br>
+$$<br>
+p(w_3|w_2w_1)=\lambda_3p’(w_3|w_1w_2)+\lambda_2p’(w_3|w_2)+\lambda_1p’(w_3)<br>
+$$<br>
+其中，$\lambda_1+\lambda_2+\lambda_3=1$，他们的确定是将训练语料分为两部分，即从原始语料中删除第一部分作为留存数据。第一部分用于估计$p’(w_3|w_1w_2),p’(w_3|w_2),p’(w_3)$，第二部分用于计算$\lambda_1,\lambda_2,\lambda_3$：使语言模型对留存数据的困惑度最小。</p>
+<p>参考资料：《统计自然语言处理》宗成庆</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/汉语自动分词基本算法/" data-toggle="tooltip" data-placement="top" title="汉语自动分词基本算法">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/句法分析——线图分析法/" data-toggle="tooltip" data-placement="top" title="线图分析法">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=NLP语言模型&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/NLP语言模型/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">基本概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一个问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">问题的解决方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#n-gram"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">n-gram</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#n-gram%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">n-gram的应用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">参数估计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">一个例子</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">数据平滑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8A%A01%E6%B3%95"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">加1法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%8F%E5%80%BC%E6%B3%95-%E6%8A%98%E6%89%A3%E6%B3%95%EF%BC%88Discounting%EF%BC%89"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">减值法&#x2F;折扣法（Discounting）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%A4%E5%BE%B7-%E5%9B%BE%E7%81%B5%EF%BC%88Good-Turing%EF%BC%89%E4%BC%B0%E8%AE%A1%E6%B3%95"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">古德-图灵（Good-Turing）估计法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Back-off%EF%BC%88%E5%90%8E%E5%A4%87-%E5%90%8E%E9%80%80%E6%96%B9%E6%B3%95%EF%BC%8CKatz%E5%B9%B3%E6%BB%91%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">Back-off（后备&#x2F;后退方法，Katz平滑方法）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%9D%E5%AF%B9%E5%87%8F%E5%80%BC%E6%B3%95%EF%BC%88Absolute-discounting%EF%BC%89"><span class="toc-nav-number">3.2.3.</span> <span class="toc-nav-text">绝对减值法（Absolute discounting）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E6%80%A7%E5%87%8F%E5%80%BC%E6%B3%95%EF%BC%88Linear-discounting%EF%BC%89"><span class="toc-nav-number">3.2.4.</span> <span class="toc-nav-text">线性减值法（Linear discounting）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%87%8F%E5%80%BC%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-nav-number">3.2.5.</span> <span class="toc-nav-text">四种减值法的比较</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4%E6%8F%92%E5%80%BC%E6%B3%95%EF%BC%88Deleted-interpolation%EF%BC%89"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">删除插值法（Deleted interpolation）</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#algorithm" title="algorithm">algorithm</a>
+            
+            <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://v-vincen.life/" target="_blank">V_Vincen</a>
+          </li>
+          
+          <li>
+            <a href="http://beantech.org" target="_blank">Bean Tech</a>
+          </li>
+          
+          <li>
+            <a href="http://huangxuan.me" target="_blank">Hux Blog</a>
+          </li>
+          
+          <li>
+            <a href="https://hexo.io/" target="_blank">Hexo</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/solongs">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Ma Dala
+          2022
+          <br>
+          Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	</body>
+</html>
